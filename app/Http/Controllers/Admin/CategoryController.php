@@ -1,8 +1,8 @@
 <?php
-
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -12,7 +12,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        // Fetch categories ordered by 'created_at' in descending order
+        $categories = Category::orderBy('updated_at', 'desc')->get();
+        return view('admin/categories/index', compact('categories'));
     }
 
     /**
@@ -20,7 +22,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin/categories/create');
     }
 
     /**
@@ -28,7 +30,18 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validate the request data
+        $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
+
+        //append auth
+        $request['added_by'] = auth()->id();
+        $request['updated_by'] = auth()->id();
+
+        Category::create($request->all());
+        // Redirect to the categories list with a success message
+        return redirect()->route('admin.categories.index')->with('success', 'Category created successfully.');
     }
 
     /**
@@ -36,7 +49,8 @@ class CategoryController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $category = Category::findOrFail($id);
+        return view('admin/categories/show', compact('category'));
     }
 
     /**
@@ -44,7 +58,8 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $category = Category::findOrFail($id);
+        return view('admin/categories/edit', compact('category'));
     }
 
     /**
@@ -52,7 +67,19 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // Validate the request data
+        $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
+
+        // Find the category by ID
+        $category = Category::findOrFail($id);
+        $request['updated_by'] = auth()->id();
+        // Update the category
+        $category->update($request->all());
+
+        // Redirect to the categories list with a success message
+        return redirect()->route('admin.categories.index')->with('success', 'Category updated successfully.');
     }
 
     /**
@@ -60,6 +87,13 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        // Find the category by ID
+        $category = Category::findOrFail($id);
+
+        // Delete the category
+        $category->delete();
+
+        // Redirect to the categories list with a success message
+        return redirect()->route('admin.categories.index')->with('success', 'Category deleted successfully.');
     }
 }

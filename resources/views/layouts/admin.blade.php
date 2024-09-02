@@ -135,6 +135,14 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="/admin/categories" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Categories
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
@@ -774,7 +782,7 @@
 <!-- AdminLTE App -->
 <script src="/admin-site/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="/admin-site/dist/js/demo.js"></script>
+{{-- <script src="/admin-site/dist/js/demo.js"></script> --}}
 <!-- Page specific script -->
 @yield('scripts')
 </body>

@@ -24,9 +24,9 @@
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex justify-content-between align-items-center">
-                        <h3 class="card-title">Products List</h3>
+                        <h3 class="card-title">Add Product</h3>
                         <div class="col-md-1">
-                            <a href="/admin/products/create" type="button" class="btn btn-block btn-info btn-md">Add Product</a>
+                            <a href="/admin/products" type="button" class="btn btn-block btn-info btn-md">Back</a>
                         </div>
                     </div>
                 </div>

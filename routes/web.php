@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\SubCategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,5 +29,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::prefix('/admin')->name('admin.')->middleware('auth')->group(function () {
     // Dashboard route
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    Route::resource('/categories', CategoryController::class);
+    Route::resource('/sub_categories', SubCategoryController::class);
     Route::resource('/products', ProductController::class);
 });

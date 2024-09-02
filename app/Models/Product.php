@@ -14,6 +14,8 @@ class Product extends Model
         'extras',
         'category_id',   // Foreign key to Category
         'sub_category_id', // Foreign key to SubCategory
+        'added_by',
+        'updated_by',
     ];
 
     // Relationship with Category

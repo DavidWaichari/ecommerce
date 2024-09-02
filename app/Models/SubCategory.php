@@ -12,7 +12,9 @@ class SubCategory extends Model
         'name',
         'category_id', // Foreign key to Category
         'status',
-        'extras'
+        'extras',
+        'added_by',
+        'updated_by'
     ];
 
     // Relationship with Category

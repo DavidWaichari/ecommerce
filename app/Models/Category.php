@@ -11,8 +11,11 @@ class Category extends Model
     // Fillable attributes to protect against mass assignment
     protected $fillable = [
         'name',
+        'description',
         'status', // Added status attribute
-        'extras'
+        'extras',
+        'added_by',
+        'updated_by'
     ];
 
     // Status scope to filter categories by status
@@ -42,5 +45,10 @@ class Category extends Model
     public function getUppercaseNameAttribute()
     {
         return strtoupper($this->name);
+    }
+
+    public function updatedBy()
+    {
+        return  $this->belongsTo(User::class, 'updated_by');
     }
 }
