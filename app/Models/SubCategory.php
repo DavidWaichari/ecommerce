@@ -10,6 +10,7 @@ class SubCategory extends Model
 
     protected $fillable = [
         'name',
+        'description',
         'category_id', // Foreign key to Category
         'status',
         'extras',
@@ -26,5 +27,10 @@ class SubCategory extends Model
     public function products()
     {
         return $this->hasMany(Product::class);
+    }
+
+    public function updatedBy()
+    {
+        return  $this->belongsTo(User::class, 'updated_by');
     }
 }

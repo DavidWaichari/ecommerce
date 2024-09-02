@@ -8,6 +8,9 @@
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
+    <!-- Select2 -->
+    <link rel="stylesheet" href="/admin-site/plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="/admin-site/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
   <link rel="stylesheet" href="/admin-site/plugins/fontawesome-free/css/all.min.css">
   <!-- DataTables -->
   <link rel="stylesheet" href="/admin-site/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
@@ -131,6 +134,14 @@
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Widgets
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/admin/sub_categories" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Sub Categories
               </p>
             </a>
           </li>
@@ -766,6 +777,8 @@
 <script src="/admin-site/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="/admin-site/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Select2 -->
+<script src="/admin-site/plugins/select2/js/select2.full.min.js"></script>
 <!-- DataTables  & Plugins -->
 <script src="/admin-site/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="/admin-site/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
