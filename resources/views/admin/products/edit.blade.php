@@ -40,10 +40,11 @@
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form action="{{ route('admin.products.update', $product->id) }}" method="POST" autocomplete="off">
+                            <form action="{{ route('admin.products.update', $product->id) }}" method="POST" autocomplete="off" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="card-body">
+                                    <!-- Category Select -->
                                     <div class="form-group">
                                         <div class="d-flex flex-column align-items-start">
                                             <label for="categorySelect">Select Category</label>
@@ -57,10 +58,12 @@
                                             </select>
                                         </div>
                                     </div>
+
+                                    <!-- Sub Category Select -->
                                     <div class="form-group">
                                         <div class="d-flex flex-column align-items-start">
-                                            <label for="categorySelect">Select Sub Category</label>
-                                            <select class="select2 form-control" id="categorySelect" name="sub_category_id">
+                                            <label for="subCategorySelect">Select Sub Category</label>
+                                            <select class="select2 form-control" id="subCategorySelect" name="sub_category_id">
                                                 <option value="" disabled>Select Sub Category</option>
                                                 @foreach ($sub_categories as $category)
                                                     <option value="{{ $category->id }}" {{ $product->sub_category_id == $category->id ? 'selected' : '' }}>
@@ -71,20 +74,55 @@
                                         </div>
                                     </div>
 
+                                    <!-- Name Input -->
                                     <div class="form-group">
                                         <label for="name">Name</label>
                                         <input type="text" class="form-control" id="name" name="name" value="{{ $product->name }}" placeholder="Enter Name" required>
                                     </div>
+
+                                    <!-- Description Input -->
                                     <div class="form-group">
                                         <label for="description">Description</label>
                                         <textarea class="form-control" id="description" name="description" placeholder="Enter Description">{{ $product->description }}</textarea>
                                     </div>
+
+                                    <!-- Status Select -->
                                     <div class="form-group">
                                         <label for="status">Status</label>
                                         <select class="form-control" id="status" name="status">
-                                            <option value="active" {{ $product->status == 'Active' ? 'selected' : '' }}>Active</option>
-                                            <option value="inactive" {{ $product->status == 'Inactive' ? 'selected' : '' }}>Inactive</option>
+                                            <option value="Active" {{ $product->status == 'Active' ? 'selected' : '' }}>Active</option>
+                                            <option value="Inactive" {{ $product->status == 'Inactive' ? 'selected' : '' }}>Inactive</option>
                                         </select>
+                                    </div>
+
+                                    <!-- Featured Image Input -->
+                                    <div class="form-group">
+                                        <label for="featured_image">Featured Image</label>
+                                        <input type="file" class="form-control-file" id="featured_image" name="featured_image" accept="image/*">
+                                        @if ($product->featured_image)
+                                            <img src="{{ asset('storage/' . $product->featured_image) }}" alt="Featured Image" class="img-thumbnail mt-2" style="max-width: 150px;">
+                                        @endif
+                                    </div>
+
+                                    <!-- Images Input -->
+                                    <div class="form-group">
+                                        <label for="images">Additional Images</label>
+                                        <input type="file" class="form-control-file" id="images" name="images[]" accept="image/*" multiple>
+                                        @if ($product->images)
+                                            <div class="mt-2">
+                                                @foreach ($product->images as $image)
+                                                    <img src="{{ asset('storage/' . $image) }}" alt="Additional Image" class="img-thumbnail" style="max-width: 150px; margin-right: 5px;">
+                                                @endforeach
+                                            </div>
+                                        @endif
+                                    </div>
+
+                                    <!-- Featured Status Checkbox -->
+                                    <div class="form-group">
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="is_featured" name="is_featured" {{ $product->is_featured ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="is_featured">Featured</label>
+                                        </div>
                                     </div>
                                 </div>
                                 <!-- /.card-body -->
@@ -105,7 +143,7 @@
 @section('scripts')
 <script>
     $(document).ready(function () {
-   // Initialize Select2 Elements
+        // Initialize Select2 Elements
         $('.select2').select2();
 
         // Initialize Select2 Elements with Bootstrap4 theme

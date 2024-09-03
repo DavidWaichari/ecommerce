@@ -33,67 +33,110 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <div class="col-md-6 mx-auto">
-                        <div class="card card-info">
-                            <div class="card-header">
-                                <h3 class="card-title">Product Details</h3>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card card-info">
+                                <div class="card-header">
+                                    <h3 class="card-title">Product Details</h3>
+                                </div>
+                                <!-- /.card-header -->
+                                <!-- form start -->
+                                <form action="#" method="POST" autocomplete="off">
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <div class="d-flex flex-column align-items-start">
+                                                <label for="categorySelect">Select Category</label>
+                                                <select class="select2 form-control" id="categorySelect" name="category_id" disabled>
+                                                    <option value="" disabled>Select Category</option>
+                                                    @foreach ($categories as $category)
+                                                        <option value="{{ $category->id }}" {{ $product->category_id == $category->id ? 'selected' : '' }}>
+                                                            {{ $category->name }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="d-flex flex-column align-items-start">
+                                                <label for="subCategorySelect">Select Sub Category</label>
+                                                <select class="select2 form-control" id="subCategorySelect" name="sub_category_id" disabled>
+                                                    <option value="" disabled>Select Sub Category</option>
+                                                    @foreach ($sub_categories as $sub_category)
+                                                        <option value="{{ $sub_category->id }}" {{ $product->sub_category_id == $sub_category->id ? 'selected' : '' }}>
+                                                            {{ $sub_category->name }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="name">Name</label>
+                                            <input type="text" class="form-control" id="name" name="name" value="{{ $product->name }}" placeholder="Enter Name" required readonly>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="status">Status</label>
+                                            <select class="form-control" id="status" name="status" disabled>
+                                                <option value="active" {{ $product->status == 'Active' ? 'selected' : '' }}>Active</option>
+                                                <option value="inactive" {{ $product->status == 'Inactive' ? 'selected' : '' }}>Inactive</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- /.card-body -->
+
+                                    <div class="card-footer">
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            <a href="{{route('admin.products.edit', $product->id)}}" class="btn btn-warning">Edit</a>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-default">Delete</button>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
-                            <!-- /.card-header -->
-                            <!-- form start -->
-                            <form action="#" method="POST" autocomplete="off">
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card">
                                 <div class="card-body">
-                                    <div class="form-group">
-                                        <div class="d-flex flex-column align-items-start">
-                                            <label for="categorySelect">Select Category</label>
-                                            <select class="select2 form-control" id="categorySelect" name="category_id" disabled>
-                                                <option value="" disabled>Select Category</option>
-                                                @foreach ($categories as $category)
-                                                    <option value="{{ $category->id }}" {{ $product->category_id == $category->id ? 'selected' : '' }}>
-                                                        {{ $category->name }}
-                                                    </option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="d-flex flex-column align-items-start">
-                                            <label for="categorySelect">Select Sub Category</label>
-                                            <select class="select2 form-control" id="categorySelect" name="sub_category_id" disabled>
-                                                <option value="" disabled>Select Sub Category</option>
-                                                @foreach ($sub_categories as $category)
-                                                    <option value="{{ $category->id }}" {{ $product->sub_category_id == $category->id ? 'selected' : '' }}>
-                                                        {{ $category->name }}
-                                                    </option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="name">Name</label>
-                                        <input type="text" class="form-control" id="name" name="name" value="{{ $product->name }}" placeholder="Enter Name" required readonly>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="description">Description</label>
-                                        <textarea class="form-control" id="description" name="description" placeholder="Enter Description" readonly>{{ $product->description }}</textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="status">Status</label>
-                                        <select class="form-control" id="status" name="status" disabled>
-                                            <option value="active" {{ $product->status == 'Active' ? 'selected' : '' }}>Active</option>
-                                            <option value="inactive" {{ $product->status == 'Inactive' ? 'selected' : '' }}>Inactive</option>
-                                        </select>
+                                    <h4>Description</h4>
+                                    <p>{{ $product->description }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row mt-4">
+                        <div class="col-md-3">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Featured Image</h4>
+                                </div>
+                                <div class="card-body text-center">
+                                    @if($product->hasMedia('featured_images'))
+                                        <img src="{{ $product->getFirstMediaUrl('featured_images') }}" class="img-fluid" alt="Featured Image">
+                                    @else
+                                        <p>No featured image available.</p>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Other Images</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="d-flex flex-wrap">
+                                        @if($product->hasMedia('images'))
+                                            @foreach($product->getMedia('images') as $image)
+                                                <div class="p-2">
+                                                    <img src="{{ $image->getUrl() }}" class="img-fluid" alt="Image">
+                                                </div>
+                                            @endforeach
+                                        @else
+                                            <p>No other images available.</p>
+                                        @endif
                                     </div>
                                 </div>
-                                <!-- /.card-body -->
-
-                                <div class="card-footer">
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <a href="{{route('admin.products.edit', $product->id)}}" class="btn btn-warning">Edit</a>
-                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-default">Delete</button>
-                                    </div>
-                                </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -108,7 +151,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <p>Are you sure you want to delete the product "{{ $product->name }}"? This will delete all the corresponding transanctions</p>
+                            <p>Are you sure you want to delete the product "{{ $product->name }}"? This will delete all the corresponding transactions.</p>
                         </div>
                         <div class="modal-footer">
                             <form action="/admin/products/{{ $product->id }}" method="POST">
@@ -129,7 +172,7 @@
 @section('scripts')
 <script>
     $(document).ready(function () {
-   // Initialize Select2 Elements
+        // Initialize Select2 Elements
         $('.select2').select2();
 
         // Initialize Select2 Elements with Bootstrap4 theme

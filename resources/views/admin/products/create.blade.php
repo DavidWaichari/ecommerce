@@ -36,13 +36,14 @@
                     <div class="col-md-6 mx-auto">
                         <div class="card card-info">
                             <div class="card-header">
-                                <h3 class="card-title">Add  Product</h3>
+                                <h3 class="card-title">Add Product</h3>
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form action="{{ route('admin.products.store') }}" method="POST" autocomplete="off">
+                            <form action="{{ route('admin.products.store') }}" method="POST" autocomplete="off" enctype="multipart/form-data">
                                 @csrf
                                 <div class="card-body">
+                                    <!-- Category Select -->
                                     <div class="form-group">
                                         <div class="d-flex flex-column align-items-start">
                                             <label for="categorySelect">Select Category</label>
@@ -54,6 +55,8 @@
                                             </select>
                                         </div>
                                     </div>
+
+                                    <!-- Sub Category Select -->
                                     <div class="form-group">
                                         <div class="d-flex flex-column align-items-start">
                                             <label for="subCategorySelect">Select Sub Category</label>
@@ -66,20 +69,44 @@
                                         </div>
                                     </div>
 
+                                    <!-- Name Input -->
                                     <div class="form-group">
                                         <label for="name">Name</label>
                                         <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name" required>
                                     </div>
+
+                                    <!-- Description Input -->
                                     <div class="form-group">
                                         <label for="description">Description</label>
                                         <textarea class="form-control" id="description" name="description" placeholder="Enter Description"></textarea>
                                     </div>
+
+                                    <!-- Status Select -->
                                     <div class="form-group">
                                         <label for="status">Status</label>
                                         <select class="form-control" id="status" name="status">
                                             <option value="Active" selected>Active</option>
                                             <option value="Inactive">Inactive</option>
                                         </select>
+                                    </div>
+
+                                    <!-- Featured Image Input -->
+                                    <div class="form-group">
+                                        <label for="featured_image">Featured Image</label>
+                                        <input type="file" class="form-control-file" id="featured_image" name="featured_image" accept="image/*" required>
+                                    </div>
+
+                                    <!-- Images Input -->
+                                    <div class="form-group">
+                                        <label for="images">Additional Images</label>
+                                        <input type="file" class="form-control-file" id="images" name="images[]" accept="image/*" multiple>
+                                    </div>
+                                    <!-- Featured Status Checkbox -->
+                                    <div class="form-group">
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="is_featured" name="is_featured">
+                                            <label class="form-check-label" for="is_featured">Featured</label>
+                                        </div>
                                     </div>
                                 </div>
                                 <!-- /.card-body -->

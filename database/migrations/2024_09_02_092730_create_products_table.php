@@ -11,6 +11,7 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('name');
             $table->text('description')->nullable();
+            $table->boolean('is_featured')->default(false);
             $table->string('status')->nullable();
             $table->text('extras')->nullable();
             $table->foreignId('category_id')->constrained()->onDelete('cascade'); // Foreign key to categories table

@@ -42,6 +42,7 @@
                                     <th>Sub Category</th>
                                     <th>Category</th>
                                     <th>Description</th>
+                                    <th>Is Featured</th>
                                     <th>Status</th>
                                     <th>Updated By</th>
                                     <th>Updated At</th>
@@ -56,6 +57,7 @@
                                         <td>{{ $product->subCategory->name }}</td>
                                         <td>{{ $product->category->name }}</td>
                                         <td>{{ $product->description }}</td>
+                                        <td>{{ $product->is_featured == true? "Yes": "No" }}</td>
                                         <td>{{ $product->status }}</td>
                                         <td>{{ $product->updatedBy->name }}</td>
                                         <td>{{ $product->updated_at }}</td>
@@ -73,6 +75,7 @@
                                     <th>Sub Category</th>
                                     <th>Category</th>
                                     <th>Description</th>
+                                    <th>Is Featured</th>
                                     <th>Status</th>
                                     <th>Updated By</th>
                                     <th>Updated At</th>

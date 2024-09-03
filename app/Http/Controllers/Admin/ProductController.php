@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
@@ -14,7 +15,6 @@ class ProductController extends Controller
      */
     public function index()
     {
-        // Fetch products ordered by 'created_at' in descending order
         $products = Product::orderBy('updated_at', 'desc')->get();
         return view('admin/products/index', compact('products'));
     }
@@ -24,39 +24,62 @@ class ProductController extends Controller
      */
     public function create()
     {
+
         $categories = Category::all();
         $sub_categories = SubCategory::all();
-        return view('admin/products/create',compact('categories', 'sub_categories'));
+        return view('admin/products/create', compact('categories', 'sub_categories'));
     }
+
+
+    public function show(string $id)
+    {
+        $product = Product::findOrFail($id);
+        $categories = Category::all();
+        $sub_categories = SubCategory::all();
+        return view('admin/products/show', compact('product', 'categories', 'sub_categories'));
+    }
+
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
+
         // Validate the request data
         $request->validate([
             'name' => 'required|string|max:255',
+            'featured_image' => 'nullable|image|max:1024', // Validate featured image
+            'images.*' => 'nullable|image|max:1024', // Validate images
         ]);
+        if ($request->input('is_featured') == "on" ) {
+            Product::where('is_featured', true)->update(['is_featured' => false]);
+            $request['is_featured'] = true;
+        }else{
+            $request['is_featured'] = false;
+        }
 
-        //append auth
+        // Append auth information
         $request['added_by'] = auth()->id();
         $request['updated_by'] = auth()->id();
 
-        Product::create($request->all());
-        // Redirect to the products list with a success message
-        return redirect()->route('admin.products.index')->with('success', 'Category created successfully.');
-    }
+        // Create the product
+        $product = Product::create($request->all());
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        $product = Product::findOrFail($id);
-        $categories = Category::all();
-        $sub_categories = SubCategory::all();
-        return view('admin/products/show', compact('product', 'categories','sub_categories'));
+        // Handle featured image upload
+        if ($request->hasFile('featured_image')) {
+            $product->addMedia($request->file('featured_image'))->toMediaCollection('featured_images');
+        }
+
+        // Handle multiple images upload
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $image) {
+                $product->addMedia($image)->toMediaCollection('images');
+            }
+        }
+
+        // Redirect to the products list with a success message
+        return redirect()->route('admin.products.index')->with('success', 'Product created successfully.');
     }
 
     /**
@@ -67,7 +90,7 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
         $categories = Category::all();
         $sub_categories = SubCategory::all();
-        return view('admin/products/edit', compact('product', 'product', 'categories','sub_categories'));
+        return view('admin/products/edit', compact('product', 'categories', 'sub_categories'));
     }
 
     /**
@@ -75,16 +98,44 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
+
         // Validate the request data
         $request->validate([
             'name' => 'required|string|max:255',
+            'featured_image' => 'nullable|image|max:1024', // Validate featured image
+            'images.*' => 'nullable|image|max:1024', // Validate images
         ]);
+
+
+        if ($request->input('is_featured') == "on" ) {
+            Product::where('is_featured', true)->update(['is_featured' => false]);
+            $request['is_featured'] = true;
+        }else{
+            $request['is_featured'] = false;
+        }
 
         // Find the product by ID
         $product = Product::findOrFail($id);
+
+        // Update the product data
         $request['updated_by'] = auth()->id();
-        // Update the product
         $product->update($request->all());
+
+        // Handle featured image update
+        if ($request->hasFile('featured_image')) {
+            // Delete existing featured image from the collection
+            $product->clearMediaCollection('featured_images');
+            $product->addMedia($request->file('featured_image'))->toMediaCollection('featured_images');
+        }
+
+        // Handle multiple images update
+        if ($request->hasFile('images')) {
+            // Delete existing images from the collection
+            $product->clearMediaCollection('images');
+            foreach ($request->file('images') as $image) {
+                $product->addMedia($image)->toMediaCollection('images');
+            }
+        }
 
         // Redirect to the products list with a success message
         return redirect()->route('admin.products.index')->with('success', 'Product updated successfully.');
@@ -95,13 +146,14 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        // Find the product by ID
         $product = Product::findOrFail($id);
 
-        // Delete the product
+        // Delete the product along with its media
+        $product->clearMediaCollection('featured_images');
+        $product->clearMediaCollection('images');
         $product->delete();
 
         // Redirect to the products list with a success message
-        return redirect()->route('admin.products.index')->with('success', 'product deleted successfully.');
+        return redirect()->route('admin.products.index')->with('success', 'Product deleted successfully.');
     }
 }
