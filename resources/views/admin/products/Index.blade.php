@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+
 @section('content')
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -24,8 +25,8 @@
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex justify-content-between align-items-center">
-                        <h3 class="card-title">Products List</h3>
-                        <div class="col-md-1">
+                        <h3 class="card-title">Sub Categories List</h3>
+                        <div class="col-md-2">
                             <a href="/admin/products/create" type="button" class="btn btn-block btn-info btn-md">Add Product</a>
                         </div>
                     </div>
@@ -33,113 +34,83 @@
                 <!-- /.card-header -->
                 <div class="card-body">
                     <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                        <table id="example1" class="table table-bordered table-striped dataTable dtr-inline"
-                            aria-describedby="example1_info">
+                        <table id="example1" class="table table-bordered table-striped dataTable dtr-inline" aria-describedby="example1_info">
                             <thead>
                                 <tr>
-                                    <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
-                                        colspan="1" aria-sort="ascending"
-                                        aria-label="Rendering engine: activate to sort column descending">Rendering engine
-                                    </th>
-                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
-                                        colspan="1" aria-label="Browser: activate to sort column ascending">Browser</th>
-                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
-                                        colspan="1" aria-label="Platform(s): activate to sort column ascending">
-                                        Platform(s)</th>
-                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
-                                        colspan="1" aria-label="Engine version: activate to sort column ascending">Engine
-                                        version</th>
-                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
-                                        colspan="1" aria-label="CSS grade: activate to sort column ascending">CSS grade
-                                    </th>
+                                    <th class="text-center">SNO</th>
+                                    <th>Name</th>
+                                    <th>Sub Category</th>
+                                    <th>Category</th>
+                                    <th>Description</th>
+                                    <th>Status</th>
+                                    <th>Updated By</th>
+                                    <th>Updated At</th>
+                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="odd">
-                                    <td class="dtr-control sorting_1" tabindex="0">Gecko</td>
-                                    <td>Firefox 1.0</td>
-                                    <td>Win 98+ / OSX.2+</td>
-                                    <td>1.7</td>
-                                    <td>A</td>
-                                </tr>
-                                <tr class="even">
-                                    <td class="dtr-control sorting_1" tabindex="0">Gecko</td>
-                                    <td>Firefox 1.5</td>
-                                    <td>Win 98+ / OSX.2+</td>
-                                    <td>1.8</td>
-                                    <td>A</td>
-                                </tr>
-                                <tr class="odd">
-                                    <td class="dtr-control sorting_1" tabindex="0">Gecko</td>
-                                    <td>Firefox 2.0</td>
-                                    <td>Win 98+ / OSX.2+</td>
-                                    <td>1.8</td>
-                                    <td>A</td>
-                                </tr>
-                                <tr class="even">
-                                    <td class="dtr-control sorting_1" tabindex="0">Gecko</td>
-                                    <td>Firefox 3.0</td>
-                                    <td>Win 2k+ / OSX.3+</td>
-                                    <td>1.9</td>
-                                    <td>A</td>
-                                </tr>
-                                <tr class="odd">
-                                    <td class="sorting_1 dtr-control">Gecko</td>
-                                    <td>Camino 1.0</td>
-                                    <td>OSX.2+</td>
-                                    <td>1.8</td>
-                                    <td>A</td>
-                                </tr>
-                                <tr class="even">
-                                    <td class="sorting_1 dtr-control">Gecko</td>
-                                    <td>Camino 1.5</td>
-                                    <td>OSX.3+</td>
-                                    <td>1.8</td>
-                                    <td>A</td>
-                                </tr>
-                                <tr class="odd">
-                                    <td class="sorting_1 dtr-control">Gecko</td>
-                                    <td>Netscape 7.2</td>
-                                    <td>Win 95+ / Mac OS 8.6-9.2</td>
-                                    <td>1.7</td>
-                                    <td>A</td>
-                                </tr>
-                                <tr class="even">
-                                    <td class="sorting_1 dtr-control">Gecko</td>
-                                    <td>Netscape Browser 8</td>
-                                    <td>Win 98SE+</td>
-                                    <td>1.7</td>
-                                    <td>A</td>
-                                </tr>
-                                <tr class="odd">
-                                    <td class="sorting_1 dtr-control">Gecko</td>
-                                    <td>Netscape Navigator 9</td>
-                                    <td>Win 98+ / OSX.2+</td>
-                                    <td>1.8</td>
-                                    <td>A</td>
-                                </tr>
-                                <tr class="even">
-                                    <td class="sorting_1 dtr-control">Gecko</td>
-                                    <td>Mozilla 1.0</td>
-                                    <td>Win 95+ / OSX.1+</td>
-                                    <td>1</td>
-                                    <td>A</td>
-                                </tr>
+                                @foreach($products as $product)
+                                    <tr>
+                                        <td class="text-center">{{ $loop->index + 1 }}</td>
+                                        <td><a href="{{route('admin.products.show', $product->id)}}">{{ $product->name }}</a></td>
+                                        <td>{{ $product->subCategory->name }}</td>
+                                        <td>{{ $product->category->name }}</td>
+                                        <td>{{ $product->description }}</td>
+                                        <td>{{ $product->status }}</td>
+                                        <td>{{ $product->updatedBy->name }}</td>
+                                        <td>{{ $product->updated_at }}</td>
+                                        <td>
+                                            <a href="/admin/products/{{ $product->id }}/edit" class="btn btn-sm btn-primary">Edit</a>
+                                            <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal-default-{{ $product->id }}">Delete</button>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th rowspan="1" colspan="1">Rendering engine</th>
-                                    <th rowspan="1" colspan="1">Browser</th>
-                                    <th rowspan="1" colspan="1">Platform(s)</th>
-                                    <th rowspan="1" colspan="1">Engine version</th>
-                                    <th rowspan="1" colspan="1">CSS grade</th>
+                                    <th>SNO</th>
+                                    <th>Name</th>
+                                    <th>Sub Category</th>
+                                    <th>Category</th>
+                                    <th>Description</th>
+                                    <th>Status</th>
+                                    <th>Updated By</th>
+                                    <th>Updated At</th>
+                                    <th>Actions</th>
                                 </tr>
                             </tfoot>
                         </table>
                     </div>
+
+                    @foreach ($products as $product)
+                        <div class="modal fade" id="modal-default-{{ $product->id }}" tabindex="-1" role="dialog" aria-labelledby="modal-default-label-{{ $product->id }}" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="modal-default-label-{{ $product->id }}">Delete Category</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Are you sure you want to delete the product "{{ $product->name }}"? This will delete all the corresponding transanctions</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <form action="/admin/products/{{ $product->id }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
                     <!-- /.card-body -->
                 </div>
             </div><!-- /.container-fluid -->
+        </div>
     </section>
     <!-- /.content -->
 @endsection
@@ -147,15 +118,15 @@
 @section('scripts')
 <script>
     $(function () {
-      $('#example1').DataTable({
-        "paging": true,
-        "lengthChange": true,
-        "searching": true,
-        "ordering": true,
-        "info": true,
-        "autoWidth": true,
-        "responsive": true,
-      });
+        $('#example1').DataTable({
+            "paging": true,
+            "lengthChange": true,
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": true,
+            "responsive": true,
+        });
     });
-  </script>
+</script>
 @endsection

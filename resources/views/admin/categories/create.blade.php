@@ -54,8 +54,8 @@
                                     <div class="form-group">
                                         <label for="status">Status</label>
                                         <select class="form-control" id="status" name="status">
-                                            <option value="active" selected>Active</option>
-                                            <option value="inactive">Inactive</option>
+                                            <option value="Active" selected>Active</option>
+                                            <option value="Inactive">Inactive</option>
                                         </select>
                                     </div>
                                 </div>

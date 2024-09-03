@@ -50,7 +50,7 @@
                                 @foreach($categories as $category)
                                     <tr>
                                         <td class="text-center">{{ $loop->index + 1 }}</td>
-                                        <td>{{ $category->name }}</td>
+                                        <td><a href="{{route('admin.categories.show', $category->id)}}">{{ $category->name }}</a></td>
                                         <td>{{ $category->description }}</td>
                                         <td>{{ $category->status }}</td>
                                         <td>{{ $category->updatedBy->name }}</td>
@@ -87,7 +87,7 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <p>Are you sure you want to delete the category "{{ $category->name }}"?</p>
+                                        <p>Are you sure you want to delete the category "{{ $category->name }}"? This will delete all the corresponding sub categories, products and their transanctions</p>
                                     </div>
                                     <div class="modal-footer">
                                         <form action="/admin/categories/{{ $category->id }}" method="POST">

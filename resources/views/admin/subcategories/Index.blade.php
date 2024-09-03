@@ -38,8 +38,8 @@
                             <thead>
                                 <tr>
                                     <th class="text-center">SNO</th>
-                                    <th>Category</th>
                                     <th>Name</th>
+                                    <th>Category</th>
                                     <th>Description</th>
                                     <th>Status</th>
                                     <th>Updated By</th>
@@ -51,8 +51,8 @@
                                 @foreach($sub_categories as $category)
                                     <tr>
                                         <td class="text-center">{{ $loop->index + 1 }}</td>
+                                        <td><a href="{{route('admin.sub_categories.show', $category->id)}}">{{ $category->name }}</a></td>
                                         <td>{{ $category->category->name }}</td>
-                                        <td>{{ $category->name }}</td>
                                         <td>{{ $category->description }}</td>
                                         <td>{{ $category->status }}</td>
                                         <td>{{ $category->updatedBy->name }}</td>
@@ -67,8 +67,8 @@
                             <tfoot>
                                 <tr>
                                     <th>SNO</th>
-                                    <th>Category</th>
                                     <th>Name</th>
+                                    <th>Category</th>
                                     <th>Description</th>
                                     <th>Status</th>
                                     <th>Updated By</th>
@@ -90,7 +90,7 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <p>Are you sure you want to delete the sub category "{{ $category->name }}"?</p>
+                                        <p>Are you sure you want to delete the sub category "{{ $category->name }}"? This will delete all the corresponding products and their transanctions</p>
                                     </div>
                                     <div class="modal-footer">
                                         <form action="/admin/sub_categories/{{ $category->id }}" method="POST">

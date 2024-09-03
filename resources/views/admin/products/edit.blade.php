@@ -25,7 +25,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex justify-content-between align-items-center">
-                        <h3 class="card-title">Add Product</h3>
+                        <h3 class="card-title">Edit Product</h3>
                         <div class="col-md-1">
                             <a href="{{ url('/admin/products') }}" type="button" class="btn btn-block btn-info btn-md">Back</a>
                         </div>
@@ -36,31 +36,36 @@
                     <div class="col-md-6 mx-auto">
                         <div class="card card-info">
                             <div class="card-header">
-                                <h3 class="card-title">Add  Product</h3>
+                                <h3 class="card-title">Edit Product</h3>
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form action="{{ route('admin.products.store') }}" method="POST" autocomplete="off">
+                            <form action="{{ route('admin.products.update', $product->id) }}" method="POST" autocomplete="off">
                                 @csrf
+                                @method('PUT')
                                 <div class="card-body">
                                     <div class="form-group">
                                         <div class="d-flex flex-column align-items-start">
                                             <label for="categorySelect">Select Category</label>
                                             <select class="select2 form-control" id="categorySelect" name="category_id">
-                                                <option value="" selected="selected">Select Category</option>
+                                                <option value="" disabled>Select Category</option>
                                                 @foreach ($categories as $category)
-                                                <option value="{{$category->id}}">{{$category->name}}</option>
+                                                    <option value="{{ $category->id }}" {{ $product->category_id == $category->id ? 'selected' : '' }}>
+                                                        {{ $category->name }}
+                                                    </option>
                                                 @endforeach
                                             </select>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="d-flex flex-column align-items-start">
-                                            <label for="subCategorySelect">Select Sub Category</label>
-                                            <select class="select2 form-control" id="subCategorySelect" name="sub_category_id">
-                                                <option value="" selected="selected">Select Sub Category</option>
+                                            <label for="categorySelect">Select Sub Category</label>
+                                            <select class="select2 form-control" id="categorySelect" name="sub_category_id">
+                                                <option value="" disabled>Select Sub Category</option>
                                                 @foreach ($sub_categories as $category)
-                                                <option value="{{$category->id}}">{{$category->name}}</option>
+                                                    <option value="{{ $category->id }}" {{ $product->sub_category_id == $category->id ? 'selected' : '' }}>
+                                                        {{ $category->name }}
+                                                    </option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -68,24 +73,24 @@
 
                                     <div class="form-group">
                                         <label for="name">Name</label>
-                                        <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name" required>
+                                        <input type="text" class="form-control" id="name" name="name" value="{{ $product->name }}" placeholder="Enter Name" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="description">Description</label>
-                                        <textarea class="form-control" id="description" name="description" placeholder="Enter Description"></textarea>
+                                        <textarea class="form-control" id="description" name="description" placeholder="Enter Description">{{ $product->description }}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="status">Status</label>
                                         <select class="form-control" id="status" name="status">
-                                            <option value="Active" selected>Active</option>
-                                            <option value="Inactive">Inactive</option>
+                                            <option value="active" {{ $product->status == 'Active' ? 'selected' : '' }}>Active</option>
+                                            <option value="inactive" {{ $product->status == 'Inactive' ? 'selected' : '' }}>Inactive</option>
                                         </select>
                                     </div>
                                 </div>
                                 <!-- /.card-body -->
 
                                 <div class="card-footer">
-                                    <button type="submit" class="btn btn-info">Submit</button>
+                                    <button type="submit" class="btn btn-info">Update</button>
                                 </div>
                             </form>
                         </div>
@@ -100,7 +105,7 @@
 @section('scripts')
 <script>
     $(document).ready(function () {
-        // Initialize Select2 Elements
+   // Initialize Select2 Elements
         $('.select2').select2();
 
         // Initialize Select2 Elements with Bootstrap4 theme
