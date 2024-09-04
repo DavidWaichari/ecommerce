@@ -40,6 +40,7 @@
                                     <th class="text-center">SNO</th>
                                     <th>Name</th>
                                     <th>Description</th>
+                                    <th>Has Icon</th>
                                     <th>Status</th>
                                     <th>Updated By</th>
                                     <th>Updated At</th>
@@ -52,6 +53,13 @@
                                         <td class="text-center">{{ $loop->index + 1 }}</td>
                                         <td><a href="{{route('admin.categories.show', $category->id)}}">{{ $category->name }}</a></td>
                                         <td>{{ $category->description }}</td>
+                                        <td>
+                                            @if ($category->getFirstMediaUrl('icons'))
+                                            Yes
+                                            @else
+                                            No
+                                            @endif
+                                        </td>
                                         <td>{{ $category->status }}</td>
                                         <td>{{ $category->updatedBy->name }}</td>
                                         <td>{{ $category->updated_at }}</td>
@@ -67,6 +75,7 @@
                                     <th>SNO</th>
                                     <th>Name</th>
                                     <th>Description</th>
+                                    <th>Has Icon</th>
                                     <th>Status</th>
                                     <th>Updated By</th>
                                     <th>Updated At</th>

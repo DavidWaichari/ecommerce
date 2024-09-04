@@ -40,7 +40,7 @@
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form action="{{ route('admin.categories.update', $category->id) }}" method="POST" autocomplete="off">
+                            <form action="{{ route('admin.categories.update', $category->id) }}" method="POST" autocomplete="off" enctype="multipart/form-data>
                                 @csrf
                                 @method('PUT')
                                 <div class="card-body">
@@ -58,6 +58,10 @@
                                             <option value="active" {{ $category->status === 'Active' ? 'selected' : '' }}>Active</option>
                                             <option value="inactive" {{ $category->status === 'Inactive' ? 'selected' : '' }}>Inactive</option>
                                         </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="icon">Icon</label>
+                                        <input type="file" class="form-control-file" id="icon" name="icon" accept="image/*" required>
                                     </div>
                                 </div>
                                 <!-- /.card-body -->

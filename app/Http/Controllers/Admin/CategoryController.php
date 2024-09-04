@@ -39,7 +39,11 @@ class CategoryController extends Controller
         $request['added_by'] = auth()->id();
         $request['updated_by'] = auth()->id();
 
-        Category::create($request->all());
+        $category = Category::create($request->all());
+        // Handle featured image upload
+        if ($request->hasFile('icon')) {
+            $category->addMedia($request->file('icon'))->toMediaCollection('icons');
+        }
         // Redirect to the categories list with a success message
         return redirect()->route('admin.categories.index')->with('success', 'Category created successfully.');
     }
@@ -78,6 +82,12 @@ class CategoryController extends Controller
         // Update the category
         $category->update($request->all());
 
+         // Handle featured image update
+         if ($request->hasFile('icon')) {
+            // Delete existing featured image from the collection
+            $category->clearMediaCollection('icons');
+            $category->addMedia($request->file('icon'))->toMediaCollection('icons');
+        }
         // Redirect to the categories list with a success message
         return redirect()->route('admin.categories.index')->with('success', 'Category updated successfully.');
     }
@@ -90,8 +100,11 @@ class CategoryController extends Controller
         // Find the category by ID
         $category = Category::findOrFail($id);
 
-        // Delete the category
+        // Delete the product along with its media
+        $category->clearMediaCollection('featured_images');
+        $category->clearMediaCollection('images');
         $category->delete();
+
 
         // Redirect to the categories list with a success message
         return redirect()->route('admin.categories.index')->with('success', 'Category deleted successfully.');

@@ -8,18 +8,18 @@
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
-    <!-- Select2 -->
-    <link rel="stylesheet" href="/admin-site/plugins/select2/css/select2.min.css">
-    <link rel="stylesheet" href="/admin-site/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
   <link rel="stylesheet" href="/admin-site/plugins/fontawesome-free/css/all.min.css">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="/admin-site/plugins/select2/css/select2.min.css">
+  <link rel="stylesheet" href="/admin-site/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
   <!-- DataTables -->
   <link rel="stylesheet" href="/admin-site/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="/admin-site/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="/admin-site/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="/admin-site/dist/css/adminlte.min.css">
-   <!-- Scripts -->
-   @vite(['resources/js/app.js'])
+  <!-- Scripts -->
+  @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -30,43 +30,19 @@
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="/admin-site/index3.html" class="nav-link">Home</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
-      </li>
     </ul>
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
-      <!-- Navbar Search -->
-      <li class="nav-item">
-        <div class="navbar-search-block">
-          <form class="form-inline">
-            <div class="input-group input-group-sm">
-              <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-              <div class="input-group-append">
-                <button class="btn btn-navbar" type="submit">
-                  <i class="fas fa-search"></i>
-                </button>
-                <button class="btn btn-navbar" type="button" data-widget="navbar-search">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            </div>
-          </form>
-        </div>
-      </li>
       <!-- Notifications Dropdown Menu -->
       <li class="nav-item dropdown">
-        <div class=" nav-link user-panel  d-flex" data-toggle="dropdown" href="#">
-            <div class="image">
-                <img src="/admin-site/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-            </div>
-            <div class="info">
-                <a href="#"  class="d-block" style="color:black">Alexander Pierce</a>
-            </div>
+        <div class="nav-link user-panel d-flex" data-toggle="dropdown" href="#">
+          <div class="image">
+            <img src="/admin-site/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          </div>
+          <div class="info">
+            <a href="#" class="d-block" style="color:black">{{Auth::user()->name}}</a>
+          </div>
         </div>
         <div class="dropdown-menu dropdown-menu-sm dropdown-menu-center">
           <div class="dropdown-divider"></div>
@@ -79,7 +55,6 @@
           </a>
         </div>
       </li>
-
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -100,52 +75,40 @@
           <img src="/admin-site/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block">{{Auth::user()->name}}</a>
         </div>
       </div>
-
-      <!-- SidebarSearch Form -->
-      <div class="form-inline">
-        <div class="input-group" data-widget="sidebar-search">
-          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-          <div class="input-group-append">
-            <button class="btn btn-sidebar">
-              <i class="fas fa-search fa-fw"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-               <li class="nav-item">
-                <a href="/admin/dashboard" class="nav-link {{ Request::is('admin/dashboard*') ? 'active' : '' }}">
-                  <i class="nav-icon fas fa-tachometer-alt"></i>
-                  <p>Dashboard</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/admin/products" class="nav-link {{ Request::is('admin/products*') ? 'active' : '' }}">
-                  <i class="nav-icon fas fa-th"></i>
-                  <p>Products</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/admin/sub_categories" class="nav-link {{ Request::is('admin/sub_categories*') ? 'active' : '' }}">
-                  <i class="nav-icon fas fa-th"></i>
-                  <p>Sub Categories</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/admin/categories" class="nav-link {{ Request::is('admin/categories*') ? 'active' : '' }}">
-                  <i class="nav-icon fas fa-th"></i>
-                  <p>Categories</p>
-                </a>
-              </li>
-
+          <!-- Dashboard -->
+          <li class="nav-item">
+            <a href="/admin/dashboard" class="nav-link {{ Request::is('admin/dashboard*') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-home"></i>
+              <p>Dashboard</p>
+            </a>
+          </li>
+          <!-- Products -->
+          <li class="nav-item">
+            <a href="/admin/products" class="nav-link {{ Request::is('admin/products*') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-box-open"></i>
+              <p>Products</p>
+            </a>
+          </li>
+          <!-- Sub Categories -->
+          <li class="nav-item">
+            <a href="/admin/sub_categories" class="nav-link {{ Request::is('admin/sub_categories*') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-layer-group"></i>
+              <p>Sub Categories</p>
+            </a>
+          </li>
+          <!-- Categories -->
+          <li class="nav-item">
+            <a href="/admin/categories" class="nav-link {{ Request::is('admin/categories*') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-list"></i>
+              <p>Categories</p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -158,6 +121,8 @@
     @yield('content')
   </div>
   <!-- /.content-wrapper -->
+
+  <!-- Footer -->
   <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
       <b>Version</b> 3.2.0
@@ -179,7 +144,7 @@
 <script src="/admin-site/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- Select2 -->
 <script src="/admin-site/plugins/select2/js/select2.full.min.js"></script>
-<!-- DataTables  & Plugins -->
+<!-- DataTables & Plugins -->
 <script src="/admin-site/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="/admin-site/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 <script src="/admin-site/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
@@ -194,8 +159,6 @@
 <script src="/admin-site/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <!-- AdminLTE App -->
 <script src="/admin-site/dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-{{-- <script src="/admin-site/dist/js/demo.js"></script> --}}
 <!-- Page specific script -->
 @yield('scripts')
 </body>

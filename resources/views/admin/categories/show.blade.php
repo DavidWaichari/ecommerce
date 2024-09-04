@@ -33,41 +33,53 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <div class="col-md-6 mx-auto">
-                        <div class="card card-info">
-                            <div class="card-header">
-                                <h3 class="card-title">Add Category</h3>
-                            </div>
-                            <!-- /.card-header -->
-                            <!-- form start -->
-                            <form action="{{ route('admin.categories.store') }}" method="POST" autocomplete="off">
-                                @csrf
-                                <div class="card-body">
-                                    <div class="form-group">
-                                        <label for="name">Name</label>
-                                        <input type="text" class="form-control" id="name" name="name" value="{{ old('name', $category->name) }}" placeholder="Enter Name" required readonly>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="description">Description</label>
-                                        <textarea class="form-control" id="description" name="description" placeholder="Enter Description" readonly>{{ old('description', $category->description) }}</textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="status">Status</label>
-                                        <select class="form-control" id="status" name="status" disabled>
-                                            <option value="active" {{ $category->status === 'Active' ? 'selected' : '' }}>Active</option>
-                                            <option value="inactive" {{ $category->status === 'Inactive' ? 'selected' : '' }}>Inactive</option>
-                                        </select>
-                                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card card-info">
+                                <div class="card-header">
+                                    <h3 class="card-title">Add Category</h3>
                                 </div>
-                                <!-- /.card-body -->
+                                <!-- /.card-header -->
+                                <!-- form start -->
+                                <form action="{{ route('admin.categories.store') }}" method="POST" autocomplete="off">
+                                    @csrf
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label for="name">Name</label>
+                                            <input type="text" class="form-control" id="name" name="name" value="{{ old('name', $category->name) }}" placeholder="Enter Name" required readonly>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="description">Description</label>
+                                            <textarea class="form-control" id="description" name="description" placeholder="Enter Description" readonly>{{ old('description', $category->description) }}</textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="status">Status</label>
+                                            <select class="form-control" id="status" name="status" disabled>
+                                                <option value="active" {{ $category->status === 'Active' ? 'selected' : '' }}>Active</option>
+                                                <option value="inactive" {{ $category->status === 'Inactive' ? 'selected' : '' }}>Inactive</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- /.card-body -->
 
-                                <div class="card-footer">
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <a href="{{route('admin.categories.edit', $category->id)}}" class="btn btn-warning">Edit</a>
-                                        <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#modal-default">Delete</button>
+                                    <div class="card-footer">
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            <a href="{{route('admin.categories.edit', $category->id)}}" class="btn btn-warning">Edit</a>
+                                            <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#modal-default">Delete</button>
+                                        </div>
                                     </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card card-info">
+                                <div class="card-header">
+                                    <h3 class="card-title">Category Icon</h3>
                                 </div>
-                            </form>
+                                <div class="col-md-2 mx-auto">
+                                    <img  src="{{$category->getFirstMediaUrl('icons')}}"/>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

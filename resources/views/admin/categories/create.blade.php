@@ -40,7 +40,7 @@
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form action="{{ route('admin.categories.store') }}" method="POST" autocomplete="off">
+                            <form action="{{ route('admin.categories.store') }}" method="POST" autocomplete="off" enctype="multipart/form-data">
                                 @csrf
                                 <div class="card-body">
                                     <div class="form-group">
@@ -57,6 +57,11 @@
                                             <option value="Active" selected>Active</option>
                                             <option value="Inactive">Inactive</option>
                                         </select>
+                                    </div>
+                                    <!-- Featured Icon -->
+                                    <div class="form-group">
+                                        <label for="icon">Icon</label>
+                                        <input type="file" class="form-control-file" id="icon" name="icon" accept="image/*" required>
                                     </div>
                                 </div>
                                 <!-- /.card-body -->
