@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="theme/css/bootstrap.min.css">
     <!-- Animate CSS -->
     <link rel="stylesheet" href="theme/css/animate.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="/theme/plugins/fontawesome-free/css/all.min.css">
     <!-- Meanmenu CSS -->
     <link rel="stylesheet" href="theme/css/meanmenu.css">
     <!-- Boxicons CSS -->
@@ -34,6 +36,9 @@
     <title>Ejon - Electronics eCommerce HTML Template</title>
 
     <link rel="icon" type="image/png" href="images/favicon.png">
+
+     <!-- Scripts -->
+  @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 
 <body>
@@ -106,19 +111,9 @@
                                     <div class="form-group">
                                         <select>
                                             <option>All Category</option>
-                                            <option value="1">Computers</option>
-                                            <option value="2">Audio</option>
-                                            <option value="2">Home Theater</option>
-                                            <option value="3">Laptop</option>
-                                            <option value="3">TV</option>
-                                            <option value="3">Mobiles</option>
-                                            <option value="3">Tablets</option>
-                                            <option value="3">Headphone</option>
-                                            <option value="3">Earphone</option>
-                                            <option value="3">Battery</option>
-                                            <option value="3">Watches</option>
-                                            <option value="3">Cameras</option>
-                                            <option value="3">Accessories</option>
+                                            @foreach ($categories   as $category)
+                                            <option value="{{$category->id}}">{{$category->name}}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
@@ -174,12 +169,7 @@
                                         All Categories
                                     </a>
                                     <ul class="dropdown-menu">
-                                        <li class="nav-item">
-                                            <a href="#" class="nav-link">
-                                                <i class="flaticon-desktop-computer"></i>
-                                                Computers
-                                            </a>
-                                        </li>
+                                        
 
                                         <li class="nav-item">
                                             <a href="#" class="nav-link">
@@ -206,41 +196,6 @@
                                             <a href="#" class="nav-link">
                                                 <i class="flaticon-smartphone"></i>
                                                 Mobiles
-                                            </a>
-                                        </li>
-
-                                        <li class="nav-item">
-                                            <a href="#" class="nav-link">
-                                                <i class="flaticon-headphones"></i>
-                                                Headphone
-                                            </a>
-                                        </li>
-
-                                        <li class="nav-item">
-                                            <a href="#" class="nav-link">
-                                                <i class="flaticon-battery-charge"></i>
-                                                Battery
-                                            </a>
-                                        </li>
-
-                                        <li class="nav-item">
-                                            <a href="#" class="nav-link">
-                                                <i class="flaticon-smart-watch"></i>
-                                                Watches
-                                            </a>
-                                        </li>
-
-                                        <li class="nav-item">
-                                            <a href="#" class="nav-link">
-                                                <i class="flaticon-camera"></i>
-                                                Cameras
-                                            </a>
-                                        </li>
-
-                                        <li class="nav-item">
-                                            <a href="#" class="nav-link">
-                                                <i class="flaticon-trimmer"></i>
-                                                Accessories
                                             </a>
                                         </li>
                                     </ul>

@@ -76,8 +76,14 @@
                                 <div class="card-header">
                                     <h3 class="card-title">Category Icon</h3>
                                 </div>
-                                <div class="col-md-2 mx-auto">
-                                    <img  src="{{$category->getFirstMediaUrl('icons')}}"/>
+                                <div class="card-body">
+                                    <div class="col-md-12 text-center">
+                                        @if ($category->icon)
+                                        <i class="fa fa-{{$category->icon}}" aria-hidden="true"></i>
+                                        @else
+                                        <h3>No Icon Available</h3>
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
                         </div>

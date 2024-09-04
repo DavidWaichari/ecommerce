@@ -41,9 +41,9 @@ class CategoryController extends Controller
 
         $category = Category::create($request->all());
         // Handle featured image upload
-        if ($request->hasFile('icon')) {
-            $category->addMedia($request->file('icon'))->toMediaCollection('icons');
-        }
+        // if ($request->hasFile('icon')) {
+        //     $category->addMedia($request->file('icon'))->toMediaCollection('icons');
+        // }
         // Redirect to the categories list with a success message
         return redirect()->route('admin.categories.index')->with('success', 'Category created successfully.');
     }
@@ -82,12 +82,12 @@ class CategoryController extends Controller
         // Update the category
         $category->update($request->all());
 
-         // Handle featured image update
-         if ($request->hasFile('icon')) {
-            // Delete existing featured image from the collection
-            $category->clearMediaCollection('icons');
-            $category->addMedia($request->file('icon'))->toMediaCollection('icons');
-        }
+        //  // Handle featured image update
+        //  if ($request->hasFile('icon')) {
+        //     // Delete existing featured image from the collection
+        //     $category->clearMediaCollection('icons');
+        //     $category->addMedia($request->file('icon'))->toMediaCollection('icons');
+        // }
         // Redirect to the categories list with a success message
         return redirect()->route('admin.categories.index')->with('success', 'Category updated successfully.');
     }
@@ -100,10 +100,10 @@ class CategoryController extends Controller
         // Find the category by ID
         $category = Category::findOrFail($id);
 
-        // Delete the product along with its media
-        $category->clearMediaCollection('featured_images');
-        $category->clearMediaCollection('images');
-        $category->delete();
+        // // Delete the product along with its media
+        // $category->clearMediaCollection('featured_images');
+        // $category->clearMediaCollection('images');
+        // $category->delete();
 
 
         // Redirect to the categories list with a success message

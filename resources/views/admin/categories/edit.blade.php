@@ -60,8 +60,8 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="icon">Icon</label>
-                                        <input type="file" class="form-control-file" id="icon" name="icon" accept="image/*" required>
+                                        <label for="icon">Font Awesome Web Icon e.g desktop </label>
+                                        <input type="text" class="form-control" id="icon" name="icon" placeholder="Font awesome icon eg. desktop" value="{{ old('name', $category->icon) }}">
                                     </div>
                                 </div>
                                 <!-- /.card-body -->

@@ -14,6 +14,7 @@ class Category extends Model implements HasMedia
     protected $fillable = [
         'name',
         'description',
+        'icon',
         'status', // Added status attribute
         'extras',
         'added_by',

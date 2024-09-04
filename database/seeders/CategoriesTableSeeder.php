@@ -13,15 +13,49 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run(): void
     {
-        $category = Category::where('name', 'Computers')->first();
-
-        if (!$category) {
-            Category::create([
-                "name" => "Computers",
+        $categories = [
+            [
+                "name" => "Desktops",
                 "description" => "Computers",
+                "icon" => "desktop",
                 "status" => "Active",
                 "updated_by" => 1
-            ]);
+            ],
+            [
+                "name" => "Laptops",
+                "description" => "Laptops",
+                "icon" => "laptop",
+                "status" => "Active",
+                "updated_by" => 1
+            ],
+            [
+                "name" => "Mobiles & Tablets",
+                "description" => "Mobiles & Tablets",
+                "icon" => "mobile",
+                "status" => "Active",
+                "updated_by" => 1
+            ],
+            [
+                "name" => "Cameras",
+                "description" => "Cameras",
+                "icon" => "camera",
+                "status" => "Active",
+                "updated_by" => 1
+            ],
+            [
+                "name" => "Accessories",
+                "description" => "Accessories",
+                "icon" => "headphones",
+                "status" => "Active",
+                "updated_by" => 1
+            ],
+        ];
+
+        foreach ($categories as $category) {
+            $available = Category::where('name', $category['name'])->first();
+            if (!$available) {
+                Category::create($category);
+            }
         }
     }
 }

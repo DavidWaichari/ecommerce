@@ -9,7 +9,7 @@
                         <ul class="slider-categories">
                             <li>
                                 <a href="#" class="nav-link">
-                                    <i class="flaticon-desktop-computer"></i>
+                                    <i class="fa fa-de" aria-hidden="true"></i>
                                     Computers &amp; Accessories
                                 </a>
                             </li>

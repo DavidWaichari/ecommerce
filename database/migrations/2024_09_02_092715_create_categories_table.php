@@ -10,13 +10,13 @@ class CreateCategoriesTable extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->text('description')->nullable(); // Description field
-            $table->string('status')->nullable(); // Status field
-            $table->text('extras')->nullable(); // Extras field
-            $table->unsignedBigInteger('added_by')->nullable(); // ID of the user who added the category
-            $table->unsignedBigInteger('updated_by')->nullable(); // ID of the user who last updated the category
+            $table->text('description')->nullable();
+            $table->string('icon')->nullable();
+            $table->string('status')->nullable();
+            $table->text('extras')->nullable();
+            $table->unsignedBigInteger('added_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
-
             // Foreign kceys (assuming you have a users table)
             $table->foreign('added_by')->references('id')->on('users')->onDelete('set null');
             $table->foreign('updated_by')->references('id')->on('users')->onDelete('set null');
