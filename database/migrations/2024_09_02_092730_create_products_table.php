@@ -11,17 +11,17 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('name');
             $table->text('description')->nullable();
+            $table->decimal('selling_price', 10, 2)->default(0);
+            $table->decimal('instock', 10, 2)->default(0);
             $table->boolean('is_featured')->default(false);
             $table->string('status')->nullable();
             $table->text('extras')->nullable();
             $table->foreignId('category_id')->constrained()->onDelete('cascade'); // Foreign key to categories table
             $table->foreignId('sub_category_id')->constrained()->onDelete('cascade'); // Foreign key to sub_categories table
-            $table->unsignedBigInteger('added_by')->nullable(); // ID of the user who added the product
             $table->unsignedBigInteger('updated_by')->nullable(); // ID of the user who last updated the product
             $table->timestamps();
 
             // Foreign keys for users table
-            $table->foreign('added_by')->references('id')->on('users')->onDelete('set null');
             $table->foreign('updated_by')->references('id')->on('users')->onDelete('set null');
         });
     }

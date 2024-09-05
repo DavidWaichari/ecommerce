@@ -75,6 +75,10 @@
                                             <input type="text" class="form-control" id="name" name="name" value="{{ $product->name }}" placeholder="Enter Name" required readonly>
                                         </div>
                                         <div class="form-group">
+                                            <label for="selling_price">Selling Price</label>
+                                            <input type="number" class="form-control" id="selling_price" name="selling_price" placeholder="Enter selling price" step="0.01"  value="{{ $product->selling_price }}" readonly>
+                                        </div>
+                                        <div class="form-group">
                                             <label for="status">Status</label>
                                             <select class="form-control" id="status" name="status" disabled>
                                                 <option value="active" {{ $product->status == 'Active' ? 'selected' : '' }}>Active</option>

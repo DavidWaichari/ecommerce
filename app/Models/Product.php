@@ -18,7 +18,7 @@ class Product extends Model implements HasMedia
         'extras',
         'category_id',   // Foreign key to Category
         'sub_category_id', // Foreign key to SubCategory
-        'added_by',
+        'selling_price',
         'updated_by',
     ];
 

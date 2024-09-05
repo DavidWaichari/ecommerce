@@ -7,103 +7,14 @@
                 <div class="row">
                     <div class="col-lg-3 col-md-12">
                         <ul class="slider-categories">
+                            @foreach ($categories   as $category)
                             <li>
                                 <a href="#" class="nav-link">
-                                    <i class="fa fa-de" aria-hidden="true"></i>
-                                    Computers &amp; Accessories
+                                    <i class="fa fa-{{$category->icon}}" aria-hidden="true"></i>
+                                    {{$category->name}}
                                 </a>
                             </li>
-
-                            <li>
-                                <a href="#" class="nav-link">
-                                    <i class="flaticon-stereo"></i>
-                                    Audio &amp; Home Theater
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="#" class="nav-link">
-                                    <i class="flaticon-laptop"></i>
-                                    Laptop
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="#" class="nav-link">
-                                    <i class="flaticon-tv-box"></i>
-                                    TV &amp; Accessories
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="#" class="nav-link">
-                                    <i class="flaticon-smartphone"></i>
-                                    Mobiles &amp; Tablets
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="#" class="nav-link">
-                                    <i class="flaticon-headphones"></i>
-                                    Headphone &amp; Earphone
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="#" class="nav-link">
-                                    <i class="flaticon-battery-charge"></i>
-                                    Battery &amp; Accessories
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="#" class="nav-link">
-                                    <i class="flaticon-smart-watch"></i>
-                                    Watches
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="#" class="nav-link">
-                                    <i class="flaticon-camera"></i>
-                                    Cameras
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="#" class="nav-link">
-                                    <i class="flaticon-trimmer"></i>
-                                    Accessories
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="#" class="nav-link">
-                                    <i class="flaticon-desktop-computer"></i>
-                                    Computers &amp; Accessories
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="#" class="nav-link">
-                                    <i class="flaticon-stereo"></i>
-                                    Audio &amp; Home Theater
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="#" class="nav-link">
-                                    <i class="flaticon-laptop"></i>
-                                    Laptop
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="#" class="nav-link">
-                                    <i class="flaticon-tv-box"></i>
-                                    TV &amp; Accessories
-                                </a>
-                            </li>
+                            @endforeach
                         </ul>
                     </div>
 

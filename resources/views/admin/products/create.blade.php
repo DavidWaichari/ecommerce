@@ -74,6 +74,11 @@
                                         <label for="name">Name</label>
                                         <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name" required>
                                     </div>
+                                    <!-- Selling Price -->
+                                    <div class="form-group">
+                                        <label for="selling_price">Selling Price</label>
+                                        <input type="number" class="form-control" id="selling_price" name="selling_price" placeholder="Enter selling price" step="0.01" required>
+                                    </div>
 
                                     <!-- Description Input -->
                                     <div class="form-group">
@@ -93,7 +98,7 @@
                                     <!-- Featured Image Input -->
                                     <div class="form-group">
                                         <label for="featured_image">Featured Image</label>
-                                        <input type="file" class="form-control-file" id="featured_image" name="featured_image" accept="image/*" required>
+                                        <input type="file" class="form-control-file" id="featured_image" name="featured_image" accept="image/*" >
                                     </div>
 
                                     <!-- Images Input -->

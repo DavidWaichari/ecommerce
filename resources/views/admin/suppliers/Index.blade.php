@@ -6,12 +6,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Products</h1>
+                    <h1 class="m-0">Suppliers</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Products</li>
+                        <li class="breadcrumb-item active">Suppliers</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -25,9 +25,9 @@
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex justify-content-between align-items-center">
-                        <h3 class="card-title">Sub Categories List</h3>
+                        <h3 class="card-title">Suppliers List</h3>
                         <div class="col-md-2">
-                            <a href="/admin/products/create" type="button" class="btn btn-block btn-info btn-md">Add Product</a>
+                            <a href="/admin/suppliers/create" type="button" class="btn btn-block btn-info btn-md">Add Supplier</a>
                         </div>
                     </div>
                 </div>
@@ -39,11 +39,8 @@
                                 <tr>
                                     <th class="text-center">SNO</th>
                                     <th>Name</th>
-                                    <th>Sub Category</th>
-                                    <th>Category</th>
-                                    <th>Selling Price</th>
+                                    <th>Phone Number</th>
                                     <th>Description</th>
-                                    <th>Is Featured</th>
                                     <th>Status</th>
                                     <th>Updated By</th>
                                     <th>Updated At</th>
@@ -51,34 +48,28 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($products as $product)
+                                @foreach($suppliers as $supplier)
                                     <tr>
                                         <td class="text-center">{{ $loop->index + 1 }}</td>
-                                        <td><a href="{{route('admin.products.show', $product->id)}}">{{ $product->name }}</a></td>
-                                        <td>{{ $product->subCategory->name }}</td>
-                                        <td>{{ $product->category->name }}</td>
-                                        <td>{{ $product->selling_price }}</td>
-                                        <td>{{ $product->description }}</td>
-                                        <td>{{ $product->is_featured == true? "Yes": "No" }}</td>
-                                        <td>{{ $product->status }}</td>
-                                        <td>{{ $product->updatedBy->name }}</td>
-                                        <td>{{ $product->updated_at }}</td>
+                                        <td><a href="{{route('admin.suppliers.show', $supplier->id)}}">{{ $supplier->name }}</a></td>
+                                        <td>{{ $supplier->phone_number }}</td>
+                                        <td>{{ $supplier->description }}</td>
+                                        <td>{{ $supplier->status }}</td>
+                                        <td>{{ $supplier->updatedBy->name }}</td>
+                                        <td>{{ $supplier->updated_at }}</td>
                                         <td>
-                                            <a href="/admin/products/{{ $product->id }}/edit" class="btn btn-sm btn-primary">Edit</a>
-                                            <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal-default-{{ $product->id }}">Delete</button>
+                                            <a href="/admin/suppliers/{{ $supplier->id }}/edit" class="btn btn-sm btn-primary">Edit</a>
+                                            <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal-default-{{ $supplier->id }}">Delete</button>
                                         </td>
                                     </tr>
                                 @endforeach
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th>SNO</th>
+                                    <th class="text-center">SNO</th>
                                     <th>Name</th>
-                                    <th>Sub Category</th>
-                                    <th>Category</th>
-                                    <th>Selling Price</th>
+                                    <th>Phone Number</th>
                                     <th>Description</th>
-                                    <th>Is Featured</th>
                                     <th>Status</th>
                                     <th>Updated By</th>
                                     <th>Updated At</th>
@@ -88,21 +79,21 @@
                         </table>
                     </div>
 
-                    @foreach ($products as $product)
-                        <div class="modal fade" id="modal-default-{{ $product->id }}" tabindex="-1" role="dialog" aria-labelledby="modal-default-label-{{ $product->id }}" aria-hidden="true">
+                    @foreach ($suppliers as $supplier)
+                        <div class="modal fade" id="modal-default-{{ $supplier->id }}" tabindex="-1" role="dialog" aria-labelledby="modal-default-label-{{ $supplier->id }}" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="modal-default-label-{{ $product->id }}">Delete Category</h5>
+                                        <h5 class="modal-title" id="modal-default-label-{{ $supplier->id }}">Delete Category</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <p>Are you sure you want to delete the product "{{ $product->name }}"? This will delete all the corresponding transanctions</p>
+                                        <p>Are you sure you want to delete the supplier "{{ $supplier->name }}"? This will delete all the corresponding transanctions</p>
                                     </div>
                                     <div class="modal-footer">
-                                        <form action="/admin/products/{{ $product->id }}" method="POST">
+                                        <form action="/admin/suppliers/{{ $supplier->id }}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>

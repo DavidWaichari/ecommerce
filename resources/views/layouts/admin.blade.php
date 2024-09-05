@@ -109,6 +109,13 @@
               <p>Categories</p>
             </a>
           </li>
+         <!-- Suppliers -->
+        <li class="nav-item">
+            <a href="/admin/suppliers" class="nav-link {{ Request::is('admin/suppliers*') ? 'active' : '' }}">
+                <i class="nav-icon fas fa-box"></i>
+                <p>Suppliers</p>
+            </a>
+        </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

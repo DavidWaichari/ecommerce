@@ -60,7 +60,6 @@ class ProductController extends Controller
         }
 
         // Append auth information
-        $request['added_by'] = auth()->id();
         $request['updated_by'] = auth()->id();
 
         // Create the product

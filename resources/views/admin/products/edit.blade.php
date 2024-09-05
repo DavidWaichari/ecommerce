@@ -80,6 +80,11 @@
                                         <input type="text" class="form-control" id="name" name="name" value="{{ $product->name }}" placeholder="Enter Name" required>
                                     </div>
 
+                                    <div class="form-group">
+                                        <label for="selling_price">Selling Price</label>
+                                        <input type="number" class="form-control" id="selling_price" name="selling_price" placeholder="Enter selling price" step="0.01"  value="{{ $product->selling_price }}">
+                                    </div>
+
                                     <!-- Description Input -->
                                     <div class="form-group">
                                         <label for="description">Description</label>

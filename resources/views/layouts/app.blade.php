@@ -36,9 +36,6 @@
     <title>Ejon - Electronics eCommerce HTML Template</title>
 
     <link rel="icon" type="image/png" href="images/favicon.png">
-
-     <!-- Scripts -->
-  @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 
 <body>
@@ -169,7 +166,12 @@
                                         All Categories
                                     </a>
                                     <ul class="dropdown-menu">
-                                        
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                                <i class="flaticon-desktop-computer"></i>
+                                                Computers
+                                            </a>
+                                        </li>
 
                                         <li class="nav-item">
                                             <a href="#" class="nav-link">
@@ -196,6 +198,41 @@
                                             <a href="#" class="nav-link">
                                                 <i class="flaticon-smartphone"></i>
                                                 Mobiles
+                                            </a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                                <i class="flaticon-headphones"></i>
+                                                Headphone
+                                            </a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                                <i class="flaticon-battery-charge"></i>
+                                                Battery
+                                            </a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                                <i class="flaticon-smart-watch"></i>
+                                                Watches
+                                            </a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                                <i class="flaticon-camera"></i>
+                                                Cameras
+                                            </a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                                <i class="flaticon-trimmer"></i>
+                                                Accessories
                                             </a>
                                         </li>
                                     </ul>
