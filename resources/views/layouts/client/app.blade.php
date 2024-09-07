@@ -4159,7 +4159,7 @@
         <!-- End QuickView Modal Area -->
 
         <!-- Jquery Slim JS -->
-        <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/ejon/assets/js/jquery.min.js"></script>
+        <script src="/ejon/assets/js/jquery.min.js"></script>
         <!-- Bootstrap JS -->
         <script src="/ejon/assets/js/bootstrap.bundle.min.js"></script>
         <!-- Meanmenu JS -->
@@ -4188,29 +4188,5 @@
         <script src="/ejon/assets/js/wow.min.js"></script>
         <!-- Custom JS -->
         <script src="/ejon/assets/js/main.js"></script>
-        <script>
-            $(document).ready(function(){
-                $(".home-slides-two").owlCarousel({
-                    items: 1, // Number of items to show
-                    loop: true, // Enables infinite looping
-                    autoplay: true, // Enables automatic sliding
-                    autoplayTimeout: 5000, // 5000ms = 5 seconds per slide
-                    autoplayHoverPause: true, // Pauses on mouse hover
-                    nav: true, // Shows next/prev buttons
-                    dots: true, // Shows pagination dots
-                    responsive:{
-                        0:{
-                            items:1
-                        },
-                        600:{
-                            items:1
-                        },
-                        1000:{
-                            items:1
-                        }
-                    }
-                });
-            });
-            </script>
     </body>
 </html>
