@@ -85,6 +85,12 @@
                                         <input type="number" class="form-control" id="selling_price" name="selling_price" placeholder="Enter selling price" step="0.01"  value="{{ $product->selling_price }}">
                                     </div>
 
+                                    <!-- Discount Price -->
+                                    <div class="form-group">
+                                        <label for="discount_price">Discount Selling Price</label>
+                                        <input type="number" class="form-control" id="discount_price" name="discount_price" placeholder="Enter discount price" step="0.01" required value="{{ $product->discount_price }}">
+                                    </div>
+
                                     <!-- Description Input -->
                                     <div class="form-group">
                                         <label for="description">Description</label>

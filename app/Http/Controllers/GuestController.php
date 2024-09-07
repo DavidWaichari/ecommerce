@@ -10,11 +10,11 @@ class GuestController extends Controller
     public function welcome()
     {
         $categories = Category::where('status', 'Active')->get();
-        return view('welcome', compact('categories'));
+        return view('client/welcome', compact('categories'));
     }
     public function shop(Request $request)
     {
         $categories = Category::where('status', 'Active')->get();
-        return view('welcome', compact('categories'));
+        return view('client/shop-left-sidebar', compact('categories'));
     }
 }

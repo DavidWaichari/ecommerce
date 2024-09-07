@@ -12,8 +12,10 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->text('description')->nullable();
             $table->decimal('selling_price', 10, 2)->default(0);
+            $table->decimal('discount_price', 10, 2)->default(0);
             $table->decimal('instock', 10, 2)->default(0);
             $table->boolean('is_featured')->default(false);
+            $table->boolean('is_sold')->default(false);
             $table->string('status')->nullable();
             $table->text('extras')->nullable();
             $table->foreignId('category_id')->constrained()->onDelete('cascade'); // Foreign key to categories table

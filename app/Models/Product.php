@@ -15,10 +15,12 @@ class Product extends Model implements HasMedia
         'description',
         'status',
         'is_featured',
+        'is_sold',
         'extras',
         'category_id',   // Foreign key to Category
         'sub_category_id', // Foreign key to SubCategory
         'selling_price',
+        'discount_price',
         'updated_by',
     ];
 

@@ -42,8 +42,10 @@
                                     <th>Sub Category</th>
                                     <th>Category</th>
                                     <th>Selling Price</th>
+                                    <th>Discount SP</th>
                                     <th>Description</th>
                                     <th>Is Featured</th>
+                                    <th>Is Sold</th>
                                     <th>Status</th>
                                     <th>Updated By</th>
                                     <th>Updated At</th>
@@ -58,8 +60,10 @@
                                         <td>{{ $product->subCategory->name }}</td>
                                         <td>{{ $product->category->name }}</td>
                                         <td>{{ $product->selling_price }}</td>
+                                        <td>{{ $product->discount_price }}</td>
                                         <td>{{ $product->description }}</td>
                                         <td>{{ $product->is_featured == true? "Yes": "No" }}</td>
+                                        <td>{{ $product->is_sold == true? "Yes": "No" }}</td>
                                         <td>{{ $product->status }}</td>
                                         <td>{{ $product->updatedBy->name }}</td>
                                         <td>{{ $product->updated_at }}</td>
@@ -77,8 +81,10 @@
                                     <th>Sub Category</th>
                                     <th>Category</th>
                                     <th>Selling Price</th>
+                                    <th>Discount SP</th>
                                     <th>Description</th>
                                     <th>Is Featured</th>
+                                    <th>Is Sold</th>
                                     <th>Status</th>
                                     <th>Updated By</th>
                                     <th>Updated At</th>
