@@ -12,6 +12,7 @@ class CreateCategoriesTable extends Migration
             $table->string('name');
             $table->text('description')->nullable();
             $table->string('icon')->nullable();
+            $table->string('slug')->nullable();
             $table->string('status')->nullable();
             $table->text('extras')->nullable();
             $table->unsignedBigInteger('added_by')->nullable();
