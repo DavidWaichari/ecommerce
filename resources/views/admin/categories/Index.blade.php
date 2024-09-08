@@ -51,7 +51,7 @@
                                 @foreach($categories as $category)
                                     <tr>
                                         <td class="text-center">{{ $loop->index + 1 }}</td>
-                                        <td><a href="{{route('admin.categories.show', $category->id)}}">{{ $category->name }}</a></td>
+                                        <td><a href="{{route('admin.categories.show', $category->slug)}}">{{ $category->name }}</a></td>
                                         <td>{{ $category->description }}</td>
                                         <td>
                                             @if ($category->icon)
@@ -64,7 +64,7 @@
                                         <td>{{ $category->updatedBy->name }}</td>
                                         <td>{{ $category->updated_at }}</td>
                                         <td>
-                                            <a href="/admin/categories/{{ $category->id }}/edit" class="btn btn-sm btn-primary">Edit</a>
+                                            <a href="/admin/categories/{{ $category->slug }}/edit" class="btn btn-sm btn-primary">Edit</a>
                                             <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal-default-{{ $category->id }}">Delete</button>
                                         </td>
                                     </tr>
@@ -99,7 +99,7 @@
                                         <p>Are you sure you want to delete the category "{{ $category->name }}"? This will delete all the corresponding sub categories, products and their transanctions</p>
                                     </div>
                                     <div class="modal-footer">
-                                        <form action="/admin/categories/{{ $category->id }}" method="POST">
+                                        <form action="/admin/categories/{{ $category->slug }}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>

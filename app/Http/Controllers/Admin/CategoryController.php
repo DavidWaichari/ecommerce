@@ -51,33 +51,29 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Category $category)
     {
-        $category = Category::findOrFail($id);
         return view('admin/categories/show', compact('category'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Category $category)
     {
-        $category = Category::findOrFail($id);
         return view('admin/categories/edit', compact('category'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Category $category)
     {
         // Validate the request data
         $request->validate([
             'name' => 'required|string|max:255',
         ]);
 
-        // Find the category by ID
-        $category = Category::findOrFail($id);
         $request['updated_by'] = auth()->id();
         // Update the category
         $category->update($request->all());
@@ -95,15 +91,10 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Category $category)
     {
-        // Find the category by ID
-        $category = Category::findOrFail($id);
-
-        // // Delete the product along with its media
-        // $category->clearMediaCollection('featured_images');
-        // $category->clearMediaCollection('images');
-        // $category->delete();
+  
+        $category->delete();
 
 
         // Redirect to the categories list with a success message

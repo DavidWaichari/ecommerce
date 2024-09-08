@@ -40,7 +40,7 @@
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form action="{{ route('admin.categories.update', $category->id) }}" method="POST" autocomplete="off" enctype="multipart/form-data>
+                            <form action="{{ route('admin.categories.update', $category->slug) }}" method="POST" autocomplete="off" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="card-body">
@@ -60,16 +60,16 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="icon">Font Awesome Web Icon e.g desktop </label>
-                                        <input type="text" class="form-control" id="icon" name="icon" placeholder="Font awesome icon eg. desktop" value="{{ old('name', $category->icon) }}">
+                                        <label for="icon">Font Awesome Web Icon e.g desktop</label>
+                                        <input type="text" class="form-control" id="icon" name="icon" placeholder="Font awesome icon e.g. desktop" value="{{ old('icon', $category->icon) }}">
                                     </div>
                                 </div>
                                 <!-- /.card-body -->
-
+                            
                                 <div class="card-footer">
                                     <button type="submit" class="btn btn-info">Update</button>
                                 </div>
-                            </form>
+                            </form>                            
                         </div>
                     </div>
                 </div>

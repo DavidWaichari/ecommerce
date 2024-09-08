@@ -64,7 +64,7 @@
 
                                     <div class="card-footer">
                                         <div class="d-flex align-items-center justify-content-between">
-                                            <a href="{{route('admin.categories.edit', $category->id)}}" class="btn btn-warning">Edit</a>
+                                            <a href="{{route('admin.categories.edit', $category->slug)}}" class="btn btn-warning">Edit</a>
                                             <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#modal-default">Delete</button>
                                         </div>
                                     </div>
@@ -103,7 +103,7 @@
                             <p>Are you sure you want to delete the category "{{ $category->name }}"? This will delete all the corresponding sub categories, products and their transanctions</p>
                         </div>
                         <div class="modal-footer">
-                            <form action="/admin/categories/{{ $category->id }}" method="POST">
+                            <form action="/admin/categories/{{ $category->slug }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
