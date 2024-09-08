@@ -27,6 +27,11 @@ class Product extends Model
         'updated_by',
     ];
 
+    protected $casts = [
+        'images' => 'array', // This will cast the 'images' attribute to an array
+    ];
+
+
     // Relationship with Category
     public function category()
     {

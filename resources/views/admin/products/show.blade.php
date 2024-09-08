@@ -81,7 +81,7 @@
 
                                     <div class="card-footer">
                                         <div class="d-flex align-items-center justify-content-between">
-                                            <a href="{{route('admin.products.edit', $product->id)}}" class="btn btn-warning">Edit</a>
+                                            <a href="{{route('admin.products.edit', $product->slug)}}" class="btn btn-warning">Edit</a>
                                             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-default">Delete</button>
                                         </div>
                                     </div>
@@ -105,8 +105,8 @@
                                     <h4 class="card-title">Featured Image</h4>
                                 </div>
                                 <div class="card-body text-center">
-                                    @if($product->hasMedia('featured_images'))
-                                        <img src="{{ $product->getFirstMediaUrl('featured_images') }}" class="img-fluid" alt="Featured Image">
+                                    @if($product->featured_image)
+                                        <img src="{{ asset('uploads/featured_images/' . $product->featured_image) }}" class="img-fluid" alt="Featured Image">
                                     @else
                                         <p>No featured image available.</p>
                                     @endif
@@ -120,10 +120,10 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="d-flex flex-wrap">
-                                        @if($product->hasMedia('images'))
-                                            @foreach($product->getMedia('images') as $image)
+                                        @if(!empty($product->images))
+                                            @foreach(json_decode($product->images) as $image)
                                                 <div class="p-2">
-                                                    <img src="{{ $image->getUrl() }}" class="img-fluid" alt="Image">
+                                                    <img src="{{ asset('uploads/images/' . $image) }}" class="img-fluid" alt="Image">
                                                 </div>
                                             @endforeach
                                         @else
@@ -149,7 +149,7 @@
                             <p>Are you sure you want to delete the product "{{ $product->name }}"? This will delete all the corresponding transactions.</p>
                         </div>
                         <div class="modal-footer">
-                            <form action="/admin/products/{{ $product->id }}" method="POST">
+                            <form action="/admin/products/{{ $product->slug }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>

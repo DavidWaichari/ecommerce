@@ -55,7 +55,7 @@
                                 @foreach($products as $product)
                                     <tr>
                                         <td class="text-center">{{ $loop->index + 1 }}</td>
-                                        <td><a href="{{route('admin.products.show', $product->id)}}">{{ $product->name }}</a></td>
+                                        <td><a href="{{route('admin.products.show', $product->slug)}}">{{ $product->name }}</a></td>
                                         <td>{{ $product->category->name }}</td>
                                         <td>{{ $product->selling_price }}</td>
                                         <td>{{ $product->discount_price }}</td>
@@ -66,8 +66,8 @@
                                         <td>{{ $product->updatedBy->name }}</td>
                                         <td>{{ $product->updated_at }}</td>
                                         <td>
-                                            <a href="/admin/products/{{ $product->id }}/edit" class="btn btn-sm btn-primary">Edit</a>
-                                            <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal-default-{{ $product->id }}">Delete</button>
+                                            <a href="/admin/products/{{ $product->slug }}/edit" class="btn btn-sm btn-primary">Edit</a>
+                                            <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal-default-{{ $product->slug }}">Delete</button>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -92,11 +92,11 @@
                     </div>
 
                     @foreach ($products as $product)
-                        <div class="modal fade" id="modal-default-{{ $product->id }}" tabindex="-1" role="dialog" aria-labelledby="modal-default-label-{{ $product->id }}" aria-hidden="true">
+                        <div class="modal fade" id="modal-default-{{ $product->slug }}" tabindex="-1" role="dialog" aria-labelledby="modal-default-label-{{ $product->slug }}" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="modal-default-label-{{ $product->id }}">Delete Category</h5>
+                                        <h5 class="modal-title" id="modal-default-label-{{ $product->slug }}">Delete Category</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -105,7 +105,7 @@
                                         <p>Are you sure you want to delete the product "{{ $product->name }}"? This will delete all the corresponding transanctions</p>
                                     </div>
                                     <div class="modal-footer">
-                                        <form action="/admin/products/{{ $product->id }}" method="POST">
+                                        <form action="/admin/products/{{ $product->slug }}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>

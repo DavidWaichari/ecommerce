@@ -31,9 +31,8 @@ class ProductController extends Controller
     /**
      * Show the specified resource.
      */
-    public function show(string $id)
+    public function show(Product $product)
     {
-        $product = Product::findOrFail($id);
         $categories = Category::all();
         return view('admin/products/show', compact('product', 'categories'));
     }
@@ -92,9 +91,8 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Product $product)
     {
-        $product = Product::findOrFail($id);
         $categories = Category::all();
         return view('admin/products/edit', compact('product', 'categories'));
     }
@@ -102,7 +100,7 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Product $product)
     {
         // Validate the request data
         $request->validate([
@@ -119,7 +117,6 @@ class ProductController extends Controller
         }
 
         // Find the product by ID
-        $product = Product::findOrFail($id);
 
         // Update the product data
         $request['updated_by'] = auth()->id();
@@ -165,9 +162,8 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Product $product)
     {
-        $product = Product::findOrFail($id);
 
         // Delete the product's images from the server
         if ($product->featured_image) {

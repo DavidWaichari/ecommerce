@@ -40,7 +40,7 @@
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form action="{{ route('admin.products.update', $product->id) }}" method="POST" autocomplete="off" enctype="multipart/form-data">
+                            <form action="{{ route('admin.products.update', $product->slug) }}" method="POST" autocomplete="off" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="card-body">
@@ -64,15 +64,16 @@
                                         <input type="text" class="form-control" id="name" name="name" value="{{ $product->name }}" placeholder="Enter Name" required>
                                     </div>
 
+                                    <!-- Selling Price -->
                                     <div class="form-group">
                                         <label for="selling_price">Selling Price</label>
-                                        <input type="number" class="form-control" id="selling_price" name="selling_price" placeholder="Enter selling price" step="0.01"  value="{{ $product->selling_price }}">
+                                        <input type="number" class="form-control" id="selling_price" name="selling_price" placeholder="Enter selling price" step="0.01" value="{{ $product->selling_price }}" required>
                                     </div>
 
                                     <!-- Discount Price -->
                                     <div class="form-group">
                                         <label for="discount_price">Discount Selling Price</label>
-                                        <input type="number" class="form-control" id="discount_price" name="discount_price" placeholder="Enter discount price" step="0.01" required value="{{ $product->discount_price }}">
+                                        <input type="number" class="form-control" id="discount_price" name="discount_price" placeholder="Enter discount price" step="0.01" value="{{ $product->discount_price }}" required>
                                     </div>
 
                                     <!-- Description Input -->
@@ -95,18 +96,18 @@
                                         <label for="featured_image">Featured Image</label>
                                         <input type="file" class="form-control-file" id="featured_image" name="featured_image" accept="image/*">
                                         @if ($product->featured_image)
-                                            <img src="{{ asset('storage/' . $product->featured_image) }}" alt="Featured Image" class="img-thumbnail mt-2" style="max-width: 150px;">
+                                            <img src="{{ asset('uploads/featured_images/' . $product->featured_image) }}" alt="Featured Image" class="img-thumbnail mt-2" style="max-width: 150px;">
                                         @endif
                                     </div>
 
-                                    <!-- Images Input -->
+                                    <!-- Additional Images Input -->
                                     <div class="form-group">
                                         <label for="images">Additional Images</label>
                                         <input type="file" class="form-control-file" id="images" name="images[]" accept="image/*" multiple>
                                         @if ($product->images)
                                             <div class="mt-2">
                                                 @foreach ($product->images as $image)
-                                                    <img src="{{ asset('storage/' . $image) }}" alt="Additional Image" class="img-thumbnail" style="max-width: 150px; margin-right: 5px;">
+                                                    <img src="{{ asset('uploads/images/' . $image) }}" alt="Additional Image" class="img-thumbnail" style="max-width: 150px; margin-right: 5px;">
                                                 @endforeach
                                             </div>
                                         @endif

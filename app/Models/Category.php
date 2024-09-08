@@ -34,12 +34,7 @@ class Category extends Model
         return $query->where('status', 'inactive');
     }
 
-    // Relationship with SubCategory
-    public function subCategories()
-    {
-        return $this->hasMany(SubCategory::class);
-    }
-
+   
     // Relationship with Product
     public function products()
     {
