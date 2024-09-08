@@ -58,22 +58,6 @@
                                             </select>
                                         </div>
                                     </div>
-
-                                    <!-- Sub Category Select -->
-                                    <div class="form-group">
-                                        <div class="d-flex flex-column align-items-start">
-                                            <label for="subCategorySelect">Select Sub Category</label>
-                                            <select class="select2 form-control" id="subCategorySelect" name="sub_category_id">
-                                                <option value="" disabled>Select Sub Category</option>
-                                                @foreach ($sub_categories as $category)
-                                                    <option value="{{ $category->id }}" {{ $product->sub_category_id == $category->id ? 'selected' : '' }}>
-                                                        {{ $category->name }}
-                                                    </option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-
                                     <!-- Name Input -->
                                     <div class="form-group">
                                         <label for="name">Name</label>

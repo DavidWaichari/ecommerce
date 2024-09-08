@@ -6,16 +6,16 @@
         <div class="row">
             <div class="col-lg-3 col-md-12">
                 <ul class="slider-categories">
-                    @foreach ($categories  as $category)
-                    <li>
-                        <a href="#" class="nav-link">
-                            <i class="fa fa-{{$category->icon}}"></i>
-                           {{$category->name}}
-                        </a>
-                    </li>
+                    @foreach ($categories as $category)
+                        <li>
+                            <a href="{{ url('/shop?category=' . $category->slug) }}" class="nav-link">
+                                <i class="fa fa-{{ $category->icon }}"></i>
+                                {{ $category->name }}
+                            </a>
+                        </li>
                     @endforeach
                 </ul>
-            </div>
+            </div>            
 
             <div class="col-lg-9 col-md-12">
                 <div class="home-slides-two owl-carousel owl-theme">

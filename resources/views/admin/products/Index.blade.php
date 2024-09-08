@@ -39,7 +39,6 @@
                                 <tr>
                                     <th class="text-center">SNO</th>
                                     <th>Name</th>
-                                    <th>Sub Category</th>
                                     <th>Category</th>
                                     <th>Selling Price</th>
                                     <th>Discount SP</th>
@@ -57,7 +56,6 @@
                                     <tr>
                                         <td class="text-center">{{ $loop->index + 1 }}</td>
                                         <td><a href="{{route('admin.products.show', $product->id)}}">{{ $product->name }}</a></td>
-                                        <td>{{ $product->subCategory->name }}</td>
                                         <td>{{ $product->category->name }}</td>
                                         <td>{{ $product->selling_price }}</td>
                                         <td>{{ $product->discount_price }}</td>
@@ -78,7 +76,6 @@
                                 <tr>
                                     <th>SNO</th>
                                     <th>Name</th>
-                                    <th>Sub Category</th>
                                     <th>Category</th>
                                     <th>Selling Price</th>
                                     <th>Discount SP</th>

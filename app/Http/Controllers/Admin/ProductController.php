@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
-use App\Models\SubCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str; // Import the Str class
 
 class ProductController extends Controller
 {
@@ -24,38 +24,36 @@ class ProductController extends Controller
      */
     public function create()
     {
-
         $categories = Category::all();
-        $sub_categories = SubCategory::all();
-        return view('admin/products/create', compact('categories', 'sub_categories'));
+        return view('admin/products/create', compact('categories'));
     }
 
-
+    /**
+     * Show the specified resource.
+     */
     public function show(string $id)
     {
         $product = Product::findOrFail($id);
         $categories = Category::all();
-        $sub_categories = SubCategory::all();
-        return view('admin/products/show', compact('product', 'categories', 'sub_categories'));
+        return view('admin/products/show', compact('product', 'categories'));
     }
-
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-
         // Validate the request data
         $request->validate([
             'name' => 'required|string|max:255',
             'featured_image' => 'nullable|image|max:1024', // Validate featured image
             'images.*' => 'nullable|image|max:1024', // Validate images
         ]);
-        if ($request->input('is_featured') == "on" ) {
+
+        if ($request->input('is_featured') == "on") {
             Product::where('is_featured', true)->update(['is_featured' => false]);
             $request['is_featured'] = true;
-        }else{
+        } else {
             $request['is_featured'] = false;
         }
 
@@ -63,19 +61,29 @@ class ProductController extends Controller
         $request['updated_by'] = auth()->id();
 
         // Create the product
-        $product = Product::create($request->all());
+        $product = Product::create($request->except('featured_image', 'images'));
 
         // Handle featured image upload
         if ($request->hasFile('featured_image')) {
-            $product->addMedia($request->file('featured_image'))->toMediaCollection('featured_images');
+            $featuredImage = $request->file('featured_image');
+            $featuredImageName = $this->generateImageName($product->name, $featuredImage->getClientOriginalExtension(), 'featured');
+            $featuredImage->move(public_path('uploads/featured_images'), $featuredImageName);
+            $product->featured_image = $featuredImageName;
         }
 
         // Handle multiple images upload
         if ($request->hasFile('images')) {
-            foreach ($request->file('images') as $image) {
-                $product->addMedia($image)->toMediaCollection('images');
+            $imageNames = [];
+            foreach ($request->file('images') as $index => $image) {
+                $imageName = $this->generateImageName($product->name, $image->getClientOriginalExtension(), 'image_' . ($index + 1));
+                $image->move(public_path('uploads/images'), $imageName);
+                $imageNames[] = $imageName;
             }
+            $product->images = json_encode($imageNames);
         }
+
+        // Save the product with the uploaded images
+        $product->save();
 
         // Redirect to the products list with a success message
         return redirect()->route('admin.products.index')->with('success', 'Product created successfully.');
@@ -88,8 +96,7 @@ class ProductController extends Controller
     {
         $product = Product::findOrFail($id);
         $categories = Category::all();
-        $sub_categories = SubCategory::all();
-        return view('admin/products/edit', compact('product', 'categories', 'sub_categories'));
+        return view('admin/products/edit', compact('product', 'categories'));
     }
 
     /**
@@ -97,7 +104,6 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-
         // Validate the request data
         $request->validate([
             'name' => 'required|string|max:255',
@@ -105,11 +111,10 @@ class ProductController extends Controller
             'images.*' => 'nullable|image|max:1024', // Validate images
         ]);
 
-
-        if ($request->input('is_featured') == "on" ) {
+        if ($request->input('is_featured') == "on") {
             Product::where('is_featured', true)->update(['is_featured' => false]);
             $request['is_featured'] = true;
-        }else{
+        } else {
             $request['is_featured'] = false;
         }
 
@@ -118,23 +123,40 @@ class ProductController extends Controller
 
         // Update the product data
         $request['updated_by'] = auth()->id();
-        $product->update($request->all());
+        $product->update($request->except('featured_image', 'images'));
 
         // Handle featured image update
         if ($request->hasFile('featured_image')) {
-            // Delete existing featured image from the collection
-            $product->clearMediaCollection('featured_images');
-            $product->addMedia($request->file('featured_image'))->toMediaCollection('featured_images');
+            // Delete existing featured image
+            if ($product->featured_image) {
+                unlink(public_path('uploads/featured_images/' . $product->featured_image));
+            }
+            $featuredImage = $request->file('featured_image');
+            $featuredImageName = $this->generateImageName($product->name, $featuredImage->getClientOriginalExtension(), 'featured');
+            $featuredImage->move(public_path('uploads/featured_images'), $featuredImageName);
+            $product->featured_image = $featuredImageName;
         }
 
         // Handle multiple images update
         if ($request->hasFile('images')) {
-            // Delete existing images from the collection
-            $product->clearMediaCollection('images');
-            foreach ($request->file('images') as $image) {
-                $product->addMedia($image)->toMediaCollection('images');
+            // Delete existing images
+            if ($product->images) {
+                $existingImages = json_decode($product->images, true);
+                foreach ($existingImages as $existingImage) {
+                    unlink(public_path('uploads/images/' . $existingImage));
+                }
             }
+            $imageNames = [];
+            foreach ($request->file('images') as $index => $image) {
+                $imageName = $this->generateImageName($product->name, $image->getClientOriginalExtension(), 'image_' . ($index + 1));
+                $image->move(public_path('uploads/images'), $imageName);
+                $imageNames[] = $imageName;
+            }
+            $product->images = json_encode($imageNames);
         }
+
+        // Save the product with the updated images
+        $product->save();
 
         // Redirect to the products list with a success message
         return redirect()->route('admin.products.index')->with('success', 'Product updated successfully.');
@@ -147,12 +169,29 @@ class ProductController extends Controller
     {
         $product = Product::findOrFail($id);
 
-        // Delete the product along with its media
-        $product->clearMediaCollection('featured_images');
-        $product->clearMediaCollection('images');
+        // Delete the product's images from the server
+        if ($product->featured_image) {
+            unlink(public_path('uploads/featured_images/' . $product->featured_image));
+        }
+        if ($product->images) {
+            $images = json_decode($product->images, true);
+            foreach ($images as $image) {
+                unlink(public_path('uploads/images/' . $image));
+            }
+        }
+
+        // Delete the product record
         $product->delete();
 
         // Redirect to the products list with a success message
         return redirect()->route('admin.products.index')->with('success', 'Product deleted successfully.');
+    }
+
+    /**
+     * Generate a unique image name based on the product name and image type.
+     */
+    private function generateImageName(string $productName, string $extension, string $type)
+    {
+        return Str::slug($productName) . '_' . $type . '_' . time() . '.' . $extension;
     }
 }

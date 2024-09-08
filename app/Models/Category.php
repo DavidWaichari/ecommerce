@@ -3,14 +3,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Spatie\MediaLibrary\HasMedia;
-use Spatie\MediaLibrary\InteractsWithMedia;
+
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
-class Category extends Model implements HasMedia
+class Category extends Model
 {
-    use HasFactory, InteractsWithMedia, HasSlug;
+    use HasFactory, HasSlug;
 
     // Fillable attributes to protect against mass assignment
     protected $fillable = [

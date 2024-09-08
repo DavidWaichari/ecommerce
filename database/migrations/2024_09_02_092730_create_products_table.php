@@ -12,6 +12,8 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->string('slug')->nullable();
             $table->text('description')->nullable();
+            $table->text('featured_image')->nullable();
+            $table->text('images')->nullable();
             $table->decimal('selling_price', 10, 2)->default(0);
             $table->decimal('discount_price', 10, 2)->default(0);
             $table->decimal('instock', 10, 2)->default(0);
@@ -20,7 +22,6 @@ class CreateProductsTable extends Migration
             $table->string('status')->nullable();
             $table->text('extras')->nullable();
             $table->foreignId('category_id')->constrained()->onDelete('cascade'); // Foreign key to categories table
-            $table->foreignId('sub_category_id')->constrained()->onDelete('cascade'); // Foreign key to sub_categories table
             $table->unsignedBigInteger('updated_by')->nullable(); // ID of the user who last updated the product
             $table->timestamps();
 

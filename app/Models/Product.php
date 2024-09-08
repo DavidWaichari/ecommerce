@@ -3,14 +3,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Spatie\MediaLibrary\HasMedia;
-use Spatie\MediaLibrary\InteractsWithMedia;
+
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
-class Product extends Model implements HasMedia
+class Product extends Model
 {
-    use HasFactory, InteractsWithMedia, HasSlug;
+    use HasFactory, HasSlug;
 
     protected $fillable = [
         'name',
@@ -19,9 +18,10 @@ class Product extends Model implements HasMedia
         'status',
         'is_featured',
         'is_sold',
+        'featured_image',
+        'images',
         'extras',
         'category_id',   // Foreign key to Category
-        'sub_category_id', // Foreign key to SubCategory
         'selling_price',
         'discount_price',
         'updated_by',
@@ -33,11 +33,7 @@ class Product extends Model implements HasMedia
         return $this->belongsTo(Category::class);
     }
 
-    // Relationship with SubCategory
-    public function subCategory()
-    {
-        return $this->belongsTo(SubCategory::class);
-    }
+
 
     public function updatedBy()
     {
