@@ -50,7 +50,7 @@ class ProductController extends Controller
         ]);
 
         if ($request->input('is_featured') == "on") {
-            Product::where('is_featured', true)->update(['is_featured' => false]);
+            // Product::where('is_featured', true)->update(['is_featured' => false]);
             $request['is_featured'] = true;
         } else {
             $request['is_featured'] = false;
@@ -110,7 +110,7 @@ class ProductController extends Controller
         ]);
 
         if ($request->input('is_featured') == "on") {
-            Product::where('is_featured', true)->update(['is_featured' => false]);
+            // Product::where('is_featured', true)->update(['is_featured' => false]);
             $request['is_featured'] = true;
         } else {
             $request['is_featured'] = false;

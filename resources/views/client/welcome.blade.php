@@ -15,15 +15,15 @@
                         </li>
                     @endforeach
                 </ul>
-            </div>            
+            </div>
 
             <div class="col-lg-9 col-md-12">
                 <div class="home-slides-two owl-carousel owl-theme">
-                    <div class="main-slider-item-box">
+                    {{-- <div class="main-slider-item-box">
                         <div class="main-slider-content">
                             <b>Big Sale Offer</b>
                             <h1>Get the Best Deals on Headphone</h1>
-                            {{-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> --}}
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 
                             <div class="slider-btn">
                                 <a href="#" class="default-btn">
@@ -39,7 +39,7 @@
                         <div class="main-slider-content">
                             <b>Big Sale Offer</b>
                             <h1>New Arrivals CCTV Camera</h1>
-                            {{-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> --}}
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 
                             <div class="slider-btn">
                                 <a href="#" class="default-btn">
@@ -55,7 +55,7 @@
                         <div class="main-slider-content">
                             <b>Big Sale Offer</b>
                             <h1>High-Quality Product Camera</h1>
-                            {{-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> --}}
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 
                             <div class="slider-btn">
                                 <a href="#" class="default-btn">
@@ -65,7 +65,31 @@
                                 </a>
                             </div>
                         </div>
+                    </div> --}}
+                    @foreach ($featured_products as $product)
+                    <div class="main-slider-item-box" style="background-color: #fdd33f">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="main-slider-content">
+                                    <b>Big Sale Offer</b>
+                                    <h1>High-Quality {{$product->name}}</h1>
+                                    <p>{{$product->description}}</p>
+
+                                    <div class="slider-btn">
+                                        <a href="/shop" class="default-btn">
+                                            <i class="flaticon-shopping-cart"></i>
+                                            Shop Now
+                                            <span></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 bg-transparent">
+                                <img src="{{ asset('uploads/featured_images/' . $product->featured_image) }}"  alt="Featured Image">
+                            </div>
+                        </div>
                     </div>
+                    @endforeach
                 </div>
             </div>
         </div>

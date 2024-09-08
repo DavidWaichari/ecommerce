@@ -1311,10 +1311,10 @@ Main Slider Area CSS
 }
 
 .main-slider-item-box {
-  background-image: url(../img/main-slider/slider-bg-1.jpg);
+  /* background-image: url(../img/main-slider/slider-bg-1.jpg);
   background-position: center center;
   background-size: cover;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
   padding-top: 82px;
   padding-bottom: 125px;
   padding-left: 50px;
@@ -1327,7 +1327,7 @@ Main Slider Area CSS
   background-image: url(../img/main-slider/slider-bg-3.jpg);
 }
 .main-slider-item-box .main-slider-content {
-  max-width: 420px;
+  max-width: 100%;
 }
 .main-slider-item-box .main-slider-content b {
   font-size: 18px;
