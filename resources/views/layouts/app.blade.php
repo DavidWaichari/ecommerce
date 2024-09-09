@@ -8,6 +8,8 @@
         <link rel="stylesheet" href="/ejon/assets/css/bootstrap.min.css">
          <!-- Font Awesome -->
         <link rel="stylesheet" href="/ejon/assets/plugins/fontawesome-free/css/all.min.css">
+         <!-- Multi Slider -->
+        <link rel="stylesheet" href="/ejon/assets/plugins/multislider/css/styles.css">
         <!-- Animate CSS -->
         <link rel="stylesheet" href="/ejon/assets/css/animate.min.css">
         <!-- Meanmenu CSS -->
@@ -433,6 +435,8 @@
         <script src="/ejon/assets/js/wow.min.js"></script>
         <!-- Custom JS -->
         <script src="/ejon/assets/js/main.js"></script>
-        @yield('scrips')
+        <!-- Multi Slider -->
+        <script src="/ejon/assets/plugins/multislider/js/multislider.min.js"></script>
+        @yield('scripts')
     </body>
 </html>
