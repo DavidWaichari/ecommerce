@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
-class Category extends Model
+class Brand extends Model
 {
     use HasFactory, HasSlug;
 
@@ -16,7 +16,6 @@ class Category extends Model
         'name',
         'slug',
         'description',
-        'icon',
         'status', // Added status attribute
         'extras',
         'updated_by'

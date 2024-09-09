@@ -22,6 +22,7 @@ class Product extends Model
         'images',
         'extras',
         'category_id',   // Foreign key to Category
+        'brand_id',   // Foreign key to Category
         'selling_price',
         'discount_price',
         'updated_by',
@@ -35,7 +36,12 @@ class Product extends Model
     // Relationship with Category
     public function category()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class, 'category_id');
+    }
+    // Relationship with Category
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class, 'brand_id');
     }
 
 

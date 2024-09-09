@@ -57,6 +57,19 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
+                                            <div class="d-flex flex-column align-items-start">
+                                                <label for="brandSelect">Select Brand</label>
+                                                <select class="select2 form-control" id="brandSelect" name="brand_id" disabled>
+                                                    <option value="" disabled>Select Brand</option>
+                                                    @foreach ($brands as $brand)
+                                                        <option value="{{ $brand->id }}" {{ $product->brand_id == $brand->id ? 'selected' : '' }}>
+                                                            {{ $brand->name }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
                                             <label for="name">Name</label>
                                             <input type="text" class="form-control" id="name" name="name" value="{{ $product->name }}" placeholder="Enter Name" required readonly>
                                         </div>

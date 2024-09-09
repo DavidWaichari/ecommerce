@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -25,7 +26,8 @@ class ProductController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('admin/products/create', compact('categories'));
+        $brands = Category::all();
+        return view('admin/products/create', compact('categories', 'brands'));
     }
 
     /**
@@ -34,7 +36,8 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         $categories = Category::all();
-        return view('admin/products/show', compact('product', 'categories'));
+        $brands = Brand::all();
+        return view('admin/products/show', compact('product', 'categories', 'brands'));
     }
 
     /**
@@ -94,7 +97,8 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         $categories = Category::all();
-        return view('admin/products/edit', compact('product', 'categories'));
+        $brands = Brand::all();
+        return view('admin/products/edit', compact('product', 'categories', 'brands'));
     }
 
     /**
@@ -165,16 +169,25 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
 
-        // Delete the product's images from the server
+        // Delete the product's featured image from the server
         if ($product->featured_image) {
-            unlink(public_path('uploads/featured_images/' . $product->featured_image));
+            $featuredImagePath = public_path('uploads/featured_images/' . $product->featured_image);
+            if (file_exists($featuredImagePath)) {
+                unlink($featuredImagePath);
+            }
         }
+
+        // Delete the product's additional images from the server
         if ($product->images) {
             $images = json_decode($product->images, true);
             foreach ($images as $image) {
-                unlink(public_path('uploads/images/' . $image));
+                $imagePath = public_path('uploads/images/' . $image);
+                if (file_exists($imagePath)) {
+                    unlink($imagePath);
+                }
             }
         }
+
 
         // Delete the product record
         $product->delete();

@@ -96,13 +96,19 @@
             </a>
           </li>
           <!-- Sub Categories -->
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a href="/admin/sub_categories" class="nav-link {{ Request::is('admin/sub_categories*') ? 'active' : '' }}">
               <i class="nav-icon fas fa-layer-group"></i>
               <p>Sub Categories</p>
             </a>
-          </li>
+          </li> --}}
           <!-- Categories -->
+          <li class="nav-item">
+            <a href="/admin/brands" class="nav-link {{ Request::is('admin/brands*') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-list"></i>
+              <p>Brands</p>
+            </a>
+          </li>
           <li class="nav-item">
             <a href="/admin/categories" class="nav-link {{ Request::is('admin/categories*') ? 'active' : '' }}">
               <i class="nav-icon fas fa-list"></i>

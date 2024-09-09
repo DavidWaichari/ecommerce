@@ -47,10 +47,22 @@
                                     <div class="form-group">
                                         <div class="d-flex flex-column align-items-start">
                                             <label for="categorySelect">Select Category</label>
-                                            <select class="select2 form-control" id="categorySelect" name="category_id">
+                                            <select class="select2 form-control" id="categorySelect" name="category_id" required>
                                                 <option value="" selected="selected">Select Category</option>
                                                 @foreach ($categories as $category)
                                                 <option value="{{$category->id}}">{{$category->name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- Brand -->
+                                    <div class="form-group">
+                                        <div class="d-flex flex-column align-items-start">
+                                            <label for="brandSelect">Select Brand</label>
+                                            <select class="select2 form-control" id="brandSelect" name="brand_id" required>
+                                                <option value="" selected="selected">Select Brand</option>
+                                                @foreach ($brands as $brand)
+                                                <option value="{{$brand->id}}">{{$brand->name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>

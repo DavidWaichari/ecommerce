@@ -21,7 +21,8 @@ class CreateProductsTable extends Migration
             $table->boolean('is_sold')->default(false);
             $table->string('status')->nullable();
             $table->text('extras')->nullable();
-            $table->foreignId('category_id')->constrained()->onDelete('cascade'); // Foreign key to categories table
+            $table->unsignedBigInteger('category_id')->nullable();
+            $table->unsignedBigInteger('brand_id')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable(); // ID of the user who last updated the product
             $table->timestamps();
 

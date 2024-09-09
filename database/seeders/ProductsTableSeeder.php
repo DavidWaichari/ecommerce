@@ -26,6 +26,7 @@ class ProductsTableSeeder extends Seeder
                 'selling_price' => 299.99,
                 'discount_price' => 299.99, // Same as selling price
                 'updated_by' => 1,
+                'brand_id'=> 1
             ],
             [
                 'name' => "Portable Speakers",
@@ -39,6 +40,7 @@ class ProductsTableSeeder extends Seeder
                 'selling_price' => 149.99,
                 'discount_price' => 149.99, // Same as selling price
                 'updated_by' => 1,
+                'brand_id'=> 1
             ],
             [
                 'name' => "Gaming Controller",
@@ -52,6 +54,7 @@ class ProductsTableSeeder extends Seeder
                 'selling_price' => 79.99,
                 'discount_price' => 79.99, // Same as selling price
                 'updated_by' => 1,
+                'brand_id'=> 1
             ],
             [
                 'name' => "Wireless Mouse",
@@ -65,6 +68,7 @@ class ProductsTableSeeder extends Seeder
                 'selling_price' => 49.99,
                 'discount_price' => 49.99, // Same as selling price
                 'updated_by' => 1,
+                'brand_id'=> 1
             ],
             [
                 'name' => "Camera Lens",
@@ -78,6 +82,7 @@ class ProductsTableSeeder extends Seeder
                 'selling_price' => 499.99,
                 'discount_price' => 499.99, // Same as selling price
                 'updated_by' => 1,
+                'brand_id'=> 1
             ],
             [
                 'name' => "Airpods Pro",
@@ -91,6 +96,7 @@ class ProductsTableSeeder extends Seeder
                 'selling_price' => 249.99,
                 'discount_price' => 249.99, // Same as selling price
                 'updated_by' => 1,
+                'brand_id'=> 1
             ],
             [
                 'name' => "CCTV Camera",
@@ -104,6 +110,7 @@ class ProductsTableSeeder extends Seeder
                 'selling_price' => 249.99,
                 'discount_price' => 249.99, // Same as selling price
                 'updated_by' => 1,
+                'brand_id'=> 1
             ],
             [
                 'name' => "Wireless Keyboard",
@@ -117,6 +124,7 @@ class ProductsTableSeeder extends Seeder
                 'selling_price' => 89.99,
                 'discount_price' => 89.99, // Same as selling price
                 'updated_by' => 1,
+                'brand_id'=> 1
             ],
             [
                 'name' => "Smartphone",
@@ -130,6 +138,7 @@ class ProductsTableSeeder extends Seeder
                 'selling_price' => 89.99,
                 'discount_price' => 75, //less than selling
                 'updated_by' => 1,
+                'brand_id'=> 1
             ],
             [
                 'name' => "Smart TV",
@@ -143,6 +152,7 @@ class ProductsTableSeeder extends Seeder
                 'selling_price' => 89.99,
                 'discount_price' => 75.00, // Less than selling price
                 'updated_by' => 1,
+                'brand_id'=> 1
             ],
             [
                 'name' => "Smart Watch",
@@ -156,6 +166,7 @@ class ProductsTableSeeder extends Seeder
                 'selling_price' => 299.99,
                 'discount_price' => 249.99, // Discounted price
                 'updated_by' => 1,
+                'brand_id'=> 1
             ],
             [
                 'name' => "Digital Camera",
@@ -169,6 +180,7 @@ class ProductsTableSeeder extends Seeder
                 'selling_price' => 299.99,
                 'discount_price' => 249.99, // Discounted price
                 'updated_by' => 1,
+                'brand_id'=> 1
             ],
             [
                 'name' => "Wireless Headphones",
@@ -182,6 +194,7 @@ class ProductsTableSeeder extends Seeder
                 'selling_price' => 299.99,
                 'discount_price' => 249.99, // Discounted price
                 'updated_by' => 1,
+                'brand_id'=> 1
             ],
             [
                 'name' => "Bluetooth Speaker",
@@ -195,6 +208,7 @@ class ProductsTableSeeder extends Seeder
                 'selling_price' => 299.99,
                 'discount_price' => 249.99, // Discounted price
                 'updated_by' => 1,
+                'brand_id'=> 1
             ]
 
 

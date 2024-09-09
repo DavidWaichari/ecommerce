@@ -159,13 +159,14 @@
 <section class="featured-area pb-20">
     <div class="container">
         <div class="row">
+            @foreach ($featured_products as $product)
             <div class="col-lg-4 col-md-6">
                 <div class="single-featured">
                     <img src="/ejon/assets/img/featured/featured-1.jpg" alt="image">
 
                     <div class="featured-content">
                         <span>Featured</span>
-                        <h3>Best Deal on the Camera Collection</h3>
+                        <h3>Best Deal on the {{$product->name}} Collection</h3>
                         <div class="tag">30% Off</div>
 
                         <div class="featured-btn">
@@ -174,8 +175,9 @@
                     </div>
                 </div>
             </div>
+            @endforeach
 
-            <div class="col-lg-4 col-md-6">
+            {{-- <div class="col-lg-4 col-md-6">
                 <div class="single-featured">
                     <img src="/ejon/assets/img/featured/featured-2.jpg" alt="image">
 
@@ -205,7 +207,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 </section>

@@ -58,6 +58,20 @@
                                             </select>
                                         </div>
                                     </div>
+                                     <!-- Brand -->
+                                     <div class="form-group">
+                                        <div class="d-flex flex-column align-items-start">
+                                            <label for="brandSelect">Select Brand</label>
+                                            <select class="select2 form-control" id="brandSelect" name="brand_id" required>
+                                                <option value="" selected="selected">Select Brand</option>
+                                                @foreach ($brands as $brand)
+                                                    <option value="{{ $brand->id }}" {{ $product->brand_id == $brand->id ? 'selected' : '' }}>
+                                                        {{ $brand->name }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
                                     <!-- Name Input -->
                                     <div class="form-group">
                                         <label for="name">Name</label>
@@ -106,7 +120,7 @@
                                         <input type="file" class="form-control-file" id="images" name="images[]" accept="image/*" multiple>
                                         @if ($product->images)
                                             <div class="mt-2">
-                                                @foreach ($product->images as $image)
+                                                @foreach (json_decode($product->images) as $image)
                                                     <img src="{{ asset('uploads/images/' . $image) }}" alt="Additional Image" class="img-thumbnail" style="max-width: 150px; margin-right: 5px;">
                                                 @endforeach
                                             </div>
