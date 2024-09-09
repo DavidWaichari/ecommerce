@@ -91,7 +91,16 @@
                                         <label for="name">Name</label>
                                         <input type="text" class="form-control" id="name" name="name" value="{{ $product->name }}" placeholder="Enter Name" required>
                                     </div>
-
+                                    <!-- Part Number -->
+                                    <div class="form-group">
+                                        <label for="name">Part Number</label>
+                                        <input type="text" class="form-control" id="part_number" name="part_number" placeholder="Enter part number"  value="{{ $product->part_number }}">
+                                    </div>
+                                    <!-- Series Input -->
+                                    <div class="form-group">
+                                        <label for="name">Series</label>
+                                        <input type="text" class="form-control" id="series" name="series" placeholder="Enter series" value="{{ $product->series }}">
+                                    </div>
                                     <!-- Selling Price -->
                                     <div class="form-group">
                                         <label for="selling_price">Selling Price</label>
@@ -109,7 +118,11 @@
                                         <label for="description">Description</label>
                                         <textarea class="form-control" id="description" name="description" placeholder="Enter Description">{{ $product->description }}</textarea>
                                     </div>
-
+                                     <!-- Link -->
+                                     <div class="form-group">
+                                        <label for="link">Link</label>
+                                        <textarea class="form-control" id="link" name="link" placeholder="Enter link">{{ $product->link }}</textarea>
+                                    </div>
                                     <!-- Status Select -->
                                     <div class="form-group">
                                         <label for="status">Status</label>

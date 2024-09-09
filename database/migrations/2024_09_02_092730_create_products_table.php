@@ -10,6 +10,8 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('part_number')->nullable();
+            $table->string('series')->nullable();
             $table->string('slug')->nullable();
             $table->text('description')->nullable();
             $table->text('featured_image')->nullable();
@@ -19,6 +21,7 @@ class CreateProductsTable extends Migration
             $table->decimal('instock', 10, 2)->default(0);
             $table->boolean('is_featured')->default(false);
             $table->boolean('is_sold')->default(false);
+            $table->text('link')->nullable();
             $table->string('status')->nullable();
             $table->text('extras')->nullable();
             $table->unsignedBigInteger('category_id')->nullable();

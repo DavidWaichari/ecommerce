@@ -73,6 +73,18 @@
                                             <label for="name">Name</label>
                                             <input type="text" class="form-control" id="name" name="name" value="{{ $product->name }}" placeholder="Enter Name" required readonly>
                                         </div>
+
+                                        <!-- Part Number -->
+                                        <div class="form-group">
+                                            <label for="name">Part Number</label>
+                                            <input type="text" class="form-control" id="part_number" name="part_number" placeholder="Enter part number"  value="{{ $product->part_number }}" readonly>
+                                        </div>
+                                        <!-- Series Input -->
+                                        <div class="form-group">
+                                            <label for="name">Series</label>
+                                            <input type="text" class="form-control" id="series" name="series" placeholder="Enter series" value="{{ $product->series }}" readonly>
+                                        </div>
+
                                         <div class="form-group">
                                             <label for="selling_price">Selling Price</label>
                                             <input type="number" class="form-control" id="selling_price" name="selling_price" placeholder="Enter selling price" step="0.01"  value="{{ $product->selling_price }}" readonly>
@@ -81,6 +93,16 @@
                                     <div class="form-group">
                                         <label for="discount_price">Discount Selling Price</label>
                                         <input type="number" class="form-control" id="discount_price" name="discount_price" placeholder="Enter discount price" step="0.01" required value="{{ $product->discount_price }}" readonly>
+                                    </div>
+                                    <!-- Description Input -->
+                                    <div class="form-group">
+                                        <label for="description">Description</label>
+                                        <textarea class="form-control" id="description" name="description" placeholder="Enter Description" readonly>{{ $product->description }}</textarea>
+                                    </div>
+                                     <!-- Link -->
+                                     <div class="form-group">
+                                        <label for="link">Link</label>
+                                        <textarea class="form-control" id="link" name="link" placeholder="Enter link" readonly>{{ $product->link }}</textarea>
                                     </div>
                                         <div class="form-group">
                                             <label for="status">Status</label>

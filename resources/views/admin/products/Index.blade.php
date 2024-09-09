@@ -39,6 +39,8 @@
                                 <tr>
                                     <th class="text-center">SNO</th>
                                     <th>Name</th>
+                                    <th>Part No</th>
+                                    <th>Series</th>
                                     <th>Category</th>
                                     <th>Brand</th>
                                     <th>Processor</th>
@@ -50,6 +52,7 @@
                                     <th>Status</th>
                                     <th>Updated By</th>
                                     <th>Updated At</th>
+                                    <th>Link</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -58,6 +61,8 @@
                                     <tr>
                                         <td class="text-center">{{ $loop->index + 1 }}</td>
                                         <td><a href="{{route('admin.products.show', $product->slug)}}">{{ $product->name }}</a></td>
+                                        <td>{{ $product->part_number }}</td>
+                                        <td>{{ $product->series }}</td>
                                         <td>{{ $product->category->name }}</td>
                                         <td>{{ $product->brand->name }}</td>
                                         <td>
@@ -75,6 +80,7 @@
                                         <td>{{ $product->status }}</td>
                                         <td>{{ $product->updatedBy->name }}</td>
                                         <td>{{ $product->updated_at }}</td>
+                                        <td>{{ $product->link }}</td>
                                         <td>
                                             <a href="/admin/products/{{ $product->slug }}/edit" class="btn btn-sm btn-primary">Edit</a>
                                             <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal-default-{{ $product->slug }}">Delete</button>
@@ -86,6 +92,8 @@
                                 <tr>
                                     <th>SNO</th>
                                     <th>Name</th>
+                                    <th>Part No</th>
+                                    <th>Series</th>
                                     <th>Category</th>
                                     <th>Brand</th>
                                     <th>Processor</th>
@@ -97,6 +105,7 @@
                                     <th>Status</th>
                                     <th>Updated By</th>
                                     <th>Updated At</th>
+                                    <th>Link</th>
                                     <th>Actions</th>
                                 </tr>
                             </tfoot>

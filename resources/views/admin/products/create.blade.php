@@ -84,6 +84,16 @@
                                         <label for="name">Name</label>
                                         <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name" required>
                                     </div>
+                                    <!-- Part Number -->
+                                    <div class="form-group">
+                                        <label for="name">Part Number</label>
+                                        <input type="text" class="form-control" id="part_number" name="part_number" placeholder="Enter part number">
+                                    </div>
+                                    <!-- Series Input -->
+                                    <div class="form-group">
+                                        <label for="name">Series</label>
+                                        <input type="text" class="form-control" id="series" name="series" placeholder="Enter series">
+                                    </div>
                                     <!-- Selling Price -->
                                     <div class="form-group">
                                         <label for="selling_price">Selling Price</label>
@@ -99,6 +109,11 @@
                                     <div class="form-group">
                                         <label for="description">Description</label>
                                         <textarea class="form-control" id="description" name="description" placeholder="Enter Description"></textarea>
+                                    </div>
+                                    <!-- Link -->
+                                    <div class="form-group">
+                                        <label for="link">Link</label>
+                                        <textarea class="form-control" id="link" name="link" placeholder="Enter link"></textarea>
                                     </div>
 
                                     <!-- Status Select -->
