@@ -12,7 +12,9 @@ class GuestController extends Controller
     {
         $categories = Category::where('status', 'Active')->get();
         $featured_products = Product::where('is_featured', true)->get();
-        return view('client/welcome', compact('categories','featured_products'));
+        //fetch products based on the number of orders count
+        $best_sellers = Product::all();
+        return view('client/welcome', compact('categories','featured_products','best_sellers'));
     }
     public function shop(Request $request)
     {

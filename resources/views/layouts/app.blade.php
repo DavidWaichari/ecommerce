@@ -433,5 +433,6 @@
         <script src="/ejon/assets/js/wow.min.js"></script>
         <!-- Custom JS -->
         <script src="/ejon/assets/js/main.js"></script>
+        @yield('scrips')
     </body>
 </html>
