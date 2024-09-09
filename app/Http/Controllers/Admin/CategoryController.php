@@ -35,6 +35,12 @@ class CategoryController extends Controller
             'name' => 'required|string|max:255',
         ]);
 
+        if ($request->input('has_processor') == "on") {
+            $request['has_processor'] = true;
+        } else {
+            $request['has_processor'] = false;
+        }
+
         //append auth
         $request['added_by'] = auth()->id();
         $request['updated_by'] = auth()->id();
@@ -74,6 +80,12 @@ class CategoryController extends Controller
             'name' => 'required|string|max:255',
         ]);
 
+        if ($request->input('has_processor') == "on") {
+            $request['has_processor'] = true;
+        } else {
+            $request['has_processor'] = false;
+        }
+        
         $request['updated_by'] = auth()->id();
         // Update the category
         $category->update($request->all());
@@ -93,7 +105,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-  
+
         $category->delete();
 
 

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\BrandControler;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ProcessorControler;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\GuestController;
@@ -35,4 +36,5 @@ Route::prefix('/admin')->name('admin.')->middleware('auth')->group(function () {
     Route::resource('/products', ProductController::class);
     Route::resource('/suppliers', SupplierController::class);
     Route::resource('/brands', BrandControler::class);
+    Route::resource('/processors', ProcessorControler::class);
 });

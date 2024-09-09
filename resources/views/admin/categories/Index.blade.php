@@ -39,6 +39,7 @@
                                 <tr>
                                     <th class="text-center">SNO</th>
                                     <th>Name</th>
+                                    <th>Has Processor</th>
                                     <th>Description</th>
                                     <th>Icon</th>
                                     <th>Status</th>
@@ -52,6 +53,13 @@
                                     <tr>
                                         <td class="text-center">{{ $loop->index + 1 }}</td>
                                         <td><a href="{{route('admin.categories.show', $category->slug)}}">{{ $category->name }}</a></td>
+                                        <td>
+                                            @if ($category->has_processor)
+                                                Yes
+                                            @else
+                                                No
+                                            @endif
+                                        </td>
                                         <td>{{ $category->description }}</td>
                                         <td>
                                             @if ($category->icon)
@@ -74,6 +82,7 @@
                                 <tr>
                                     <th>SNO</th>
                                     <th>Name</th>
+                                    <th>Has Processor</th>
                                     <th>Description</th>
                                     <th>Icon</th>
                                     <th>Status</th>

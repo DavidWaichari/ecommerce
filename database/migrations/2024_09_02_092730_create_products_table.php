@@ -23,6 +23,7 @@ class CreateProductsTable extends Migration
             $table->text('extras')->nullable();
             $table->unsignedBigInteger('category_id')->nullable();
             $table->unsignedBigInteger('brand_id')->nullable();
+            $table->unsignedBigInteger('processor_id')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable(); // ID of the user who last updated the product
             $table->timestamps();
 

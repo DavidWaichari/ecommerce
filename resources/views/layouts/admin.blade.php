@@ -84,44 +84,44 @@
           <!-- Dashboard -->
           <li class="nav-item">
             <a href="/admin/dashboard" class="nav-link {{ Request::is('admin/dashboard*') ? 'active' : '' }}">
-              <i class="nav-icon fas fa-home"></i>
+              <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>Dashboard</p>
             </a>
           </li>
           <!-- Products -->
           <li class="nav-item">
             <a href="/admin/products" class="nav-link {{ Request::is('admin/products*') ? 'active' : '' }}">
-              <i class="nav-icon fas fa-box-open"></i>
+              <i class="nav-icon fas fa-cube"></i>
               <p>Products</p>
             </a>
           </li>
-          <!-- Sub Categories -->
-          {{-- <li class="nav-item">
-            <a href="/admin/sub_categories" class="nav-link {{ Request::is('admin/sub_categories*') ? 'active' : '' }}">
-              <i class="nav-icon fas fa-layer-group"></i>
-              <p>Sub Categories</p>
+          <!-- Processors -->
+          <li class="nav-item">
+            <a href="/admin/processors" class="nav-link {{ Request::is('admin/processors*') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-microchip"></i>
+              <p>Processors</p>
             </a>
-          </li> --}}
-          <!-- Categories -->
+          </li>
+          <!-- Brands -->
           <li class="nav-item">
             <a href="/admin/brands" class="nav-link {{ Request::is('admin/brands*') ? 'active' : '' }}">
-              <i class="nav-icon fas fa-list"></i>
+              <i class="nav-icon fas fa-tags"></i>
               <p>Brands</p>
             </a>
           </li>
           <li class="nav-item">
             <a href="/admin/categories" class="nav-link {{ Request::is('admin/categories*') ? 'active' : '' }}">
-              <i class="nav-icon fas fa-list"></i>
+              <i class="nav-icon fas fa-th-list"></i>
               <p>Categories</p>
             </a>
           </li>
-         <!-- Suppliers -->
-        <li class="nav-item">
+          <!-- Suppliers -->
+          <li class="nav-item">
             <a href="/admin/suppliers" class="nav-link {{ Request::is('admin/suppliers*') ? 'active' : '' }}">
-                <i class="nav-icon fas fa-box"></i>
-                <p>Suppliers</p>
+              <i class="nav-icon fas fa-truck-loading"></i>
+              <p>Suppliers</p>
             </a>
-        </li>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

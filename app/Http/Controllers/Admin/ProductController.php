@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\Processor;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str; // Import the Str class
@@ -27,7 +28,7 @@ class ProductController extends Controller
     {
         $categories = Category::all();
         $brands = Category::all();
-        return view('admin/products/create', compact('categories', 'brands'));
+        return view('admin/products/create', compact('categories', 'brands','processors'));
     }
 
     /**
@@ -37,7 +38,8 @@ class ProductController extends Controller
     {
         $categories = Category::all();
         $brands = Brand::all();
-        return view('admin/products/show', compact('product', 'categories', 'brands'));
+        $processors = Processor::all();
+        return view('admin/products/show', compact('product', 'categories', 'brands','processors'));
     }
 
     /**
@@ -98,7 +100,8 @@ class ProductController extends Controller
     {
         $categories = Category::all();
         $brands = Brand::all();
-        return view('admin/products/edit', compact('product', 'categories', 'brands'));
+        $processors = Processor::all();
+        return view('admin/products/edit', compact('product', 'categories', 'brands','processors'));
     }
 
     /**

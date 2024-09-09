@@ -67,6 +67,18 @@
                                             </select>
                                         </div>
                                     </div>
+                                    <!-- Processor -->
+                                    <div class="form-group">
+                                        <div class="d-flex flex-column align-items-start">
+                                            <label for="processorSelect">Select Processor</label>
+                                            <select class="select2 form-control" id="processorSelect" name="processor_id" required>
+                                                <option value="" selected="selected">Select Processor</option>
+                                                @foreach ($processors as $processor)
+                                                <option value="{{$processor->id}}">{{$processor->name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
                                     <!-- Name Input -->
                                     <div class="form-group">
                                         <label for="name">Name</label>

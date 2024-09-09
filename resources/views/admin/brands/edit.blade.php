@@ -40,23 +40,23 @@
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form action="{{ route('admin.brands.update', $category->slug) }}" method="POST" autocomplete="off" enctype="multipart/form-data">
+                            <form action="{{ route('admin.brands.update', $brand->slug) }}" method="POST" autocomplete="off" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="name">Name</label>
-                                        <input type="text" class="form-control" id="name" name="name" value="{{ old('name', $category->name) }}" placeholder="Enter Name" required>
+                                        <input type="text" class="form-control" id="name" name="name" value="{{ old('name', $brand->name) }}" placeholder="Enter Name" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="description">Description</label>
-                                        <textarea class="form-control" id="description" name="description" placeholder="Enter Description">{{ old('description', $category->description) }}</textarea>
+                                        <textarea class="form-control" id="description" name="description" placeholder="Enter Description">{{ old('description', $brand->description) }}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="status">Status</label>
                                         <select class="form-control" id="status" name="status">
-                                            <option value="active" {{ $category->status === 'Active' ? 'selected' : '' }}>Active</option>
-                                            <option value="inactive" {{ $category->status === 'Inactive' ? 'selected' : '' }}>Inactive</option>
+                                            <option value="active" {{ $brand->status === 'Active' ? 'selected' : '' }}>Active</option>
+                                            <option value="inactive" {{ $brand->status === 'Inactive' ? 'selected' : '' }}>Inactive</option>
                                         </select>
                                     </div>
                                 </div>

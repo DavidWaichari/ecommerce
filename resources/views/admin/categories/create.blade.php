@@ -63,6 +63,13 @@
                                         <label for="icon">Font Awesome Web Icon e.g desktop </label>
                                         <input type="text" class="form-control" id="icon" name="icon" placeholder="Font awesome icon eg. desktop">
                                     </div>
+                                    <!-- Has Processor Checkbox -->
+                                    <div class="form-group">
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="has_processor" name="has_processor">
+                                            <label class="form-check-label" for="has_processor">Has Processor</label>
+                                        </div>
+                                    </div>
                                 </div>
                                 <!-- /.card-body -->
 
