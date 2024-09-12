@@ -132,8 +132,8 @@ class ProductsTableSeeder extends Seeder
                 'status' => 'Active',
                 'is_featured' => false,
                 'is_sold' => false,
-                'featured_image' => 'smartphone.jpg',
-                'images' => json_encode(['smartphone.jpg']),
+                'featured_image' => 'smartphone.png',
+                'images' => json_encode(['smartphone.png']),
                 'category_id' => 5, // Mobiles & Tablets
                 'selling_price' => 89.99,
                 'discount_price' => 75, //less than selling

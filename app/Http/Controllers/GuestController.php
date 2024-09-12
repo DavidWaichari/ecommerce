@@ -15,8 +15,9 @@ class GuestController extends Controller
         $featured_products = Product::where('is_featured', true)->get();
         //fetch products based on the number of orders count
         $best_sellers = Product::all();
+        $popular_products = Product::all();
         $brands = Brand::all();
-        return view('client/welcome', compact('categories','featured_products','best_sellers', 'brands'));
+        return view('client/welcome', compact('categories','featured_products','best_sellers', 'brands','popular_products'));
     }
     public function shop(Request $request)
     {

@@ -36,6 +36,9 @@ class Product extends Model
         'images' => 'array', // This will cast the 'images' attribute to an array
     ];
 
+    protected $appends = [
+        'featured_image_url'
+    ];
 
     // Relationship with Category
     public function category()
@@ -76,5 +79,10 @@ class Product extends Model
     public function getRouteKeyName()
     {
         return 'slug';
+    }
+
+    public function getFeaturedImageUrlAttribute()
+    {
+        return '/uploads/featured_images/'.$this->featured_image;
     }
 }
