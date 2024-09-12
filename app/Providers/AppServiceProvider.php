@@ -22,7 +22,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         View::composer('layouts.app', function ($view) {
-            $categories = Category::where('status', 'Active')->get();
+            $categories = Category::where('status', 'Active')->with('products')->get();
             $view->with('categories', $categories);
         });
     }

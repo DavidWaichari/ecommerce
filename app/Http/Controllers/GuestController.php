@@ -10,7 +10,7 @@ class GuestController extends Controller
 {
     public function welcome()
     {
-        $categories = Category::where('status', 'Active')->get();
+        $categories = Category::where('status', 'Active')->with('products')->get();
         $featured_products = Product::where('is_featured', true)->get();
         //fetch products based on the number of orders count
         $best_sellers = Product::all();
