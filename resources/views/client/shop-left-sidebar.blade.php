@@ -1,799 +1,1103 @@
 @extends('layouts/app')
 @section('content')
-    <!-- Start Page Banner -->
-    <div class="page-title-area">
-        <div class="container">
-            <div class="page-title-content">
-                <h2>Shop </h2>
-
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li>Shop </li>
-                </ul>
-            </div>
-        </div>
+  <!-- section-->
+  <div class="mt-4">
+    <div class="container">
+       <!-- row -->
+       <div class="row">
+          <!-- col -->
+          <div class="col-12">
+             <!-- breadcrumb -->
+             <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0">
+                   <li class="breadcrumb-item"><a href="#!">Home</a></li>
+                   <li class="breadcrumb-item"><a href="#!">Shop</a></li>
+                   <li class="breadcrumb-item active" aria-current="page">Snacks &amp; Munchies</li>
+                </ol>
+             </nav>
+          </div>
+       </div>
     </div>
-    <!-- End Page Banner -->
+ </div>
+ <!-- section -->
+ <div class="mt-8 mb-lg-14 mb-8">
+    <!-- container -->
+    <div class="container">
+       <!-- row -->
+       <div class="row gx-10">
+          <!-- col -->
+          <aside class="col-lg-3 col-md-4 mb-6 mb-md-0">
+             <div class="offcanvas offcanvas-start offcanvas-collapse w-md-50" tabindex="-1" id="offcanvasCategory" aria-labelledby="offcanvasCategoryLabel">
+                <div class="offcanvas-header d-lg-none">
+                   <h5 class="offcanvas-title" id="offcanvasCategoryLabel">Filter</h5>
+                   <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body ps-lg-2 pt-lg-0">
+                   <div class="mb-8">
+                      <!-- title -->
+                      <h5 class="mb-3">Categories</h5>
+                      <!-- nav -->
+                      <ul class="nav nav-category" id="categoryCollapseMenu">
+                         <li class="nav-item border-bottom w-100">
+                            <a href="#" class="nav-link collapsed" data-bs-toggle="collapse" data-bs-target="#categoryFlushOne" aria-expanded="false" aria-controls="categoryFlushOne">
+                               Dairy, Bread &amp; Eggs
+                               <i class="feather-icon icon-chevron-right"></i>
+                            </a>
+                            <!-- accordion collapse -->
+                            <div id="categoryFlushOne" class="accordion-collapse collapse" data-bs-parent="#categoryCollapseMenu">
+                               <div>
+                                  <!-- nav -->
 
-    <!-- Start Shop Area -->
-    <section class="shop-area bg-ffffff pt-50 pb-50">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-12">
-                    <aside class="widget-area">
-                        <div class="widget widget_search">
-                            <form class="search-form">
-                                <label>
-                                    <span class="screen-reader-text">Search for:</span>
-                                    <input type="search" class="search-field" placeholder="Search...">
-                                </label>
-                                <button type="submit">
-                                    <i class='bx bx-search-alt'></i>
-                                </button>
-                            </form>
-                        </div>
-
-                        <div class="widget widget_categories">
-                            <h3 class="widget-title">Categories</h3>
-
-                            <ul class="slider-categories">
-                                @foreach ($categories as $category)
-                                    <li>
-                                        <a href="{{ url('/shop?category=' . $category->slug) }}" class="nav-link">
-                                            <i class="fa fa-{{ $category->icon }}"></i>
-                                            {{ $category->name }}
-                                        </a>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
-
-                        <div class="widget widget_price">
-                            <h3 class="widget-title">Price</h3>
-
-                            <form class="price-range-content">
-                                <div class="price-range-bar" id="range-slider"></div>
-                                <div class="price-range-filter">
-                                    <div class="price-range-filter-item d-flex align-items-center order-1 order-xl-2">
-                                        <h4>Range:</h4>
-                                        <input type="text" id="price-amount" readonly="">
-                                    </div>
-
-                                    <div class="price-range-filter-item price-range-filter-button order-2 order-xl-1">
-                                        <button class="btn btn-red btn-icon">Filter</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-
-                        <section class="widget widget_continents">
-                            <h3 class="widget-title">Supplier by Continents</h3>
-
-                            <ul class="continents-list-row">
-                                <li><a href="#">Asia</a></li>
-                                <li class="active"><a href="#">Europe</a></li>
-                                <li><a href="#">Africa</a></li>
-                                <li><a href="#">Antarctica</a></li>
-                                <li><a href="#">North America</a></li>
-                                <li><a href="#">South America</a></li>
-                                <li><a href="#">Oceania</a></li>
-                            </ul>
-                        </section>
-
-                        <div class="widget widget_best-seller-products">
-                            <h3 class="widget-title">Best Seller</h3>
-
-                            <article class="item">
-                                <a href="#" class="thumb">
-                                    <span class="fullimage cover bg1" role="img"></span>
-                                </a>
-                                <div class="info">
-                                    <h4 class="title usmall">
-                                        <a href="products-details.html">Action Camera</a>
-                                    </h4>
-                                    <span>June 10, 2024</span>
-                                    <ul class="rating">
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                    </ul>
-                                </div>
-                            </article>
-
-                            <article class="item">
-                                <a href="#" class="thumb">
-                                    <span class="fullimage cover bg2" role="img"></span>
-                                </a>
-                                <div class="info">
-                                    <h4 class="title usmall">
-                                        <a href="products-details.html">Digital Camera</a>
-                                    </h4>
-                                    <span>June 10, 2024</span>
-                                    <ul class="rating">
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                    </ul>
-                                </div>
-                            </article>
-
-                            <article class="item">
-                                <a href="#" class="thumb">
-                                    <span class="fullimage cover bg3" role="img"></span>
-                                </a>
-                                <div class="info">
-                                    <h4 class="title usmall">
-                                        <a href="products-details.html">Wireless Headphone</a>
-                                    </h4>
-                                    <span>June 10, 2024</span>
-                                    <ul class="rating">
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                    </ul>
-                                </div>
-                            </article>
-                        </div>
-
-                        <div class="widget widget_arrival">
-                            <div class="special-products-inner">
-                                <div class="inner-content">
-                                    <span>New Arrival</span>
-                                    <h3>Special Laptop</h3>
-                                    <p>Stock is Limited</p>
-
-                                    <div class="inner-btn">
-                                        <a href="#" class="default-btn">
-                                            <i class="flaticon-shopping-cart"></i>
-                                            Shop Now
-                                            <span></span>
-                                        </a>
-                                    </div>
-                                </div>
+                                  <ul class="nav flex-column ms-3">
+                                     <!-- nav item -->
+                                     <li class="nav-item"><a href="#!" class="nav-link">Milk</a></li>
+                                     <!-- nav item -->
+                                     <li class="nav-item"><a href="#!" class="nav-link">Milk Drinks</a></li>
+                                     <!-- nav item -->
+                                     <li class="nav-item"><a href="#!" class="nav-link">Curd &amp; Yogurt</a></li>
+                                     <!-- nav item -->
+                                     <li class="nav-item"><a href="#!" class="nav-link">Eggs</a></li>
+                                     <!-- nav item -->
+                                     <li class="nav-item"><a href="#!" class="nav-link">Bread</a></li>
+                                     <!-- nav item -->
+                                     <li class="nav-item"><a href="#!" class="nav-link">Buns &amp; Bakery</a></li>
+                                     <!-- nav item -->
+                                     <li class="nav-item"><a href="#!" class="nav-link">Butter &amp; More</a></li>
+                                     <!-- nav item -->
+                                     <li class="nav-item"><a href="#!" class="nav-link">Cheese</a></li>
+                                     <!-- nav item -->
+                                     <li class="nav-item"><a href="#!" class="nav-link">Paneer &amp; Tofu</a></li>
+                                     <!-- nav item -->
+                                     <li class="nav-item"><a href="#!" class="nav-link">Cream &amp; Whitener</a></li>
+                                     <!-- nav item -->
+                                     <li class="nav-item"><a href="#!" class="nav-link">Condensed Milk</a></li>
+                                     <!-- nav item -->
+                                     <li class="nav-item"><a href="#!" class="nav-link">Vegan Drinks</a></li>
+                                  </ul>
+                               </div>
                             </div>
-                        </div>
-                    </aside>
+                         </li>
+                         <!-- nav item -->
+                         <li class="nav-item border-bottom w-100">
+                            <a href="#" class="nav-link collapsed" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                               Snacks &amp; Munchies
+                               <i class="feather-icon icon-chevron-right"></i>
+                            </a>
+
+                            <!-- collapse -->
+                            <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#categoryCollapseMenu">
+                               <div>
+                                  <ul class="nav flex-column ms-3">
+                                     <!-- nav item -->
+                                     <li class="nav-item"><a href="#!" class="nav-link">Chips &amp; Crisps</a></li>
+                                     <!-- nav item -->
+                                     <li class="nav-item"><a href="#!" class="nav-link">Nachos</a></li>
+                                     <!-- nav item -->
+                                     <li class="nav-item"><a href="#!" class="nav-link">Popcorn</a></li>
+                                     <!-- nav item -->
+                                     <li class="nav-item"><a href="#!" class="nav-link">Bhujia &amp; Mixtures</a></li>
+                                     <!-- nav item -->
+                                     <li class="nav-item"><a href="#!" class="nav-link">Namkeen Snacks</a></li>
+                                     <!-- nav item -->
+                                     <li class="nav-item"><a href="#!" class="nav-link">Healthy Snacks</a></li>
+                                     <!-- nav item -->
+                                     <li class="nav-item"><a href="#!" class="nav-link">Cakes &amp; Rolls</a></li>
+                                     <!-- nav item -->
+                                     <li class="nav-item"><a href="#!" class="nav-link">Energy Bars</a></li>
+                                     <!-- nav item -->
+                                     <li class="nav-item"><a href="#!" class="nav-link">Papad &amp; Fryums</a></li>
+                                     <!-- nav item -->
+                                     <li class="nav-item"><a href="#!" class="nav-link">Rusks &amp; Wafers</a></li>
+                                  </ul>
+                               </div>
+                            </div>
+                         </li>
+                         <li class="nav-item border-bottom w-100">
+                            <a href="#" class="nav-link collapsed" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                               Fruits &amp; Vegetables
+                               <i class="feather-icon icon-chevron-right"></i>
+                            </a>
+
+                            <!-- collapse -->
+                            <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#categoryCollapseMenu">
+                               <div>
+                                  <ul class="nav flex-column ms-3">
+                                     <!-- nav item -->
+                                     <li class="nav-item">
+                                        <a class="nav-link active" aria-current="page" href="#!">Fresh Vegetables</a>
+                                     </li>
+                                     <!-- nav item -->
+                                     <li class="nav-item">
+                                        <a class="nav-link" href="#!">Herbs &amp; Seasonings</a>
+                                     </li>
+                                     <!-- nav item -->
+                                     <li class="nav-item">
+                                        <a class="nav-link" href="#!">Fresh Fruits</a>
+                                     </li>
+                                     <!-- nav item -->
+                                     <li class="nav-item">
+                                        <a class="nav-link" href="#!">Organic Fruits &amp; Vegetables</a>
+                                     </li>
+                                     <!-- nav item -->
+                                     <li class="nav-item">
+                                        <a class="nav-link" href="#!">Cuts &amp; Sprouts</a>
+                                     </li>
+                                     <!-- nav item -->
+                                     <li class="nav-item">
+                                        <a class="nav-link" href="#!">Exotic Fruits &amp; Veggies</a>
+                                     </li>
+                                     <!-- nav item -->
+                                     <li class="nav-item">
+                                        <a class="nav-link" href="#!">Flower Bouquets, Bunches</a>
+                                     </li>
+                                  </ul>
+                               </div>
+                            </div>
+                         </li>
+                         <li class="nav-item border-bottom w-100">
+                            <a href="#" class="nav-link collapsed" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+                               Cold Drinks &amp; Juices
+                               <i class="feather-icon icon-chevron-right"></i>
+                            </a>
+
+                            <!-- collapse -->
+                            <div id="flush-collapseFour" class="accordion-collapse collapse" data-bs-parent="#categoryCollapseMenu">
+                               <div>
+                                  <ul class="nav flex-column ms-3">
+                                     <!-- nav item -->
+                                     <li class="nav-item"><a href="#!" class="nav-link">Soft Drinks</a></li>
+                                     <!-- nav item -->
+                                     <li class="nav-item"><a href="#!" class="nav-link">Fruit Juices</a></li>
+                                     <!-- nav item -->
+                                     <li class="nav-item"><a href="#!" class="nav-link">Coldpress</a></li>
+                                     <!-- nav item -->
+                                     <li class="nav-item"><a href="#!" class="nav-link">Energy Drinks</a></li>
+                                     <!-- nav item -->
+                                     <li class="nav-item"><a href="#!" class="nav-link">Water &amp; Ice Cubes</a></li>
+                                     <!-- nav item -->
+                                     <li class="nav-item"><a href="#!" class="nav-link">Soda &amp; Mixers</a></li>
+                                     <!-- nav item -->
+                                     <li class="nav-item"><a href="#!" class="nav-link">Concentrates &amp; Syrups</a></li>
+                                     <!-- nav item -->
+                                     <li class="nav-item"><a href="#!" class="nav-link">Detox &amp; Energy Drinks</a></li>
+                                     <!-- nav item -->
+                                     <li class="nav-item"><a href="#!" class="nav-link">Juice Collection</a></li>
+                                  </ul>
+                               </div>
+                            </div>
+                         </li>
+
+                         <li class="nav-item border-bottom w-100">
+                            <a href="#" class="nav-link collapsed" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
+                               Breakfast &amp; Instant Food
+                               <i class="feather-icon icon-chevron-right"></i>
+                            </a>
+
+                            <!-- collapse -->
+                            <div id="flush-collapseFive" class="accordion-collapse collapse" data-bs-parent="#categoryCollapseMenu">
+                               <div>
+                                  <ul class="nav flex-column ms-3">
+                                     <!-- nav item -->
+                                     <li class="nav-item">
+                                        <a class="nav-link active" aria-current="page" href="#!">Batter</a>
+                                     </li>
+                                     <!-- nav item -->
+                                     <li class="nav-item">
+                                        <a class="nav-link" href="#!">Breakfast Cereal</a>
+                                     </li>
+                                     <!-- nav item -->
+                                     <li class="nav-item">
+                                        <a class="nav-link" href="#!">Noodles, Pasta &amp; Soup</a>
+                                     </li>
+                                     <!-- nav item -->
+                                     <li class="nav-item">
+                                        <a class="nav-link" href="#!">Frozen Non-Veg Snackss</a>
+                                     </li>
+                                     <!-- nav item -->
+                                     <li class="nav-item">
+                                        <a class="nav-link" href="#!">Frozen Veg</a>
+                                     </li>
+                                     <!-- nav item -->
+                                     <li class="nav-item">
+                                        <a class="nav-link" href="#!">Vermicelli</a>
+                                     </li>
+                                     <!-- nav item -->
+                                     <li class="nav-item">
+                                        <a class="nav-link" href="#!">Instant Mixes</a>
+                                     </li>
+                                  </ul>
+                               </div>
+                            </div>
+                         </li>
+                         <li class="nav-item border-bottom w-100">
+                            <a href="#" class="nav-link collapsed" data-bs-toggle="collapse" data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">
+                               Bakery &amp; Biscuits
+                               <i class="feather-icon icon-chevron-right"></i>
+                            </a>
+
+                            <!-- collapse -->
+                            <div id="flush-collapseSix" class="accordion-collapse collapse" data-bs-parent="#categoryCollapseMenu">
+                               <div>
+                                  <ul class="nav flex-column ms-3">
+                                     <!-- nav item -->
+                                     <li class="nav-item">
+                                        <a class="nav-link active" aria-current="page" href="#!">Cookies</a>
+                                     </li>
+                                     <!-- nav item -->
+                                     <li class="nav-item">
+                                        <a class="nav-link" href="#!">Glucose &amp; Marie</a>
+                                     </li>
+                                     <!-- nav item -->
+                                     <li class="nav-item">
+                                        <a class="nav-link" href="#!">Sweet &amp; Salty</a>
+                                     </li>
+                                     <!-- nav item -->
+                                     <li class="nav-item">
+                                        <a class="nav-link" href="#!">Healthy &amp; Digestive</a>
+                                     </li>
+                                     <!-- nav item -->
+                                     <li class="nav-item">
+                                        <a class="nav-link" href="#!">Cream Biscuits</a>
+                                     </li>
+                                     <!-- nav item -->
+                                     <li class="nav-item">
+                                        <a class="nav-link" href="#!">Rusks &amp; Wafers</a>
+                                     </li>
+                                     <!-- nav item -->
+                                     <li class="nav-item">
+                                        <a class="nav-link" href="#!">Cakes &amp; Rolls</a>
+                                     </li>
+                                     <!-- nav item -->
+                                     <li class="nav-item">
+                                        <a class="nav-link" href="#!">Buns &amp; Bakery</a>
+                                     </li>
+                                  </ul>
+                               </div>
+                            </div>
+                         </li>
+                         <li class="nav-item border-bottom w-100">
+                            <a href="#" class="nav-link collapsed" data-bs-toggle="collapse" data-bs-target="#flush-collapseSeven" aria-expanded="false" aria-controls="flush-collapseSeven">
+                               Chicken, Meat &amp; Fish
+                               <i class="feather-icon icon-chevron-right"></i>
+                            </a>
+
+                            <!-- collapse -->
+                            <div id="flush-collapseSeven" class="accordion-collapse collapse" data-bs-parent="#categoryCollapseMenu">
+                               <div>
+                                  <ul class="nav flex-column ms-3">
+                                     <!-- nav item -->
+                                     <li class="nav-item">
+                                        <a class="nav-link active" aria-current="page" href="#!">Chicken</a>
+                                     </li>
+                                     <!-- nav item -->
+                                     <li class="nav-item">
+                                        <a class="nav-link" href="#!">Sausage, Salami &amp; Ham</a>
+                                     </li>
+                                     <!-- nav item -->
+                                     <li class="nav-item">
+                                        <a class="nav-link" href="#!">Exotic Meat</a>
+                                     </li>
+                                     <!-- nav item -->
+                                     <li class="nav-item">
+                                        <a class="nav-link" href="#!">Eggs</a>
+                                     </li>
+                                     <!-- nav item -->
+                                     <li class="nav-item">
+                                        <a class="nav-link" href="#!">Frozen Non-Veg Snacks</a>
+                                     </li>
+                                  </ul>
+                               </div>
+                            </div>
+                         </li>
+                      </ul>
+                   </div>
+
+                   <div class="mb-8">
+                      <h5 class="mb-3">Stores</h5>
+                      <div class="my-4">
+                         <!-- input -->
+                         <input type="search" class="form-control" placeholder="Search by store">
+                      </div>
+                      <!-- form check -->
+                      <div class="form-check mb-2">
+                         <!-- input -->
+                         <input class="form-check-input" type="checkbox" value="" id="eGrocery" checked="">
+                         <label class="form-check-label" for="eGrocery">E-Grocery</label>
+                      </div>
+                      <!-- form check -->
+                      <div class="form-check mb-2">
+                         <!-- input -->
+                         <input class="form-check-input" type="checkbox" value="" id="DealShare">
+                         <label class="form-check-label" for="DealShare">DealShare</label>
+                      </div>
+                      <!-- form check -->
+                      <div class="form-check mb-2">
+                         <!-- input -->
+                         <input class="form-check-input" type="checkbox" value="" id="Dmart">
+                         <label class="form-check-label" for="Dmart">DMart</label>
+                      </div>
+                      <!-- form check -->
+                      <div class="form-check mb-2">
+                         <!-- input -->
+                         <input class="form-check-input" type="checkbox" value="" id="Blinkit">
+                         <label class="form-check-label" for="Blinkit">Blinkit</label>
+                      </div>
+                      <!-- form check -->
+                      <div class="form-check mb-2">
+                         <!-- input -->
+                         <input class="form-check-input" type="checkbox" value="" id="BigBasket">
+                         <label class="form-check-label" for="BigBasket">BigBasket</label>
+                      </div>
+                      <!-- form check -->
+                      <div class="form-check mb-2">
+                         <!-- input -->
+                         <input class="form-check-input" type="checkbox" value="" id="StoreFront">
+                         <label class="form-check-label" for="StoreFront">StoreFront</label>
+                      </div>
+                      <!-- form check -->
+                      <div class="form-check mb-2">
+                         <!-- input -->
+                         <input class="form-check-input" type="checkbox" value="" id="Spencers">
+                         <label class="form-check-label" for="Spencers">Spencers</label>
+                      </div>
+                      <!-- form check -->
+                      <div class="form-check mb-2">
+                         <!-- input -->
+                         <input class="form-check-input" type="checkbox" value="" id="onlineGrocery">
+                         <label class="form-check-label" for="onlineGrocery">Online Grocery</label>
+                      </div>
+                   </div>
+                   <div class="mb-8">
+                      <!-- price -->
+                      <h5 class="mb-3">Price</h5>
+                      <div>
+                         <!-- range -->
+                         <div id="priceRange" class="mb-3"></div>
+                         <small class="text-muted">Price:</small>
+                         <span id="priceRange-value" class="small"></span>
+                      </div>
+                   </div>
+                   <!-- rating -->
+                   <div class="mb-8">
+                      <h5 class="mb-3">Rating</h5>
+                      <div>
+                         <!-- form check -->
+                         <div class="form-check mb-2">
+                            <!-- input -->
+                            <input class="form-check-input" type="checkbox" value="" id="ratingFive">
+                            <label class="form-check-label" for="ratingFive">
+                               <i class="bi bi-star-fill text-warning"></i>
+                               <i class="bi bi-star-fill text-warning"></i>
+                               <i class="bi bi-star-fill text-warning"></i>
+                               <i class="bi bi-star-fill text-warning"></i>
+                               <i class="bi bi-star-fill text-warning"></i>
+                            </label>
+                         </div>
+                         <!-- form check -->
+                         <div class="form-check mb-2">
+                            <!-- input -->
+                            <input class="form-check-input" type="checkbox" value="" id="ratingFour" checked="">
+                            <label class="form-check-label" for="ratingFour">
+                               <i class="bi bi-star-fill text-warning"></i>
+                               <i class="bi bi-star-fill text-warning"></i>
+                               <i class="bi bi-star-fill text-warning"></i>
+                               <i class="bi bi-star-fill text-warning"></i>
+                               <i class="bi bi-star text-warning"></i>
+                            </label>
+                         </div>
+                         <!-- form check -->
+                         <div class="form-check mb-2">
+                            <!-- input -->
+                            <input class="form-check-input" type="checkbox" value="" id="ratingThree">
+                            <label class="form-check-label" for="ratingThree">
+                               <i class="bi bi-star-fill text-warning"></i>
+                               <i class="bi bi-star-fill text-warning"></i>
+                               <i class="bi bi-star-fill text-warning"></i>
+                               <i class="bi bi-star text-warning"></i>
+                               <i class="bi bi-star text-warning"></i>
+                            </label>
+                         </div>
+                         <!-- form check -->
+                         <div class="form-check mb-2">
+                            <!-- input -->
+                            <input class="form-check-input" type="checkbox" value="" id="ratingTwo">
+                            <label class="form-check-label" for="ratingTwo">
+                               <i class="bi bi-star-fill text-warning"></i>
+                               <i class="bi bi-star-fill text-warning"></i>
+                               <i class="bi bi-star text-warning"></i>
+                               <i class="bi bi-star text-warning"></i>
+                               <i class="bi bi-star text-warning"></i>
+                            </label>
+                         </div>
+                         <!-- form check -->
+                         <div class="form-check mb-2">
+                            <!-- input -->
+                            <input class="form-check-input" type="checkbox" value="" id="ratingOne">
+                            <label class="form-check-label" for="ratingOne">
+                               <i class="bi bi-star-fill text-warning"></i>
+                               <i class="bi bi-star text-warning"></i>
+                               <i class="bi bi-star text-warning"></i>
+                               <i class="bi bi-star text-warning"></i>
+                               <i class="bi bi-star text-warning"></i>
+                            </label>
+                         </div>
+                      </div>
+                   </div>
+                   <div class="mb-8 position-relative">
+                      <!-- Banner Design -->
+                      <!-- Banner Content -->
+                      <div class="position-absolute p-5 py-8">
+                         <h3 class="mb-0">Fresh Fruits</h3>
+                         <p>Get Upto 25% Off</p>
+                         <a href="#" class="btn btn-dark">
+                            Shop Now
+                            <i class="feather-icon icon-arrow-right ms-1"></i>
+                         </a>
+                      </div>
+                      <!-- Banner Content -->
+                      <!-- Banner Image -->
+                      <!-- img -->
+                      <img src="/theme/images/assortment-citrus-fruits.png" alt="" class="img-fluid rounded">
+                      <!-- Banner Image -->
+                   </div>
+                </div>
+             </div>
+          </aside>
+          <section class="col-lg-9 col-md-12">
+             <!-- card -->
+             <div class="card mb-4 bg-light border-0">
+                <!-- card body -->
+                <div class="card-body p-9">
+                   <h2 class="mb-0 fs-1">Snacks &amp; Munchies</h2>
+                </div>
+             </div>
+             <!-- list icon -->
+             <div class="d-lg-flex justify-content-between align-items-center">
+                <div class="mb-3 mb-lg-0">
+                   <p class="mb-0">
+                      <span class="text-dark">24</span>
+                      Products found
+                   </p>
                 </div>
 
-                <div class="col-lg-8 col-md-12">
-                    <div class="products-filter-options">
-                        <div class="row align-items-center">
-                            <div class="col-lg-4 col-md-4">
-                                <div class="d-lg-flex d-md-flex align-items-center">
+                <!-- icon -->
+                <div class="d-md-flex justify-content-between align-items-center">
+                   <div class="d-flex align-items-center justify-content-between">
+                      <div>
+                         <a href="shop-list.html" class="text-muted me-3"><i class="bi bi-list-ul"></i></a>
+                         <a href="shop-grid.html" class="me-3 active"><i class="bi bi-grid"></i></a>
+                         <a href="shop-grid-3-column.html" class="me-3 text-muted"><i class="bi bi-grid-3x3-gap"></i></a>
+                      </div>
+                      <div class="ms-2 d-lg-none">
+                         <a class="btn btn-outline-gray-400 text-muted" data-bs-toggle="offcanvas" href="#offcanvasCategory" role="button" aria-controls="offcanvasCategory">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-filter me-2">
+                               <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+                            </svg>
+                            Filters
+                         </a>
+                      </div>
+                   </div>
 
-                                    <span class="sub-title d-none d-lg-block d-md-block">View:</span>
-
-                                    <div class="view-list-row d-none d-lg-block d-md-block">
-                                        <div class="view-column">
-                                            <a href="#" class="icon-view-two">
-                                                <span></span>
-                                                <span></span>
-                                            </a>
-
-                                            <a href="#" class="icon-view-three active">
-                                                <span></span>
-                                                <span></span>
-                                                <span></span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-4">
-                                <p>Showing 1 – 18 of 100</p>
-                            </div>
-
-                            <div class="col-lg-4 col-md-4">
-                                <div class="products-ordering-list">
-                                    <select>
-                                        <option>Sort by price: low to high</option>
-                                        <option>Default sorting</option>
-                                        <option>Sort by popularity</option>
-                                        <option>Sort by average rating</option>
-                                        <option>Sort by latest</option>
-                                        <option>Sort by price: high to low</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="products-collections-filter" class="row">
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="single-shop-products">
-                                <div class="shop-products-image">
-                                    <a href="products-details.html"><img src="/ejon/assets/img/shop/shop-1.jpg"
-                                            alt="image"></a>
-                                    <div class="tag">New</div>
-                                    <ul class="shop-action">
-                                        <li>
-                                            <a href="cart.html">
-                                                <i class="flaticon-shopping-cart"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="wishlist.html"><i class="flaticon-heart"></i></a>
-                                        </li>
-                                        <li>
-                                            <a href="#" data-bs-toggle="modal"
-                                                data-bs-target="#productsQuickView"><i class="flaticon-view"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <div class="shop-products-content">
-                                    <h3>
-                                        <a href="products-details.html">Action Camera</a>
-                                    </h3>
-                                    <ul class="rating">
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                    </ul>
-                                    <span>$150.00</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="single-shop-products">
-                                <div class="shop-products-image">
-                                    <a href="products-details.html"><img src="/ejon/assets/img/shop/shop-2.jpg"
-                                            alt="image"></a>
-                                    <div class="tag">Sale</div>
-                                    <ul class="shop-action">
-                                        <li>
-                                            <a href="cart.html">
-                                                <i class="flaticon-shopping-cart"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="wishlist.html"><i class="flaticon-heart"></i></a>
-                                        </li>
-                                        <li>
-                                            <a href="#" data-bs-toggle="modal"
-                                                data-bs-target="#productsQuickView"><i class="flaticon-view"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <div class="shop-products-content">
-                                    <h3>
-                                        <a href="products-details.html">Protable Speakers</a>
-                                    </h3>
-                                    <ul class="rating">
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                    </ul>
-                                    <span>$125.00</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="single-shop-products">
-                                <div class="shop-products-image">
-                                    <a href="products-details.html"><img src="/ejon/assets/img/shop/shop-3.jpg"
-                                            alt="image"></a>
-                                    <div class="tag">New</div>
-                                    <ul class="shop-action">
-                                        <li>
-                                            <a href="cart.html">
-                                                <i class="flaticon-shopping-cart"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="wishlist.html"><i class="flaticon-heart"></i></a>
-                                        </li>
-                                        <li>
-                                            <a href="#" data-bs-toggle="modal"
-                                                data-bs-target="#productsQuickView"><i class="flaticon-view"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <div class="shop-products-content">
-                                    <h3>
-                                        <a href="products-details.html">Gaming Controller</a>
-                                    </h3>
-                                    <ul class="rating">
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                    </ul>
-                                    <span>$100.00</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="single-shop-products">
-                                <div class="shop-products-image">
-                                    <a href="products-details.html"><img src="/ejon/assets/img/shop/shop-4.jpg"
-                                            alt="image"></a>
-                                    <div class="tag">New</div>
-                                    <ul class="shop-action">
-                                        <li>
-                                            <a href="cart.html">
-                                                <i class="flaticon-shopping-cart"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="wishlist.html"><i class="flaticon-heart"></i></a>
-                                        </li>
-                                        <li>
-                                            <a href="#" data-bs-toggle="modal"
-                                                data-bs-target="#productsQuickView"><i class="flaticon-view"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <div class="shop-products-content">
-                                    <h3>
-                                        <a href="products-details.html">Camera Lense</a>
-                                    </h3>
-                                    <ul class="rating">
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                    </ul>
-                                    <span>$170.00</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="single-shop-products">
-                                <div class="shop-products-image">
-                                    <a href="products-details.html"><img src="/ejon/assets/img/shop/shop-5.jpg"
-                                            alt="image"></a>
-                                    <div class="tag">New</div>
-                                    <ul class="shop-action">
-                                        <li>
-                                            <a href="cart.html">
-                                                <i class="flaticon-shopping-cart"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="wishlist.html"><i class="flaticon-heart"></i></a>
-                                        </li>
-                                        <li>
-                                            <a href="#" data-bs-toggle="modal"
-                                                data-bs-target="#productsQuickView"><i class="flaticon-view"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <div class="shop-products-content">
-                                    <h3>
-                                        <a href="products-details.html">Airpods Pro</a>
-                                    </h3>
-                                    <ul class="rating">
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                    </ul>
-                                    <span>$100.00</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="single-shop-products">
-                                <div class="shop-products-image">
-                                    <a href="products-details.html"><img src="/ejon/assets/img/shop/shop-6.jpg"
-                                            alt="image"></a>
-                                    <div class="tag">New</div>
-                                    <ul class="shop-action">
-                                        <li>
-                                            <a href="cart.html">
-                                                <i class="flaticon-shopping-cart"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="wishlist.html"><i class="flaticon-heart"></i></a>
-                                        </li>
-                                        <li>
-                                            <a href="#" data-bs-toggle="modal"
-                                                data-bs-target="#productsQuickView"><i class="flaticon-view"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <div class="shop-products-content">
-                                    <h3>
-                                        <a href="products-details.html">CCtv Camera</a>
-                                    </h3>
-                                    <ul class="rating">
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                    </ul>
-                                    <span>$120.00</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="single-shop-products">
-                                <div class="shop-products-image">
-                                    <a href="products-details.html"><img src="/ejon/assets/img/shop/shop-7.jpg"
-                                            alt="image"></a>
-                                    <div class="tag">New</div>
-                                    <ul class="shop-action">
-                                        <li>
-                                            <a href="cart.html">
-                                                <i class="flaticon-shopping-cart"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="wishlist.html"><i class="flaticon-heart"></i></a>
-                                        </li>
-                                        <li>
-                                            <a href="#" data-bs-toggle="modal"
-                                                data-bs-target="#productsQuickView"><i class="flaticon-view"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <div class="shop-products-content">
-                                    <h3>
-                                        <a href="products-details.html">Digital Camera</a>
-                                    </h3>
-                                    <ul class="rating">
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                    </ul>
-                                    <span>$125.00</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="single-shop-products">
-                                <div class="shop-products-image">
-                                    <a href="products-details.html"><img src="/ejon/assets/img/shop/shop-8.jpg"
-                                            alt="image"></a>
-                                    <div class="tag">Sale</div>
-                                    <ul class="shop-action">
-                                        <li>
-                                            <a href="cart.html">
-                                                <i class="flaticon-shopping-cart"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="wishlist.html"><i class="flaticon-heart"></i></a>
-                                        </li>
-                                        <li>
-                                            <a href="#" data-bs-toggle="modal"
-                                                data-bs-target="#productsQuickView"><i class="flaticon-view"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <div class="shop-products-content">
-                                    <h3>
-                                        <a href="products-details.html">Wireless Headphone</a>
-                                    </h3>
-                                    <ul class="rating">
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                    </ul>
-                                    <span>$175.00</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="single-shop-products">
-                                <div class="shop-products-image">
-                                    <a href="products-details.html"><img src="/ejon/assets/img/shop/shop-9.jpg"
-                                            alt="image"></a>
-                                    <div class="tag">New</div>
-                                    <ul class="shop-action">
-                                        <li>
-                                            <a href="cart.html">
-                                                <i class="flaticon-shopping-cart"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="wishlist.html"><i class="flaticon-heart"></i></a>
-                                        </li>
-                                        <li>
-                                            <a href="#" data-bs-toggle="modal"
-                                                data-bs-target="#productsQuickView"><i class="flaticon-view"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <div class="shop-products-content">
-                                    <h3>
-                                        <a href="products-details.html">Bluetooth Speaker</a>
-                                    </h3>
-                                    <ul class="rating">
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                    </ul>
-                                    <span>$75.00</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="single-shop-products">
-                                <div class="shop-products-image">
-                                    <a href="products-details.html"><img src="/ejon/assets/img/shop/shop-10.jpg"
-                                            alt="image"></a>
-                                    <div class="tag">New</div>
-                                    <ul class="shop-action">
-                                        <li>
-                                            <a href="cart.html">
-                                                <i class="flaticon-shopping-cart"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="wishlist.html"><i class="flaticon-heart"></i></a>
-                                        </li>
-                                        <li>
-                                            <a href="#" data-bs-toggle="modal"
-                                                data-bs-target="#productsQuickView"><i class="flaticon-view"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <div class="shop-products-content">
-                                    <h3>
-                                        <a href="products-details.html">Digital Camera</a>
-                                    </h3>
-                                    <ul class="rating">
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                    </ul>
-                                    <span>$700.00</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="single-shop-products">
-                                <div class="shop-products-image">
-                                    <a href="products-details.html"><img src="/ejon/assets/img/shop/shop-11.jpg"
-                                            alt="image"></a>
-                                    <div class="tag">New</div>
-                                    <ul class="shop-action">
-                                        <li>
-                                            <a href="cart.html">
-                                                <i class="flaticon-shopping-cart"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="wishlist.html"><i class="flaticon-heart"></i></a>
-                                        </li>
-                                        <li>
-                                            <a href="#" data-bs-toggle="modal"
-                                                data-bs-target="#productsQuickView"><i class="flaticon-view"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <div class="shop-products-content">
-                                    <h3>
-                                        <a href="products-details.html">Smart TV</a>
-                                    </h3>
-                                    <ul class="rating">
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                    </ul>
-                                    <span>$500.00</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="single-shop-products">
-                                <div class="shop-products-image">
-                                    <a href="products-details.html"><img src="/ejon/assets/img/shop/shop-12.jpg"
-                                            alt="image"></a>
-                                    <div class="tag">New</div>
-                                    <ul class="shop-action">
-                                        <li>
-                                            <a href="cart.html">
-                                                <i class="flaticon-shopping-cart"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="wishlist.html"><i class="flaticon-heart"></i></a>
-                                        </li>
-                                        <li>
-                                            <a href="#" data-bs-toggle="modal"
-                                                data-bs-target="#productsQuickView"><i class="flaticon-view"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <div class="shop-products-content">
-                                    <h3>
-                                        <a href="#">New Smart Phone</a>
-                                    </h3>
-                                    <ul class="rating">
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                    </ul>
-                                    <span>$175.00</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="single-shop-products">
-                                <div class="shop-products-image">
-                                    <a href="products-details.html"><img src="/ejon/assets/img/shop/shop-13.jpg"
-                                            alt="image"></a>
-                                    <div class="tag">Sale</div>
-                                    <ul class="shop-action">
-                                        <li>
-                                            <a href="cart.html">
-                                                <i class="flaticon-shopping-cart"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="wishlist.html"><i class="flaticon-heart"></i></a>
-                                        </li>
-                                        <li>
-                                            <a href="#" data-bs-toggle="modal"
-                                                data-bs-target="#productsQuickView"><i class="flaticon-view"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <div class="shop-products-content">
-                                    <h3>
-                                        <a href="products-details.html">Wireless Keyboard</a>
-                                    </h3>
-                                    <ul class="rating">
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                    </ul>
-                                    <span>$75.00</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="single-shop-products">
-                                <div class="shop-products-image">
-                                    <a href="products-details.html"><img src="/ejon/assets/img/shop/shop-14.jpg"
-                                            alt="image"></a>
-                                    <div class="tag">Sale</div>
-                                    <ul class="shop-action">
-                                        <li>
-                                            <a href="cart.html">
-                                                <i class="flaticon-shopping-cart"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="wishlist.html"><i class="flaticon-heart"></i></a>
-                                        </li>
-                                        <li>
-                                            <a href="#" data-bs-toggle="modal"
-                                                data-bs-target="#productsQuickView"><i class="flaticon-view"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <div class="shop-products-content">
-                                    <h3>
-                                        <a href="products-details.html">Wireless Mouse</a>
-                                    </h3>
-                                    <ul class="rating">
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                    </ul>
-                                    <span>$175.00</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-sm-6 offset-lg-0 offset-md-3">
-                            <div class="single-shop-products">
-                                <div class="shop-products-image">
-                                    <a href="products-details.html"><img src="/ejon/assets/img/shop/shop-15.jpg"
-                                            alt="image"></a>
-                                    <div class="tag">New</div>
-                                    <ul class="shop-action">
-                                        <li>
-                                            <a href="cart.html">
-                                                <i class="flaticon-shopping-cart"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="wishlist.html"><i class="flaticon-heart"></i></a>
-                                        </li>
-                                        <li>
-                                            <a href="#" data-bs-toggle="modal"
-                                                data-bs-target="#productsQuickView"><i class="flaticon-view"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <div class="shop-products-content">
-                                    <h3>
-                                        <a href="products-details.html">Smart Watch</a>
-                                    </h3>
-                                    <ul class="rating">
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                        <li><i class='bx bxs-star'></i></li>
-                                    </ul>
-                                    <span>$99.00</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-12 col-md-12">
-                            <div class="pagination-area">
-                                <a href="#" class="prev page-numbers">
-                                    <i class='flaticon-left-arrow'></i>
-                                </a>
-                                <a href="#" class="page-numbers">1</a>
-                                <span class="page-numbers current" aria-current="page">2</span>
-                                <a href="#" class="page-numbers">3</a>
-                                <a href="#" class="page-numbers">4</a>
-                                <a href="#" class="next page-numbers">
-                                    <i class='flaticon-right-arrow'></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                   <div class="d-flex mt-2 mt-lg-0">
+                      <div class="me-2 flex-grow-1">
+                         <!-- select option -->
+                         <select class="form-select">
+                            <option selected="">Show: 50</option>
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="30">30</option>
+                         </select>
+                      </div>
+                      <div>
+                         <!-- select option -->
+                         <select class="form-select">
+                            <option selected="">Sort by: Featured</option>
+                            <option value="Low to High">Price: Low to High</option>
+                            <option value="High to Low">Price: High to Low</option>
+                            <option value="Release Date">Release Date</option>
+                            <option value="Avg. Rating">Avg. Rating</option>
+                         </select>
+                      </div>
+                   </div>
                 </div>
-            </div>
-        </div>
-    </section>
-    <!-- End Shop Area -->
+             </div>
+             <!-- row -->
+             <div class="row g-4 row-cols-xl-4 row-cols-lg-3 row-cols-2 row-cols-md-2 mt-2">
+                <!-- col -->
+                <div class="col">
+                   <!-- card -->
+                   <div class="card card-product">
+                      <div class="card-body">
+                         <!-- badge -->
+                         <div class="text-center position-relative">
+                            <div class="position-absolute top-0 start-0">
+                               <span class="badge bg-danger">Sale</span>
+                            </div>
+                            <a href="shop-single.html">
+                               <!-- img -->
+                               <img src="/theme/images/product-img-1.jpg" alt="Grocery Ecommerce Template" class="mb-3 img-fluid">
+                            </a>
+                            <!-- action btn -->
+                            <div class="card-product-action">
+                               <a href="#!" class="btn-action" data-bs-toggle="modal" data-bs-target="#quickViewModal">
+                                  <i class="bi bi-eye" data-bs-toggle="tooltip" data-bs-html="true" title="Quick View"></i>
+                               </a>
+                               <a href="shop-wishlist.html" class="btn-action" data-bs-toggle="tooltip" data-bs-html="true" title="Wishlist"><i class="bi bi-heart"></i></a>
+                               <a href="#!" class="btn-action" data-bs-toggle="tooltip" data-bs-html="true" title="Compare"><i class="bi bi-arrow-left-right"></i></a>
+                            </div>
+                         </div>
+                         <!-- heading -->
+                         <div class="text-small mb-1">
+                            <a href="#!" class="text-decoration-none text-muted"><small>Snack &amp; Munchies</small></a>
+                         </div>
+                         <h2 class="fs-6"><a href="shop-single.html" class="text-inherit text-decoration-none">Haldiram's Sev Bhujia</a></h2>
+                         <div>
+                            <!-- rating -->
+                            <small class="text-warning">
+                               <i class="bi bi-star-fill"></i>
+                               <i class="bi bi-star-fill"></i>
+                               <i class="bi bi-star-fill"></i>
+                               <i class="bi bi-star-fill"></i>
+                               <i class="bi bi-star-half"></i>
+                            </small>
+                            <span class="text-muted small">4.5(149)</span>
+                         </div>
+                         <!-- price -->
+                         <div class="d-flex justify-content-between align-items-center mt-3">
+                            <div>
+                               <span class="text-dark">$18</span>
+                               <span class="text-decoration-line-through text-muted">$24</span>
+                            </div>
+                            <!-- btn -->
+                            <div>
+                               <a href="#!" class="btn btn-primary btn-sm">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus">
+                                     <line x1="12" y1="5" x2="12" y2="19"></line>
+                                     <line x1="5" y1="12" x2="19" y2="12"></line>
+                                  </svg>
+                                  Add
+                               </a>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+                <!-- col -->
+                <div class="col">
+                   <!-- card -->
+                   <div class="card card-product">
+                      <div class="card-body">
+                         <!-- badge -->
+                         <div class="text-center position-relative">
+                            <div class="position-absolute top-0 start-0">
+                               <span class="badge bg-success">14%</span>
+                            </div>
+
+                            <a href="shop-single.html">
+                               <!-- img -->
+                               <img src="/theme/images/product-img-2.jpg" alt="Grocery Ecommerce Template" class="mb-3 img-fluid">
+                            </a>
+                            <!-- action btn -->
+                            <div class="card-product-action">
+                               <a href="#!" class="btn-action" data-bs-toggle="modal" data-bs-target="#quickViewModal">
+                                  <i class="bi bi-eye" data-bs-toggle="tooltip" data-bs-html="true" title="Quick View"></i>
+                               </a>
+                               <a href="shop-wishlist.html" class="btn-action" data-bs-toggle="tooltip" data-bs-html="true" title="Wishlist"><i class="bi bi-heart"></i></a>
+                               <a href="#!" class="btn-action" data-bs-toggle="tooltip" data-bs-html="true" title="Compare"><i class="bi bi-arrow-left-right"></i></a>
+                            </div>
+                         </div>
+                         <!-- heading -->
+                         <div class="text-small mb-1">
+                            <a href="#!" class="text-decoration-none text-muted"><small>Bakery &amp; Biscuits</small></a>
+                         </div>
+                         <h2 class="fs-6"><a href="shop-single.html" class="text-inherit text-decoration-none">NutriChoice Digestive</a></h2>
+                         <div class="text-warning">
+                            <!-- rating -->
+                            <small>
+                               <i class="bi bi-star-fill"></i>
+                               <i class="bi bi-star-fill"></i>
+                               <i class="bi bi-star-fill"></i>
+                               <i class="bi bi-star-fill"></i>
+                               <i class="bi bi-star-half"></i>
+                            </small>
+                            <span class="text-muted small">4.5 (25)</span>
+                         </div>
+                         <!-- price -->
+                         <div class="d-flex justify-content-between align-items-center mt-3">
+                            <div><span class="text-dark">$24</span></div>
+                            <!-- btn -->
+                            <div>
+                               <a href="#!" class="btn btn-primary btn-sm">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus">
+                                     <line x1="12" y1="5" x2="12" y2="19"></line>
+                                     <line x1="5" y1="12" x2="19" y2="12"></line>
+                                  </svg>
+                                  Add
+                               </a>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+                <!-- col -->
+                <div class="col">
+                   <!-- card -->
+                   <div class="card card-product">
+                      <div class="card-body">
+                         <!-- badge -->
+                         <div class="text-center position-relative">
+                            <a href="shop-single.html"><img src="/theme/images/product-img-3.jpg" alt="Grocery Ecommerce Template" class="mb-3 img-fluid"></a>
+                            <!-- action btn -->
+                            <div class="card-product-action">
+                               <a href="#!" class="btn-action" data-bs-toggle="modal" data-bs-target="#quickViewModal">
+                                  <i class="bi bi-eye" data-bs-toggle="tooltip" data-bs-html="true" title="Quick View"></i>
+                               </a>
+                               <a href="shop-wishlist.html" class="btn-action" data-bs-toggle="tooltip" data-bs-html="true" title="Wishlist"><i class="bi bi-heart"></i></a>
+                               <a href="#!" class="btn-action" data-bs-toggle="tooltip" data-bs-html="true" title="Compare"><i class="bi bi-arrow-left-right"></i></a>
+                            </div>
+                         </div>
+                         <!-- heading -->
+                         <div class="text-small mb-1">
+                            <a href="#!" class="text-decoration-none text-muted"><small>Bakery &amp; Biscuits</small></a>
+                         </div>
+                         <h2 class="fs-6"><a href="shop-single.html" class="text-inherit text-decoration-none">Cadbury 5 Star Chocolate</a></h2>
+                         <div class="text-warning">
+                            <!-- rating -->
+                            <small>
+                               <i class="bi bi-star-fill"></i>
+                               <i class="bi bi-star-fill"></i>
+                               <i class="bi bi-star-fill"></i>
+                               <i class="bi bi-star-fill"></i>
+                               <i class="bi bi-star-fill"></i>
+                            </small>
+                            <span class="text-muted small">5 (469)</span>
+                         </div>
+                         <!-- price -->
+                         <div class="d-flex justify-content-between align-items-center mt-3">
+                            <div>
+                               <span class="text-dark">$32</span>
+                               <span class="text-decoration-line-through text-muted">$35</span>
+                            </div>
+                            <!-- btn -->
+                            <div>
+                               <a href="#!" class="btn btn-primary btn-sm">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus">
+                                     <line x1="12" y1="5" x2="12" y2="19"></line>
+                                     <line x1="5" y1="12" x2="19" y2="12"></line>
+                                  </svg>
+                                  Add
+                               </a>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+                <!-- col -->
+                <div class="col">
+                   <!-- card -->
+                   <div class="card card-product">
+                      <div class="card-body">
+                         <!-- badge -->
+                         <div class="text-center position-relative">
+                            <div class="position-absolute top-0">
+                               <span class="badge bg-danger">Hot</span>
+                            </div>
+
+                            <a href="shop-single.html">
+                               <!-- img -->
+                               <img src="/theme/images/product-img-4.jpg" alt="Grocery Ecommerce Template" class="mb-3 img-fluid">
+                            </a>
+                            <!-- action btn -->
+                            <div class="card-product-action">
+                               <a href="#!" class="btn-action" data-bs-toggle="modal" data-bs-target="#quickViewModal">
+                                  <i class="bi bi-eye" data-bs-toggle="tooltip" data-bs-html="true" title="Quick View"></i>
+                               </a>
+                               <a href="shop-wishlist.html" class="btn-action" data-bs-toggle="tooltip" data-bs-html="true" title="Wishlist"><i class="bi bi-heart"></i></a>
+                               <a href="#!" class="btn-action" data-bs-toggle="tooltip" data-bs-html="true" title="Compare"><i class="bi bi-arrow-left-right"></i></a>
+                            </div>
+                         </div>
+                         <!-- heading -->
+                         <div class="text-small mb-1">
+                            <a href="#!" class="text-decoration-none text-muted"><small>Snack &amp; Munchies</small></a>
+                         </div>
+                         <h2 class="fs-6"><a href="shop-single.html" class="text-inherit text-decoration-none">Onion Flavour Potato</a></h2>
+                         <div class="text-warning">
+                            <!-- rating -->
+                            <small>
+                               <i class="bi bi-star-fill"></i>
+                               <i class="bi bi-star-fill"></i>
+                               <i class="bi bi-star-fill"></i>
+                               <i class="bi bi-star-half"></i>
+                               <i class="bi bi-star"></i>
+                            </small>
+                            <span class="text-muted small">3.5 (456)</span>
+                         </div>
+                         <!-- price -->
+                         <div class="d-flex justify-content-between align-items-center mt-3">
+                            <div>
+                               <span class="text-dark">$3</span>
+                               <span class="text-decoration-line-through text-muted">$5</span>
+                            </div>
+                            <!-- btn -->
+                            <div>
+                               <a href="#!" class="btn btn-primary btn-sm">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus">
+                                     <line x1="12" y1="5" x2="12" y2="19"></line>
+                                     <line x1="5" y1="12" x2="19" y2="12"></line>
+                                  </svg>
+                                  Add
+                               </a>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+                <!-- col -->
+                <div class="col">
+                   <!-- card -->
+                   <div class="card card-product">
+                      <div class="card-body">
+                         <!-- badge -->
+                         <div class="text-center position-relative">
+                            <a href="shop-single.html"><img src="/theme/images/product-img-5.jpg" alt="Grocery Ecommerce Template" class="mb-3 img-fluid"></a>
+                            <!-- action btn -->
+                            <div class="card-product-action">
+                               <a href="#!" class="btn-action" data-bs-toggle="modal" data-bs-target="#quickViewModal">
+                                  <i class="bi bi-eye" data-bs-toggle="tooltip" data-bs-html="true" title="Quick View"></i>
+                               </a>
+                               <a href="shop-wishlist.html" class="btn-action" data-bs-toggle="tooltip" data-bs-html="true" title="Wishlist"><i class="bi bi-heart"></i></a>
+                               <a href="#!" class="btn-action" data-bs-toggle="tooltip" data-bs-html="true" title="Compare"><i class="bi bi-arrow-left-right"></i></a>
+                            </div>
+                         </div>
+                         <!-- heading -->
+                         <div class="text-small mb-1">
+                            <a href="#!" class="text-decoration-none text-muted"><small>Instant Food</small></a>
+                         </div>
+                         <h2 class="fs-6"><a href="shop-single.html" class="text-inherit text-decoration-none">Salted Instant Popcorn</a></h2>
+                         <div class="text-warning">
+                            <!-- rating -->
+                            <small>
+                               <i class="bi bi-star-fill"></i>
+                               <i class="bi bi-star-fill"></i>
+                               <i class="bi bi-star-fill"></i>
+                               <i class="bi bi-star-fill"></i>
+                               <i class="bi bi-star-half"></i>
+                            </small>
+                            <span class="text-muted small">4.5 (39)</span>
+                         </div>
+                         <div class="d-flex justify-content-between mt-4">
+                            <div>
+                               <span class="text-dark">$13</span>
+                               <span class="text-decoration-line-through text-muted">$18</span>
+                            </div>
+                            <!-- btn -->
+                            <div>
+                               <a href="#!" class="btn btn-primary btn-sm">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus">
+                                     <line x1="12" y1="5" x2="12" y2="19"></line>
+                                     <line x1="5" y1="12" x2="19" y2="12"></line>
+                                  </svg>
+                                  Add
+                               </a>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+                <!-- col -->
+                <div class="col">
+                   <!-- card -->
+                   <div class="card card-product">
+                      <div class="card-body">
+                         <!-- badge -->
+                         <div class="text-center position-relative">
+                            <div class="position-absolute top-0">
+                               <span class="badge bg-danger">Sale</span>
+                            </div>
+                            <a href="shop-single.html">
+                               <!-- img -->
+                               <img src="/theme/images/product-img-6.jpg" alt="Grocery Ecommerce Template" class="mb-3 img-fluid">
+                            </a>
+                            <!-- action btn -->
+                            <div class="card-product-action">
+                               <a href="#!" class="btn-action" data-bs-toggle="modal" data-bs-target="#quickViewModal">
+                                  <i class="bi bi-eye" data-bs-toggle="tooltip" data-bs-html="true" title="Quick View"></i>
+                               </a>
+                               <a href="shop-wishlist.html" class="btn-action" data-bs-toggle="tooltip" data-bs-html="true" title="Wishlist"><i class="bi bi-heart"></i></a>
+                               <a href="#!" class="btn-action" data-bs-toggle="tooltip" data-bs-html="true" title="Compare"><i class="bi bi-arrow-left-right"></i></a>
+                            </div>
+                         </div>
+                         <!-- heading -->
+                         <div class="text-small mb-1">
+                            <a href="#!" class="text-decoration-none text-muted"><small>Dairy, Bread &amp; Eggs</small></a>
+                         </div>
+                         <h2 class="fs-6"><a href="shop-single.html" class="text-inherit text-decoration-none">Blueberry Greek Yogurt</a></h2>
+                         <div>
+                            <!-- rating -->
+                            <small class="text-warning">
+                               <i class="bi bi-star-fill"></i>
+                               <i class="bi bi-star-fill"></i>
+                               <i class="bi bi-star-fill"></i>
+                               <i class="bi bi-star-fill"></i>
+                               <i class="bi bi-star-half"></i>
+                            </small>
+                            <span class="text-muted small">4.5 (189)</span>
+                         </div>
+                         <!-- price -->
+                         <div class="d-flex justify-content-between align-items-center mt-3">
+                            <div>
+                               <span class="text-dark">$18</span>
+                               <span class="text-decoration-line-through text-muted">$24</span>
+                            </div>
+                            <!-- btn -->
+                            <div>
+                               <a href="#!" class="btn btn-primary btn-sm">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus">
+                                     <line x1="12" y1="5" x2="12" y2="19"></line>
+                                     <line x1="5" y1="12" x2="19" y2="12"></line>
+                                  </svg>
+                                  Add
+                               </a>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+                <!-- col -->
+                <div class="col">
+                   <!-- card -->
+                   <div class="card card-product">
+                      <div class="card-body">
+                         <!-- badge -->
+                         <div class="text-center position-relative">
+                            <a href="shop-single.html"><img src="/theme/images/product-img-7.jpg" alt="Grocery Ecommerce Template" class="mb-3 img-fluid"></a>
+                            <!-- action btn -->
+                            <div class="card-product-action">
+                               <a href="#!" class="btn-action" data-bs-toggle="modal" data-bs-target="#quickViewModal">
+                                  <i class="bi bi-eye" data-bs-toggle="tooltip" data-bs-html="true" title="Quick View"></i>
+                               </a>
+                               <a href="shop-wishlist.html" class="btn-action" data-bs-toggle="tooltip" data-bs-html="true" title="Wishlist"><i class="bi bi-heart"></i></a>
+                               <a href="#!" class="btn-action" data-bs-toggle="tooltip" data-bs-html="true" title="Compare"><i class="bi bi-arrow-left-right"></i></a>
+                            </div>
+                         </div>
+                         <!-- heading -->
+                         <div class="text-small mb-1">
+                            <a href="#!" class="text-decoration-none text-muted"><small>Dairy, Bread &amp; Eggs</small></a>
+                         </div>
+                         <h2 class="fs-6"><a href="shop-single.html" class="text-inherit text-decoration-none">Britannia Cheese Slices</a></h2>
+                         <div class="text-warning">
+                            <!-- rating -->
+                            <small>
+                               <i class="bi bi-star-fill"></i>
+                               <i class="bi bi-star-fill"></i>
+                               <i class="bi bi-star-fill"></i>
+                               <i class="bi bi-star-fill"></i>
+                               <i class="bi bi-star-fill"></i>
+                            </small>
+                            <span class="text-muted small">5 (345)</span>
+                         </div>
+                         <!-- price -->
+                         <div class="d-flex justify-content-between align-items-center mt-3">
+                            <div><span class="text-dark">$24</span></div>
+                            <!-- btn -->
+                            <div>
+                               <a href="#!" class="btn btn-primary btn-sm">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus">
+                                     <line x1="12" y1="5" x2="12" y2="19"></line>
+                                     <line x1="5" y1="12" x2="19" y2="12"></line>
+                                  </svg>
+                                  Add
+                               </a>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+                <!-- col -->
+                <div class="col">
+                   <!-- card -->
+                   <div class="card card-product">
+                      <div class="card-body">
+                         <!-- badge -->
+                         <div class="text-center position-relative">
+                            <a href="shop-single.html"><img src="/theme/images/product-img-8.jpg" alt="Grocery Ecommerce Template" class="mb-3 img-fluid"></a>
+                            <!-- action btn -->
+                            <div class="card-product-action">
+                               <a href="#!" class="btn-action" data-bs-toggle="modal" data-bs-target="#quickViewModal">
+                                  <i class="bi bi-eye" data-bs-toggle="tooltip" data-bs-html="true" title="Quick View"></i>
+                               </a>
+                               <a href="shop-wishlist.html" class="btn-action" data-bs-toggle="tooltip" data-bs-html="true" title="Wishlist"><i class="bi bi-heart"></i></a>
+                               <a href="#!" class="btn-action" data-bs-toggle="tooltip" data-bs-html="true" title="Compare"><i class="bi bi-arrow-left-right"></i></a>
+                            </div>
+                         </div>
+                         <!-- heading -->
+                         <div class="text-small mb-1">
+                            <a href="#!" class="text-decoration-none text-muted"><small>Instant Food</small></a>
+                         </div>
+                         <h2 class="fs-6"><a href="shop-single.html" class="text-inherit text-decoration-none">Kellogg's Original Cereals</a></h2>
+                         <div class="text-warning">
+                            <!-- rating -->
+                            <small>
+                               <i class="bi bi-star-fill"></i>
+                               <i class="bi bi-star-fill"></i>
+                               <i class="bi bi-star-fill"></i>
+                               <i class="bi bi-star-fill"></i>
+                               <i class="bi bi-star-half"></i>
+                            </small>
+                            <span class="text-muted small">4 (90)</span>
+                         </div>
+                         <!-- price -->
+                         <div class="d-flex justify-content-between align-items-center mt-3">
+                            <div>
+                               <span class="text-dark">$32</span>
+                               <span class="text-decoration-line-through text-muted">$35</span>
+                            </div>
+                            <!-- btn -->
+                            <div>
+                               <a href="#!" class="btn btn-primary btn-sm">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus">
+                                     <line x1="12" y1="5" x2="12" y2="19"></line>
+                                     <line x1="5" y1="12" x2="19" y2="12"></line>
+                                  </svg>
+                                  Add
+                               </a>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+                <!-- col -->
+                <div class="col">
+                   <!-- card -->
+                   <div class="card card-product">
+                      <div class="card-body">
+                         <!-- badge -->
+                         <div class="text-center position-relative">
+                            <a href="shop-single.html"><img src="/theme/images/product-img-9.jpg" alt="Grocery Ecommerce Template" class="mb-3 img-fluid"></a>
+                            <!-- action btn -->
+                            <div class="card-product-action">
+                               <a href="#!" class="btn-action" data-bs-toggle="modal" data-bs-target="#quickViewModal">
+                                  <i class="bi bi-eye" data-bs-toggle="tooltip" data-bs-html="true" title="Quick View"></i>
+                               </a>
+                               <a href="shop-wishlist.html" class="btn-action" data-bs-toggle="tooltip" data-bs-html="true" title="Wishlist"><i class="bi bi-heart"></i></a>
+                               <a href="#!" class="btn-action" data-bs-toggle="tooltip" data-bs-html="true" title="Compare"><i class="bi bi-arrow-left-right"></i></a>
+                            </div>
+                         </div>
+                         <!-- heading -->
+                         <div class="text-small mb-1">
+                            <a href="#!" class="text-decoration-none text-muted"><small>Snack &amp; Munchies</small></a>
+                         </div>
+                         <h2 class="fs-6"><a href="shop-single.html" class="text-inherit text-decoration-none">Slurrp Millet Chocolate</a></h2>
+                         <div class="text-warning">
+                            <!-- rating -->
+                            <small>
+                               <i class="bi bi-star-fill"></i>
+                               <i class="bi bi-star-fill"></i>
+                               <i class="bi bi-star-fill"></i>
+                               <i class="bi bi-star-fill"></i>
+                               <i class="bi bi-star-half"></i>
+                            </small>
+                            <span class="text-muted small">4.5 (67)</span>
+                         </div>
+                         <!-- price -->
+                         <div class="d-flex justify-content-between align-items-center mt-3">
+                            <div>
+                               <span class="text-dark">$3</span>
+                               <span class="text-decoration-line-through text-muted">$5</span>
+                            </div>
+                            <!-- btn -->
+                            <div>
+                               <a href="#!" class="btn btn-primary btn-sm">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus">
+                                     <line x1="12" y1="5" x2="12" y2="19"></line>
+                                     <line x1="5" y1="12" x2="19" y2="12"></line>
+                                  </svg>
+                                  Add
+                               </a>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+                <!-- col -->
+                <div class="col">
+                   <!-- card -->
+                   <div class="card card-product">
+                      <div class="card-body">
+                         <!-- badge -->
+                         <div class="text-center position-relative">
+                            <a href="shop-single.html"><img src="/theme/images/product-img-10.jpg" alt="Grocery Ecommerce Template" class="mb-3 img-fluid"></a>
+                            <!-- action btn -->
+                            <div class="card-product-action">
+                               <a href="#!" class="btn-action" data-bs-toggle="modal" data-bs-target="#quickViewModal">
+                                  <i class="bi bi-eye" data-bs-toggle="tooltip" data-bs-html="true" title="Quick View"></i>
+                               </a>
+                               <a href="shop-wishlist.html" class="btn-action" data-bs-toggle="tooltip" data-bs-html="true" title="Wishlist"><i class="bi bi-heart"></i></a>
+                               <a href="#!" class="btn-action" data-bs-toggle="tooltip" data-bs-html="true" title="Compare"><i class="bi bi-arrow-left-right"></i></a>
+                            </div>
+                         </div>
+                         <!-- heading -->
+                         <div class="text-small mb-1">
+                            <a href="#!" class="text-decoration-none text-muted"><small>Dairy, Bread &amp; Eggs</small></a>
+                         </div>
+                         <h2 class="fs-6"><a href="shop-single.html" class="text-inherit text-decoration-none">Amul Butter - 500 g</a></h2>
+                         <div class="text-warning">
+                            <!-- rating -->
+                            <small>
+                               <i class="bi bi-star-fill"></i>
+                               <i class="bi bi-star-fill"></i>
+                               <i class="bi bi-star-fill"></i>
+                               <i class="bi bi-star-half"></i>
+                               <i class="bi bi-star"></i>
+                            </small>
+                            <span class="text-muted small">3.5 (89)</span>
+                         </div>
+                         <div class="d-flex justify-content-between mt-4">
+                            <div>
+                               <span class="text-dark">$13</span>
+                               <span class="text-decoration-line-through text-muted">$18</span>
+                            </div>
+                            <!-- btn -->
+                            <div>
+                               <a href="#!" class="btn btn-primary btn-sm">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus">
+                                     <line x1="12" y1="5" x2="12" y2="19"></line>
+                                     <line x1="5" y1="12" x2="19" y2="12"></line>
+                                  </svg>
+                                  Add
+                               </a>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+             </div>
+             <div class="row mt-8">
+                <div class="col">
+                   <!-- nav -->
+                   <nav>
+                      <ul class="pagination">
+                         <li class="page-item disabled">
+                            <a class="page-link mx-1" href="#" aria-label="Previous">
+                               <i class="feather-icon icon-chevron-left"></i>
+                            </a>
+                         </li>
+                         <li class="page-item"><a class="page-link mx-1 active" href="#">1</a></li>
+                         <li class="page-item"><a class="page-link mx-1" href="#">2</a></li>
+
+                         <li class="page-item"><a class="page-link mx-1" href="#">...</a></li>
+                         <li class="page-item"><a class="page-link mx-1" href="#">12</a></li>
+                         <li class="page-item">
+                            <a class="page-link mx-1" href="#" aria-label="Next">
+                               <i class="feather-icon icon-chevron-right"></i>
+                            </a>
+                         </li>
+                      </ul>
+                   </nav>
+                </div>
+             </div>
+          </section>
+       </div>
+    </div>
+ </div>
 @endsection

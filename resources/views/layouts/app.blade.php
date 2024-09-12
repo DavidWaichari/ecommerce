@@ -440,11 +440,11 @@
                                 </ul>
                             </li>
                             <li class="nav-item">
-                               <a href="../index.html">Home</a>
+                               <a href="/">Home</a>
                             </li>
                             <li class="nav-item dropdown dropdown-fullwidth" style="margin-left:20px">
                                 <a class="nav-link dropdown-toggle" href="#" role="button"
-                                    data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
+                                    data-bs-toggle="dropdown" aria-expanded="false">Menu</a>
                                 <div class="dropdown-menu pb-0">
                                     <div class="row p-2 p-lg-4">
                                         @foreach ($categories as $category)
@@ -458,6 +458,9 @@
                                     </div>
                                 </div>
                             </li>
+                            <li class="nav-item">
+                                <a href="/shop">Shop</a>
+                             </li>
                         </ul>
                     </div>
                 </div>
