@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -14,7 +15,8 @@ class GuestController extends Controller
         $featured_products = Product::where('is_featured', true)->get();
         //fetch products based on the number of orders count
         $best_sellers = Product::all();
-        return view('client/welcome', compact('categories','featured_products','best_sellers'));
+        $brands = Brand::all();
+        return view('client/welcome', compact('categories','featured_products','best_sellers', 'brands'));
     }
     public function shop(Request $request)
     {
