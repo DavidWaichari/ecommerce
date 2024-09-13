@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use App\Models\Category;
+use App\Http\View\Composers\CartComposer;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -21,14 +22,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        view()->composer('*', CartComposer::class);
         View::composer('layouts.app', function ($view) {
             $categories = Category::where('status', 'Active')->with('products')->get();
-            //return a snumber to 10 to show whene it will render the cart
-            $cartTotal = 522; // Or fetch actual cart total if available
-            $view->with('categories', $categories)
-                 ->with('cart', $cartTotal);
-
-            // $view->with('categories', $categories)->with('cart', '522');
+            $view->with('categories', $categories);
         });
     }
 }

@@ -10,7 +10,6 @@
     <link href="/theme/css/tiny-slider.css" rel="stylesheet">
     <link href="/theme/css/slick.css" rel="stylesheet">
     <link href="/theme/css/slick-theme.css" rel="stylesheet">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Favicon icon-->
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 
@@ -29,7 +28,7 @@
     <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-M8S4MT3EYG"></script>
      <!-- Scripts -->
      {{-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
-     {{-- @vite(['resources/sass/app.scss']) --}}
+     @vite(['resources/sass/app.scss'])
 </head>
 
 <body>
@@ -96,7 +95,7 @@
                                                 </svg>
                                             </span>
 
-                                            <span>${{$cart}}</span>
+                                            <span>$0.00</span>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-end dropdown-menu-lg p-5">
                                             <div
@@ -206,120 +205,72 @@
                 <div class="col-xl-5 col-lg-4 d-flex align-items-center">
                     <div class="list-inline ms-auto d-lg-block d-none">
                         <div class="list-inline-item me-3">
-                            <!-- Button trigger modal -->
-                            <a href="#" class="text-reset d-none d-lg-block" data-bs-toggle="modal"
-                                data-bs-target="#locationSecondModal">
+                            <a href="#" class="text-reset d-none d-lg-block" data-bs-toggle="modal" data-bs-target="#locationSecondModal">
                                 <i class="feather-icon icon-map-pin me-2"></i>
                                 Set A Location
                             </a>
                         </div>
 
                         <div class="list-inline-item me-3">
-                            <a href="#!" class="text-reset" data-bs-toggle="modal"
-                                data-bs-target="#registerModal">Register</a>
+                            <a href="#!" class="text-reset" data-bs-toggle="modal" data-bs-target="#registerModal">Register</a>
                         </div>
 
                         <div class="list-inline-item me-3">
                             <div class="dropdown d-none d-xl-block">
-                                <a href="#" class="dropdown-toggle text-reset" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
+                                <a href="#" class="dropdown-toggle text-reset" data-bs-toggle="dropdown" aria-expanded="false">
                                     <span>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                            viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                            class="feather feather-shopping-cart align-text-bottom">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart align-text-bottom">
                                             <circle cx="9" cy="21" r="1"></circle>
                                             <circle cx="20" cy="21" r="1"></circle>
-                                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6">
-                                            </path>
+                                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
                                         </svg>
                                     </span>
-
-                                    <span>${{$cart}}</span>
+                                    <span>KES {{ number_format($cartTotal ?? 0, 2) }}</span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-lg p-5">
-                                    <div class="d-flex justify-content-between align-items-center border-bottom pb-5">
+                                    <div class="d-flex justify-content-between align-items-center border-bottom pb-5 mb-3">
                                         <div>
                                             <span><i class="feather-icon icon-shopping-cart"></i></span>
-                                            <span class="text-success">3</span>
+                                            <span class="text-success">{{ $cartCount ?? 0 }}</span>
                                         </div>
                                         <div>
                                             <span>Total:</span>
-                                            <span class="text-success">$105.00</span>
+                                            <span class="text-success">KES {{ number_format($cartTotal ?? 0, 2) }}</span>
                                         </div>
                                     </div>
                                     <ul class="list-group list-group-flush">
-                                        <li class="list-group-item px-0 py-3">
-                                            <div class="row align-items-center g-0">
-                                                <div class="col-lg-3 text-center">
-                                                    <!-- img -->
-                                                    <img src="/theme/images/product-img-1.jpg" alt="Ecommerce"
-                                                        class="icon-xxl">
+                                        @forelse($cart ?? [] as $id => $details)
+                                            <li class="list-group-item px-0 py-3">
+                                                <div class="row align-items-center g-0">
+                                                    <div class="col-lg-3 col-3 text-center">
+                                                        <img src="{{ $details['image'] ?? '/theme/images/placeholder.jpg' }}" alt="{{ $details['name'] ?? 'Product' }}" class="icon-xxl">
+                                                    </div>
+                                                    <div class="col-lg-7 col-7">
+                                                        <a href="{{ route('product.details', $id) }}" class="text-inherit">
+                                                            <h6 class="mb-0">{{ $details['name'] ?? 'Unknown Product' }}</h6>
+                                                        </a>
+                                                        <small class="text-muted">{{ $details['quantity'] ?? 0 }} x KES {{ number_format($details['price'] ?? 0, 2) }}</small>
+                                                    </div>
+                                                    <div class="text-end col-lg-2 col-2">
+                                                        <form action="{{ route('cart.remove') }}" method="POST">
+                                                            @csrf
+                                                            <input type="hidden" name="product_id" value="{{ $id }}">
+                                                            <button type="submit" class="btn btn-link p-0 text-danger" aria-label="Remove">
+                                                                <i class="bi bi-x fs-4"></i>
+                                                            </button>
+                                                        </form>
+                                                    </div>
                                                 </div>
-                                                <div class="col-lg-7">
-                                                    <!-- title -->
-                                                    <a href="../pages/shop-single.html" class="text-inherit">
-                                                        <h6 class="mb-0">Haldiram's Sev Bhujia</h6>
-                                                    </a>
-                                                    <small class="text-muted">1 x $35.00</small>
-                                                </div>
-
-                                                <!-- price -->
-                                                <div class="text-end col-lg-2">
-                                                    <a href="#" class="text-inherit" aria-label="Close"><i
-                                                            class="bi bi-x fs-4"></i></a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="list-group-item px-0 py-3">
-                                            <div class="row align-items-center g-0">
-                                                <div class="col-lg-3 text-center">
-                                                    <!-- img -->
-                                                    <img src="/theme/images/product-img-2.jpg" alt="Ecommerce"
-                                                        class="icon-xxl">
-                                                </div>
-                                                <div class="col-lg-7">
-                                                    <!-- title -->
-                                                    <a href="../pages/shop-single.html" class="text-inherit">
-                                                        <h6 class="mb-0">NutriChoice Digestive</h6>
-                                                    </a>
-                                                    <small class="text-muted">1 x $29.00</small>
-                                                </div>
-
-                                                <!-- price -->
-                                                <div class="text-end col-lg-2">
-                                                    <a href="#" class="text-inherit" aria-label="Close"><i
-                                                            class="bi bi-x fs-4"></i></a>
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                        <li class="list-group-item px-0 py-3">
-                                            <div class="row align-items-center g-0">
-                                                <div class="col-lg-3 text-center">
-                                                    <!-- img -->
-                                                    <img src="/theme/images/product-img-3.jpg" alt="Ecommerce"
-                                                        class="icon-xxl">
-                                                </div>
-                                                <div class="col-lg-7">
-                                                    <!-- title -->
-                                                    <a href="../pages/shop-single.html" class="text-inherit">
-                                                        <h6 class="mb-0">Cadbury 5 Star Chocolate</h6>
-                                                    </a>
-                                                    <small class="text-muted">1 x $29.00</small>
-                                                </div>
-
-                                                <!-- price -->
-                                                <div class="text-end col-lg-2">
-                                                    <a href="#" class="text-inherit" aria-label="Close"><i
-                                                            class="bi bi-x fs-4"></i></a>
-                                                </div>
-                                            </div>
-                                        </li>
+                                            </li>
+                                        @empty
+                                            <li class="list-group-item px-0 py-3">
+                                                <p>Your cart is empty.</p>
+                                            </li>
+                                        @endforelse
                                     </ul>
                                     <div class="mt-2 d-grid">
-                                        <a href="#" class="btn btn-primary">Checkout</a>
-                                        <a href="#" class="btn btn-light mt-2">View Cart</a>
+                                        <a href="{{ route('checkout.index') }}" class="btn btn-primary">Checkout</a>
+                                        <a href="{{ route('cart.view') }}" class="btn btn-light mt-2">View Cart</a>
                                     </div>
                                 </div>
                             </div>

@@ -31,18 +31,6 @@
                 <a href="#!" class="mb-4 d-block">{{$product->category->name}}</a>
                 <!-- heading -->
                 <h1 class="mb-1">{{$product->name}}</h1>
-                {{-- <div class="mb-4">
-                   <!-- rating -->
-                   <!-- rating -->
-                   <small class="text-warning">
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-half"></i>
-                   </small>
-                   <a href="#" class="ms-2">(30 reviews)</a>
-                </div> --}}
                 <div class="fs-4">
                    <!-- price -->
                    <span class="fw-bold text-dark">KES {{$product->discount_price}}</span>
@@ -53,29 +41,27 @@
                 </div>
                 <!-- hr -->
                 <hr class="my-6">
-                <div>
-                   <!-- input -->
-                   <div class="input-group input-spinner">
-                      <input type="button" value="-" class="button-minus btn btn-sm" data-field="quantity">
-                      <input type="number" step="1" max="10" value="1" name="quantity" class="quantity-field form-control-sm form-input">
-                      <input type="button" value="+" class="button-plus btn btn-sm" data-field="quantity">
-                   </div>
-                </div>
-                <div class="mt-3 row justify-content-start g-2 align-items-center">
-                   <div class="col-xxl-4 col-lg-4 col-md-5 col-5 d-grid">
-                      <!-- button -->
-                      <!-- btn -->
-                      <button type="button" class="btn btn-primary">
-                         <i class="feather-icon icon-shopping-bag me-2"></i>
-                         Add to cart
-                      </button>
-                   </div>
-                   {{-- <div class="col-md-4 col-4">
-                      <!-- btn -->
-                      <a class="btn btn-light" href="#" data-bs-toggle="tooltip" data-bs-html="true" aria-label="Compare"><i class="bi bi-arrow-left-right"></i></a>
-                      <a class="btn btn-light" href="shop-wishlist.html" data-bs-toggle="tooltip" data-bs-html="true" aria-label="Wishlist"><i class="feather-icon icon-heart"></i></a>
-                   </div> --}}
-                </div>
+                <form action="{{ route('cart.add') }}" method="POST">
+                    @csrf
+                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                    <div>
+                       <!-- input -->
+                       <div class="input-group input-spinner">
+                          <input type="button" value="-" class="button-minus btn btn-sm" data-field="quantity">
+                          <input type="number" step="1" max="10" value="1" name="quantity" class="quantity-field form-control-sm form-input">
+                          <input type="button" value="+" class="button-plus btn btn-sm" data-field="quantity">
+                       </div>
+                    </div>
+                    <div class="mt-3 row justify-content-start g-2 align-items-center">
+                       <div class="col-xxl-4 col-lg-4 col-md-5 col-5 d-grid">
+                          <!-- button -->
+                          <button type="submit" class="btn btn-primary">
+                             <i class="feather-icon icon-shopping-bag me-2"></i>
+                             Add to cart
+                          </button>
+                       </div>
+                    </div>
+                </form>
                 <!-- hr -->
                 <hr class="my-6">
                 <div>
@@ -664,4 +650,45 @@
         </div>
     </div>
    </section>
+@endsection
+
+@section('scripts')
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Quantity buttons
+        function incrementValue(e) {
+            e.preventDefault();
+            var fieldName = $(e.target).data('field');
+            var parent = $(e.target).closest('div');
+            var currentVal = parseInt(parent.find('input[name=' + fieldName + ']').val(), 10);
+
+            if (!isNaN(currentVal)) {
+                parent.find('input[name=' + fieldName + ']').val(currentVal + 1);
+            } else {
+                parent.find('input[name=' + fieldName + ']').val(0);
+            }
+        }
+
+        function decrementValue(e) {
+            e.preventDefault();
+            var fieldName = $(e.target).data('field');
+            var parent = $(e.target).closest('div');
+            var currentVal = parseInt(parent.find('input[name=' + fieldName + ']').val(), 10);
+
+            if (!isNaN(currentVal) && currentVal > 0) {
+                parent.find('input[name=' + fieldName + ']').val(currentVal - 1);
+            } else {
+                parent.find('input[name=' + fieldName + ']').val(0);
+            }
+        }
+
+        $('.input-group').on('click', '.button-plus', function(e) {
+            incrementValue(e);
+        });
+
+        $('.input-group').on('click', '.button-minus', function(e) {
+            decrementValue(e);
+        });
+    });
+</script>
 @endsection
