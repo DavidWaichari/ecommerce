@@ -37,7 +37,7 @@ class Product extends Model
     ];
 
     protected $appends = [
-        'featured_image_url'
+        'featured_image_url', 'discount'
     ];
 
     // Relationship with Category
@@ -84,5 +84,13 @@ class Product extends Model
     public function getFeaturedImageUrlAttribute()
     {
         return '/uploads/featured_images/'.$this->featured_image;
+    }
+
+    public function getDiscountAttribute()
+    {
+        $discount = $this->selling_price - $this->discount_price ;
+
+       return ($discount / $this->selling_price) * 100 ;
+
     }
 }

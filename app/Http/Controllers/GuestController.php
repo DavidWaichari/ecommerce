@@ -25,8 +25,10 @@ class GuestController extends Controller
         return view('client/shop-left-sidebar', compact('categories'));
     }
 
-    public function productDetails(Product $product)
+    public function productDetails($slug)
     {
-        return view('client/product_details', compact('product'));
+        $product = Product::where('slug', $slug)->first();
+        $related_products = $product->category->products;
+        return view('client/product_details', compact('product', 'related_products'));
     }
 }
