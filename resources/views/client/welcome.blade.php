@@ -121,9 +121,12 @@
                  <div class="d-flex gap-4">
                      <span class="ms-3">Popular Products</span>
                  </div>
-             </h3>
+                </h3>
+                <div class="ms-3">
+                   <p class="mb-0">Find the most popular products in our shop.</p>
+               </div>
          </div>
-         <div class="col-lg-2 col-2 dfle">
+         <div class="col-lg-2 col-2">
             <div class="d-flex align-items-center justify-content-between">
                 <div class="slider-arrow" id="slider-second-arrows"></div>
                 <a href="#">
@@ -164,12 +167,12 @@
                                     <i class="bi bi-eye" data-bs-toggle="tooltip" data-bs-html="true"
                                         title="Quick View"></i>
                                 </a>
-                                <a href="../pages/shop-wishlist.html" class="btn-action"
+                                {{-- <a href="../pages/shop-wishlist.html" class="btn-action"
                                     data-bs-toggle="tooltip" data-bs-html="true" title="Wishlist"><i
                                         class="bi bi-heart"></i></a>
                                 <a href="#!" class="btn-action" data-bs-toggle="tooltip"
                                     data-bs-html="true" title="Compare"><i
-                                        class="bi bi-arrow-left-right"></i></a>
+                                        class="bi bi-arrow-left-right"></i></a> --}}
                             </div>
                         </div>
                         <!-- title -->
@@ -230,1267 +233,358 @@
                      </div>
                      <div class="ms-3">
                          <h3 class="mb-0">Best Selling Products</h3>
-                         <p class="mb-0">Find the bestseller products in your area with discount.</p>
+                         <p class="mb-0">Find the bestseller products in our shop.</p>
                      </div>
                  </div>
              </div>
          </div>
          <div class="col-lg-2 col-3">
+            <div class="d-flex align-items-center justify-content-between">
              <div class="slider-arrow" id="slider-third-arrows"></div>
+             <a href="#">
+                View all
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-chevron-right">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+            </a>
+            </div>
          </div>
      </div>
      <!-- row -->
      <div class="row">
          <div class="col-12">
              <div class="product-slider-second" id="slider-third">
-                 <!-- item -->
-                 <div class="item">
-                     <!-- card -->
-                     <div class="card card-product h-100 mb-4">
-                         <div class="card-body position-relative">
-                             <!-- badge -->
-                             <div class="text-center position-relative">
-                                 <div class="position-absolute top-0 start-0">
-                                     <span class="badge bg-danger">Sale</span>
-                                 </div>
-                                 <!-- img -->
-                                 <a href="#!"><img src="/theme/images/product-img-1.jpg"
-                                         alt="Grocery Ecommerce Template" class="mb-3 img-fluid"></a>
-                                 <!-- action btn -->
-                                 <div class="product-action-btn">
-                                     <a href="#!" class="btn-action mb-1" data-bs-toggle="modal"
-                                         data-bs-target="#quickViewModal"><i class="bi bi-eye"></i></a>
-                                     <a href="../pages/shop-wishlist.html" class="btn-action mb-1"
-                                         data-bs-toggle="tooltip" data-bs-html="true"
-                                         title="Wishlist"><i class="bi bi-heart"></i></a>
-                                     <a href="#!" class="btn-action" data-bs-toggle="tooltip"
-                                         data-bs-html="true" title="Compare"><i
-                                             class="bi bi-arrow-left-right"></i></a>
-                                 </div>
-                             </div>
-                             <!-- title -->
-                             <h2 class="fs-6"><a href="#!"
-                                     class="text-inherit text-decoration-none">Haldiram's Sev Bhujia</a>
-                             </h2>
-                             <div>
-                                 <!-- rating -->
-                                 <small class="text-warning">
-                                     <i class="bi bi-star-fill"></i>
-                                     <i class="bi bi-star-fill"></i>
-                                     <i class="bi bi-star-fill"></i>
-                                     <i class="bi bi-star-fill"></i>
-                                     <i class="bi bi-star-half"></i>
-                                 </small>
-                                 <span class="text-muted small">4.5(149)</span>
-                             </div>
-                             <!-- price -->
-                             <div class="d-flex justify-content-between align-items-center mt-3">
-                                 <div>
-                                     <span class="text-danger">$18</span>
-                                     <span class="text-decoration-line-through text-muted">$24</span>
-                                 </div>
-                                 <div><span class="text-uppercase small text-primary">In Stock</span></div>
-                             </div>
-                             <div class="d-grid mt-4">
-                                 <a href="#" class="btn btn-primary rounded-pill">Add to Cart</a>
-                             </div>
+                <!-- item -->
+         @foreach ($best_sellers as $product)
+         <div class="item">
+             <!-- item -->
+             <div class="card card-product mb-lg-4">
+                 <div class="card-body">
+                     <!-- badge -->
+                     <div class="text-center position-relative">
+                         <div class="position-absolute top-0 start-0">
+                             <span class="badge bg-danger">Sale</span>
                          </div>
-                     </div>
-                 </div>
-                 <div class="item">
-                     <!-- card -->
-                     <div class="card card-product h-100 mb-4">
-                         <div class="card-body position-relative">
-                             <!-- badge -->
-                             <div class="text-center position-relative">
-                                 <!-- img -->
-                                 <a href="#!"><img src="/theme/images/product-img-2.jpg"
-                                         alt="Grocery Ecommerce Template" class="mb-3 img-fluid"></a>
-                                 <!-- action btn -->
-                                 <div class="product-action-btn">
-                                     <a href="#!" class="btn-action mb-1" data-bs-toggle="modal"
-                                         data-bs-target="#quickViewModal"><i class="bi bi-eye"></i></a>
-                                     <a href="../pages/shop-wishlist.html" class="btn-action mb-1"
-                                         data-bs-toggle="tooltip" data-bs-html="true"
-                                         title="Wishlist"><i class="bi bi-heart"></i></a>
-                                     <a href="#!" class="btn-action" data-bs-toggle="tooltip"
-                                         data-bs-html="true" title="Compare"><i
-                                             class="bi bi-arrow-left-right"></i></a>
-                                 </div>
-                             </div>
-                             <!-- title -->
-                             <h2 class="fs-6"><a href="#!"
-                                     class="text-inherit text-decoration-none">Britannia NutriChoice
-                                     Digestive Biscuits</a></h2>
-                             <div>
-                                 <!-- rating -->
-                                 <small class="text-warning">
-                                     <i class="bi bi-star-fill"></i>
-                                     <i class="bi bi-star-fill"></i>
-                                     <i class="bi bi-star-fill"></i>
-                                     <i class="bi bi-star-fill"></i>
-                                     <i class="bi bi-star-half"></i>
-                                 </small>
-                                 <span class="text-muted small">4.4(3,149)</span>
-                             </div>
-                             <!-- price -->
-                             <div class="d-flex justify-content-between align-items-center mt-3">
-                                 <div><span class="text-dark">$15</span></div>
-                                 <div><span class="text-uppercase small text-primary">In Stock</span></div>
-                             </div>
-                             <div class="d-grid mt-4">
-                                 <a href="#" class="btn btn-primary rounded-pill">Add to Cart</a>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-                 <div class="item">
-                     <!-- card -->
-                     <div class="card card-product h-100 mb-4">
-                         <div class="card-body position-relative">
-                             <!-- badge -->
-                             <div class="text-center position-relative">
-                                 <!-- img -->
-                                 <a href="#!"><img src="/theme/images/product-img-3.jpg"
-                                         alt="Grocery Ecommerce Template" class="mb-3 img-fluid"></a>
-                                 <!-- action btn -->
-                                 <div class="product-action-btn">
-                                     <a href="#!" class="btn-action mb-1" data-bs-toggle="modal"
-                                         data-bs-target="#quickViewModal"><i class="bi bi-eye"></i></a>
-                                     <a href="../pages/shop-wishlist.html" class="btn-action mb-1"
-                                         data-bs-toggle="tooltip" data-bs-html="true"
-                                         title="Wishlist"><i class="bi bi-heart"></i></a>
-                                     <a href="#!" class="btn-action" data-bs-toggle="tooltip"
-                                         data-bs-html="true" title="Compare"><i
-                                             class="bi bi-arrow-left-right"></i></a>
-                                 </div>
-                             </div>
-                             <!-- title -->
-                             <h2 class="fs-6"><a href="#!"
-                                     class="text-inherit text-decoration-none">Cadbury 5 star chocolate</a>
-                             </h2>
-                             <div>
-                                 <!-- rating -->
-                                 <small class="text-warning">
-                                     <i class="bi bi-star-fill"></i>
-                                     <i class="bi bi-star-fill"></i>
-                                     <i class="bi bi-star-fill"></i>
-                                     <i class="bi bi-star-fill"></i>
-                                     <i class="bi bi-star-half"></i>
-                                 </small>
-                                 <span class="text-muted small">4.7(1,130)</span>
-                             </div>
-                             <!-- price -->
-                             <div class="d-flex justify-content-between align-items-center mt-3">
-                                 <div><span class="text-dark">$32</span></div>
-                                 <div><span class="text-uppercase small text-primary">In Stock</span></div>
-                             </div>
-                             <!-- btn -->
-                             <div class="d-grid mt-4">
-                                 <a href="#" class="btn btn-primary rounded-pill">Add to Cart</a>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-                 <div class="item">
-                     <!-- card -->
-                     <div class="card card-product h-100 mb-4">
-                         <div class="card-body position-relative">
-                             <!-- badge -->
-                             <div class="text-center position-relative">
-                                 <!-- img -->
-                                 <a href="#!"><img src="/theme/images/product-img-4.jpg"
-                                         alt="Grocery Ecommerce Template" class="mb-3 img-fluid"></a>
-                                 <!-- action btn -->
-                                 <div class="product-action-btn">
-                                     <a href="#!" class="btn-action mb-1" data-bs-toggle="modal"
-                                         data-bs-target="#quickViewModal"><i class="bi bi-eye"></i></a>
-                                     <a href="../pages/shop-wishlist.html" class="btn-action mb-1"
-                                         data-bs-toggle="tooltip" data-bs-html="true"
-                                         title="Wishlist"><i class="bi bi-heart"></i></a>
-                                     <a href="#!" class="btn-action" data-bs-toggle="tooltip"
-                                         data-bs-html="true" title="Compare"><i
-                                             class="bi bi-arrow-left-right"></i></a>
-                                 </div>
-                             </div>
-                             <!-- title -->
-                             <h2 class="fs-6"><a href="#!"
-                                     class="text-inherit text-decoration-none">Onion Flavour Potato</a>
-                             </h2>
-                             <div>
-                                 <!-- rating -->
-                                 <small class="text-warning">
-                                     <i class="bi bi-star-fill"></i>
-                                     <i class="bi bi-star-fill"></i>
-                                     <i class="bi bi-star-fill"></i>
-                                     <i class="bi bi-star-fill"></i>
-                                     <i class="bi bi-star-half"></i>
-                                 </small>
-                                 <span class="text-muted small">4.5(140)</span>
-                             </div>
-                             <!-- price -->
-                             <div class="d-flex justify-content-between align-items-center mt-3">
-                                 <div>
-                                     <span class="text-danger">$12</span>
-                                     <span class="text-muted text-decoration-line-through ms-1">$18</span>
-                                 </div>
-                                 <div><span class="text-uppercase small text-primary">In Stock</span></div>
-                             </div>
-                             <!-- btn -->
-                             <div class="d-grid mt-4">
-                                 <a href="#" class="btn btn-primary rounded-pill">Add to Cart</a>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-                 <div class="item">
-                     <!-- card -->
-                     <div class="card card-product h-100 mb-4">
-                         <div class="card-body position-relative">
-                             <!-- badge -->
-                             <div class="text-center position-relative">
-                                 <div class="position-absolute top-0 start-0">
-                                     <span class="badge bg-warning text-dark">14%</span>
-                                 </div>
-                                 <!-- img -->
-                                 <a href="#!"><img src="/theme/images/product-img-5.jpg"
-                                         alt="Grocery Ecommerce Template" class="mb-3 img-fluid"></a>
-                                 <!-- action btn -->
-                                 <div class="product-action-btn">
-                                     <a href="#!" class="btn-action mb-1" data-bs-toggle="modal"
-                                         data-bs-target="#quickViewModal"><i class="bi bi-eye"></i></a>
-                                     <a href="../pages/shop-wishlist.html" class="btn-action mb-1"
-                                         data-bs-toggle="tooltip" data-bs-html="true"
-                                         title="Wishlist"><i class="bi bi-heart"></i></a>
-                                     <a href="#!" class="btn-action" data-bs-toggle="tooltip"
-                                         data-bs-html="true" title="Compare"><i
-                                             class="bi bi-arrow-left-right"></i></a>
-                                 </div>
-                             </div>
-                             <!-- title -->
-                             <h2 class="fs-6"><a href="#!"
-                                     class="text-inherit text-decoration-none">Salted Instant Popcorn</a>
-                             </h2>
-                             <div>
-                                 <!-- rating -->
-                                 <small class="text-warning">
-                                     <i class="bi bi-star-fill"></i>
-                                     <i class="bi bi-star-fill"></i>
-                                     <i class="bi bi-star-fill"></i>
-                                     <i class="bi bi-star-fill"></i>
-                                     <i class="bi bi-star-half"></i>
-                                 </small>
-                                 <span class="text-muted small">4.5(212)</span>
-                             </div>
-                             <!-- price -->
-                             <div class="d-flex justify-content-between align-items-center mt-3">
-                                 <div>
-                                     <span class="text-danger">$40</span>
-                                     <span class="text-decoration-line-through text-muted">$65</span>
-                                 </div>
-                                 <div><span class="text-uppercase small text-primary">In Stock</span></div>
-                             </div>
-                             <!-- btn -->
-                             <div class="d-grid mt-4">
-                                 <a href="#" class="btn btn-primary rounded-pill">Add to Cart</a>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-                 <div class="item">
-                     <!-- card -->
-                     <div class="card card-product h-100 mb-4">
-                         <div class="card-body position-relative">
-                             <!-- badge -->
-                             <div class="text-center position-relative">
-                                 <!-- img -->
-                                 <a href="#!"><img src="/theme/images/product-img-6.jpg"
-                                         alt="Grocery Ecommerce Template" class="mb-3 img-fluid"></a>
-                                 <!-- action btn -->
-                                 <div class="product-action-btn">
-                                     <a href="#!" class="btn-action mb-1" data-bs-toggle="modal"
-                                         data-bs-target="#quickViewModal"><i class="bi bi-eye"></i></a>
-                                     <a href="../pages/shop-wishlist.html" class="btn-action mb-1"
-                                         data-bs-toggle="tooltip" data-bs-html="true"
-                                         title="Wishlist"><i class="bi bi-heart"></i></a>
-                                     <a href="#!" class="btn-action" data-bs-toggle="tooltip"
-                                         data-bs-html="true" title="Compare"><i
-                                             class="bi bi-arrow-left-right"></i></a>
-                                 </div>
-                             </div>
-                             <!-- title -->
-                             <h2 class="fs-6"><a href="#!"
-                                     class="text-inherit text-decoration-none">Epigamia Blueberry Greek
-                                     Yogurt, 90g</a></h2>
-                             <div>
-                                 <!-- rating -->
-                                 <small class="text-warning">
-                                     <i class="bi bi-star-fill"></i>
-                                     <i class="bi bi-star-fill"></i>
-                                     <i class="bi bi-star-fill"></i>
-                                     <i class="bi bi-star-fill"></i>
-                                     <i class="bi bi-star-half"></i>
-                                 </small>
-                                 <span class="text-muted small">4.4(694)</span>
-                             </div>
-                             <!-- price -->
-                             <div class="d-flex justify-content-between align-items-center mt-3">
-                                 <div><span class="text-dark">$17</span></div>
-                                 <div><span class="text-uppercase small text-primary">In Stock</span></div>
-                             </div>
-                             <!-- btn -->
-                             <div class="d-grid mt-4">
-                                 <a href="#" class="btn btn-primary rounded-pill">Add to Cart</a>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-                 <div class="item">
-                     <!-- card -->
-                     <div class="card card-product h-100 mb-4">
-                         <div class="card-body position-relative">
-                             <!-- badge -->
-                             <div class="text-center position-relative">
-                                 <!-- img -->
-                                 <a href="#!"><img src="/theme/images/product-img-8.jpg"
-                                         alt="Grocery Ecommerce Template" class="mb-3 img-fluid"></a>
-                                 <!-- action btn -->
-                                 <div class="product-action-btn">
-                                     <a href="#!" class="btn-action mb-1" data-bs-toggle="modal"
-                                         data-bs-target="#quickViewModal"><i class="bi bi-eye"></i></a>
-                                     <a href="../pages/shop-wishlist.html" class="btn-action mb-1"
-                                         data-bs-toggle="tooltip" data-bs-html="true"
-                                         title="Wishlist"><i class="bi bi-heart"></i></a>
-                                     <a href="#!" class="btn-action" data-bs-toggle="tooltip"
-                                         data-bs-html="true" title="Compare"><i
-                                             class="bi bi-arrow-left-right"></i></a>
-                                 </div>
-                             </div>
-                             <!-- title -->
-                             <h2 class="fs-6"><a href="#!"
-                                     class="text-inherit text-decoration-none">Kellogg's Special K Original
-                                     Cereal</a></h2>
-                             <div>
-                                 <!-- rating -->
-                                 <small class="text-warning">
-                                     <i class="bi bi-star-fill"></i>
-                                     <i class="bi bi-star-fill"></i>
-                                     <i class="bi bi-star-fill"></i>
-                                     <i class="bi bi-star-fill"></i>
-                                     <i class="bi bi-star-half"></i>
-                                 </small>
-                                 <span class="text-muted small">4.7(1,130)</span>
-                             </div>
-                             <!-- price -->
-                             <div class="d-flex justify-content-between align-items-center mt-3">
-                                 <div>
-                                     <span class="text-danger">$25</span>
-                                     <span class="text-muted text-decoration-line-through ms-1">$28</span>
-                                 </div>
-                                 <div><span class="text-uppercase small text-primary">In Stock</span></div>
-                             </div>
-                             <!-- btn -->
-                             <div class="d-grid mt-4">
-                                 <a href="#" class="btn btn-primary rounded-pill">Add to Cart</a>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-                 <div class="item">
-                     <!-- card -->
-                     <div class="card card-product h-100 mb-4">
-                         <div class="card-body position-relative">
-                             <!-- badge -->
-                             <div class="text-center position-relative">
-                                 <!-- img -->
-                                 <a href="#!"><img src="/theme/images/product-img-9.jpg"
-                                         alt="Grocery Ecommerce Template" class="mb-3 img-fluid"></a>
-                                 <!-- action btn -->
-                                 <div class="product-action-btn">
-                                     <a href="#!" class="btn-action mb-1" data-bs-toggle="modal"
-                                         data-bs-target="#quickViewModal"><i class="bi bi-eye"></i></a>
-                                     <a href="../pages/shop-wishlist.html" class="btn-action mb-1"
-                                         data-bs-toggle="tooltip" data-bs-html="true"
-                                         title="Wishlist"><i class="bi bi-heart"></i></a>
-                                     <a href="#!" class="btn-action" data-bs-toggle="tooltip"
-                                         data-bs-html="true" title="Compare"><i
-                                             class="bi bi-arrow-left-right"></i></a>
-                                 </div>
-                             </div>
-                             <!-- title -->
-                             <h2 class="fs-6"><a href="#!"
-                                     class="text-inherit text-decoration-none">Slurrp Farm No Maida Millet
-                                     Pancake Mix</a></h2>
-                             <div>
-                                 <!-- rating -->
-                                 <small class="text-warning">
-                                     <i class="bi bi-star-fill"></i>
-                                     <i class="bi bi-star-fill"></i>
-                                     <i class="bi bi-star-fill"></i>
-                                     <i class="bi bi-star-fill"></i>
-                                     <i class="bi bi-star-half"></i>
-                                 </small>
-                                 <span class="text-muted small">4.5(212)</span>
-                             </div>
-                             <!-- price -->
-                             <div class="d-flex justify-content-between align-items-center mt-3">
-                                 <div>
-                                     <span class="text-danger">$34</span>
-                                     <span class="text-muted text-decoration-line-through ms-1">$38</span>
-                                 </div>
-                                 <div><span class="text-uppercase small text-primary">In Stock</span></div>
-                             </div>
-                             <!-- btn -->
-                             <div class="d-grid mt-4">
-                                 <a href="#" class="btn btn-primary rounded-pill">Add to Cart</a>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-                 <div class="item">
-                     <!-- card -->
-                     <div class="card card-product h-100 mb-4">
-                         <div class="card-body position-relative">
-                             <!-- badge -->
-                             <div class="text-center position-relative">
-                                 <!-- img -->
-                                 <a href="#!"><img src="/theme/images/product-img-2.jpg"
-                                         alt="Grocery Ecommerce Template" class="mb-3 img-fluid"></a>
-                                 <!-- action btn -->
-                                 <div class="product-action-btn">
-                                     <a href="#!" class="btn-action mb-1" data-bs-toggle="modal"
-                                         data-bs-target="#quickViewModal"><i class="bi bi-eye"></i></a>
-                                     <a href="../pages/shop-wishlist.html" class="btn-action mb-1"
-                                         data-bs-toggle="tooltip" data-bs-html="true"
-                                         title="Wishlist"><i class="bi bi-heart"></i></a>
-                                     <a href="#!" class="btn-action" data-bs-toggle="tooltip"
-                                         data-bs-html="true" title="Compare"><i
-                                             class="bi bi-arrow-left-right"></i></a>
-                                 </div>
-                             </div>
-                             <!-- title -->
-                             <h2 class="fs-6"><a href="#!"
-                                     class="text-inherit text-decoration-none">Britannia NutriChoice
-                                     Digestive Biscuits</a></h2>
-                             <div>
-                                 <!-- rating -->
-                                 <small class="text-warning">
-                                     <i class="bi bi-star-fill"></i>
-                                     <i class="bi bi-star-fill"></i>
-                                     <i class="bi bi-star-fill"></i>
-                                     <i class="bi bi-star-fill"></i>
-                                     <i class="bi bi-star-half"></i>
-                                 </small>
-                                 <span class="text-muted small">4.4(3,149)</span>
-                             </div>
-                             <!-- price -->
-                             <div class="d-flex justify-content-between align-items-center mt-3">
-                                 <div><span class="text-dark">$15</span></div>
-                                 <div><span class="text-uppercase small text-primary">In Stock</span></div>
-                             </div>
-                             <!-- btn -->
-                             <div class="d-grid mt-4">
-                                 <a href="#" class="btn btn-primary rounded-pill">Add to Cart</a>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-             </div>
-         </div>
-     </div>
- </div>
-</section>
-<!-- button -->
-<div class="container mb-10">
- <div class="row">
-     <div class="col-12 d-grid">
-         <a href="#!" class="btn btn-soft-warning btn-lg ls-xl text-uppercase rounded-pill">Save an
-             extra 15% on Authorship order</a>
-     </div>
- </div>
-</div>
-<!-- section -->
-<section class="my-lg-14 my-8">
- <div class="container">
-     <div class="row align-items-center mb-8">
-         <!-- store -->
-         <div class="col-md-8 col-12">
-             <div class="d-flex">
-                 <div class="mt-1">
-                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                         fill="currentColor" class="bi bi-shop text-primary" viewBox="0 0 16 16">
-                         <path
-                             d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zM4 15h3v-5H4v5zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3zm3 0h-2v3h2v-3z">
-                         </path>
-                     </svg>
-                 </div>
-                 <div class="ms-3">
-                     <h3 class="mb-0">Best stores in Locations</h3>
-                     <p class="mb-0">Find the best store products in your area with discount.</p>
-                 </div>
-                 <div></div>
-             </div>
-         </div>
-         <!-- all store -->
-         <div class="col-md-4 text-end col-12 d-none d-md-block">
-             <a href="#">
-                 All stores
-                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
-                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                     stroke-linecap="round" stroke-linejoin="round"
-                     class="feather feather-chevron-right">
-                     <polyline points="9 18 15 12 9 6"></polyline>
-                 </svg>
-             </a>
-         </div>
-     </div>
-     <!-- row -->
-     <div class="row row-cols-1 row-cols-lg-3 row-cols-md-3 g-4 g-lg-4">
-         <!-- col -->
-         <div class="col">
-             <!-- card -->
-             <div class="card p-6 card-product">
-                 <div>
-                     <!-- img -->
-                     <img src="/theme/images/stores-logo-1.svg" alt=""
-                         class="rounded-circle icon-shape icon-xl">
-                 </div>
-                 <div class="mt-4">
-                     <!-- content -->
-                     <h2 class="mb-1 h5"><a href="#!" class="text-inherit">E-Grocery Super
-                             Market</a></h2>
-                     <div class="small text-muted">
-                         <span class="me-2">Organic</span>
-                         <span class="me-2">Groceries</span>
-                         <span>Butcher Shop</span>
-                     </div>
-                     <div class="py-3">
-                         <ul class="list-unstyled mb-0 small">
-                             <li>Delivery</li>
-                             <li>Pickup available</li>
-                         </ul>
-                     </div>
-                     <div>
-                         <!-- badge -->
-                         <div class="badge text-bg-light border">7.5 mi away</div>
-                         <!-- badge -->
-                         <div class="badge text-bg-light border">In-store prices</div>
-                     </div>
-                 </div>
-             </div>
-         </div>
-         <div class="col">
-             <!-- card -->
-             <div class="card p-6 card-product">
-                 <div>
-                     <!-- img -->
-                     <img src="/theme/images/stores-logo-2.svg" alt=""
-                         class="rounded-circle icon-shape icon-xl">
-                 </div>
-                 <div class="mt-4">
-                     <!-- content -->
-                     <h2 class="mb-1 h5"><a href="#!" class="text-inherit">DealShare Mart</a></h2>
-                     <div class="small text-muted">
-                         <span class="me-2">Alcohol</span>
-                         <span class="me-2">Groceries</span>
-                     </div>
-                     <div class="py-3">
-                         <ul class="list-unstyled mb-0 small">
-                             <li>Delivery</li>
-                             <li>Pickup available</li>
-                         </ul>
-                     </div>
-                     <div>
-                         <!-- badge -->
-                         <div class="badge text-bg-light border">7.2 mi away</div>
-                     </div>
-                 </div>
-             </div>
-         </div>
-         <div class="col">
-             <!-- card -->
-             <div class="card p-6 card-product">
-                 <div>
-                     <!-- img -->
-                     <img src="/theme/images/stores-logo-3.svg" alt=""
-                         class="rounded-circle icon-shape icon-xl">
-                 </div>
-                 <div class="mt-4">
-                     <!-- content -->
-                     <h2 class="mb-1 h5"><a href="#!" class="text-inherit">DMart</a></h2>
-                     <div class="small text-muted">
-                         <span class="me-2">Groceries</span>
-                         <span class="me-2">Bakery</span>
-                         <span>Deli</span>
-                     </div>
-                     <div class="py-3">
-                         <ul class="list-unstyled mb-0 small">
-                             <li><span class="text-primary">Delivery by 10:30pm</span></li>
-                             <li>Pickup available</li>
-                         </ul>
-                     </div>
-                     <div>
-                         <!-- badge -->
-                         <div class="badge text-bg-light border">9.3 mi away</div>
-                     </div>
-                 </div>
-             </div>
-         </div>
-     </div>
- </div>
-</section>
-<!-- section -->
-<section class="my-lg-14 my-8">
- <div class="container">
-     <div class="row align-items-center mb-8">
-         <div class="col-md-8 col-12">
-             <!-- heading -->
-             <div class="d-flex">
-                 <div class="mt-1">
-                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                         fill="currentColor" class="bi bi-journal text-primary" viewBox="0 0 16 16">
-                         <path
-                             d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z">
-                         </path>
-                         <path
-                             d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z">
-                         </path>
-                     </svg>
-                 </div>
-                 <div class="ms-3">
-                     <h3 class="mb-0">Our most popular recipes</h3>
-                     <p class="mb-0">Check out most popular recipes of all time.</p>
-                 </div>
-                 <div></div>
-             </div>
-         </div>
-         <!-- button -->
-         <div class="col-md-4 text-end d-none d-md-block">
-             <a href="#" class="btn btn-primary">View all recipes</a>
-         </div>
-     </div>
-     <div class="row">
-         <!-- col -->
-         <div class="col-12 col-md-6 col-lg-3 mb-8">
-             <div class="mb-4">
-                 <a href="#!">
-                     <!-- img -->
-                     <div class="img-zoom">
-                         <img src="/theme/images/blog-img-1.jpg" alt=""
-                             class="img-fluid rounded w-100">
-                     </div>
-                 </a>
-             </div>
-             <!-- text -->
-             <div>
-                 <h4 class="h5"><a href="#!" class="text-inherit">Spaghetti with Crispy
-                         Zucchini</a></h4>
-                 <p>Praesent vestibulum magna lacinia augue mollisvel aliquet massa posuere. Duis et mauris
-                     tortor.</p>
-                 <div class="d-flex align-items-center lh-1">
-                     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
-                         fill="currentColor" class="bi bi-clock text-dark" viewBox="0 0 16 16">
-                         <path
-                             d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z">
-                         </path>
-                         <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z">
-                         </path>
-                     </svg>
-                     <small class="ms-1">
-                         <span class="text-dark fw-bold">15</span>
-                         min
-                     </small>
-                 </div>
-             </div>
-         </div>
-         <!-- col -->
-         <div class="col-12 col-md-6 col-lg-3 mb-8">
-             <div class="mb-4">
-                 <a href="#!">
-                     <div class="img-zoom">
                          <!-- img -->
-                         <img src="/theme/images/blog-img-2.jpg" alt=""
-                             class="img-fluid rounded w-100">
+                         <!-- img -->
+                         <a href="#!"><img src="{{$product->featured_image_url}}"
+                                 alt="Product Image" class="mb-3 img-fluid"></a>
+                         <!-- action btn -->
+                         <!-- action btn -->
+                         <div class="card-product-action">
+                             <a href="#!" class="btn-action" data-bs-toggle="modal"
+                                 data-bs-target="#quickViewModal">
+                                 <i class="bi bi-eye" data-bs-toggle="tooltip" data-bs-html="true"
+                                     title="Quick View"></i>
+                             </a>
+                             {{-- <a href="../pages/shop-wishlist.html" class="btn-action"
+                                 data-bs-toggle="tooltip" data-bs-html="true" title="Wishlist"><i
+                                     class="bi bi-heart"></i></a>
+                             <a href="#!" class="btn-action" data-bs-toggle="tooltip"
+                                 data-bs-html="true" title="Compare"><i
+                                     class="bi bi-arrow-left-right"></i></a> --}}
+                         </div>
                      </div>
-                 </a>
-             </div>
-             <!-- text -->
-             <div>
-                 <h4 class="h5"><a href="#!" class="text-inherit">Almond Butter Chocolate Chip
-                         Zucchini Bars</a></h4>
-                 <p>Lorem ipsum dolor sit amet, consectetur sit amet tincidunt ellentesque aliquet ligula in
-                     ultrices congue.</p>
-                 <div class="d-flex align-items-center lh-1">
-                     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
-                         fill="currentColor" class="bi bi-clock text-dark" viewBox="0 0 16 16">
-                         <path
-                             d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z">
-                         </path>
-                         <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z">
-                         </path>
-                     </svg>
-                     <small class="ms-1">
-                         <span class="text-dark fw-bold">18</span>
-                         min
-                     </small>
+                     <!-- title -->
+                     <div class="text-small mb-1">
+                         <a href="#!" class="text-decoration-none text-muted"><small>{{$product->category->name}}</small></a>
+                     </div>
+                     <h2 class="fs-6"><a href="#!"
+                             class="text-inherit text-decoration-none">{{$product->name}}</a></h2>
+                     {{-- <div>
+                         <!-- rating -->
+                         <small class="text-warning">
+                             <i class="bi bi-star-fill"></i>
+                             <i class="bi bi-star-fill"></i>
+                             <i class="bi bi-star-fill"></i>
+                             <i class="bi bi-star-fill"></i>
+                             <i class="bi bi-star-half"></i>
+                         </small>
+                         <span class="text-muted small">4.5(149)</span>
+                     </div> --}}
+                     <!-- price -->
+                     <div class="d-flex justify-content-between align-items-center mt-3">
+                         <div>
+                             <span class="text-dark">KES {{$product->discount_price}}</span>
+                             <span class="text-decoration-line-through text-muted">KES {{$product->selling_price}}</span>
+                         </div>
+                         <div>
+                             <span class="text-uppercase small text-primary">In Stock</span>
+                         </div>
+                     </div>
+                     <div class="d-grid mt-4">
+                         <a href="#" class="btn btn-primary rounded-pill">Add to Cart</a>
+                     </div>
                  </div>
              </div>
          </div>
-         <!-- col -->
-         <div class="col-12 col-md-6 col-lg-3 mb-8">
-             <div class="mb-4">
-                 <a href="#!">
-                     <!-- img -->
-                     <div class="img-zoom">
-                         <img src="/theme/images/blog-img-3.jpg" alt=""
-                             class="img-fluid rounded w-100">
-                     </div>
-                 </a>
-             </div>
-             <!-- text -->
-             <div>
-                 <h4 class="h5"><a href="#!" class="text-inherit">Spicy Shrimp Tacos Garlic
-                         Cilantro Lime Slaw</a></h4>
-                 <p>Praesent vestibulum magna lacinia augue mollisvel aliquet massa posuere. Duis et mauris
-                     tortor.</p>
-                 <div class="d-flex align-items-center lh-1">
-                     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
-                         fill="currentColor" class="bi bi-clock text-dark" viewBox="0 0 16 16">
-                         <path
-                             d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z">
-                         </path>
-                         <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z">
-                         </path>
-                     </svg>
-                     <small class="ms-1">
-                         <span class="text-dark fw-bold">20</span>
-                         min
-                     </small>
-                 </div>
-             </div>
-         </div>
-         <!-- col -->
-         <div class="col-12 col-md-6 col-lg-3 mb-8">
-             <div class="mb-4">
-                 <a href="#!">
-                     <!-- img -->
-                     <div class="img-zoom">
-                         <img src="/theme/images/blog-img-4.jpg" alt=""
-                             class="img-fluid rounded w-100">
-                     </div>
-                 </a>
-             </div>
-             <div>
-                 <h4 class="h5"><a href="#!" class="text-inherit">Simple Homemade Tomato
-                         Soup</a></h4>
-                 <p>Aliquam tempus velit augue, sodales tincidunt augue ipsum primis in faucibus orci luctus
-                     et ultrices posuere cubilia</p>
-                 <div class="d-flex align-items-center lh-1">
-                     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
-                         fill="currentColor" class="bi bi-clock text-dark" viewBox="0 0 16 16">
-                         <path
-                             d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z">
-                         </path>
-                         <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z">
-                         </path>
-                     </svg>
-                     <small class="ms-1">
-                         <span class="text-dark fw-bold">9</span>
-                         min
-                     </small>
-                 </div>
+      @endforeach
              </div>
          </div>
      </div>
  </div>
 </section>
-<!-- section -->
-<section class="my-lg-14 my-8">
- <div class="container">
-     <div class="row align-items-center">
-         <!-- col -->
-         <div class="col-lg-4 col-md-6 col-12">
-             <div class="mb-6 border-end-lg p-md-4 px-xl-12 text-center">
-                 <div>
-                     <!-- text -->
-                     <div class="mb-8">
-                         <!-- svg -->
-                         <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34"
-                             fill="currentColor" class="bi bi-clock text-primary" viewBox="0 0 16 16">
-                             <path
-                                 d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z">
-                             </path>
-                             <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z">
-                             </path>
-                         </svg>
-                     </div>
-                     <!-- text -->
-                     <h3 class="fs-5 mb-3">Cheapest basket 25 years running</h3>
-                     <p class="mb-0">Get your order delivered to your doorstep at the earliest from
-                         FreshCart pickup stores near you.</p>
-                 </div>
-             </div>
-         </div>
-         <div class="col-lg-4 col-md-6 col-12">
-             <div class="mb-6 border-end-lg p-md-4 px-xl-12 text-center">
-                 <div>
-                     <div class="mb-8">
-                         <!-- svg -->
-                         <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34"
-                             fill="currentColor" class="bi bi-gift text-primary" viewBox="0 0 16 16">
-                             <path
-                                 d="M3 2.5a2.5 2.5 0 0 1 5 0 2.5 2.5 0 0 1 5 0v.006c0 .07 0 .27-.038.494H15a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 1 14.5V7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h2.038A2.968 2.968 0 0 1 3 2.506V2.5zm1.068.5H7v-.5a1.5 1.5 0 1 0-3 0c0 .085.002.274.045.43a.522.522 0 0 0 .023.07zM9 3h2.932a.56.56 0 0 0 .023-.07c.043-.156.045-.345.045-.43a1.5 1.5 0 0 0-3 0V3zM1 4v2h6V4H1zm8 0v2h6V4H9zm5 3H9v8h4.5a.5.5 0 0 0 .5-.5V7zm-7 8V7H2v7.5a.5.5 0 0 0 .5.5H7z">
-                             </path>
-                         </svg>
-                     </div>
-                     <!-- text -->
-                     <h3 class="fs-5 mb-3">Best Prices &amp; Offers</h3>
-                     <p class="mb-0">Cheaper prices than your local supermarket, great cashback offers to
-                         top it off.</p>
-                 </div>
-             </div>
-         </div>
-         <div class="col-lg-4 col-md-6 col-12">
-             <div class="mb-6 p-md-4 px-xl-12 text-center">
-                 <div>
-                     <div class="mb-8">
-                         <!-- svg -->
-                         <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34"
-                             fill="currentColor" class="bi bi-box-seam text-primary"
-                             viewBox="0 0 16 16">
-                             <path
-                                 d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2l-2.218-.887zm3.564 1.426L5.596 5 8 5.961 14.154 3.5l-2.404-.961zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z">
-                             </path>
-                         </svg>
-                     </div>
-                     <!-- text -->
-                     <h3 class="fs-5 mb-3">Wide Assortment</h3>
-                     <p class="mb-0">Choose from 5000+ products across food, personal care, household
-                         &amp; other categories</p>
-                 </div>
-             </div>
-         </div>
-         <div class="col-12 d-md-none d-lg-block">
-             <!-- hr -->
-             <hr class="mt-8 mb-10">
-         </div>
-         <div class="col-lg-4 col-md-6 col-12">
-             <!-- text -->
-             <div class="mb-6 border-end-lg p-md-4 px-xl-12 text-center">
-                 <div>
-                     <div class="mb-8">
-                         <!-- svg -->
-                         <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34"
-                             fill="currentColor" class="bi bi-tablet text-primary" viewBox="0 0 16 16">
-                             <path
-                                 d="M12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h8zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4z">
-                             </path>
-                             <path d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"></path>
-                         </svg>
-                     </div>
-                     <!-- text -->
-                     <h3 class="fs-5 mb-3">Shop with our app</h3>
-                     <p class="mb-0">
-                         Shop on the go with our app for
-                         <a href="#">tablet and mobile</a>
-                         . Get live order tracking. Get latest feature updates
-                     </p>
-                 </div>
-             </div>
-         </div>
-         <div class="col-lg-4 col-md-6 col-12">
-             <div class="mb-6 border-end-lg p-md-4 px-xl-12 text-center">
-                 <div>
-                     <div class="mb-8">
-                         <!-- svg -->
-                         <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34"
-                             fill="currentColor" class="bi bi-truck text-primary" viewBox="0 0 16 16">
-                             <path
-                                 d="M0 3.5A1.5 1.5 0 0 1 1.5 2h9A1.5 1.5 0 0 1 12 3.5V5h1.02a1.5 1.5 0 0 1 1.17.563l1.481 1.85a1.5 1.5 0 0 1 .329.938V10.5a1.5 1.5 0 0 1-1.5 1.5H14a2 2 0 1 1-4 0H5a2 2 0 1 1-3.998-.085A1.5 1.5 0 0 1 0 10.5v-7zm1.294 7.456A1.999 1.999 0 0 1 4.732 11h5.536a2.01 2.01 0 0 1 .732-.732V3.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .294.456zM12 10a2 2 0 0 1 1.732 1h.768a.5.5 0 0 0 .5-.5V8.35a.5.5 0 0 0-.11-.312l-1.48-1.85A.5.5 0 0 0 13.02 6H12v4zm-9 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm9 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z">
-                             </path>
-                         </svg>
-                     </div>
-                     <!-- text -->
-                     <h3 class="fs-5 mb-3">Want your shopping today?</h3>
-                     <p class="mb-0">
-                         Choose from our award winning
-                         <a href="#">Express delivery</a>
-                         or collection options.
-                     </p>
-                 </div>
-             </div>
-         </div>
-         <div class="col-lg-4 col-md-6 col-12">
-             <div class="mb-6 p-md-4 px-xl-12 text-center">
-                 <div>
-                     <div class="mb-8">
-                         <!-- svg -->
-                         <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34"
-                             fill="currentColor" class="bi bi-arrow-repeat text-primary"
-                             viewBox="0 0 16 16">
-                             <path
-                                 d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z">
-                             </path>
-                             <path fill-rule="evenodd"
-                                 d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z">
-                             </path>
-                         </svg>
-                     </div>
-                     <!-- text -->
-                     <h3 class="fs-5 mb-3">Easy Returns/Refund</h3>
-                     <p class="mb-0">
-                         Not satisfied with a product? Return it at the doorstep &amp; get a refund within
-                         hours. No questions asked
-                         <a href="#">policy</a>
-                         .
-                     </p>
-                 </div>
-             </div>
-         </div>
-     </div>
- </div>
+@foreach ($brands as $brand)
+<section class="mb-lg-14 my-8">
+    <div class="container">
+        <!-- row -->
+        <div class="row align-items-center mb-6">
+            <div class="col-lg-10 col-9">
+                <div class="d-xl-flex justify-content-between align-items-center">
+                    <!-- heading -->
+                    <div class="d-flex">
+                        <div class="mt-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                class="feather feather-shopping-bag text-primary">
+                                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                <line x1="3" y1="6" x2="21" y2="6"></line>
+                                <path d="M16 10a4 4 0 0 1-8 0"></path>
+                            </svg>
+                        </div>
+                        <div class="ms-3">
+                            <!-- Brand Name -->
+                            <h3 class="mb-0">{{ $brand->name }} Products</h3>
+                            <p class="mb-0">Explore the best products from {{ $brand->name }}.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-3">
+                <div class="d-flex align-items-center justify-content-between">
+                    <div class="slider-arrow" id="slider-{{ $brand->id }}-arrows"></div>
+                    <a href="#">
+                        View all
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-chevron-right">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- row -->
+        <div class="row">
+            <div class="col-12">
+                <div class="product-slider-second" id="slider-{{ $brand->id }}">
+                    <!-- Loop through products of the brand -->
+                    @foreach ($brand->products as $product)
+                    <div class="item">
+                        <!-- item -->
+                        <div class="card card-product mb-lg-4">
+                            <div class="card-body">
+                                <!-- badge -->
+                                <div class="text-center position-relative">
+                                    <div class="position-absolute top-0 start-0">
+                                        <span class="badge bg-danger">Sale</span>
+                                    </div>
+                                    <!-- img -->
+                                    <a href="#!"><img src="{{$product->featured_image_url}}"
+                                            alt="Product Image" class="mb-3 img-fluid"></a>
+                                    <!-- action btn -->
+                                    <div class="card-product-action">
+                                        <a href="#!" class="btn-action" data-bs-toggle="modal"
+                                            data-bs-target="#quickViewModal">
+                                            <i class="bi bi-eye" data-bs-toggle="tooltip" data-bs-html="true"
+                                                title="Quick View"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <!-- title -->
+                                <div class="text-small mb-1">
+                                    <a href="#!" class="text-decoration-none text-muted"><small>{{$product->category->name}}</small></a>
+                                </div>
+                                <h2 class="fs-6"><a href="#!"
+                                        class="text-inherit text-decoration-none">{{$product->name}}</a></h2>
+                                <!-- price -->
+                                <div class="d-flex justify-content-between align-items-center mt-3">
+                                    <div>
+                                        <span class="text-dark">KES {{$product->discount_price}}</span>
+                                        <span class="text-decoration-line-through text-muted">KES {{$product->selling_price}}</span>
+                                    </div>
+                                    <div>
+                                        <span class="text-uppercase small text-primary">In Stock</span>
+                                    </div>
+                                </div>
+                                <div class="d-grid mt-4">
+                                    <a href="{{route('product.details', $product->slug)}}" class="btn btn-primary rounded-pill">Add to Cart</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
-<!-- section -->
-<section class="py-lg-14 py-8 bg-light">
- <div class="container">
-     <div class="row align-items-center mb-10">
-         <div class="col-md-8">
-             <div class="d-flex">
-                 <!-- svg -->
-                 <div class="mt-1">
-                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                         stroke-linecap="round" stroke-linejoin="round"
-                         class="feather feather-map-pin text-primary">
-                         <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                         <circle cx="12" cy="10" r="3"></circle>
-                     </svg>
-                 </div>
-                 <!-- text -->
-                 <div class="ms-3">
-                     <h3 class="mb-0">Areas we deliver to</h3>
-                     <p class="mb-0">Find the best store products in your area with discount.</p>
-                 </div>
-                 <div></div>
-             </div>
-         </div>
-         <!-- btn -->
-         <div class="col-md-4 text-end d-none d-md-block">
-             <a href="#" class="btn btn-primary">View All City</a>
-         </div>
-     </div>
-     <!-- row -->
-     <div class="row row-cols-lg-5 row-cols-md-3 row-cols-2">
-         <div class="col">
-             <div>
-                 <!-- list -->
-                 <ul class="list-unstyled">
-                     <li class="mb-2">
-                         <a href="#" class="text-reset">
-                             <i class="feather-icon icon-arrow-right me-1"></i>
-                             Adlaj
-                         </a>
-                     </li>
-                     <li class="mb-2">
-                         <a href="#" class="text-reset">
-                             <i class="feather-icon icon-arrow-right me-1"></i>
-                             Ambawadi
-                         </a>
-                     </li>
-                     <li class="mb-2">
-                         <a href="#" class="text-reset">
-                             <i class="feather-icon icon-arrow-right me-1"></i>
-                             Ambli
-                         </a>
-                     </li>
-                     <li class="mb-2">
-                         <a href="#" class="text-reset">
-                             <i class="feather-icon icon-arrow-right me-1"></i>
-                             Amraiwadi
-                         </a>
-                     </li>
-                     <li class="mb-2">
-                         <a href="#" class="text-reset">
-                             <i class="feather-icon icon-arrow-right me-1"></i>
-                             Asarwa
-                         </a>
-                     </li>
-                     <li class="mb-2">
-                         <a href="#" class="text-reset">
-                             <i class="feather-icon icon-arrow-right me-1"></i>
-                             Badarkha
-                         </a>
-                     </li>
-                     <li class="mb-2">
-                         <a href="#" class="text-reset">
-                             <i class="feather-icon icon-arrow-right me-1"></i>
-                             Bapunagar
-                         </a>
-                     </li>
-                     <li class="mb-2">
-                         <a href="#" class="text-reset">
-                             <i class="feather-icon icon-arrow-right me-1"></i>
-                             Barejadi
-                         </a>
-                     </li>
-                     <li class="mb-2">
-                         <a href="#" class="text-reset">
-                             <i class="feather-icon icon-arrow-right me-1"></i>
-                             Bhat
-                         </a>
-                     </li>
-                 </ul>
-             </div>
-         </div>
-         <!-- col -->
-         <div class="col">
-             <div>
-                 <!-- list -->
-                 <ul class="list-unstyled">
-                     <li class="mb-2">
-                         <a href="#" class="text-reset">
-                             <i class="feather-icon icon-arrow-right me-1"></i>
-                             Chanakyapuri
-                         </a>
-                     </li>
-                     <li class="mb-2">
-                         <a href="#" class="text-reset">
-                             <i class="feather-icon icon-arrow-right me-1"></i>
-                             Chandkheda
-                         </a>
-                     </li>
-                     <li class="mb-2">
-                         <a href="#" class="text-reset">
-                             <i class="feather-icon icon-arrow-right me-1"></i>
-                             Chandlodiya
-                         </a>
-                     </li>
-                     <li class="mb-2">
-                         <a href="#" class="text-reset">
-                             <i class="feather-icon icon-arrow-right me-1"></i>
-                             Changodar
-                         </a>
-                     </li>
-                     <li class="mb-2">
-                         <a href="#" class="text-reset">
-                             <i class="feather-icon icon-arrow-right me-1"></i>
-                             Chharodi
-                         </a>
-                     </li>
-                     <li class="mb-2">
-                         <a href="#" class="text-reset">
-                             <i class="feather-icon icon-arrow-right me-1"></i>
-                             Dabhoda
-                         </a>
-                     </li>
-                     <li class="mb-2">
-                         <a href="#" class="text-reset">
-                             <i class="feather-icon icon-arrow-right me-1"></i>
-                             Dahegam
-                         </a>
-                     </li>
-                     <li class="mb-2">
-                         <a href="#" class="text-reset">
-                             <i class="feather-icon icon-arrow-right me-1"></i>
-                             Dariapur
-                         </a>
-                     </li>
-                     <li class="mb-2">
-                         <a href="#" class="text-reset">
-                             <i class="feather-icon icon-arrow-right me-1"></i>
-                             Dholera
-                         </a>
-                     </li>
-                 </ul>
-             </div>
-         </div>
-         <!-- col -->
-         <div class="col">
-             <!-- list -->
-             <div>
-                 <ul class="list-unstyled">
-                     <li class="mb-2">
-                         <a href="#" class="text-reset">
-                             <i class="feather-icon icon-arrow-right me-1"></i>
-                             Ellis Bridge
-                         </a>
-                     </li>
-                     <li class="mb-2">
-                         <a href="#" class="text-reset">
-                             <i class="feather-icon icon-arrow-right me-1"></i>
-                             Gandhi Ashram
-                         </a>
-                     </li>
-                     <li class="mb-2">
-                         <a href="#" class="text-reset">
-                             <i class="feather-icon icon-arrow-right me-1"></i>
-                             Gandhinagar
-                         </a>
-                     </li>
-                     <li class="mb-2">
-                         <a href="#" class="text-reset">
-                             <i class="feather-icon icon-arrow-right me-1"></i>
-                             Ghatlodiya
-                         </a>
-                     </li>
-                     <li class="mb-2">
-                         <a href="#" class="text-reset">
-                             <i class="feather-icon icon-arrow-right me-1"></i>
-                             Ghodasar
-                         </a>
-                     </li>
-                     <li class="mb-2">
-                         <a href="#" class="text-reset">
-                             <i class="feather-icon icon-arrow-right me-1"></i>
-                             Ghuma
-                         </a>
-                     </li>
-                     <li class="mb-2">
-                         <a href="#" class="text-reset">
-                             <i class="feather-icon icon-arrow-right me-1"></i>
-                             Gift City
-                         </a>
-                     </li>
-                     <li class="mb-2">
-                         <a href="#" class="text-reset">
-                             <i class="feather-icon icon-arrow-right me-1"></i>
-                             Girdhar Nagar
-                         </a>
-                     </li>
-                     <li class="mb-2">
-                         <a href="#" class="text-reset">
-                             <i class="feather-icon icon-arrow-right me-1"></i>
-                             Gita Mandir
-                         </a>
-                     </li>
-                 </ul>
-             </div>
-         </div>
-         <!-- col -->
-         <div class="col">
-             <!-- list -->
-             <div>
-                 <ul class="list-unstyled">
-                     <li class="mb-2">
-                         <a href="#" class="text-reset">
-                             <i class="feather-icon icon-arrow-right me-1"></i>
-                             Gota
-                         </a>
-                     </li>
-                     <li class="mb-2">
-                         <a href="#" class="text-reset">
-                             <i class="feather-icon icon-arrow-right me-1"></i>
-                             Gurukul
-                         </a>
-                     </li>
-                     <li class="mb-2">
-                         <a href="#" class="text-reset">
-                             <i class="feather-icon icon-arrow-right me-1"></i>
-                             Hansol
-                         </a>
-                     </li>
-                     <li class="mb-2">
-                         <a href="#" class="text-reset">
-                             <i class="feather-icon icon-arrow-right me-1"></i>
-                             Hathijan
-                         </a>
-                     </li>
-                     <li class="mb-2">
-                         <a href="#" class="text-reset">
-                             <i class="feather-icon icon-arrow-right me-1"></i>
-                             Hatkeshwar
-                         </a>
-                     </li>
-                     <li class="mb-2">
-                         <a href="#" class="text-reset">
-                             <i class="feather-icon icon-arrow-right me-1"></i>
-                             Janta Nagar
-                         </a>
-                     </li>
-                     <li class="mb-2">
-                         <a href="#" class="text-reset">
-                             <i class="feather-icon icon-arrow-right me-1"></i>
-                             Jagatpur
-                         </a>
-                     </li>
-                     <li class="mb-2">
-                         <a href="#" class="text-reset">
-                             <i class="feather-icon icon-arrow-right me-1"></i>
-                             Janta Nagar
-                         </a>
-                     </li>
-                     <li class="mb-2">
-                         <a href="#" class="text-reset">
-                             <i class="feather-icon icon-arrow-right me-1"></i>
-                             Jashoda Nagar
-                         </a>
-                     </li>
-                 </ul>
-             </div>
-         </div>
-         <!-- col -->
-         <div class="col">
-             <!-- list -->
-             <div>
-                 <ul class="list-unstyled">
-                     <li class="mb-2">
-                         <a href="#" class="text-reset">
-                             <i class="feather-icon icon-arrow-right me-1"></i>
-                             Jetalpur
-                         </a>
-                     </li>
-                     <li class="mb-2">
-                         <a href="#" class="text-reset">
-                             <i class="feather-icon icon-arrow-right me-1"></i>
-                             Jivraj Park
-                         </a>
-                     </li>
-                     <li class="mb-2">
-                         <a href="#" class="text-reset">
-                             <i class="feather-icon icon-arrow-right me-1"></i>
-                             Juna Wadaj
-                         </a>
-                     </li>
-                     <li class="mb-2">
-                         <a href="#" class="text-reset">
-                             <i class="feather-icon icon-arrow-right me-1"></i>
-                             Kalapi Nagar
-                         </a>
-                     </li>
-                     <li class="mb-2">
-                         <a href="#" class="text-reset">
-                             <i class="feather-icon icon-arrow-right me-1"></i>
-                             Kalol
-                         </a>
-                     </li>
-                     <li class="mb-2">
-                         <a href="#" class="text-reset">
-                             <i class="feather-icon icon-arrow-right me-1"></i>
-                             Madhupura
-                         </a>
-                     </li>
-                     <li class="mb-2">
-                         <a href="#" class="text-reset">
-                             <i class="feather-icon icon-arrow-right me-1"></i>
-                             Manek Chowk
-                         </a>
-                     </li>
-                     <li class="mb-2">
-                         <a href="#" class="text-reset">
-                             <i class="feather-icon icon-arrow-right me-1"></i>
-                             Meghani Nagar
-                         </a>
-                     </li>
-                     <li class="mb-2">
-                         <a href="#" class="text-reset">
-                             <i class="feather-icon icon-arrow-right me-1"></i>
-                             Motera
-                         </a>
-                     </li>
-                 </ul>
-             </div>
-         </div>
-     </div>
- </div>
-</section>
+@endforeach
+
+ <!-- Modal -->
+ <div class="modal fade" id="quickViewModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body p-8">
+                <div class="position-absolute top-0 end-0 me-3 mt-3">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <!-- img slide -->
+                        <div class="product productModal" id="productModal">
+                            <div class="zoom" onmousemove="zoom(event)"
+                                style="background-image: url(images/product-single-img-1.jpg)">
+                                <!-- img -->
+                                <img src="/theme/images/product-single-img-1.jpg" alt="">
+                            </div>
+                            <div>
+                                <div class="zoom" onmousemove="zoom(event)"
+                                    style="background-image: url(images/product-single-img-2.jpg)">
+                                    <!-- img -->
+                                    <img src="/theme/images/product-single-img-2.jpg" alt="">
+                                </div>
+                            </div>
+                            <div>
+                                <div class="zoom" onmousemove="zoom(event)"
+                                    style="background-image: url(images/product-single-img-3.jpg)">
+                                    <!-- img -->
+                                    <img src="/theme/images/product-single-img-3.jpg" alt="">
+                                </div>
+                            </div>
+                            <div>
+                                <div class="zoom" onmousemove="zoom(event)"
+                                    style="background-image: url(images/product-single-img-4.jpg)">
+                                    <!-- img -->
+                                    <img src="/theme/images/product-single-img-4.jpg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- product tools -->
+                        <div class="product-tools">
+                            <div class="thumbnails row g-3" id="productModalThumbnails">
+                                <div class="col-3">
+                                    <div class="thumbnails-img">
+                                        <!-- img -->
+                                        <img src="/theme/images/product-single-img-1.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="thumbnails-img">
+                                        <!-- img -->
+                                        <img src="/theme/images/product-single-img-2.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="thumbnails-img">
+                                        <!-- img -->
+                                        <img src="/theme/images/product-single-img-3.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="thumbnails-img">
+                                        <!-- img -->
+                                        <img src="/theme/images/product-single-img-4.jpg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="ps-lg-8 mt-6 mt-lg-0">
+                            <a href="#!" class="mb-4 d-block">Bakery Biscuits</a>
+                            <h2 class="mb-1 h1">Napolitanke Ljesnjak</h2>
+                            <div class="mb-4">
+                                <small class="text-warning">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-half"></i>
+                                </small>
+                                <a href="#" class="ms-2">(30 reviews)</a>
+                            </div>
+                            <div class="fs-4">
+                                <span class="fw-bold text-dark">$32</span>
+                                <span class="text-decoration-line-through text-muted">$35</span>
+                                <span><small class="fs-6 ms-2 text-danger">26% Off</small></span>
+                            </div>
+                            <hr class="my-6">
+                            <div class="mb-4">
+                                <button type="button" class="btn btn-outline-secondary">250g</button>
+                                <button type="button" class="btn btn-outline-secondary">500g</button>
+                                <button type="button" class="btn btn-outline-secondary">1kg</button>
+                            </div>
+                            <div>
+                                <!-- input -->
+                                <!-- input -->
+                                <div class="input-group input-spinner">
+                                    <input type="button" value="-" class="button-minus btn btn-sm"
+                                        data-field="quantity">
+                                    <input type="number" step="1" max="10" value="1"
+                                        name="quantity" class="quantity-field form-control-sm form-input">
+                                    <input type="button" value="+" class="button-plus btn btn-sm"
+                                        data-field="quantity">
+                                </div>
+                            </div>
+                            <div class="mt-3 row justify-content-start g-2 align-items-center">
+                                <div class="col-lg-4 col-md-5 col-6 d-grid">
+                                    <!-- button -->
+                                    <!-- btn -->
+                                    <button type="button" class="btn btn-primary">
+                                        <i class="feather-icon icon-shopping-bag me-2"></i>
+                                        Add to cart
+                                    </button>
+                                </div>
+                                <div class="col-md-4 col-5">
+                                    <!-- btn -->
+                                    <a class="btn btn-light" href="#" data-bs-toggle="tooltip"
+                                        data-bs-html="true" aria-label="Compare"><i
+                                            class="bi bi-arrow-left-right"></i></a>
+                                    <a class="btn btn-light" href="#!" data-bs-toggle="tooltip"
+                                        data-bs-html="true" aria-label="Wishlist"><i
+                                            class="feather-icon icon-heart"></i></a>
+                                </div>
+                            </div>
+                            <hr class="my-6">
+                            <div>
+                                <table class="table table-borderless">
+                                    <tbody>
+                                        <tr>
+                                            <td>Product Code:</td>
+                                            <td>FBB00255</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Availability:</td>
+                                            <td>In Stock</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Type:</td>
+                                            <td>Fruits</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Shipping:</td>
+                                            <td>
+                                                <small>
+                                                    01 day shipping.
+                                                    <span class="text-muted">( Free pickup today)</span>
+                                                </small>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection

@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',[GuestController::class, 'welcome'] );
 Route::get('/shop',[GuestController::class, 'shop'] );
+Route::get('/products/{slug}/details',[GuestController::class, 'productDetails'] )->name('product.details');
 
 Auth::routes();
 

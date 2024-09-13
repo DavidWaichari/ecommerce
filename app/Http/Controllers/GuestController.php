@@ -24,4 +24,9 @@ class GuestController extends Controller
         $categories = Category::where('status', 'Active')->get();
         return view('client/shop-left-sidebar', compact('categories'));
     }
+
+    public function productDetails(Product $product)
+    {
+        return view('client/product_details', compact('product'));
+    }
 }
