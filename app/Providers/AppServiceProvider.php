@@ -23,7 +23,12 @@ class AppServiceProvider extends ServiceProvider
     {
         View::composer('layouts.app', function ($view) {
             $categories = Category::where('status', 'Active')->with('products')->get();
-            $view->with('categories', $categories);
+            //return a snumber to 10 to show whene it will render the cart
+            $cartTotal = 522; // Or fetch actual cart total if available
+            $view->with('categories', $categories)
+                 ->with('cart', $cartTotal);
+
+            // $view->with('categories', $categories)->with('cart', '522');
         });
     }
 }

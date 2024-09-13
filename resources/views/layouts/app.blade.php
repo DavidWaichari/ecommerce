@@ -28,7 +28,7 @@
     <script async="" src="https://www.clarity.ms/tag/kuc8w5o9nt"></script>
     <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-M8S4MT3EYG"></script>
      <!-- Scripts -->
-     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+     {{-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
      {{-- @vite(['resources/sass/app.scss']) --}}
 </head>
 
@@ -96,7 +96,7 @@
                                                 </svg>
                                             </span>
 
-                                            <span>$0.00</span>
+                                            <span>${{$cart}}</span>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-end dropdown-menu-lg p-5">
                                             <div
@@ -235,7 +235,7 @@
                                         </svg>
                                     </span>
 
-                                    <span>$0.00</span>
+                                    <span>${{$cart}}</span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-lg p-5">
                                     <div class="d-flex justify-content-between align-items-center border-bottom pb-5">

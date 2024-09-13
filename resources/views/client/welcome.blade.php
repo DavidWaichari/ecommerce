@@ -203,7 +203,7 @@
                             </div>
                         </div>
                         <div class="d-grid mt-4">
-                            <a href="#" class="btn btn-primary rounded-pill">Add to Cart</a>
+                            <a href="{{route('product.details', $product->slug)}}" class="btn btn-primary rounded-pill">Add to Cart</a>
                         </div>
                     </div>
                 </div>
@@ -316,7 +316,7 @@
                          </div>
                      </div>
                      <div class="d-grid mt-4">
-                         <a href="#" class="btn btn-primary rounded-pill">Add to Cart</a>
+                        <a href="{{route('product.details', $product->slug)}}" class="btn btn-primary rounded-pill">Add to Cart</a>
                      </div>
                  </div>
              </div>
