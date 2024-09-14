@@ -353,7 +353,7 @@
                                                 <ul class="list-unstyled">
                                                     @foreach ($category->products as $product)
                                                     <li>
-                                                        <a href="javascript:void(0)" class="dropdown-item">{{$product->name}}</a>
+                                                        <a href="{{route('product.details', $product->slug)}}" class="dropdown-item">{{$product->name}}</a>
                                                     </li>
                                                     @endforeach
                                                 </ul>
@@ -375,7 +375,7 @@
                                         <div class="col-lg-3 col-12 mb-4 mb-lg-0">
                                             <h6 class="text-primary ps-3">{{$category->name}}</h6>
                                             @foreach ($category->products as $product)
-                                                <a class="dropdown-item" href="../pages/shop-grid.html">{{$product->name}}</a>
+                                            <a href="{{route('product.details', $product->slug)}}" class="dropdown-item" >{{$product->name}}</a>
                                             @endforeach
                                         </div>
                                         @endforeach
@@ -679,6 +679,8 @@
     <script src="/theme/js/tiny-slider.js"></script>
     <script src="/theme/js/tns-slider.js"></script>
     <script src="/theme/js/zoom.js"></script>
+
+    @yield('scripts')
 </body>
 
 </html>

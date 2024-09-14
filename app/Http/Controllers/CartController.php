@@ -84,22 +84,10 @@ class CartController extends Controller
         $quantity = max(1, $request->input('quantity')); // Ensure quantity is at least 1
 
         // Retrieve the cart from the session
-        $cart = session()->get('cart', []);
-
-        // Loop through the cart to find the product
-        foreach ($cart as &$cartItem) {
-            if ($cartItem['id'] == $productId) {
-                // Update the product's quantity
-                $cartItem['quantity'] = $quantity;
-                break;
-            }
-        }
-
-        // Update the session with the modified cart
-        session()->put('cart', $cart);
-
+        $cart = $this->updateCartItems($productId, $quantity);
         return redirect()->back()->with('success', 'Cart updated successfully!');
     }
+
 
     public function updateCartAjax(Request $request)
     {
@@ -124,5 +112,45 @@ class CartController extends Controller
             'success' => true,
             'message' => 'Cart updated successfully!'
         ]);
+    }
+
+    public function updateMultiple (Request $request)
+    {
+        // return $request->all();
+        $product_ids = $request->product_ids;
+        $quantities = $request->quantities;
+
+        //loop through the products
+        foreach ($product_ids as $key => $value) {
+           //update the cart items
+           $this->updateCartItems($value, $quantities[$key]);
+        }
+
+        return redirect()->back()->with('success', 'Cart updated successfully!');
+
+    }
+
+    public function updateCartItems($productId, $quantity)
+    {
+
+        $product = Product::find($productId);
+        // Retrieve the cart from the session
+        $cart = session()->get('cart', []);
+
+        // Loop through the cart to find the product
+        foreach ($cart as &$cartItem) {
+            if ($cartItem['id'] == $productId) {
+                // Update the product's quantity
+                $cartItem['quantity'] = $quantity;
+                //update the total
+                $cartItem['total'] = $quantity * $product->discount_price;
+                break;
+            }
+        }
+
+        // Update the session with the modified cart
+        session()->put('cart', $cart);
+
+        return true;
     }
 }

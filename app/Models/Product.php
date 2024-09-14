@@ -90,7 +90,7 @@ class Product extends Model
     {
         $discount = $this->selling_price - $this->discount_price ;
 
-       return ($discount / $this->selling_price) * 100 ;
+       return  number_format(($discount / $this->selling_price) * 100 , 2);
 
     }
 }

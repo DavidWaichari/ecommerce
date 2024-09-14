@@ -35,6 +35,7 @@ Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add')
 Route::get('/cart', [CartController::class, 'viewCart'])->name('cart.view');
 Route::get('/cart/remove/{productId}', [CartController::class, 'removeFromCart'])->name('cart.remove');
 Route::post('/cart/update', [CartController::class, 'updateCart'])->name('cart.update');
+Route::post('/cart/update/multiple', [CartController::class, 'updateMultiple'])->name('cart.update_multiple');
 route::post('/cart/update-ajax', [CartController::class, 'updateCartAjax'])->name('cart.update.ajax');
 
 // Checkout route

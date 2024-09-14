@@ -37,6 +37,8 @@
        <!-- row -->
        <div class="row">
           <div class="col-lg-8 col-md-7">
+            <form method="POST" action="/cart/update/multiple">
+                @csrf
              <div class="py-3">
                 {{-- <!-- alert -->
                 <div class="alert alert-danger p-2" role="alert">
@@ -54,10 +56,10 @@
                                 <img src="{{$product['featured_image_url']}}" alt="Ecommerce" class="icon-shape icon-xxl">
                                 <div class="ms-3">
                                     <!-- title -->
-                                    <a href="../pages/shop-single.html" class="text-inherit">
+                                    <a href="{{route('product.details', $product['slug'])}}" class="text-inherit">
                                         <h6 class="mb-0">{{$product['name']}}</h6>
                                     </a>
-                                    {{-- <span><small class="text-muted">.98 / lb</small></span> --}}
+                                    <span><small class="text-muted">{{$product['discount_price']}} / item</small></span>
                                     <!-- text -->
                                     <div class="mt-2 small lh-1">
                                         <a href="/cart/remove/{{$product['id']}}" class="text-decoration-none text-inherit">
@@ -80,8 +82,9 @@
                                 <!-- input -->
                                 <!-- input -->
                                 <div class="input-group input-spinner">
+                                <input type="text" name="product_ids[]" value="{{$product['id']}}" hidden>
                                 <input type="button" value="-" class="button-minus btn btn-sm" data-field="quantity">
-                                <input type="number" step="1" max="10" value="{{$product['quantity']}}" name="quantity" class="quantity-field form-control-sm form-input">
+                                <input type="number" step="1"  value="{{$product['quantity']}}" name="quantities[]" class="quantity-field form-control-sm form-input">
                                 <input type="button" value="+" class="button-plus btn btn-sm" data-field="quantity">
                                 </div>
                             </div>
@@ -95,8 +98,9 @@
                 <!-- btn -->
                 <div class="d-flex justify-content-between mt-4">
                    <a href="/" class="btn btn-primary">Continue Shopping</a>
-                   <a href="#!" class="btn btn-dark">Update Cart</a>
+                   <button type="submit" class="btn btn-dark">Update Cart</button>
                 </div>
+            </form>
              </div>
           </div>
 
@@ -171,4 +175,33 @@
        </div>
     </div>
  </section>
+@endsection
+@section('scripts')
+<script>
+    // Handle the minus button click
+    $('.button-minus').click(function (e) {
+        e.preventDefault();
+
+        // Find the associated quantity input field
+        var input = $(this).closest('.input-spinner').find('.quantity-field');
+        var currentVal = parseInt(input.val());
+
+        // Decrease the quantity but ensure it's at least 1
+        if (currentVal > 1) {
+            input.val(currentVal - 1);
+        }
+    });
+
+    // Handle the plus button click
+    $('.button-plus').click(function (e) {
+        e.preventDefault();
+
+        // Find the associated quantity input field
+        var input = $(this).closest('.input-spinner').find('.quantity-field');
+        var currentVal = parseInt(input.val());
+
+        // Increase the quantity
+        input.val(currentVal + 1);
+    });
+</script>
 @endsection
