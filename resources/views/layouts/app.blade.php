@@ -180,7 +180,7 @@
                                             </ul>
                                             <div class="mt-2 d-grid">
                                                 <a href="#" class="btn btn-primary">Checkout</a>
-                                                <a href="#" class="btn btn-light mt-2">View Cart</a>
+                                                <a href="/cart" class="btn btn-light mt-2">View Cart</a>
                                             </div>
                                         </div>
                                     </div>
@@ -225,36 +225,36 @@
                                             <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
                                         </svg>
                                     </span>
-                                    <span>KES {{ number_format($cartTotal ?? 0, 2) }}</span>
+                                    <span>KES {{$cart_items->sum('total')}}</span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-lg p-5">
                                     <div class="d-flex justify-content-between align-items-center border-bottom pb-5 mb-3">
                                         <div>
                                             <span><i class="feather-icon icon-shopping-cart"></i></span>
-                                            <span class="text-success">{{ $cartCount ?? 0 }}</span>
+                                            <span class="text-success">{{$cart_items->count()}}</span>
                                         </div>
                                         <div>
                                             <span>Total:</span>
-                                            <span class="text-success">KES {{ number_format($cartTotal ?? 0, 2) }}</span>
+                                            <span class="text-success">KES {{$cart_items->sum('total')}}</span>
                                         </div>
                                     </div>
                                     <ul class="list-group list-group-flush">
-                                        @forelse($cart ?? [] as $id => $details)
+                                        @forelse($cart_items ?? [] as $product)
                                             <li class="list-group-item px-0 py-3">
                                                 <div class="row align-items-center g-0">
                                                     <div class="col-lg-3 col-3 text-center">
-                                                        <img src="{{ $details['image'] ?? '/theme/images/placeholder.jpg' }}" alt="{{ $details['name'] ?? 'Product' }}" class="icon-xxl">
+                                                        <img src="{{ $product['featured_image_url'] ?? '/theme/images/placeholder.jpg' }}" alt="{{ $product['name'] ?? 'Product' }}" class="icon-xxl">
                                                     </div>
                                                     <div class="col-lg-7 col-7">
-                                                        <a href="{{ route('product.details', $id) }}" class="text-inherit">
-                                                            <h6 class="mb-0">{{ $details['name'] ?? 'Unknown Product' }}</h6>
+                                                        <a href="{{ route('product.details', $product['slug']) }}" class="text-inherit">
+                                                            <h6 class="mb-0">{{ $product['name'] ?? 'Unknown Product' }}</h6>
                                                         </a>
-                                                        <small class="text-muted">{{ $details['quantity'] ?? 0 }} x KES {{ number_format($details['price'] ?? 0, 2) }}</small>
+                                                        <small class="text-muted">{{ $product['quantity'] ?? 0 }} x KES {{ number_format($product['price'] ?? 0, 2) }}</small>
                                                     </div>
                                                     <div class="text-end col-lg-2 col-2">
                                                         <form action="{{ route('cart.remove') }}" method="POST">
                                                             @csrf
-                                                            <input type="hidden" name="product_id" value="{{ $id }}">
+                                                            <input type="hidden" name="product_id" value="{{ $product['id'] }}">
                                                             <button type="submit" class="btn btn-link p-0 text-danger" aria-label="Remove">
                                                                 <i class="bi bi-x fs-4"></i>
                                                             </button>

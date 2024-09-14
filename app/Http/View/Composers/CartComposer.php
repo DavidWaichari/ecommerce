@@ -8,23 +8,12 @@ class CartComposer
 {
     public function compose(View $view)
     {
+
+        // Retrieve the cart from the session
         $cart = session()->get('cart', []);
-        $cartCount = 0;
-        $cartTotal = 0;
 
-        if (is_array($cart)) {
-            foreach ($cart as $item) {
-                if (is_array($item) && isset($item['quantity'])) {
-                    $cartCount += $item['quantity'];
-                }
-                if (is_array($item) && isset($item['price']) && isset($item['quantity'])) {
-                    $cartTotal += $item['price'] * $item['quantity'];
-                }
-            }
-        }
+        $cart_items = collect($cart);
 
-        $view->with('cart', $cart);
-        $view->with('cartCount', $cartCount);
-        $view->with('cartTotal', $cartTotal);
+        $view->with('cart_items', $cart_items);
     }
 }

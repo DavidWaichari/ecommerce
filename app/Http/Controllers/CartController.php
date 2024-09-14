@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\Product;
@@ -8,50 +7,74 @@ use Illuminate\Http\Request;
 class CartController extends Controller
 {
     public function addToCart(Request $request)
-{
-    $productId = $request->input('product_id');
-    $quantity = $request->input('quantity', 1);
+    {
+        $productId = $request->input('product_id');
+        $quantity = max(1, $request->input('quantity', 1)); // Ensure quantity is at least 1
 
-    $product = Product::findOrFail($productId);
+        // Find the product by ID
+        $product = Product::findOrFail($productId);
 
-    // Debugging to check if the image URL is correct
-    // dd($product->featured_image_url);
+        // Convert the product to an associative array to add the quantity
+        $productArray = $product->toArray();
 
-    $cart = session()->get('cart', []);
+        // Get the current cart from the session as an array of objects
+        $cart = session()->get('cart', []);
 
-    if (isset($cart[$productId])) {
-        $cart[$productId]['quantity'] += $quantity;
-    } else {
-        $cart[$productId] = [
-            "name" => $product->name,
-            "quantity" => $quantity,
-            "price" => $product->discount_price,
-            "image" => $product->featured_image_url
-        ];
+        // Check if the product already exists in the cart by looping through the array
+        $found = false;
+        foreach ($cart as &$cartItem) {
+            if ($cartItem['id'] == $productId) {
+                // If the product exists, increment the quantity
+                $cartItem['quantity'] += $quantity;
+                // Update the total for the existing item
+                $cartItem['total'] = $cartItem['quantity'] * $product->discount_price;
+                $found = true;
+                break;
+            }
+        }
+
+        // If the product does not exist, add it as a new item
+        if (!$found) {
+            // Add the quantity to the product array
+            $productArray['quantity'] = $quantity;
+            // Calculate the total price for the new item
+            $productArray['total'] = $productArray['quantity'] * $product->discount_price;
+            $cart[] = $productArray;
+        }
+
+        // Update the session cart
+        session()->put('cart', $cart);
+
+        return redirect()->back()->with('success', 'Product added to cart successfully!');
     }
-
-    session()->put('cart', $cart);
-
-    return redirect()->back()->with('success', 'Product added to cart successfully!');
-}
 
 
     public function viewCart()
     {
+        // Retrieve the cart from the session
         $cart = session()->get('cart', []);
-        return view('cart', compact('cart'));
+
+        // Render the cart view with the cart items
+        return view('client.cart', ['cart_items' => $cart]);
     }
 
     public function removeFromCart(Request $request)
     {
         $productId = $request->input('product_id');
 
+        // Retrieve the cart from the session
         $cart = session()->get('cart', []);
 
-        if(isset($cart[$productId])) {
-            unset($cart[$productId]);
-            session()->put('cart', $cart);
+        // Check if the product exists in the cart and remove it
+        foreach ($cart as $key => $cartItem) {
+            if ($cartItem['id'] == $productId) {
+                unset($cart[$key]);
+                break;
+            }
         }
+
+        // Update the session with the modified cart
+        session()->put('cart', array_values($cart)); // Reindex array
 
         return redirect()->back()->with('success', 'Product removed from cart successfully!');
     }
@@ -59,15 +82,48 @@ class CartController extends Controller
     public function updateCart(Request $request)
     {
         $productId = $request->input('product_id');
-        $quantity = $request->input('quantity');
+        $quantity = max(1, $request->input('quantity')); // Ensure quantity is at least 1
 
+        // Retrieve the cart from the session
         $cart = session()->get('cart', []);
 
-        if(isset($cart[$productId])) {
-            $cart[$productId]['quantity'] = $quantity;
-            session()->put('cart', $cart);
+        // Loop through the cart to find the product
+        foreach ($cart as &$cartItem) {
+            if ($cartItem['id'] == $productId) {
+                // Update the product's quantity
+                $cartItem['quantity'] = $quantity;
+                break;
+            }
         }
 
+        // Update the session with the modified cart
+        session()->put('cart', $cart);
+
         return redirect()->back()->with('success', 'Cart updated successfully!');
+    }
+
+    public function updateCartAjax(Request $request)
+    {
+        $productId = $request->input('product_id');
+        $quantity = max(1, $request->input('quantity')); // Ensure quantity is at least 1
+
+        // Retrieve the cart from the session
+        $cart = session()->get('cart', []);
+
+        // If the product exists in the cart, update its quantity
+        foreach ($cart as &$cartItem) {
+            if ($cartItem['id'] == $productId) {
+                $cartItem['quantity'] = $quantity;
+                break;
+            }
+        }
+
+        // Update the session with the modified cart
+        session()->put('cart', $cart);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Cart updated successfully!'
+        ]);
     }
 }
