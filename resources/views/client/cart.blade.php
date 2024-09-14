@@ -38,11 +38,11 @@
        <div class="row">
           <div class="col-lg-8 col-md-7">
              <div class="py-3">
-                <!-- alert -->
+                {{-- <!-- alert -->
                 <div class="alert alert-danger p-2" role="alert">
                    You’ve got FREE delivery. Start
                    <a href="#!" class="alert-link">checkout now!</a>
-                </div>
+                </div> --}}
                 <ul class="list-group list-group-flush">
                    <!-- list group -->
                    @foreach ($cart_items as $product)
@@ -51,16 +51,16 @@
                         <div class="row align-items-center">
                             <div class="col-6 col-md-6 col-lg-7">
                                 <div class="d-flex">
-                                <img src="/theme/images/product-img-1.jpg" alt="Ecommerce" class="icon-shape icon-xxl">
+                                <img src="{{$product['featured_image_url']}}" alt="Ecommerce" class="icon-shape icon-xxl">
                                 <div class="ms-3">
                                     <!-- title -->
                                     <a href="../pages/shop-single.html" class="text-inherit">
                                         <h6 class="mb-0">{{$product['name']}}</h6>
                                     </a>
-                                    <span><small class="text-muted">.98 / lb</small></span>
+                                    {{-- <span><small class="text-muted">.98 / lb</small></span> --}}
                                     <!-- text -->
                                     <div class="mt-2 small lh-1">
-                                        <a href="#!" class="text-decoration-none text-inherit">
+                                        <a href="/cart/remove/{{$product['id']}}" class="text-decoration-none text-inherit">
                                             <span class="me-1 align-text-bottom">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2 text-success">
                                                 <polyline points="3 6 5 6 21 6"></polyline>
@@ -81,13 +81,13 @@
                                 <!-- input -->
                                 <div class="input-group input-spinner">
                                 <input type="button" value="-" class="button-minus btn btn-sm" data-field="quantity">
-                                <input type="number" step="1" max="10" value="1" name="quantity" class="quantity-field form-control-sm form-input">
+                                <input type="number" step="1" max="10" value="{{$product['quantity']}}" name="quantity" class="quantity-field form-control-sm form-input">
                                 <input type="button" value="+" class="button-plus btn btn-sm" data-field="quantity">
                                 </div>
                             </div>
                             <!-- price -->
                             <div class="col-2 text-lg-end text-start text-md-end col-md-2">
-                                <span class="fw-bold">$5.00</span>
+                                <span class="fw-bold">KES {{$product['total']}}</span>
                             </div>
                         </div>
                     </li>

@@ -58,14 +58,13 @@ class CartController extends Controller
         return view('client.cart', ['cart_items' => $cart]);
     }
 
-    public function removeFromCart(Request $request)
+    public function removeFromCart($productId)
     {
-        $productId = $request->input('product_id');
 
         // Retrieve the cart from the session
         $cart = session()->get('cart', []);
 
-        // Check if the product exists in the cart and remove it
+        // Check if the product exists in the cart and removpe it
         foreach ($cart as $key => $cartItem) {
             if ($cartItem['id'] == $productId) {
                 unset($cart[$key]);

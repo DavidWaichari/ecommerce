@@ -249,16 +249,12 @@
                                                         <a href="{{ route('product.details', $product['slug']) }}" class="text-inherit">
                                                             <h6 class="mb-0">{{ $product['name'] ?? 'Unknown Product' }}</h6>
                                                         </a>
-                                                        <small class="text-muted">{{ $product['quantity'] ?? 0 }} x KES {{ number_format($product['price'] ?? 0, 2) }}</small>
+                                                        <small class="text-muted">{{ $product['quantity'] ?? 0 }} x KES {{ number_format($product['discount_price'] ?? 0, 2) }} ({{$product['total']}})</small>
                                                     </div>
                                                     <div class="text-end col-lg-2 col-2">
-                                                        <form action="{{ route('cart.remove') }}" method="POST">
-                                                            @csrf
-                                                            <input type="hidden" name="product_id" value="{{ $product['id'] }}">
-                                                            <button type="submit" class="btn btn-link p-0 text-danger" aria-label="Remove">
-                                                                <i class="bi bi-x fs-4"></i>
-                                                            </button>
-                                                        </form>
+                                                        <a href="/cart/remove/{{$product['id']}}"  class="btn btn-link p-0 text-danger" aria-label="Remove">
+                                                            <i class="bi bi-x fs-4"></i>
+                                                        </a>
                                                     </div>
                                                 </div>
                                             </li>
