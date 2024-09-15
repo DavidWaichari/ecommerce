@@ -10,8 +10,8 @@
              <!-- breadcrumb -->
              <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-0">
-                   <li class="breadcrumb-item"><a href="#!">Home</a></li>
-                   <li class="breadcrumb-item"><a href="#!">Shop</a></li>
+                   <li class="breadcrumb-item"><a href="/">Home</a></li>
+                   <li class="breadcrumb-item"><a href="/shop">Shop</a></li>
                    <li class="breadcrumb-item active" aria-current="page">Shop Cart</li>
                 </ol>
              </nav>
@@ -119,22 +119,22 @@
                             <div class="me-auto">
                                <div>Item Subtotal</div>
                             </div>
-                            <span>$70.00</span>
+                            <span>KES {{$cart_items->sum('total')}}</span>
                          </li>
 
                          <!-- list group item -->
                          <li class="list-group-item d-flex justify-content-between align-items-start">
                             <div class="me-auto">
-                               <div>Service Fee</div>
+                               <div>Tax VAT(16%)</div>
                             </div>
-                            <span>$3.00</span>
+                            <span>KES {{0.16 * $cart_items->sum('total')}}</span>
                          </li>
                          <!-- list group item -->
                          <li class="list-group-item d-flex justify-content-between align-items-start">
                             <div class="me-auto">
-                               <div class="fw-bold">Subtotal</div>
+                               <div class="fw-bold">Total</div>
                             </div>
-                            <span class="fw-bold">$67.00</span>
+                            <span class="fw-bold">KES {{(0.16 * $cart_items->sum('total')) +  $cart_items->sum('total')}}</span>
                          </li>
                       </ul>
                    </div>
@@ -142,7 +142,7 @@
                       <!-- btn -->
                       <button class="btn btn-primary btn-lg d-flex justify-content-between align-items-center" type="submit">
                          Go to Checkout
-                         <span class="fw-bold">$67.00</span>
+                         <span class="fw-bold">KES {{(0.16 * $cart_items->sum('total')) +  $cart_items->sum('total')}}</span>
                       </button>
                    </div>
                    <!-- text -->
@@ -156,7 +156,7 @@
                    </p>
 
                    <!-- heading -->
-                   <div class="mt-8">
+                   {{-- <div class="mt-8">
                       <h2 class="h5 mb-3">Add Promo or Gift Card</h2>
                       <form>
                          <div class="mb-2">
@@ -168,7 +168,7 @@
                          <div class="d-grid"><button type="submit" class="btn btn-outline-dark mb-1">Redeem</button></div>
                          <p class="text-muted mb-0"><small>Terms &amp; Conditions apply</small></p>
                       </form>
-                   </div>
+                   </div> --}}
                 </div>
              </div>
           </div>

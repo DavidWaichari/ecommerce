@@ -13,7 +13,7 @@ class BrandsTableSeeder extends Seeder
      */
     public function run(): void
     {
-        $brands = ['Lenovo', 'Hp', 'Dell', 'Canon', 'Epson' ];
+        $brands = ['Lenovo', 'HP', 'Dell', 'Canon', 'Epson','Apple' ];
 
 
         foreach ($brands as $brand) {
