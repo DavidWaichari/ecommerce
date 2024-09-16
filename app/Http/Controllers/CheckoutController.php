@@ -12,9 +12,9 @@ class CheckoutController extends Controller
     {
         $cart = session()->get('cart', []);
         $cart_items = collect($cart);
-        $address = session()->get('address');
+        $user = Auth::user();
 
-        return view('client/checkout', compact('cart_items', 'address'));
+        return view('client/checkout', compact('cart_items', 'user'));
     }
 
     public function process(Request $request)
@@ -38,28 +38,6 @@ class CheckoutController extends Controller
         // For now, let's just clear the cart and redirect
         session()->forget('cart');
         return redirect()->route('home')->with('success', 'Order placed successfully!');
-    }
-
-    public function saveAddress(Request $request)
-    {
-
-        session()->forget('address');
-        // Validate the incoming request
-        $validated = $request->validate([
-            'first_name' => 'required|string|max:255',
-            'last_name' => 'required|string|max:255',
-            'email' => 'nullable|email',
-            'phone_number' => 'nullable|string|max:15',
-            'county' => 'required|string',
-            'address' => 'required|string|max:255',
-            'city' => 'required|string|max:255',
-        ]);
-
-        // Save the address data to session
-        session(['address' => $validated]);
-
-        // Redirect back or to the next step
-        return redirect()->back()->with('success', 'Address saved successfully!');
     }
 
 }

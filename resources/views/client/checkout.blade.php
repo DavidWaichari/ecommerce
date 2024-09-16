@@ -53,11 +53,10 @@
                                         data-bs-target="#flush-collapseOne" aria-expanded="true"
                                         aria-controls="flush-collapseOne">
                                         <i class="feather-icon icon-map-pin me-2 text-muted"></i>
-                                        Add delivery address
+                                        Delivery address
                                     </a>
                                     <!-- btn -->
-                                    <a href="#" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal"
-                                        data-bs-target="#addAddressModal">Add a new address</a>
+                                    <a href="#" class="btn btn-outline-primary btn-sm" >Update address</a>
                                     <!-- collapse -->
                                 </div>
                                 <div id="flush-collapseOne" class="accordion-collapse collapse show"
@@ -69,17 +68,16 @@
                                                 <div class="card card-body p-6">
                                                     <!-- address -->
                                                     <address>
-                                                        <strong>{{ $address['first_name'] }}
-                                                            {{ $address['last_name'] }}</strong>
+                                                        <strong>{{$user->full_name}}</strong>
                                                         <br>
 
-                                                        {{ $address['address'] }} {{ $address['city'] }},
+                                                        {{ $user->address}},
                                                         <br>
 
-                                                        {{ $address['county'] }}, Kenya,
+                                                        {{$user->county}}
                                                         <br>
 
-                                                        <abbr title="Phone">{{ $address['phone_number'] }}</abbr>
+                                                        <abbr title="Phone">{{ $user->phone_number }}</abbr>
                                                     </address>
                                                 </div>
                                             </div>
@@ -227,128 +225,4 @@
         </div>
     </section>
     <!-- Modal -->
-    <div class="modal fade" id="addAddressModal" tabindex="-1" aria-labelledby="addAddressModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <!-- Modal body -->
-                <div class="modal-body p-6">
-                    <div class="d-flex justify-content-between mb-5">
-                        <!-- Heading -->
-                        <div>
-                            <h5 class="h6 mb-1" id="addAddressModalLabel">New Shipping Address</h5>
-                            <p class="small mb-0">Add new shipping address for your order delivery.</p>
-                        </div>
-                        <div>
-                            <!-- Close button -->
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                aria-label="Close"></button>
-                        </div>
-                    </div>
-
-                    <!-- Form start -->
-                    <form action="/checkout/address" method="POST">
-                        <!-- Include CSRF token -->
-                        @csrf
-
-                        <div class="row g-3">
-                            <!-- First Name -->
-                            <div class="col-12">
-                                <input type="text" class="form-control" name="first_name" placeholder="First name"
-                                    aria-label="First name" required>
-                            </div>
-
-                            <!-- Last Name -->
-                            <div class="col-12">
-                                <input type="text" class="form-control" name="last_name" placeholder="Last name"
-                                    aria-label="Last name" required>
-                            </div>
-
-                            <!-- Email -->
-                            <div class="col-12">
-                                <input type="email" class="form-control" name="email" placeholder="Email">
-                            </div>
-
-                            <!-- Phone Number -->
-                            <div class="col-12">
-                                <input type="text" class="form-control" name="phone_number"
-                                    placeholder="Phone number" required>
-                            </div>
-
-                            <!-- County -->
-                            <div class="col-12">
-                                <select class="form-control" name="county" id="county" required>
-                                    <option value="Baringo">Baringo</option>
-                                    <option value="Bomet">Bomet</option>
-                                    <option value="Bungoma">Bungoma</option>
-                                    <option value="Busia">Busia</option>
-                                    <option value="Elgeyo-Marakwet">Elgeyo-Marakwet</option>
-                                    <option value="Embu">Embu</option>
-                                    <option value="Garissa">Garissa</option>
-                                    <option value="Homa Bay">Homa Bay</option>
-                                    <option value="Isiolo">Isiolo</option>
-                                    <option value="Kajiado">Kajiado</option>
-                                    <option value="Kakamega">Kakamega</option>
-                                    <option value="Kericho">Kericho</option>
-                                    <option value="Kiambu">Kiambu</option>
-                                    <option value="Kilifi">Kilifi</option>
-                                    <option value="Kirinyaga">Kirinyaga</option>
-                                    <option value="Kisii">Kisii</option>
-                                    <option value="Kisumu">Kisumu</option>
-                                    <option value="Kitui">Kitui</option>
-                                    <option value="Kwale">Kwale</option>
-                                    <option value="Laikipia">Laikipia</option>
-                                    <option value="Lamu">Lamu</option>
-                                    <option value="Machakos">Machakos</option>
-                                    <option value="Makueni">Makueni</option>
-                                    <option value="Mandera">Mandera</option>
-                                    <option value="Marsabit">Marsabit</option>
-                                    <option value="Meru">Meru</option>
-                                    <option value="Migori">Migori</option>
-                                    <option value="Mombasa">Mombasa</option>
-                                    <option value="Murang'a">Murang'a</option>
-                                    <option value="Nairobi City">Nairobi City</option>
-                                    <option value="Nakuru">Nakuru</option>
-                                    <option value="Nandi">Nandi</option>
-                                    <option value="Narok">Narok</option>
-                                    <option value="Nyamira">Nyamira</option>
-                                    <option value="Nyandarua">Nyandarua</option>
-                                    <option value="Nyeri">Nyeri</option>
-                                    <option value="Samburu">Samburu</option>
-                                    <option value="Siaya">Siaya</option>
-                                    <option value="Taita-Taveta">Taita-Taveta</option>
-                                    <option value="Tana River">Tana River</option>
-                                    <option value="Tharaka-Nithi">Tharaka-Nithi</option>
-                                    <option value="Trans Nzoia">Trans Nzoia</option>
-                                    <option value="Turkana">Turkana</option>
-                                    <option value="Uasin Gishu">Uasin Gishu</option>
-                                    <option value="Vihiga">Vihiga</option>
-                                    <option value="Wajir">Wajir</option>
-                                    <option value="West Pokot">West Pokot</option>
-                                </select>
-                            </div>
-
-                            <!-- Address -->
-                            <div class="col-12">
-                                <input type="text" class="form-control" name="address" placeholder="Address">
-                            </div>
-
-                            <!-- City -->
-                            <div class="col-12">
-                                <input type="text" class="form-control" name="city" placeholder="City">
-                            </div>
-
-                            <!-- Form buttons -->
-                            <div class="col-12 text-end">
-                                <button type="button" class="btn btn-outline-primary"
-                                    data-bs-dismiss="modal">Cancel</button>
-                                <button class="btn btn-primary" type="submit">Save Address</button>
-                            </div>
-                        </div>
-                    </form>
-                    <!-- Form end -->
-                </div>
-            </div>
-        </div>
-    </div>
 @endsection

@@ -40,7 +40,6 @@ route::post('/cart/update-ajax', [CartController::class, 'updateCartAjax'])->nam
 
 // You might also want to add a route for processing the checkout
 Route::post('/checkout/process', [CheckoutController::class, 'process'])->name('checkout.process');
-Route::post('/checkout/address', [CheckoutController::class, 'saveAddress'])->name('checkout.address');
 
 Route::prefix('/client')->middleware('auth')->group(function () {
     // Checkout route
