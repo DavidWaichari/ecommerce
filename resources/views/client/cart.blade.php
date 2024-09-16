@@ -140,10 +140,10 @@
                    </div>
                    <div class="d-grid mb-1 mt-4">
                       <!-- btn -->
-                      <button class="btn btn-primary btn-lg d-flex justify-content-between align-items-center" type="submit">
+                      <a href="/checkout" class="btn btn-primary btn-lg d-flex justify-content-between align-items-center">
                          Go to Checkout
                          <span class="fw-bold">KES {{(0.16 * $cart_items->sum('total')) +  $cart_items->sum('total')}}</span>
-                      </button>
+                      </a>
                    </div>
                    <!-- text -->
                    <p>

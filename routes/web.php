@@ -42,7 +42,8 @@ route::post('/cart/update-ajax', [CartController::class, 'updateCartAjax'])->nam
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
 
 // You might also want to add a route for processing the checkout
-Route::post('/checkout', [CheckoutController::class, 'process'])->name('checkout.process');
+Route::post('/checkout/process', [CheckoutController::class, 'process'])->name('checkout.process');
+Route::post('/checkout/address', [CheckoutController::class, 'saveAddress'])->name('checkout.address');
 
 Route::prefix('/admin')->name('admin.')->middleware('auth')->group(function () {
     // Dashboard route
