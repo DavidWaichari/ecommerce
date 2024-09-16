@@ -294,6 +294,7 @@
                                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                                 @csrf
                                             </form>
+                                            <a href="/" class="dropdown-item">Account</a>
                                         </div>
                                     </li>
                                 @endguest
