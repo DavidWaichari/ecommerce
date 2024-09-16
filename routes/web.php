@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\Admin\BrandControler;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -44,6 +45,7 @@ Route::post('/checkout/process', [CheckoutController::class, 'process'])->name('
 Route::prefix('/client')->middleware('auth')->group(function () {
     // Checkout route
     Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
+    Route::get('/orders',  [AccountController::class, 'orders'])->name('account.orders');
 });
 
 

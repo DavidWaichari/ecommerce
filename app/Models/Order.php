@@ -12,9 +12,10 @@ class Order extends Model
     // Allow mass assignment on these fields
     protected $fillable = [
         'user_id',
-        'total',
+        'total_amount',
         'payment_method'.
         'status',
+        'delivery_instructions',
         'extras'
     ];
 

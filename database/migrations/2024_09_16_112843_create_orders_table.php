@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id'); // Foreign key to the users table
             $table->decimal('total_amount', 10, 2); // Total amount of the order
             $table->string('payment_method')->nullable();
+            $table->text('delivery_instructions')->nullable();
             $table->string('status')->default('Pending'); // Order status (e.g., pending, completed)
             $table->text('extras')->nullable();
             $table->timestamps();

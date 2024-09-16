@@ -29,14 +29,15 @@ class CheckoutController extends Controller
 
         // Check if cart is empty
         if (empty($cart)) {
-            return redirect()->route('cart.index')->with('error', 'Your cart is empty.');
+            return redirect()->back()->with('error', 'Your cart is empty.');
         }
 
         // Process the cart items and create an order
         $order = new Order();
         $order->user_id = $user->id;
         $order->payment_method = $request->payment_method;
-        $order->total = collect($cart)->sum('price'); // Adjust according to your cart structure
+        $order->delivery_instructions = $request->delivery_instructions;
+        $order->total_amount = collect($cart)->sum('discount_price'); // Adjust according to your cart structure
         $order->status = 'Pending'; // Set initial order status
         $order->save();
 
@@ -44,9 +45,9 @@ class CheckoutController extends Controller
         foreach ($cart as $item) {
             $orderItem = new OrderItem();
             $orderItem->order_id = $order->id;
-            $orderItem->product_id = $item['product_id'];
+            $orderItem->product_id = $item['id'];
             $orderItem->quantity = $item['quantity'];
-            $orderItem->price = $item['price'];
+            $orderItem->price = $item['discount_price'];
             $orderItem->save();
         }
 
@@ -54,6 +55,6 @@ class CheckoutController extends Controller
         session()->forget('cart');
 
         // Redirect to the homepage or orders page with a success message
-        return redirect()->route('/')->with('success', 'Order placed successfully!');
+        return redirect()->route('account.orders')->with('success', 'Order placed successfully!');
     }
 }
