@@ -13,8 +13,8 @@
             <!-- col -->
             <div class="col-12 col-md-6 offset-lg-1 col-lg-4 order-lg-2 order-1">
                 <div class="mb-lg-9 mb-5">
-                    <h1 class="mb-1 h2 fw-bold">Get Started with FreshCart</h1>
-                    <p>Welcome! Fill in your details to create an account.</p>
+                    <h1 class="mb-1 h2 fw-bold">Sign Up</h1>
+                    <p>Welcome ! Enter your details  to get started.</p>
                 </div>
                 <!-- form -->
                 <form method="POST" action="{{ route('register') }}" class="needs-validation" novalidate>
