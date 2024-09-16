@@ -129,7 +129,7 @@
                                                             <div class="form-check">
                                                                 <input class="form-check-input" type="radio"
                                                                     name="payment_method" id="cashonDelivery"
-                                                                    value="cash_on_delivery" required>
+                                                                    value="Cash" required>
                                                                 <label class="form-check-label ms-2"
                                                                     for="cashonDelivery"></label>
                                                             </div>
