@@ -49,14 +49,12 @@
                             <div class="accordion-item py-4">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <!-- heading one -->
-                                    <a href="#" class="fs-5 text-inherit collapsed h4" data-bs-toggle="collapse"
-                                        data-bs-target="#flush-collapseOne" aria-expanded="true"
-                                        aria-controls="flush-collapseOne">
+                                    <a href="#" class="fs-5 text-inherit collapsed h4" >
                                         <i class="feather-icon icon-map-pin me-2 text-muted"></i>
                                         Delivery address
                                     </a>
                                     <!-- btn -->
-                                    <a href="#" class="btn btn-outline-primary btn-sm" >Update address</a>
+                                    <a href="#" class="btn btn-outline-primary btn-sm">Update details</a>
                                     <!-- collapse -->
                                 </div>
                                 <div id="flush-collapseOne" class="accordion-collapse collapse show"
@@ -224,5 +222,4 @@
             </div>
         </div>
     </section>
-    <!-- Modal -->
 @endsection

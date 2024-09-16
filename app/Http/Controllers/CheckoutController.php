@@ -18,26 +18,41 @@ class CheckoutController extends Controller
     }
 
     public function process(Request $request)
-    {
-        //check if the user is authenticated
-        $address = session()->get('address');
-        $user = Auth::user();
-        if (!$user) {
-            User::create([
+{
+    // Get authenticated user
+    $user = Auth::user();
 
-            ]);
-        }
-        // Implement your checkout logic here
-        // This might include:
-        // - Validating the order
-        // - Processing payment
-        // - Creating an order in your database
-        // - Clearing the cart
-        // - Redirecting to a thank you page
+    // Retrieve cart from session
+    $cart = session()->get('cart', []);
 
-        // For now, let's just clear the cart and redirect
-        session()->forget('cart');
-        return redirect()->route('home')->with('success', 'Order placed successfully!');
+    // Check if cart is empty
+    if (empty($cart)) {
+        return redirect()->route('cart.index')->with('error', 'Your cart is empty.');
     }
+
+    // Process the cart items and create an order
+    $order = new Order();
+    $order->user_id = $user->id;
+    $order->total = collect($cart)->sum('price'); // Adjust according to your cart structure
+    $order->status = 'pending'; // Set initial order status
+    $order->save();
+
+    // Save each cart item as an order item
+    foreach ($cart as $item) {
+        $orderItem = new OrderItem();
+        $orderItem->order_id = $order->id;
+        $orderItem->product_id = $item['product_id'];
+        $orderItem->quantity = $item['quantity'];
+        $orderItem->price = $item['price'];
+        $orderItem->save();
+    }
+
+    // Clear the cart after processing
+    session()->forget('cart');
+
+    // Redirect to the homepage or orders page with a success message
+    return redirect()->route('home')->with('success', 'Order placed successfully!');
+}
+
 
 }
