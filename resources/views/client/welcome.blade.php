@@ -327,7 +327,8 @@
      </div>
  </div>
 </section>
-@foreach ($brands as $brand)
+@foreach ($categories as $category)
+@if($category->products->count() > 0)
 <section class="mb-lg-14 my-8">
     <div class="container">
         <!-- row -->
@@ -347,16 +348,16 @@
                             </svg>
                         </div>
                         <div class="ms-3">
-                            <!-- Brand Name -->
-                            <h3 class="mb-0">{{ $brand->name }} Products</h3>
-                            <p class="mb-0">Explore the best products from {{ $brand->name }}.</p>
+                            <!-- category Name -->
+                            <h3 class="mb-0">{{ $category->name }} Products</h3>
+                            <p class="mb-0">Explore the best products from {{ $category->name }}.</p>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-2 col-3">
                 <div class="d-flex align-items-center justify-content-between">
-                    <div class="slider-arrow" id="slider-{{ $brand->id }}-arrows"></div>
+                    <div class="slider-arrow" id="slider-{{ $category->id }}-arrows"></div>
                     <a href="#">
                         View all
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
@@ -372,9 +373,9 @@
         <!-- row -->
         <div class="row">
             <div class="col-12">
-                <div class="product-slider-second" id="slider-{{ $brand->id }}">
-                    <!-- Loop through products of the brand -->
-                    @foreach ($brand->products as $product)
+                <div class="product-slider-second" id="slider-{{ $category->id }}">
+                    <!-- Loop through products of the category -->
+                    @foreach ($category->products as $product)
                     <div class="item">
                         <!-- item -->
                         <div class="card card-product mb-lg-4">
@@ -424,6 +425,7 @@
         </div>
     </div>
 </section>
+@endif
 @endforeach
 
  <!-- Modal -->
