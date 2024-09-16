@@ -20,7 +20,7 @@ class CheckoutController extends Controller
     public function process(Request $request)
     {
         //check if the user is authenticated
-        return $address = session()->get('address');
+        $address = session()->get('address');
         $user = Auth::user();
         if (!$user) {
             User::create([

@@ -205,17 +205,6 @@
                 <div class="col-xl-5 col-lg-4 d-flex align-items-center">
                     <div class="list-inline ms-auto d-lg-block d-none">
                         <div class="list-inline-item me-3">
-                            <a href="#" class="text-reset d-none d-lg-block" data-bs-toggle="modal" data-bs-target="#locationSecondModal">
-                                <i class="feather-icon icon-map-pin me-2"></i>
-                                Set A Location
-                            </a>
-                        </div>
-
-                        <div class="list-inline-item me-3">
-                            <a href="#!" class="text-reset" data-bs-toggle="modal" data-bs-target="#registerModal">Register</a>
-                        </div>
-
-                        <div class="list-inline-item me-3">
                             <div class="dropdown d-none d-xl-block">
                                 <a href="#" class="dropdown-toggle text-reset" data-bs-toggle="dropdown" aria-expanded="false">
                                     <span>
@@ -272,7 +261,43 @@
                             </div>
                         </div>
                         <div class="list-inline-item">
-                            <a href="../pages/signin.html" class="btn btn-dark d-none d-xl-block">Sign In</a>
+                            {{-- <a href="../pages/signin.html" class="btn btn-dark d-none d-xl-block">Sign In</a> --}}
+                            <ul class="navbar-nav ms-auto">
+                                <!-- Authentication Links -->
+                                @guest
+                                    <div class="d-flex align-items-center justify-content-center gap-2">
+                                        @if (Route::has('login'))
+                                            <li class="nav-item">
+                                                <a class="btn btn-dark d-none d-xl-block" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                            </li>
+                                        @endif
+
+                                        @if (Route::has('register'))
+                                            <li class="nav-item">
+                                                <a class="btn btn-primary d-none d-xl-block" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                            </li>
+                                        @endif
+                                    </div>
+                                @else
+                                    <li class="nav-item dropdown">
+                                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                            {{ Auth::user()->first_name }}
+                                        </a>
+
+                                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                               onclick="event.preventDefault();
+                                                             document.getElementById('logout-form').submit();">
+                                                {{ __('Logout') }}
+                                            </a>
+
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                                @csrf
+                                            </form>
+                                        </div>
+                                    </li>
+                                @endguest
+                            </ul>
                         </div>
                     </div>
                 </div>

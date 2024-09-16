@@ -41,7 +41,7 @@
             <img src="/admin-site/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
-            <a href="#" class="d-block" style="color:black">{{Auth::user()->name}}</a>
+            <a href="#" class="d-block" style="color:black">{{Auth::user()->full_name}}</a>
           </div>
         </div>
         <div class="dropdown-menu dropdown-menu-sm dropdown-menu-center">
@@ -75,7 +75,7 @@
           <img src="/admin-site/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">{{Auth::user()->name}}</a>
+          <a href="#" class="d-block">{{Auth::user()->full_name}}</a>
         </div>
       </div>
       <!-- Sidebar Menu -->
