@@ -26,6 +26,10 @@
 
     <script async="" src="https://www.clarity.ms/tag/kuc8w5o9nt"></script>
     <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-M8S4MT3EYG"></script>
+    <!-- DataTables -->
+  <link rel="stylesheet" href="/admin-site/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="/admin-site/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="/admin-site/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
      <!-- Scripts -->
      {{-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
      @vite(['resources/sass/app.scss'])
@@ -294,7 +298,7 @@
                                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                                 @csrf
                                             </form>
-                                            <a href="/" class="dropdown-item">Account</a>
+                                            <a href="/client/account/settings" class="dropdown-item">Account</a>
                                         </div>
                                     </li>
                                 @endguest
@@ -705,7 +709,19 @@
     <script src="/theme/js/tiny-slider.js"></script>
     <script src="/theme/js/tns-slider.js"></script>
     <script src="/theme/js/zoom.js"></script>
-
+    <!-- DataTables & Plugins -->
+    <script src="/admin-site/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="/admin-site/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="/admin-site/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="/admin-site/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="/admin-site/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="/admin-site/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="/admin-site/plugins/jszip/jszip.min.js"></script>
+    <script src="/admin-site/plugins/pdfmake/pdfmake.min.js"></script>
+    <script src="/admin-site/plugins/pdfmake/vfs_fonts.js"></script>
+    <script src="/admin-site/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="/admin-site/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="/admin-site/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
     @yield('scripts')
 </body>
 

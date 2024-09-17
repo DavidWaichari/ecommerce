@@ -45,7 +45,8 @@ Route::post('/checkout/process', [CheckoutController::class, 'process'])->name('
 Route::prefix('/client')->middleware('auth')->group(function () {
     // Checkout route
     Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
-    Route::get('/orders',  [AccountController::class, 'orders'])->name('account.orders');
+    Route::get('/account/settings',  [AccountController::class, 'index'])->name('account.index');
+    Route::get('/account/orders',  [AccountController::class, 'orders'])->name('account.orders');
 });
 
 
