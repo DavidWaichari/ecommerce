@@ -43,4 +43,5 @@ class Supplier extends Model
     {
         return 'slug';
     }
+    
 }

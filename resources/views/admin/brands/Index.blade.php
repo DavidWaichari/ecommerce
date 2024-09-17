@@ -53,7 +53,7 @@
                                         <td><a href="{{route('admin.brands.show', $brand->slug)}}">{{ $brand->name }}</a></td>
                                         <td>{{ $brand->description }}</td>
                                         <td>{{ $brand->status }}</td>
-                                        <td>{{ $brand->updatedBy->name }}</td>
+                                        <td>{{ $brand->updatedBy->full_name }}</td>
                                         <td>{{ $brand->updated_at }}</td>
                                         <td>
                                             <a href="/admin/brands/{{ $brand->slug }}/edit" class="btn btn-sm btn-primary">Edit</a>

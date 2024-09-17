@@ -88,6 +88,14 @@
               <p>Dashboard</p>
             </a>
           </li>
+            <!-- Orders -->
+            <li class="nav-item">
+                <a href="/admin/orders" class="nav-link {{ Request::is('admin/orders*') ? 'active' : '' }}">
+                    <i class="nav-icon fas fa-shopping-cart"></i> <!-- Updated Icon -->
+                    <p>Orders</p>
+                </a>
+            </li>
+
           <!-- Products -->
           <li class="nav-item">
             <a href="/admin/products" class="nav-link {{ Request::is('admin/products*') ? 'active' : '' }}">

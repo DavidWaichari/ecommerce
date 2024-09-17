@@ -53,9 +53,9 @@ class CartController extends Controller
     {
         // Retrieve the cart from the session
         $cart = session()->get('cart', []);
-
+        $shipping_cost = 0;
         // Render the cart view with the cart items
-        return view('client.cart', ['cart_items' => $cart]);
+        return view('client.cart', ['cart_items' => $cart, 'shipping_cost'=> $shipping_cost]);
     }
 
     public function removeFromCart($productId)

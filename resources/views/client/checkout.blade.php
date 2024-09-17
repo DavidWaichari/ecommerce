@@ -1,4 +1,5 @@
 @extends('layouts/app')
+
 @section('content')
     <!-- section-->
     <div class="mt-4">
@@ -49,7 +50,7 @@
                             <div class="accordion-item py-4">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <!-- heading one -->
-                                    <a href="#" class="fs-5 text-inherit collapsed h4" >
+                                    <a href="#" class="fs-5 text-inherit collapsed h4">
                                         <i class="feather-icon icon-map-pin me-2 text-muted"></i>
                                         Delivery address
                                     </a>
@@ -68,13 +69,10 @@
                                                     <address>
                                                         <strong>{{$user->full_name}}</strong>
                                                         <br>
-
                                                         {{ $user->address}},
                                                         <br>
-
                                                         {{$user->county}}
                                                         <br>
-
                                                         <abbr title="Phone">{{ $user->phone_number }}</abbr>
                                                     </address>
                                                 </div>
@@ -84,9 +82,28 @@
                                 </div>
                             </div>
                             <!-- accordion item -->
-                            <!-- accordion item -->
                             <form action="/checkout/process" method="post">
                                 @csrf
+                                <!-- New Contact Number Field -->
+                                <div class="accordion-item py-4">
+                                    <a href="#" class="text-inherit h5" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseTwo" aria-expanded="false"
+                                        aria-controls="flush-collapseTwo">
+                                        <i class="feather-icon icon-phone me-2 text-muted"></i>
+                                        Contact Number
+                                        <!-- collapse -->
+                                    </a>
+                                    <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                                        data-bs-parent="#accordionFlushExample">
+                                        <div class="mt-5">
+                                            <label for="contactNumber" class="form-label sr-only">Contact Number</label>
+                                            <input type="text" class="form-control" id="contactNumber" placeholder="Enter your contact number"
+                                                name="contact_number" required>
+                                            <p class="form-text">Provide a contact number where you can be reached.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Delivery Instructions -->
                                 <div class="accordion-item py-4">
                                     <a href="#" class="text-inherit h5" data-bs-toggle="collapse"
                                         data-bs-target="#flush-collapseThree" aria-expanded="false"
@@ -107,7 +124,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- accordion item -->
+                                <!-- Payment Method -->
                                 <div class="accordion-item py-4">
                                     <a href="#" class="text-inherit h5" data-bs-toggle="collapse"
                                         data-bs-target="#flush-collapseFour" aria-expanded="false"
@@ -131,7 +148,7 @@
                                                                     name="payment_method" id="cashonDelivery"
                                                                     value="Cash" required>
                                                                 <label class="form-check-label ms-2"
-                                                                    for="cashonDelivery"></label>
+                                                                    for="cashonDelivery">Cash on Delivery</label>
                                                             </div>
                                                             <div>
                                                                 <!-- title -->
@@ -144,7 +161,7 @@
                                                         <div class="d-flex mt-3">
                                                             <div class="form-check">
                                                                 <input class="form-check-input" type="radio" name="payment_method" id="creditCard" value="credit_card">
-                                                                <label class="form-check-label ms-2" for="creditCard"></label>
+                                                                <label class="form-check-label ms-2" for="creditCard">Credit Card</label>
                                                             </div>
                                                             <div>
                                                                 <!-- title -->
@@ -199,6 +216,10 @@
                                             <div class="fw-bold">KES {{$cart_items->sum('total')}}</div>
                                         </div>
                                         <div class="d-flex align-items-center justify-content-between">
+                                            <div>Shipping Cost</div>
+                                            <div class="fw-bold">KES {{ $shipping_cost }}</div>
+                                        </div>
+                                        <div class="d-flex align-items-center justify-content-between">
                                             <div>
                                                 Tax VAT(16%)
                                                 <i class="feather-icon icon-info text-muted" data-bs-toggle="tooltip"
@@ -207,11 +228,10 @@
                                             <div class="fw-bold">KES {{0.16 * $cart_items->sum('total')}}</div>
                                         </div>
                                     </li>
-                                    <!-- list group item -->
                                     <li class="list-group-item px-4 py-3">
-                                        <div class="d-flex align-items-center justify-content-between fw-bold">
-                                            <div>Total</div>
-                                            <div>KES {{(0.16 * $cart_items->sum('total')) +  $cart_items->sum('total')}}</div>
+                                        <div class="d-flex align-items-center justify-content-between mb-2">
+                                            <div class="fw-bold">Total Cost</div>
+                                            <div class="fw-bold">KES {{$cart_items->sum('total') + $shipping_cost}}</div>
                                         </div>
                                     </li>
                                 </ul>

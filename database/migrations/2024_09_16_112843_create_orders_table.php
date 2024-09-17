@@ -13,11 +13,15 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id'); // Foreign key to the users table
-            $table->decimal('total_amount', 10, 2); // Total amount of the order
+            $table->unsignedBigInteger('user_id');
+            $table->decimal('sub_total', 10, 2)->default(0);
+            $table->decimal('tax_amount', 10, 2)->default(0);
+            $table->decimal('shipping_cost', 10, 2)->default(0);
+            $table->decimal('total_amount', 10, 2)->default(0);
             $table->string('payment_method')->nullable();
             $table->text('delivery_instructions')->nullable();
-            $table->string('status')->default('Pending'); // Order status (e.g., pending, completed)
+            $table->string('contact_number')->nullable();
+            $table->string('status')->default('Pending');
             $table->text('extras')->nullable();
             $table->timestamps();
 

@@ -14,9 +14,10 @@ class CheckoutController extends Controller
     {
         $cart = session()->get('cart', []);
         $cart_items = collect($cart);
+        $shipping_cost = 0;
         $user = Auth::user();
 
-        return view('client/checkout', compact('cart_items', 'user'));
+        return view('client/checkout', compact('cart_items', 'user', 'shipping_cost'));
     }
 
     public function process(Request $request)
@@ -37,7 +38,11 @@ class CheckoutController extends Controller
         $order->user_id = $user->id;
         $order->payment_method = $request->payment_method;
         $order->delivery_instructions = $request->delivery_instructions;
-        $order->total_amount = collect($cart)->sum('discount_price'); // Adjust according to your cart structure
+        $order->sub_total = collect($cart)->sum('discount_price');
+        $order->tax_amount = collect($cart)->sum('discount_price') * 0.16;
+        $order->contact_number = $request->contact_number;
+        $order->total_amount = $order->sub_total + $order->tax_amount;
+        $order->shipping_cost = 0;
         $order->status = 'Pending'; // Set initial order status
         $order->save();
 

@@ -78,7 +78,7 @@
                                         <td>{{ $product->is_featured == true? "Yes": "No" }}</td>
                                         <td>{{ $product->is_sold == true? "Yes": "No" }}</td>
                                         <td>{{ $product->status }}</td>
-                                        <td>{{ $product->updatedBy->name }}</td>
+                                        <td>{{ $product->updatedBy->full_name }}</td>
                                         <td>{{ $product->updated_at }}</td>
                                         <td>{{ $product->link }}</td>
                                         <td>

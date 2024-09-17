@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SupplierController extends Controller
 {
@@ -47,7 +48,7 @@ class SupplierController extends Controller
 
 
         // Append auth information
-        $request['updated_by'] = auth()->id();
+        $request['updated_by'] = Auth::user()->id;
 
         // Create the supplier
         $supplier = Supplier::create($request->all());

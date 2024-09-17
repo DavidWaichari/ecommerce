@@ -53,7 +53,7 @@
                                         <td><a href="{{route('admin.processors.show', $processor->slug)}}">{{ $processor->name }}</a></td>
                                         <td>{{ $processor->description }}</td>
                                         <td>{{ $processor->status }}</td>
-                                        <td>{{ $processor->updatedBy->name }}</td>
+                                        <td>{{ $processor->updatedBy->full_name }}</td>
                                         <td>{{ $processor->updated_at }}</td>
                                         <td>
                                             <a href="/admin/processors/{{ $processor->slug }}/edit" class="btn btn-sm btn-primary">Edit</a>

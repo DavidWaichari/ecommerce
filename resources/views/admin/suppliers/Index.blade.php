@@ -55,7 +55,7 @@
                                         <td>{{ $supplier->phone_number }}</td>
                                         <td>{{ $supplier->description }}</td>
                                         <td>{{ $supplier->status }}</td>
-                                        <td>{{ $supplier->updatedBy->name }}</td>
+                                        <td>{{ $supplier->updatedBy->full_name }}</td>
                                         <td>{{ $supplier->updated_at }}</td>
                                         <td>
                                             <a href="/admin/suppliers/{{ $supplier->id }}/edit" class="btn btn-sm btn-primary">Edit</a>
