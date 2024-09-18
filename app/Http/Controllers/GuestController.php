@@ -16,7 +16,7 @@ class GuestController extends Controller
         ->withCount('products') // Get the count of related products
         ->orderBy('products_count', 'desc') // Sort categories by product count in descending order
         ->get();
-        
+
         $featured_products = Product::where('is_featured', true)->get();
         //fetch products based on the number of orders count
         $best_sellers = Product::all();
@@ -27,7 +27,10 @@ class GuestController extends Controller
     public function shop(Request $request)
     {
         $categories = Category::where('status', 'Active')->get();
-        return view('client/shop-left-sidebar', compact('categories'));
+        $products = Product::where('status', 'Active')->paginate(12);
+        //this is the text to show
+        $title_text = "All products";
+        return view('client/shop-left-sidebar', compact('categories', 'products','title_text'));
     }
 
     public function productDetails($slug)
