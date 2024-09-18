@@ -26,12 +26,29 @@ class GuestController extends Controller
     }
     public function shop(Request $request)
     {
+        // Get all active categories
         $categories = Category::where('status', 'Active')->get();
-        $products = Product::where('status', 'Active')->paginate(12);
-        //this is the text to show
-        $title_text = "All products";
-        return view('client/shop-left-sidebar', compact('categories', 'products','title_text'));
+        $category = null;
+        // Check if the 'category' query parameter is passed
+        if ($request->has('category')) {
+            // Filter products by the selected category
+            $category = Category::where('name', $request->category)->first();
+            $products = Product::where('status', 'Active')
+                                ->where('category_id', $category->id)
+                                ->paginate(12);
+
+            // Update the title text to show the selected category
+            $title_text = "Products in " . $category->name;
+        } else {
+            // Show all products if no category is selected
+            $products = Product::where('status', 'Active')->paginate(12);
+            $title_text = "All products";
+        }
+
+        // Return the view with the categories, products, and title text
+        return view('client/shop-left-sidebar', compact('categories', 'products', 'title_text','category'));
     }
+
 
     public function productDetails($slug)
     {

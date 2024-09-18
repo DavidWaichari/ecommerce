@@ -40,9 +40,9 @@
                       <ul class="nav nav-category" id="categoryCollapseMenu">
                         @foreach ($categories as $category)
                         <li class="nav-item border-bottom w-100">
-                           <a href="#" class="nav-link">
-                              {{$category->name}}
-                           </a>
+                            <a href="/shop?category={{ urlencode($category->name) }}" class="nav-link">
+                                {{ $category->name }}
+                             </a>
                         </li>
                         @endforeach
                       </ul>
@@ -222,11 +222,9 @@
                       <div>
                          <!-- select option -->
                          <select class="form-select">
-                            <option selected="">Sort by: Featured</option>
+                            <option selected="">Sort by price/option>
                             <option value="Low to High">Price: Low to High</option>
                             <option value="High to Low">Price: High to Low</option>
-                            <option value="Release Date">Release Date</option>
-                            <option value="Avg. Rating">Avg. Rating</option>
                          </select>
                       </div>
                    </div>
