@@ -140,7 +140,7 @@
                    </div>
                    <div class="d-grid mb-1 mt-4">
                       <!-- btn -->
-                      <a href="/checkout" class="btn btn-primary btn-lg d-flex justify-content-between align-items-center">
+                      <a href="{{ route('checkout.index') }}" class="btn btn-primary btn-lg d-flex justify-content-between align-items-center">
                          Go to Checkout
                          <span class="fw-bold">KES {{(0.16 * $cart_items->sum('total')) +  $cart_items->sum('total')}}</span>
                       </a>

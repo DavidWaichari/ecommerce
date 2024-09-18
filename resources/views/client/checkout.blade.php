@@ -31,11 +31,6 @@
                         <div class="mb-8">
                             <!-- text -->
                             <h1 class="fw-bold mb-0">Checkout</h1>
-                            <p class="mb-0">
-                                Already have an account? Click here to
-                                <a href="/login">Sign in</a>
-                                .
-                            </p>
                         </div>
                     </div>
                 </div>
@@ -98,7 +93,7 @@
                                         <div class="mt-5">
                                             <label for="contactNumber" class="form-label sr-only">Contact Number</label>
                                             <input type="text" class="form-control" id="contactNumber" placeholder="Enter your contact number"
-                                                name="contact_number" required>
+                                                name="contact_number" required value="{{$user->phone_number}}">
                                             <p class="form-text">Provide a contact number where you can be reached.</p>
                                         </div>
                                     </div>
@@ -149,12 +144,8 @@
                                                                     value="Cash" required>
                                                                 <label class="form-check-label ms-2"
                                                                     for="cashonDelivery">Cash on Delivery</label>
-                                                            </div>
-                                                            <div>
-                                                                <!-- title -->
-                                                                <h5 class="mb-1 h6">Cash on Delivery</h5>
-                                                                <p class="mb-0 small">Pay with cash when your order is
-                                                                    delivered.</p>
+                                                                    <p class="mb-0 small">Pay with cash when your order is
+                                                                        delivered.</p>
                                                             </div>
                                                         </div>
                                                         {{-- <!-- Credit Card Option -->

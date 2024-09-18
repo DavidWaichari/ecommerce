@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('order_items', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('order_id'); // Foreign key to orders table
-            $table->unsignedBigInteger('product_id'); // Foreign key to products table (if applicable)
+            $table->unsignedBigInteger('order_id');
+            $table->unsignedBigInteger('product_id');
             $table->integer('quantity'); // Quantity of the product in the order
-            $table->decimal('price', 10, 2); // Price of the individual product
+            $table->decimal('unit_price', 10, 2); // Price of the individual product
+            $table->decimal('total_amount', 10, 2); // Price of the individual product
             $table->timestamps();
 
             // Foreign key constraints

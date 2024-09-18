@@ -52,7 +52,8 @@ class CheckoutController extends Controller
             $orderItem->order_id = $order->id;
             $orderItem->product_id = $item['id'];
             $orderItem->quantity = $item['quantity'];
-            $orderItem->price = $item['discount_price'];
+            $orderItem->unit_price = $item['discount_price'];
+            $orderItem->total_amount = $orderItem->unit_price * $orderItem->quantity;
             $orderItem->save();
         }
 
