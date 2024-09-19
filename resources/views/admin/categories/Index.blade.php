@@ -26,7 +26,7 @@
                 <div class="card-header">
                     <div class="d-flex justify-content-between align-items-center">
                         <h3 class="card-title">Categories List</h3>
-                        <div class="col-md-1">
+                        <div class="col-md-2">
                             <a href="/admin/categories/create" type="button" class="btn btn-block btn-info btn-md">Add Category</a>
                         </div>
                     </div>

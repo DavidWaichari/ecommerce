@@ -26,7 +26,7 @@
                 <div class="card-header">
                     <div class="d-flex justify-content-between align-items-center">
                         <h3 class="card-title">Brands List</h3>
-                        <div class="col-md-1">
+                        <div class="col-md-2">
                             <a href="/admin/brands/create" type="button" class="btn btn-block btn-info btn-md">Add Brand</a>
                         </div>
                     </div>
