@@ -60,15 +60,16 @@
                                             </select>
                                         </div>
                                          <!-- Has Processor Checkbox -->
-                                     <div class="form-group">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="has_processor" name="has_processor" value="{{ old('icon', $category->has_processor) }}" disabled>
-                                            <label class="form-check-label" for="has_processor">Has Processor</label>
+                                         <div class="form-group">
+                                            <div class="form-check">
+                                                <input type="hidden" name="has_processor" value="0">
+                                                <input type="checkbox" class="form-check-input" id="has_processor" name="has_processor"
+                                                     {{ old('has_processor', $category->has_processor) == 1 ? 'checked' : '' }}>
+                                                <label class="form-check-label" for="has_processor">Has Processor</label>
+                                            </div>
                                         </div>
                                     </div>
-                                    </div>
                                     <!-- /.card-body -->
-
                                     <div class="card-footer">
                                         <div class="d-flex align-items-center justify-content-between">
                                             <a href="{{route('admin.categories.edit', $category->slug)}}" class="btn btn-warning">Edit</a>

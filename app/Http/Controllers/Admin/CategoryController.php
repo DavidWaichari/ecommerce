@@ -30,6 +30,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+
         // Validate the request data
         $request->validate([
             'name' => 'required|string|max:255',
@@ -75,6 +76,7 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
+
         // Validate the request data
         $request->validate([
             'name' => 'required|string|max:255',
@@ -85,7 +87,7 @@ class CategoryController extends Controller
         } else {
             $request['has_processor'] = false;
         }
-        
+
         $request['updated_by'] = auth()->id();
         // Update the category
         $category->update($request->all());

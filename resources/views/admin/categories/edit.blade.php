@@ -63,13 +63,16 @@
                                         <label for="icon">Font Awesome Web Icon e.g desktop</label>
                                         <input type="text" class="form-control" id="icon" name="icon" placeholder="Font awesome icon e.g. desktop" value="{{ old('icon', $category->icon) }}">
                                     </div>
-                                     <!-- Has Processor Checkbox -->
-                                     <div class="form-group">
+                                   <!-- Has Processor Checkbox -->
+                                    <div class="form-group">
                                         <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="has_processor" name="has_processor" value="{{ old('icon', $category->has_processor) }}">
+                                            <input type="hidden" name="has_processor" value="0">
+                                            <input type="checkbox" class="form-check-input" id="has_processor" name="has_processor"
+                                                 {{ old('has_processor', $category->has_processor) == 1 ? 'checked' : '' }}>
                                             <label class="form-check-label" for="has_processor">Has Processor</label>
                                         </div>
                                     </div>
+
                                 </div>
                                 <!-- /.card-body -->
 
