@@ -77,7 +77,7 @@
                      @foreach ($brands as $brand)
                          <div class="item">
                              <!-- item -->
-                             <a href="shop-grid.html" class="text-decoration-none text-inherit">
+                             <a href="/shop?brands={{$brand->slug}}" class="text-decoration-none text-inherit">
                                  <!-- card -->
                                  <div class="card mb-3 card-lift">
                                      <div class="card-body text-center py-6 text-center">

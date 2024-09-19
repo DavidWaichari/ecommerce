@@ -35,6 +35,7 @@ class GuestController extends Controller
     $selected_category = null;
     $selected_processors = collect();
     $selected_brands = collect();
+    
 
     // Check if the 'category' query parameter is passed
     if ($request->category) {
