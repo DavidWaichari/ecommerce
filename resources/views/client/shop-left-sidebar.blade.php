@@ -191,14 +191,16 @@ $(document).ready(function() {
             url.searchParams.append('sort', sortOption);
         }
 
-        // return url.toString(); // Return the updated URL
-        window.location.href = url.toString();
+        return url.toString(); // Return the updated URL
+        // window.location.href = url.toString();
     }
 
     // Attach event listener to checkboxes
     $('.brand_check_box, .processor_check_box').change(function() {
         // Update URL in the address bar without refreshing
         window.history.replaceState({}, '', updateUrl());
+
+        refreshPage();
     });
 
     // Filter the results
@@ -209,8 +211,12 @@ $(document).ready(function() {
 
     // Sort products by price
     $('#sortSelect').on('change', function () {
-        window.location.href = updateUrl(); // Refresh with sorting applied
+       refreshPage();
     });
+
+    function refreshPage(){
+        window.location.href = updateUrl();
+    }
 });
 </script>
 @endsection

@@ -70,7 +70,7 @@ class GuestController extends Controller
         }
 
         // Get brands associated with the products in the query
-        foreach ($productsQuery->get()->pluck('brand_id') as $id) {
+        foreach ($productsQuery->get()->pluck('brand_id')->unique() as $id) {
             $brand = Brand::find($id);
             if ($brand) {
                 $brands->push($brand);

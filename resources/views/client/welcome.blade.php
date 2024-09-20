@@ -126,7 +126,7 @@
          <div class="col-lg-2 col-2">
             <div class="d-flex align-items-center justify-content-between">
                 <div class="slider-arrow" id="slider-second-arrows"></div>
-                <a href="#">
+                <a href="/shop">
                     View all
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
                         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -238,7 +238,7 @@
          <div class="col-lg-2 col-3">
             <div class="d-flex align-items-center justify-content-between">
              <div class="slider-arrow" id="slider-third-arrows"></div>
-             <a href="#">
+             <a href="/shop">
                 View all
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -355,7 +355,7 @@
             <div class="col-lg-2 col-3">
                 <div class="d-flex align-items-center justify-content-between">
                     <div class="slider-arrow" id="slider-{{ $category->id }}-arrows"></div>
-                    <a href="#">
+                    <a href="/shop?category={{$category->slug}}">
                         View all
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
