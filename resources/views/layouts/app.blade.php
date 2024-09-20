@@ -43,16 +43,16 @@
                 <div class="col-xl-7 col-lg-8">
                     <div class="d-flex align-items-center">
                         <a class="navbar-brand d-none d-lg-block" href="../index.html">
-                            <img src="/theme/images/freshcart-logo.svg" alt="eCommerce HTML Template">
+                            SOLOCOM
                         </a>
                         <div class="w-100 ms-4 d-none d-lg-block">
-                            <form action="#">
+                            <form action="/shop">
                                 <div class="input-group">
                                     <input class="form-control rounded" type="search"
-                                        placeholder="Search for products">
+                                        placeholder="Search for products" name="product_name">
                                     <span class="input-group-append">
                                         <button class="btn bg-white border border-start-0 ms-n10 rounded-0 rounded-end"
-                                            type="button">
+                                            type="submit">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"

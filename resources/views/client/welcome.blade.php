@@ -9,36 +9,33 @@
          <div class="col-xl-4 col-lg-6 col-md-7">
              <div class="card border-0 shadow">
                  <div class="card-body p-6">
-                     <div class="mb-4">
-                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                             stroke-linecap="round" stroke-linejoin="round"
-                             class="feather feather-map-pin text-danger">
-                             <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                             <circle cx="12" cy="10" r="3"></circle>
-                         </svg>
-                         <h1 class="mt-3 mb-0 h4">Check what's in your local store</h1>
-                         <small>See delivery and collection options</small>
-                     </div>
-                     <form>
-                         <div class="row g-3">
-                             <div class="col">
-                                 <label for="postcod" class="visually-hidden">Postcode</label>
-                                 <input type="text" class="form-control" id="postcod"
-                                     placeholder="Enter Postcode" maxlength="6"
-                                     onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57">
-                             </div>
-                             <div class="col-auto">
-                                 <button type="submit" class="btn btn-primary">Check</button>
-                             </div>
-                         </div>
-                     </form>
+                    <div class="mb-4">
+                        <!-- Search icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+
+                        <h1 class="mt-3 mb-0 h4">Welcome to our shop</h1>
+                        <small>Start by doing a quick product search...</small>
+                    </div>
+                    <form action="/shop" method="GET">
+                        <div class="row g-3">
+                            <div class="col">
+                                <label for="product_name" class="visually-hidden">Product Name</label>
+                                <input type="text" class="form-control" placeholder="Enter keyword" name="product_name" id="product_name">
+                            </div>
+                            <div class="col-auto">
+                                <button type="submit" class="btn btn-primary">Search</button>
+                            </div>
+                        </div>
+                    </form>
                  </div>
              </div>
              <div class="mt-3">
-                 <small class="text-white">
-                     Hello, Sign in for the best experience. New to Freshcart?
-                     <a href="#" class="text-white">Register</a>
+                 <small class="text-black">
+                     Hello, Sign in for the best experience. New here?
+                     <a href="/register" class="text-blue">Register</a>
                  </small>
              </div>
          </div>
