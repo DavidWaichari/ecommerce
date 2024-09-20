@@ -12,30 +12,40 @@ class GuestController extends Controller
 {
     public function welcome()
     {
-        // Fetch categories with the count of products and sort by the count
+        // Fetch only categories that have at least one product
         $categories = Category::where('status', 'Active')
+            ->has('products') // Only include categories that have related products
             ->withCount('products') // Get the count of related products
             ->orderBy('products_count', 'desc') // Sort categories by product count in descending order
             ->get();
 
+        // Fetch only brands that have at least one product
+        $brands = Brand::where('status', 'Active')
+            ->has('products') // Only include brands that have related products
+            ->withCount('products') // Get the count of related products for sorting
+            ->orderBy('products_count', 'desc') // Sort brands by product count in descending order
+            ->get();
+
         $featured_products = Product::where('is_featured', true)->get();
-        //fetch products based on the number of orders count
+
+        // Placeholder logic for best sellers and popular products
         $best_sellers = Product::all();
         $popular_products = Product::all();
-        $brands = Brand::all();
+
         return view('client/welcome', compact('categories', 'featured_products', 'best_sellers', 'brands', 'popular_products'));
     }
+
 
     public function shop(Request $request)
 {
     // Get all active categories and brands
     $categories = Category::where('status', 'Active')->get();
-    $brands = Brand::all();
+    $brands = collect();
     $processors = Processor::all();
     $selected_category = null;
     $selected_processors = collect();
     $selected_brands = collect();
-    
+
 
     // Check if the 'category' query parameter is passed
     if ($request->category) {
@@ -53,6 +63,13 @@ class GuestController extends Controller
         // Show all products if no category is selected
         $productsQuery = Product::where('status', 'Active');
         $title_text = "All products";
+    }
+
+    foreach($productsQuery->get()->pluck('brand_id') as $id){
+        $brand = Brand::find($id);
+        if ($brand) {
+            $brands->push($brand);
+        }
     }
 
     // Check if the 'processor' query parameter is passed
@@ -74,6 +91,7 @@ class GuestController extends Controller
             $productsQuery->whereIn('processor_id', $selected_processors->pluck('id'));
         }
     }
+
 
     // Check if the 'brands' query parameter is passed
     if ($request->has('brands')) {

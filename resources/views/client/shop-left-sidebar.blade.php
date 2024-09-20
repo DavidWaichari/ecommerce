@@ -70,12 +70,12 @@
                        </div>
                    @endif
 
-                   <div class="mb-8">
+                   {{-- <div class="mb-8">
                        <button id="filterBtn" class="btn btn-dark">
                            Filter
                            <i class="feather-icon icon-arrow-right ms-1"></i>
                        </button>
-                   </div>
+                   </div> --}}
                 </div>
              </div>
           </aside>
@@ -191,7 +191,8 @@ $(document).ready(function() {
             url.searchParams.append('sort', sortOption);
         }
 
-        return url.toString(); // Return the updated URL
+        // return url.toString(); // Return the updated URL
+        window.location.href = url.toString();
     }
 
     // Attach event listener to checkboxes

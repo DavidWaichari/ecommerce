@@ -23,9 +23,17 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         view()->composer('*', CartComposer::class);
+
         View::composer('layouts.app', function ($view) {
-            $categories = Category::where('status', 'Active')->with('products')->get();
+            // Fetch only active categories that have products
+            $categories = Category::where('status', 'Active')
+                ->has('products') // Only include categories that have related products
+                ->withCount('products') // Get the count of related products
+                ->orderBy('products_count', 'desc') // Sort categories by product count in descending order
+                ->get();
+
             $view->with('categories', $categories);
         });
     }
+
 }
