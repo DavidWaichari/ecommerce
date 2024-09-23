@@ -14,72 +14,37 @@ class CategoriesTableSeeder extends Seeder
     {
         $categories = [
             [
-                "name" => "Computers & Accessories",
-                "description" => "Computers and their accessories",
-                "icon" => "desktop",  // Font Awesome icon for desktop
-                "status" => "Active",
-                "updated_by" => 1
-            ],
-            [
-                "name" => "Audio & Home Theater",
-                "description" => "Audio systems and home theaters",
-                "icon" => "headphones-alt",  // Font Awesome icon for headphones
-                "status" => "Active",
-                "updated_by" => 1
-            ],
-            [
-                "name" => "Laptop",
-                "description" => "Laptops",
+                "name" => "Laptops",
+                "description" => "Portable laptops designed for work and entertainment on the go.",
                 "icon" => "laptop",  // Font Awesome icon for laptop
                 "status" => "Active",
                 "updated_by" => 1
             ],
             [
-                "name" => "TV & Accessories",
-                "description" => "Televisions and related accessories",
-                "icon" => "tv",  // Font Awesome icon for TV
+                "name" => "Desktops",
+                "description" => "Powerful desktop computers and their accessories for all your computing needs.",
+                "icon" => "desktop",  // Font Awesome icon for desktop
                 "status" => "Active",
                 "updated_by" => 1
             ],
             [
-                "name" => "Mobiles & Tablets",
-                "description" => "Mobile phones and tablets",
-                "icon" => "mobile-alt",  // Font Awesome icon for mobile
+                "name" => "Printers",
+                "description" => "High-quality printers for all your printing needs, including inkjet and laser options.",
+                "icon" => "print",  // Font Awesome icon for print
                 "status" => "Active",
                 "updated_by" => 1
             ],
             [
-                "name" => "Headphone & Earphone",
-                "description" => "Headphones and earphones",
-                "icon" => "headphones",  // Font Awesome icon for headphones
-                "status" => "Active",
-                "updated_by" => 1
-            ],
-            [
-                "name" => "Battery & Accessories",
-                "description" => "Batteries and related accessories",
-                "icon" => "battery-full",  // Font Awesome icon for battery
-                "status" => "Active",
-                "updated_by" => 1
-            ],
-            [
-                "name" => "Watches",
-                "description" => "Watches",
-                "icon" => "clock",  // Font Awesome icon for clock/watch
-                "status" => "Active",
-                "updated_by" => 1
-            ],
-            [
-                "name" => "Cameras",
-                "description" => "Cameras",
-                "icon" => "camera",  // Font Awesome icon for camera
+                "name" => "Projectors & Monitors",
+                "description" => "High-definition projectors and monitors for an immersive viewing experience.",
+                "icon" => "video",  // Font Awesome icon for video
                 "status" => "Active",
                 "updated_by" => 1
             ],
             [
                 "name" => "Accessories",
-                "description" => "Accessories for various products",
-                "icon" => "cogs",  // Font Awesome icon for cogs (general accessories)
+                "description" => "Essential accessories for your devices, including chargers, cases, and peripherals.",
+                "icon" => "cogs",  // Font Awesome icon for cogs
                 "status" => "Active",
                 "updated_by" => 1
             ],

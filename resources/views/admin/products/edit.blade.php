@@ -154,13 +154,13 @@
                                         @endif
                                     </div>
 
-                                    <!-- Featured Status Checkbox -->
+                                    {{-- <!-- Featured Status Checkbox -->
                                     <div class="form-group">
                                         <div class="form-check">
                                             <input type="checkbox" class="form-check-input" id="is_featured" name="is_featured" {{ $product->is_featured ? 'checked' : '' }}>
                                             <label class="form-check-label" for="is_featured">Featured</label>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <!-- /.card-body -->
 
