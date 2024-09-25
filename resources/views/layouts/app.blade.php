@@ -27,12 +27,12 @@
     <script async="" src="https://www.clarity.ms/tag/kuc8w5o9nt"></script>
     <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-M8S4MT3EYG"></script>
     <!-- DataTables -->
-  <link rel="stylesheet" href="/admin-site/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" href="/admin-site/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-  <link rel="stylesheet" href="/admin-site/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-     <!-- Scripts -->
-     {{-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
-     @vite(['resources/sass/app.scss'])
+    <link rel="stylesheet" href="/admin-site/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="/admin-site/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="/admin-site/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+    <!-- Scripts -->
+    {{-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
+    @vite(['resources/sass/app.scss'])
 </head>
 
 <body>
@@ -48,8 +48,8 @@
                         <div class="w-100 ms-4 d-none d-lg-block">
                             <form action="/shop">
                                 <div class="input-group">
-                                    <input class="form-control rounded" type="search"
-                                        placeholder="Search for products" name="product_name">
+                                    <input class="form-control rounded" type="search" placeholder="Search for products"
+                                        name="product_name">
                                     <span class="input-group-append">
                                         <button class="btn bg-white border border-start-0 ms-n10 rounded-0 rounded-end"
                                             type="submit">
@@ -210,25 +210,31 @@
                     <div class="list-inline ms-auto d-lg-block d-none">
                         <div class="list-inline-item me-3">
                             <div class="dropdown d-none d-xl-block">
-                                <a href="#" class="dropdown-toggle text-reset" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a href="#" class="dropdown-toggle text-reset" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
                                     <span>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart align-text-bottom">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="feather feather-shopping-cart align-text-bottom">
                                             <circle cx="9" cy="21" r="1"></circle>
                                             <circle cx="20" cy="21" r="1"></circle>
-                                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6">
+                                            </path>
                                         </svg>
                                     </span>
-                                    <span>KES {{$cart_items->sum('total')}}</span>
+                                    <span>KES {{ $cart_items->sum('total') }}</span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-lg p-5">
-                                    <div class="d-flex justify-content-between align-items-center border-bottom pb-5 mb-3">
+                                    <div
+                                        class="d-flex justify-content-between align-items-center border-bottom pb-5 mb-3">
                                         <div>
                                             <span><i class="feather-icon icon-shopping-cart"></i></span>
-                                            <span class="text-success">{{$cart_items->count()}}</span>
+                                            <span class="text-success">{{ $cart_items->count() }}</span>
                                         </div>
                                         <div>
                                             <span>Total:</span>
-                                            <span class="text-success">KES {{$cart_items->sum('total')}}</span>
+                                            <span class="text-success">KES {{ $cart_items->sum('total') }}</span>
                                         </div>
                                     </div>
                                     <ul class="list-group list-group-flush">
@@ -236,16 +242,23 @@
                                             <li class="list-group-item px-0 py-3">
                                                 <div class="row align-items-center g-0">
                                                     <div class="col-lg-3 col-3 text-center">
-                                                        <img src="{{ $product['featured_image_url'] ?? '/theme/images/placeholder.jpg' }}" alt="{{ $product['name'] ?? 'Product' }}" class="icon-xxl">
+                                                        <img src="{{ $product['featured_image_url'] ?? '/theme/images/placeholder.jpg' }}"
+                                                            alt="{{ $product['name'] ?? 'Product' }}"
+                                                            class="icon-xxl">
                                                     </div>
                                                     <div class="col-lg-7 col-7">
-                                                        <a href="{{ route('product.details', $product['slug']) }}" class="text-inherit">
-                                                            <h6 class="mb-0">{{ $product['name'] ?? 'Unknown Product' }}</h6>
+                                                        <a href="{{ route('product.details', $product['slug']) }}"
+                                                            class="text-inherit">
+                                                            <h6 class="mb-0">
+                                                                {{ $product['name'] ?? 'Unknown Product' }}</h6>
                                                         </a>
-                                                        <small class="text-muted">{{ $product['quantity'] ?? 0 }} x KES {{ number_format($product['discount_price'] ?? 0, 2) }} ({{$product['total']}})</small>
+                                                        <small class="text-muted">{{ $product['quantity'] ?? 0 }} x KES
+                                                            {{ number_format($product['discount_price'] ?? 0, 2) }}
+                                                            ({{ $product['total'] }})</small>
                                                     </div>
                                                     <div class="text-end col-lg-2 col-2">
-                                                        <a href="/cart/remove/{{$product['id']}}"  class="btn btn-link p-0 text-danger" aria-label="Remove">
+                                                        <a href="/cart/remove/{{ $product['id'] }}"
+                                                            class="btn btn-link p-0 text-danger" aria-label="Remove">
                                                             <i class="bi bi-x fs-4"></i>
                                                         </a>
                                                     </div>
@@ -272,30 +285,35 @@
                                     <div class="d-flex align-items-center justify-content-center gap-2">
                                         @if (Route::has('login'))
                                             <li class="nav-item">
-                                                <a class="btn btn-dark d-none d-xl-block" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                                <a class="btn btn-dark d-none d-xl-block"
+                                                    href="{{ route('login') }}">{{ __('Login') }}</a>
                                             </li>
                                         @endif
 
                                         @if (Route::has('register'))
                                             <li class="nav-item">
-                                                <a class="btn btn-primary d-none d-xl-block" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                                <a class="btn btn-primary d-none d-xl-block"
+                                                    href="{{ route('register') }}">{{ __('Register') }}</a>
                                             </li>
                                         @endif
                                     </div>
                                 @else
                                     <li class="nav-item dropdown">
-                                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#"
+                                            role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false" v-pre>
                                             {{ Auth::user()->first_name }}
                                         </a>
 
                                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                             <a class="dropdown-item" href="{{ route('logout') }}"
-                                               onclick="event.preventDefault();
+                                                onclick="event.preventDefault();
                                                              document.getElementById('logout-form').submit();">
                                                 {{ __('Logout') }}
                                             </a>
 
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                class="d-none">
                                                 @csrf
                                             </form>
                                             <a href="/client/account/settings" class="dropdown-item">Account</a>
@@ -316,7 +334,8 @@
             <div class="offcanvas offcanvas-start" tabindex="-1" id="navbar-default"
                 aria-labelledby="navbar-defaultLabel">
                 <div class="offcanvas-header pb-1">
-                    <a href="./index.html"><img src="/theme/images/freshcart-logo.svg" alt="eCommerce HTML Template"></a>
+                    <a href="./index.html"><img src="/theme/images/freshcart-logo.svg"
+                            alt="eCommerce HTML Template"></a>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
                         aria-label="Close"></button>
                 </div>
@@ -366,35 +385,36 @@
 
                                 <ul class="dropdown-menu dropdown-menu-lg">
                                     @foreach ($categories as $category)
-                                    <li class="dropdown-menu-list">
-                                        <a href="javascript:void(0)"
-                                            class="dropdown-item d-flex justify-content-between mb-1 py-1">
-                                            <div>
-                                                <i class="fa fa-{{ $category->icon }}"></i>
-                                                <span class="ms-1">{{$category->name}}</span>
-                                            </div>
-                                            <div>
-                                                <i class="feather-icon icon-chevron-right"></i>
-                                            </div>
-                                        </a>
+                                        <li class="dropdown-menu-list">
+                                            <a href="javascript:void(0)"
+                                                class="dropdown-item d-flex justify-content-between mb-1 py-1">
+                                                <div>
+                                                    <i class="fa fa-{{ $category->icon }}"></i>
+                                                    <span class="ms-1">{{ $category->name }}</span>
+                                                </div>
+                                                <div>
+                                                    <i class="feather-icon icon-chevron-right"></i>
+                                                </div>
+                                            </a>
 
-                                        <div class="dropdown-menu-list-submenu">
-                                            <div>
-                                                <ul class="list-unstyled">
-                                                    @foreach ($category->products as $product)
-                                                    <li>
-                                                        <a href="{{route('product.details', $product->slug)}}" class="dropdown-item">{{$product->name}}</a>
-                                                    </li>
-                                                    @endforeach
-                                                </ul>
+                                            <div class="dropdown-menu-list-submenu">
+                                                <div>
+                                                    <ul class="list-unstyled">
+                                                        @foreach ($category->products as $product)
+                                                            <li>
+                                                                <a href="{{ route('product.details', $product->slug) }}"
+                                                                    class="dropdown-item">{{ $product->name }}</a>
+                                                            </li>
+                                                        @endforeach
+                                                    </ul>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </li>
+                                        </li>
                                     @endforeach
                                 </ul>
                             </li>
                             <li class="nav-item">
-                               <a href="/">Home</a>
+                                <a href="/">Home</a>
                             </li>
                             <li class="nav-item dropdown dropdown-fullwidth" style="margin-left:20px">
                                 <a class="nav-link dropdown-toggle" href="#" role="button"
@@ -402,19 +422,20 @@
                                 <div class="dropdown-menu pb-0">
                                     <div class="row p-2 p-lg-4">
                                         @foreach ($categories as $category)
-                                        <div class="col-lg-3 col-12 mb-4 mb-lg-0">
-                                            <h6 class="text-primary ps-3">{{$category->name}}</h6>
-                                            @foreach ($category->products as $product)
-                                            <a href="{{route('product.details', $product->slug)}}" class="dropdown-item" >{{$product->name}}</a>
-                                            @endforeach
-                                        </div>
+                                            <div class="col-lg-3 col-12 mb-4 mb-lg-0">
+                                                <h6 class="text-primary ps-3">{{ $category->name }}</h6>
+                                                @foreach ($category->products as $product)
+                                                    <a href="{{ route('product.details', $product->slug) }}"
+                                                        class="dropdown-item">{{ $product->name }}</a>
+                                                @endforeach
+                                            </div>
                                         @endforeach
                                     </div>
                                 </div>
                             </li>
                             <li class="nav-item">
                                 <a href="/shop">Shop</a>
-                             </li>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -497,17 +518,18 @@
     </div>
 
     <main>
-       @yield('content')
+        @yield('content')
     </main>
     <!-- modal -->
 
     <!-- Footer -->
     <!-- footer -->
-    <footer class="footer bg-dark pb-6 pt-4 pt-md-12">
+    <footer class="footer bg-light pb-6 pt-4 pt-md-12">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-8 col-md-12 col-lg-4">
-                    <a href="#"><img src="/theme/images/freshcart-white-logo.svg" alt=""></a>
+                    <a href="#"><img src="/theme/images/logo.png" alt=""
+                            style="max-width: 50%; max-height:50%"></a>
                 </div>
                 <div class="col-4 col-md-12 col-lg-8 text-end">
                     <ul class="list-inline text-md-end mb-0 small">
@@ -545,111 +567,54 @@
                 </div>
             </div>
             <hr class="my-lg-8 opacity-25">
-            <div class="row g-4">
-                <div class="col-12 col-md-12 col-lg-4">
-                    <h6 class="mb-4 text-white">Categories</h6>
-                    <div class="row">
-                        <div class="col-6">
-                            <!-- list -->
-                            <ul class="nav flex-column">
-                                <li class="nav-item mb-2"><a href="#!" class="nav-link">Vegetables &amp;
-                                        Fruits</a></li>
-                                <li class="nav-item mb-2"><a href="#!" class="nav-link">Breakfast &amp;
-                                        instant food</a></li>
-                                <li class="nav-item mb-2"><a href="#!" class="nav-link">Bakery &amp;
-                                        Biscuits</a></li>
-                                <li class="nav-item mb-2"><a href="#!" class="nav-link">Atta, rice &amp;
-                                        dal</a></li>
-                                <li class="nav-item mb-2"><a href="#!" class="nav-link">Sauces &amp;
-                                        spreads</a></li>
-                                <li class="nav-item mb-2"><a href="#!" class="nav-link">Organic &amp;
-                                        gourmet</a></li>
-                                <li class="nav-item mb-2"><a href="#!" class="nav-link">Baby care</a></li>
-                                <li class="nav-item mb-2"><a href="#!" class="nav-link">Cleaning
-                                        essentials</a></li>
-                                <li class="nav-item mb-2"><a href="#!" class="nav-link">Personal care</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-6">
-                            <!-- list -->
-                            <ul class="nav flex-column">
-                                <li class="nav-item mb-2"><a href="#!" class="nav-link">Dairy, bread &amp;
-                                        eggs</a></li>
-                                <li class="nav-item mb-2"><a href="#!" class="nav-link">Cold drinks &amp;
-                                        juices</a></li>
-                                <li class="nav-item mb-2"><a href="#!" class="nav-link">Tea, coffee &amp;
-                                        drinks</a></li>
-                                <li class="nav-item mb-2"><a href="#!" class="nav-link">Masala, oil &amp;
-                                        more</a></li>
-                                <li class="nav-item mb-2"><a href="#!" class="nav-link">Chicken, meat &amp;
-                                        fish</a></li>
-                                <li class="nav-item mb-2"><a href="#!" class="nav-link">Paan corner</a></li>
-                                <li class="nav-item mb-2"><a href="#!" class="nav-link">Pharma &amp;
-                                        wellness</a></li>
-                                <li class="nav-item mb-2"><a href="#!" class="nav-link">Home &amp; office</a>
-                                </li>
-                                <li class="nav-item mb-2"><a href="#!" class="nav-link">Pet care</a></li>
-                            </ul>
-                        </div>
-                    </div>
+            <div class="row">
+                <div class="col-6 col-sm-6 col-md-3">
+                    <h6 class="mb-4 text-primary">Categories</h6>
+                    <!-- list -->
+                    <ul class="nav flex-column">
+                        @foreach ($categories as $category)
+                            <li class="nav-item mb-2"><a href="/shop?category={{ $category->slug }}"
+                                    class="nav-link">{{ $category->name }}</a></li>
+                        @endforeach
+                    </ul>
                 </div>
-                <div class="col-12 col-md-12 col-lg-8">
-                    <div class="row g-4">
-                        <div class="col-6 col-sm-6 col-md-3">
-                            <h6 class="mb-4 text-white">Get to know us</h6>
-                            <!-- list -->
-                            <ul class="nav flex-column">
-                                <li class="nav-item mb-2"><a href="#!" class="nav-link">Company</a></li>
-                                <li class="nav-item mb-2"><a href="#!" class="nav-link">About</a></li>
-                                <li class="nav-item mb-2"><a href="#!" class="nav-link">Blog</a></li>
-                                <li class="nav-item mb-2"><a href="#!" class="nav-link">Help Center</a></li>
-                                <li class="nav-item mb-2"><a href="#!" class="nav-link">Our Value</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-6 col-sm-6 col-md-3">
-                            <h6 class="mb-4 text-white">For Consumers</h6>
-                            <ul class="nav flex-column">
-                                <!-- list -->
-                                <li class="nav-item mb-2"><a href="#!" class="nav-link">Payments</a></li>
-                                <li class="nav-item mb-2"><a href="#!" class="nav-link">Shipping</a></li>
-                                <li class="nav-item mb-2"><a href="#!" class="nav-link">Product Returns</a>
-                                </li>
-                                <li class="nav-item mb-2"><a href="#!" class="nav-link">FAQ</a></li>
-                                <li class="nav-item mb-2"><a href="#!" class="nav-link">Shop Checkout</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-6 col-sm-6 col-md-3">
-                            <h6 class="mb-4 text-white">Become a Shopper</h6>
-                            <ul class="nav flex-column">
-                                <!-- list -->
-                                <li class="nav-item mb-2"><a href="#!" class="nav-link">Shopper
-                                        Opportunities</a></li>
-                                <li class="nav-item mb-2"><a href="#!" class="nav-link">Become a Shopper</a>
-                                </li>
-                                <li class="nav-item mb-2"><a href="#!" class="nav-link">Earnings</a></li>
-                                <li class="nav-item mb-2"><a href="#!" class="nav-link">Ideas &amp;
-                                        Guides</a></li>
-                                <li class="nav-item mb-2"><a href="#!" class="nav-link">New Retailers</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-6 col-sm-6 col-md-3">
-                            <h6 class="mb-4 text-white">Freshcart programs</h6>
-                            <ul class="nav flex-column">
-                                <!-- list -->
-                                <li class="nav-item mb-2"><a href="#!" class="nav-link">Freshcart
-                                        programs</a></li>
-                                <li class="nav-item mb-2"><a href="#!" class="nav-link">Gift Cards</a></li>
-                                <li class="nav-item mb-2"><a href="#!" class="nav-link">Promos &amp;
-                                        Coupons</a></li>
-                                <li class="nav-item mb-2"><a href="#!" class="nav-link">Freshcart Ads</a>
-                                </li>
-                                <li class="nav-item mb-2"><a href="#!" class="nav-link">Careers</a></li>
-                            </ul>
-                        </div>
-                    </div>
+                <div class="col-6 col-sm-6 col-md-3">
+                    <h6 class="mb-4 text-primary">Brands</h6>
+                    <!-- list -->
+                    <ul class="nav flex-column">
+                        @foreach ($brands as $brand)
+                            <li class="nav-item mb-2"><a href="/shop?brands={{$brand->slug}}"
+                                    class="nav-link">{{ $brand->name }}</a></li>
+                        @endforeach
+                    </ul>
+                </div>
+                <div class="col-6 col-sm-6 col-md-3">
+                    <h6 class="mb-4 text-white">For Consumers</h6>
+                    <ul class="nav flex-column">
+                        <!-- list -->
+                        <li class="nav-item mb-2"><a href="#!" class="nav-link">Payments</a></li>
+                        <li class="nav-item mb-2"><a href="#!" class="nav-link">Shipping</a></li>
+                        <li class="nav-item mb-2"><a href="#!" class="nav-link">Product Returns</a>
+                        </li>
+                        <li class="nav-item mb-2"><a href="#!" class="nav-link">FAQ</a></li>
+                        <li class="nav-item mb-2"><a href="#!" class="nav-link">Shop Checkout</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-6 col-sm-6 col-md-3">
+                    <h6 class="mb-4 text-white">Become a Shopper</h6>
+                    <ul class="nav flex-column">
+                        <!-- list -->
+                        <li class="nav-item mb-2"><a href="#!" class="nav-link">Shopper
+                                Opportunities</a></li>
+                        <li class="nav-item mb-2"><a href="#!" class="nav-link">Become a Shopper</a>
+                        </li>
+                        <li class="nav-item mb-2"><a href="#!" class="nav-link">Earnings</a></li>
+                        <li class="nav-item mb-2"><a href="#!" class="nav-link">Ideas &amp;
+                                Guides</a></li>
+                        <li class="nav-item mb-2"><a href="#!" class="nav-link">New Retailers</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
             <hr class="mt-8 opacity-25">
@@ -657,16 +622,13 @@
                 <div class="row gy-4 align-items-center">
                     <div class="col-md-6">
                         <span class="small text-muted">
-                            © 2022
+                            ©
                             <span id="copyright">
-                                -
                                 <script>
                                     document.getElementById("copyright").appendChild(document.createTextNode(new Date().getFullYear()));
-                                </script>2024
+                                </script>
                             </span>
-                            FreshCart eCommerce HTML Template. All rights reserved. Powered by
-                            <a href="https://codescandy.com/">Codescandy</a>
-                            .
+                            SOLOCOM. All rights reserved.
                         </span>
                     </div>
                     <div class="col-lg-6 text-end mb-2 mb-lg-0">

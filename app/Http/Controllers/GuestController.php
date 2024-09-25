@@ -98,24 +98,32 @@ class GuestController extends Controller
         }
 
         // Check if the 'brands' query parameter is passed
-        if ($request->has('brands')) {
-            $brandsInput = $request->brands;
+        // Check if the 'brands' query parameter is passed
+    if ($request->has('brands')) {
+        $brandsInput = $request->brands;
 
-            if (is_string($brandsInput)) {
-                $brandsInput = explode(',', $brandsInput);
-            }
+        // If the 'brands' input is a string (e.g., "brand1,brand2"), split it by comma
+        if (is_string($brandsInput)) {
+            $brandsInput = explode(',', $brandsInput);
+        }
 
-            foreach ((array)$brandsInput as $brand_name) {
-                $brand = Brand::where('slug', $brand_name)->first();
-                if ($brand) {
-                    $selected_brands->push($brand);
-                }
-            }
+        // Initialize an empty collection to hold selected brand objects
+        $selected_brands = collect();
 
-            if ($selected_brands->isNotEmpty()) {
-                $productsQuery->whereIn('brand_id', $selected_brands->pluck('id'));
+        // Loop through the array of brand slugs and find corresponding brand models
+        foreach ($brandsInput as $brand_slug) {
+            $brand = Brand::where('slug', $brand_slug)->first();
+            if ($brand) {
+                $selected_brands->push($brand);
             }
         }
+
+        // If there are selected brands, filter the products query by brand IDs
+        if ($selected_brands->isNotEmpty()) {
+            $productsQuery->whereIn('brand_id', $selected_brands->pluck('id'));
+        }
+    }
+
 
         // Check for the 'sort' parameter to sort products by price
         if ($request->has('sort')) {
