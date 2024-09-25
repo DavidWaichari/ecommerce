@@ -76,7 +76,7 @@
                                      <div class="form-group">
                                         <div class="d-flex flex-column align-items-start">
                                             <label for="processorSelect">Select Processor</label>
-                                            <select class="select2 form-control" id="processorSelect" name="processor_id" required>
+                                            <select class="select2 form-control" id="processorSelect" name="processor_id">
                                                 <option value="" selected="selected">Select Processor</option>
                                                 @foreach ($processors as $processor)
                                                     <option value="{{ $processor->id }}" {{ $product->processor_id == $processor->id ? 'selected' : '' }}>

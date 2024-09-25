@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta content="Codescandy" name="author">
-    <title>Homepage v4 - eCommerce HTML Template - FreshCart</title>
+    <title>Solocom</title>
     <link href="/theme/css/tiny-slider.css" rel="stylesheet">
     <link href="/theme/css/slick.css" rel="stylesheet">
     <link href="/theme/css/slick-theme.css" rel="stylesheet">
@@ -42,8 +42,8 @@
             <div class="row w-100 align-items-center gx-3">
                 <div class="col-xl-7 col-lg-8">
                     <div class="d-flex align-items-center">
-                        <a class="navbar-brand d-none d-lg-block" href="../index.html">
-                            SOLOCOM
+                        <a href="/"><img src="/theme/images/logo.png" alt=""
+                            style="max-width: 40%; max-height:40%">
                         </a>
                         <div class="w-100 ms-4 d-none d-lg-block">
                             <form action="/shop">
@@ -67,126 +67,104 @@
                             </form>
                         </div>
                     </div>
-                    <div class="d-flex justify-content-between align-items-center w-100 d-lg-none">
-                        <a class="navbar-brand mb-0" href="../index.html">
-                            <img src="/theme/images/freshcart-logo.svg" alt="eCommerce HTML Template">
-                        </a>
+                    <div class="d-flex justify-content-between align-items-center w-100 d-lg-none pt-2">
+                        <div>
+                                @guest
+                                    <div class="d-flex align-items-center justify-content-center gap-2">
+                                        @if (Route::has('login'))
+                                        <a class="btn btn-dark  d-xs-block"
+                                            href="{{ route('login') }}">{{ __('Login') }}</a>
+                                        @endif
+
+                                        @if (Route::has('register'))
+                                        <a class="btn btn-primary  d-xs-block"
+                                            href="{{ route('register') }}">{{ __('Register') }}</a>
+                                        @endif
+                                    </div>
+                                @else
+                                <a class="btn btn-primary  d-xs-block" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                    class="">
+                                    @csrf
+                                </form>
+                                @endguest
+                        </div>
 
                         <div class="d-flex align-items-center lh-1">
                             <div class="list-inline me-4">
-                                <div class="list-inline-item">
-                                    <!-- Button trigger modal -->
-                                    <a href="#" class="text-reset d-none d-md-block" data-bs-toggle="modal"
-                                        data-bs-target="#locationSecondModal">
-                                        <i class="feather-icon icon-map-pin me-2"></i>
-                                        Set A Location
-                                    </a>
-                                </div>
+
                                 <div class="list-inline-item">
                                     <div class="dropdown">
-                                        <a href="#" class="text-reset" data-bs-toggle="dropdown"
-                                            aria-expanded="false">
-                                            <span>
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                    class="feather feather-shopping-cart align-text-bottom">
-                                                    <circle cx="9" cy="21" r="1"></circle>
-                                                    <circle cx="20" cy="21" r="1"></circle>
-                                                    <path
-                                                        d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6">
-                                                    </path>
-                                                </svg>
-                                            </span>
-
-                                            <span>$0.00</span>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-end dropdown-menu-lg p-5">
-                                            <div
-                                                class="d-flex justify-content-between align-items-center border-bottom pb-5 mb-3">
-                                                <div>
-                                                    <span><i class="feather-icon icon-shopping-cart"></i></span>
-                                                    <span class="text-success">3</span>
-                                                </div>
-                                                <div>
-                                                    <span>Total:</span>
-                                                    <span class="text-success">$105.00</span>
-                                                </div>
-                                            </div>
-                                            <ul class="list-group list-group-flush">
-                                                <li class="list-group-item px-0 py-3">
-                                                    <div class="row align-items-center g-0">
-                                                        <div class="col-lg-3 col-3 text-center">
-                                                            <!-- img -->
-                                                            <img src="/theme/images/product-img-1.jpg" alt="Ecommerce"
-                                                                class="icon-xxl">
-                                                        </div>
-                                                        <div class="col-lg-7 col-7">
-                                                            <!-- title -->
-                                                            <a href="../pages/shop-single.html" class="text-inherit">
-                                                                <h6 class="mb-0">Haldiram's Sev Bhujia</h6>
-                                                            </a>
-                                                            <small class="text-muted">1 x $35.00</small>
-                                                        </div>
-
-                                                        <!-- price -->
-                                                        <div class="text-end col-lg-2 col-2">
-                                                            <a href="#" class="text-inherit"
-                                                                aria-label="Close"><i class="bi bi-x fs-4"></i></a>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="list-group-item px-0 py-3">
-                                                    <div class="row align-items-center g-0">
-                                                        <div class="col-lg-3 col-3 text-center">
-                                                            <!-- img -->
-                                                            <img src="/theme/images/product-img-2.jpg" alt="Ecommerce"
-                                                                class="icon-xxl">
-                                                        </div>
-                                                        <div class="col-lg-7 col-7">
-                                                            <!-- title -->
-                                                            <a href="../pages/shop-single.html" class="text-inherit">
-                                                                <h6 class="mb-0">NutriChoice Digestive</h6>
-                                                            </a>
-                                                            <small class="text-muted">1 x $29.00</small>
-                                                        </div>
-
-                                                        <!-- price -->
-                                                        <div class="text-end col-lg-2 col-2">
-                                                            <a href="#" class="text-inherit"
-                                                                aria-label="Close"><i class="bi bi-x fs-4"></i></a>
-                                                        </div>
-                                                    </div>
-                                                </li>
-
-                                                <li class="list-group-item px-0 py-3">
-                                                    <div class="row align-items-center g-0">
-                                                        <div class="col-lg-3 col-3 text-center">
-                                                            <!-- img -->
-                                                            <img src="/theme/images/product-img-3.jpg" alt="Ecommerce"
-                                                                class="icon-xxl">
-                                                        </div>
-                                                        <div class="col-lg-7 col-7">
-                                                            <!-- title -->
-                                                            <a href="../pages/shop-single.html" class="text-inherit">
-                                                                <h6 class="mb-0">Cadbury 5 Star Chocolate</h6>
-                                                            </a>
-                                                            <small class="text-muted">1 x $29.00</small>
-                                                        </div>
-
-                                                        <!-- price -->
-                                                        <div class="text-end col-lg-2 col-2">
-                                                            <a href="#" class="text-inherit"
-                                                                aria-label="Close"><i class="bi bi-x fs-4"></i></a>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                            <div class="mt-2 d-grid">
-                                                <a href="#" class="btn btn-primary">Checkout</a>
-                                                <a href="/cart" class="btn btn-light mt-2">View Cart</a>
-                                            </div>
+                                        <a href="#" class="dropdown-toggle text-reset" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    <span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="feather feather-shopping-cart align-text-bottom">
+                                            <circle cx="9" cy="21" r="1"></circle>
+                                            <circle cx="20" cy="21" r="1"></circle>
+                                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6">
+                                            </path>
+                                        </svg>
+                                    </span>
+                                    <span>KES {{ $cart_items->sum('total') }}</span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end dropdown-menu-lg p-5">
+                                    <div
+                                        class="d-flex justify-content-between align-items-center border-bottom pb-5 mb-3">
+                                        <div>
+                                            <span><i class="feather-icon icon-shopping-cart"></i></span>
+                                            <span class="text-success">{{ $cart_items->count() }}</span>
                                         </div>
+                                        <div>
+                                            <span>Total:</span>
+                                            <span class="text-success">KES {{ $cart_items->sum('total') }}</span>
+                                        </div>
+                                    </div>
+                                    <ul class="list-group list-group-flush">
+                                        @forelse($cart_items ?? [] as $product)
+                                            <li class="list-group-item px-0 py-3">
+                                                <div class="row align-items-center g-0">
+                                                    <div class="col-lg-3 col-3 text-center">
+                                                        <img src="{{ $product['featured_image_url'] ?? '/theme/images/placeholder.jpg' }}"
+                                                            alt="{{ $product['name'] ?? 'Product' }}"
+                                                            class="icon-xxl">
+                                                    </div>
+                                                    <div class="col-lg-7 col-7">
+                                                        <a href="{{ route('product.details', $product['slug']) }}"
+                                                            class="text-inherit">
+                                                            <h6 class="mb-0">
+                                                                {{ $product['name'] ?? 'Unknown Product' }}</h6>
+                                                        </a>
+                                                        <small class="text-muted">{{ $product['quantity'] ?? 0 }} x KES
+                                                            {{ number_format($product['discount_price'] ?? 0, 2) }}
+                                                            ({{ $product['total'] }})</small>
+                                                    </div>
+                                                    <div class="text-end col-lg-2 col-2">
+                                                        <a href="/cart/remove/{{ $product['id'] }}"
+                                                            class="btn btn-link p-0 text-danger" aria-label="Remove">
+                                                            <i class="bi bi-x fs-4"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        @empty
+                                            <li class="list-group-item px-0 py-3">
+                                                <p>Your cart is empty.</p>
+                                            </li>
+                                        @endforelse
+                                    </ul>
+                                    <div class="mt-2 d-grid">
+                                        <a href="{{ route('checkout.index') }}" class="btn btn-primary">Checkout</a>
+                                        <a href="{{ route('cart.view') }}" class="btn btn-light mt-2">View Cart</a>
+                                    </div>
+                                </div>
                                     </div>
                                 </div>
                             </div>
@@ -334,19 +312,20 @@
             <div class="offcanvas offcanvas-start" tabindex="-1" id="navbar-default"
                 aria-labelledby="navbar-defaultLabel">
                 <div class="offcanvas-header pb-1">
-                    <a href="./index.html"><img src="/theme/images/freshcart-logo.svg"
-                            alt="eCommerce HTML Template"></a>
+                    <a href="/"><img src="/theme/images/logo.png" alt=""
+                        style="max-width: 40%; max-height:40%"></a>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
                         aria-label="Close"></button>
                 </div>
                 <div class="offcanvas-body">
                     <div class="d-block d-lg-none mb-4">
-                        <form action="#">
+                        <form action="/shop">
                             <div class="input-group">
-                                <input class="form-control rounded" type="search" placeholder="Search for products">
+                                <input class="form-control rounded" type="search" placeholder="Search for products"
+                                    name="product_name">
                                 <span class="input-group-append">
                                     <button class="btn bg-white border border-start-0 ms-n10 rounded-0 rounded-end"
-                                        type="button">
+                                        type="submit">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                             viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -359,13 +338,6 @@
                                 </span>
                             </div>
                         </form>
-                        <div class="mt-2">
-                            <button type="button" class="btn btn-outline-gray-400 text-muted w-100"
-                                data-bs-toggle="modal" data-bs-target="#locationModal">
-                                <i class="feather-icon icon-map-pin me-2"></i>
-                                Pick Location
-                            </button>
-                        </div>
                     </div>
 
                     <div>
@@ -443,80 +415,6 @@
         </div>
     </nav>
 
-    <!-- Location Modal -->
-    <div class="modal fade" id="locationSecondModal" tabindex="-1" aria-labelledby="locationSecondModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <div class="mb-5 d-flex align-items-center justify-content-between">
-                        <h1 class="modal-title fs-5" id="locationSecondModalLabel">Add Your Location</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                            aria-label="Close"></button>
-                    </div>
-                    <div class="w-100">
-                        <form action="#">
-                            <div class="input-group">
-                                <input type="text" aria-label="Last name" class="form-control w-45"
-                                    placeholder="Search for area, location more..">
-                                <button class="input-group-text bg-transparent" type="submit">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round"
-                                        class="feather feather-search">
-                                        <circle cx="11" cy="11" r="8"></circle>
-                                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                                    </svg>
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="my-10 text-center">
-                        <img src="/theme/images/delivery-boy.svg" alt="" class="img-fluid">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Register Modal -->
-    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content bg-light">
-                <div class="modal-header bg-white">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Register via Phone Number</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-8 col-12">
-                            <div class="py-6">
-                                <h4 class="fs-6 mb-4">Enter your phone number to Signup or Register</h4>
-                                <form>
-                                    <div class="input-phone mb-2">
-                                        <input type="tel" maxlength="10" class="form-control"
-                                            pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required="">
-                                    </div>
-                                    <div class="d-grid">
-                                        <button type="submit" class="btn btn-primary">Next</button>
-                                    </div>
-                                </form>
-
-                                <div class="mt-4">
-                                    <small>
-                                        <a href="#">Terms of Service</a>
-                                        <a href="#" class="ms-3">Privacy Policy</a>
-                                    </small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <main>
         @yield('content')
     </main>
@@ -528,8 +426,8 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-8 col-md-12 col-lg-4">
-                    <a href="#"><img src="/theme/images/logo.png" alt=""
-                            style="max-width: 50%; max-height:50%"></a>
+                    <a href="/"><img src="/theme/images/logo.png" alt=""
+                            style="max-width: 40%; max-height:40%"></a>
                 </div>
                 <div class="col-4 col-md-12 col-lg-8 text-end">
                     <ul class="list-inline text-md-end mb-0 small">
@@ -589,20 +487,17 @@
                     </ul>
                 </div>
                 <div class="col-6 col-sm-6 col-md-3">
-                    <h6 class="mb-4 text-white">For Consumers</h6>
+                    <h6 class="mb-4 text-primary">Get to know us</h6>
+                    <!-- list -->
                     <ul class="nav flex-column">
-                        <!-- list -->
-                        <li class="nav-item mb-2"><a href="#!" class="nav-link">Payments</a></li>
-                        <li class="nav-item mb-2"><a href="#!" class="nav-link">Shipping</a></li>
-                        <li class="nav-item mb-2"><a href="#!" class="nav-link">Product Returns</a>
-                        </li>
-                        <li class="nav-item mb-2"><a href="#!" class="nav-link">FAQ</a></li>
-                        <li class="nav-item mb-2"><a href="#!" class="nav-link">Shop Checkout</a>
-                        </li>
+                       <li class="nav-item mb-2"><a href="#!" class="nav-link">Company</a></li>
+                       <li class="nav-item mb-2"><a href="#!" class="nav-link">About</a></li>
+                       <li class="nav-item mb-2"><a href="#!" class="nav-link">Help Center</a></li>
+                       <li class="nav-item mb-2"><a href="#!" class="nav-link">Our Value</a></li>
                     </ul>
-                </div>
+                 </div>
                 <div class="col-6 col-sm-6 col-md-3">
-                    <h6 class="mb-4 text-white">Become a Shopper</h6>
+                    <h6 class="mb-4 text-primary">Contact us</h6>
                     <ul class="nav flex-column">
                         <!-- list -->
                         <li class="nav-item mb-2"><a href="#!" class="nav-link">Shopper
