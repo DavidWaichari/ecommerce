@@ -106,6 +106,7 @@
              </div>
              <div class="row g-4 row-cols-xl-4 row-cols-lg-3 row-cols-2 row-cols-md-2 mt-2">
                 @foreach ($products as $product)
+                @if($product->status == "Active")
                 <div class="item">
                     <div class="card card-product mb-lg-4">
                         <div class="card-body">
@@ -142,6 +143,7 @@
                         </div>
                     </div>
                 </div>
+                @endif
                 @endforeach
              </div>
              <div class="row mt-8">

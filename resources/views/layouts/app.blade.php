@@ -373,10 +373,12 @@
                                                 <div>
                                                     <ul class="list-unstyled">
                                                         @foreach ($category->products as $product)
-                                                            <li>
-                                                                <a href="{{ route('product.details', $product->slug) }}"
-                                                                    class="dropdown-item">{{ $product->name }}</a>
-                                                            </li>
+                                                        @if ($product->status == "Active")
+                                                        <li>
+                                                            <a href="{{ route('product.details', $product->slug) }}"
+                                                                class="dropdown-item">{{ $product->name }}</a>
+                                                        </li>
+                                                        @endif
                                                         @endforeach
                                                     </ul>
                                                 </div>
@@ -397,8 +399,10 @@
                                             <div class="col-lg-3 col-12 mb-4 mb-lg-0">
                                                 <h6 class="text-primary ps-3">{{ $category->name }}</h6>
                                                 @foreach ($category->products as $product)
-                                                    <a href="{{ route('product.details', $product->slug) }}"
-                                                        class="dropdown-item">{{ $product->name }}</a>
+                                                @if ($product->status == "Active")
+                                                <a href="{{ route('product.details', $product->slug) }}"
+                                                    class="dropdown-item">{{ $product->name }}</a>
+                                                @endif
                                                 @endforeach
                                             </div>
                                         @endforeach
