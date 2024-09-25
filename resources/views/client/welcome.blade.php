@@ -192,8 +192,10 @@
                         <!-- price -->
                         <div class="d-flex justify-content-between align-items-center mt-3">
                             <div>
-                                <span class="text-dark">KES {{$product->discount_price}}</span>
-                                <span class="text-decoration-line-through text-muted">KES {{$product->selling_price}}</span>
+                                <span class="text-dark">KES {{number_format($product->discount_price, 0)}}</span>
+                            @if ($product->selling_price != $product->discount_price)
+                            <span class="text-decoration-line-through text-muted">KES {{number_format($product->selling_price, 0)}}</span>
+                            @endif
                             </div>
                             <div>
                                 <span class="text-uppercase small text-primary">In Stock</span>
@@ -305,9 +307,11 @@
                      <!-- price -->
                      <div class="d-flex justify-content-between align-items-center mt-3">
                          <div>
-                             <span class="text-dark">KES {{$product->discount_price}}</span>
-                             <span class="text-decoration-line-through text-muted">KES {{$product->selling_price}}</span>
-                         </div>
+                            <span class="text-dark">KES {{number_format($product->discount_price, 0)}}</span>
+                            @if ($product->selling_price != $product->discount_price)
+                            <span class="text-decoration-line-through text-muted">KES {{number_format($product->selling_price, 0)}}</span>
+                            @endif
+                            </div>
                          <div>
                              <span class="text-uppercase small text-primary">In Stock</span>
                          </div>
@@ -403,9 +407,11 @@
                                 <!-- price -->
                                 <div class="d-flex justify-content-between align-items-center mt-3">
                                     <div>
-                                        <span class="text-dark">KES {{$product->discount_price}}</span>
-                                        <span class="text-decoration-line-through text-muted">KES {{$product->selling_price}}</span>
-                                    </div>
+                                        <span class="text-dark">KES {{number_format($product->discount_price, 0)}}</span>
+                                        @if ($product->selling_price != $product->discount_price)
+                                        <span class="text-decoration-line-through text-muted">KES {{number_format($product->selling_price, 0)}}</span>
+                                        @endif
+                                        </div>
                                     <div>
                                         <span class="text-uppercase small text-primary">In Stock</span>
                                     </div>
