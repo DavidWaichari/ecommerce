@@ -513,39 +513,17 @@
                 </div>
             </div>
             <hr class="mt-8 opacity-25">
-            <div>
-                <div class="row gy-4 align-items-center">
-                    <div class="col-md-6">
-                        <span class="small text-muted">
-                            ©
-                            <span id="copyright">
-                                <script>
-                                    document.getElementById("copyright").appendChild(document.createTextNode(new Date().getFullYear()));
-                                </script>
-                            </span>
-                            SOLOCOM. All rights reserved.
+            <div class="row">
+                <div class="d-flex justify-content-center">
+                    <span class="small text-muted text-center">
+                        ©
+                        <span id="copyright">
+                            <script>
+                                document.getElementById("copyright").appendChild(document.createTextNode(new Date().getFullYear()));
+                            </script>
                         </span>
-                    </div>
-                    <div class="col-lg-6 text-end mb-2 mb-lg-0">
-                        <ul class="list-inline mb-0">
-                            <li class="list-inline-item text-light">Payment Partners</li>
-                            <li class="list-inline-item">
-                                <a href="#!"><img src="/theme/images/amazonpay.svg" alt=""></a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#!"><img src="/theme/images/american-express.svg" alt=""></a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#!"><img src="/theme/images/mastercard.svg" alt=""></a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#!"><img src="/theme/images/paypal.svg" alt=""></a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#!"><img src="/theme/images/visa.svg" alt=""></a>
-                            </li>
-                        </ul>
-                    </div>
+                        SOLOCOM. All rights reserved.
+                    </span>
                 </div>
             </div>
         </div>
