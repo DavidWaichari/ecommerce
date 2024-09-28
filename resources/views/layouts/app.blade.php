@@ -504,15 +504,14 @@
                     <h6 class="mb-4 text-primary">Contact us</h6>
                     <ul class="nav flex-column">
                         <!-- list -->
-                        <li class="nav-item mb-2"><a href="#!" class="nav-link">Shopper
-                                Opportunities</a></li>
-                        <li class="nav-item mb-2"><a href="#!" class="nav-link">Become a Shopper</a>
+                        <li class="nav-item mb-2"><a href="#!" class="nav-link">Solocom
+                                Limited</a></li>
+                        <li class="nav-item mb-2"><a href="#!" class="nav-link">39 Moi Avenue, CBD</a>
                         </li>
-                        <li class="nav-item mb-2"><a href="#!" class="nav-link">Earnings</a></li>
-                        <li class="nav-item mb-2"><a href="#!" class="nav-link">Ideas &amp;
-                                Guides</a></li>
-                        <li class="nav-item mb-2"><a href="#!" class="nav-link">New Retailers</a>
-                        </li>
+                        <li class="nav-item mb-2"><a href="#!" class="nav-link">P.O Box 28660-00100</a></li>
+                        <li class="nav-item mb-2"><a href="#!" class="nav-link">Nairobi, Kenya</a></li>
+                        <li class="nav-item mb-2"><a href="#!" class="nav-link">+254 733 223555</a></li>
+                        <li class="nav-item mb-2"><a href="#!" class="nav-link">sales@solocomglobal.com</a></li>
                     </ul>
                 </div>
             </div>
