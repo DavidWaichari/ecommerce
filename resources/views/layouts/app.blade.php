@@ -490,16 +490,7 @@
                         @endforeach
                     </ul>
                 </div>
-                <div class="col-6 col-sm-6 col-md-3">
-                    <h6 class="mb-4 text-primary">Get to know us</h6>
-                    <!-- list -->
-                    <ul class="nav flex-column">
-                       <li class="nav-item mb-2"><a href="#!" class="nav-link">Company</a></li>
-                       <li class="nav-item mb-2"><a href="#!" class="nav-link">About</a></li>
-                       <li class="nav-item mb-2"><a href="#!" class="nav-link">Help Center</a></li>
-                       <li class="nav-item mb-2"><a href="#!" class="nav-link">Our Value</a></li>
-                    </ul>
-                 </div>
+
                 <div class="col-6 col-sm-6 col-md-3">
                     <h6 class="mb-4 text-primary">Contact us</h6>
                     <ul class="nav flex-column">
@@ -512,8 +503,18 @@
                         <li class="nav-item mb-2"><a href="#!" class="nav-link">Nairobi, Kenya</a></li>
                         <li class="nav-item mb-2"><a href="#!" class="nav-link">+254 733 223555</a></li>
                         <li class="nav-item mb-2"><a href="#!" class="nav-link">sales@solocomglobal.com</a></li>
+
                     </ul>
                 </div>
+                <div class="col-6 col-sm-6 col-md-3">
+                    <h6 class="mb-4 text-primary">Opening Hours</h6>
+                    <!-- list -->
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="#!" class="nav-link">Monday - Friday :9:00am to 6:00pm </a></li>
+                        <li class="nav-item mb-2"><a href="#!" class="nav-link">Saturday :9:00am to 1:00pm</a></li>
+                        <li class="nav-item mb-2"><a href="#!" class="nav-link">Sundays :Closed</a></li>
+                    </ul>
+                 </div>
             </div>
             <hr class="mt-8 opacity-25">
             <div class="row">
