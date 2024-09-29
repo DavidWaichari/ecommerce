@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
@@ -92,7 +93,6 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-
         // Validate the request data
         $request->validate([
             'name' => 'required|string|max:255',
@@ -105,6 +105,26 @@ class CategoryController extends Controller
         }
 
         $request['updated_by'] = auth()->id();
+
+        // Delete old featured image if a new one is uploaded
+        if ($request->hasFile('featured_image') && !empty($category->featured_image)) {
+            $oldFeaturedImagePath = public_path('uploads/categories/featured_images/' . $category->featured_image);
+            if (file_exists($oldFeaturedImagePath)) {
+                unlink($oldFeaturedImagePath); // Delete the old featured image
+            }
+        }
+
+        // Delete old images if new ones are uploaded
+        if ($request->hasFile('images') && !empty($category->images)) {
+            $oldImages = json_decode($category->images, true);
+            foreach ($oldImages as $oldImage) {
+                $oldImagePath = public_path('uploads/categories/images/' . $oldImage);
+                if (file_exists($oldImagePath)) {
+                    unlink($oldImagePath); // Delete the old images
+                }
+            }
+        }
+
         // Update the category
         $category->update($request->all());
 
@@ -126,21 +146,42 @@ class CategoryController extends Controller
             }
             $category->images = json_encode($imageNames);
         }
+
         return redirect()->route('admin.categories.index')->with('success', 'Category updated successfully.');
     }
+
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Category $category)
     {
+        // Delete the featured image if it exists
+        if (!empty($category->featured_image)) {
+            $featuredImagePath = public_path('uploads/categories/featured_images/' . $category->featured_image);
+            if (file_exists($featuredImagePath)) {
+                unlink($featuredImagePath); // Delete the featured image
+            }
+        }
 
+        // Delete multiple images if they exist
+        if (!empty($category->images)) {
+            $images = json_decode($category->images, true);
+            foreach ($images as $image) {
+                $imagePath = public_path('uploads/categories/images/' . $image);
+                if (file_exists($imagePath)) {
+                    unlink($imagePath); // Delete the image
+                }
+            }
+        }
+
+        // Delete the category record from the database
         $category->delete();
 
-
         // Redirect to the categories list with a success message
-        return redirect()->route('admin.categories.index')->with('success', 'Category deleted successfully.');
+        return redirect()->route('admin.categories.index')->with('success', 'Category and its images deleted successfully.');
     }
+
 
     private function generateImageName(string $productName, string $extension, string $type)
     {

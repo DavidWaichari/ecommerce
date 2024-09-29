@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -37,7 +38,8 @@ class Product extends Model
     ];
 
     protected $appends = [
-        'featured_image_url', 'discount'
+        'featured_image_url',
+        'discount'
     ];
 
     // Relationship with Category
@@ -63,7 +65,7 @@ class Product extends Model
         return  $this->belongsTo(User::class, 'updated_by');
     }
 
-      /**
+    /**
      * Get the options for generating the slug.
      */
     public function getSlugOptions(): SlugOptions
@@ -83,8 +85,8 @@ class Product extends Model
 
     public function getFeaturedImageUrlAttribute()
     {
-        if(!empty($this->featured_image)){
-            return '/uploads/featured_images/'.$this->featured_image;
+        if (!empty($this->featured_image)) {
+            return '/uploads/featured_images/' . $this->featured_image;
         }
         return $this->category->featured_image_url;
     }
@@ -92,22 +94,26 @@ class Product extends Model
     public function getImagesUrlsAttribute()
     {
         $urls = [];
-        if (!emptyArray($this->images)) {
 
+        if (!empty($this->images)) { // Check if the images array is not empty
             foreach ($this->images as $image) {
-                array_push($urls, '/uploads/images/'.$image);
+                array_push($urls, '/uploads/images/' . $image);
             }
-        }else{
-            $urls = $this->category->images_urls;
+        } else {
+            // Ensure the category relationship is properly defined and loaded
+            if ($this->category && !empty($this->category->images_urls)) {
+                $urls = $this->category->images_urls;
+            }
         }
+
         return $urls;
     }
 
+
     public function getDiscountAttribute()
     {
-        $discount = $this->selling_price - $this->discount_price ;
+        $discount = $this->selling_price - $this->discount_price;
 
-       return  number_format(($discount / $this->selling_price) * 100 , 2);
-
+        return  number_format(($discount / $this->selling_price) * 100, 2);
     }
 }
