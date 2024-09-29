@@ -140,8 +140,8 @@
                                     <h4 class="card-title">Featured Image</h4>
                                 </div>
                                 <div class="card-body text-center">
-                                    @if($product->featured_image)
-                                        <img src="{{ asset('uploads/featured_images/' . $product->featured_image) }}" class="img-fluid" alt="Featured Image">
+                                    @if ($product->featured_image_url)
+                                        <img src="{{$product->featured_image_url}}" class="img-fluid" alt="Featured Image">
                                     @else
                                         <p>No featured image available.</p>
                                     @endif
@@ -155,15 +155,11 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="d-flex flex-wrap">
-                                        @if(!empty($product->images))
-                                            @foreach(json_decode($product->images) as $image)
-                                                <div class="p-2">
-                                                    <img src="{{ asset('uploads/images/' . $image) }}" class="img-fluid" alt="Image">
-                                                </div>
-                                            @endforeach
-                                        @else
-                                            <p>No other images available.</p>
-                                        @endif
+                                        @foreach($product->images_urls as $image)
+                                            <div class="p-2">
+                                                <img src="{{$image}}" class="img-fluid" alt="Image">
+                                            </div>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>

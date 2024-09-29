@@ -19,7 +19,7 @@ class CategoriesTableSeeder extends Seeder
                 "icon" => "laptop",  // Font Awesome icon for laptop
                 "status" => "Active",
                 "featured_image" => "laptops.svg",
-                "images" => json_encode(['laptops.svg']),
+                "images" => ['laptops.svg'],
                 "updated_by" => 1
             ],
             [
@@ -28,7 +28,7 @@ class CategoriesTableSeeder extends Seeder
                 "icon" => "desktop",  // Font Awesome icon for desktop
                 "status" => "Active",
                 "featured_image" => "desktops.svg",
-                "images" => json_encode(['desktops.svg']),
+                "images" => ['desktops.svg'],
                 "updated_by" => 1
             ],
             [
@@ -37,7 +37,7 @@ class CategoriesTableSeeder extends Seeder
                 "icon" => "print",  // Font Awesome icon for print
                 "status" => "Active",
                 "featured_image" => "printers.svg",
-                "images" => json_encode(['printers.svg']),
+                "images" => ['printers.svg'],
                 "updated_by" => 1
             ],
             [
@@ -46,7 +46,7 @@ class CategoriesTableSeeder extends Seeder
                 "icon" => "video",  // Font Awesome icon for video
                 "status" => "Active",
                 "featured_image" => "monitors.svg",
-                "images" => json_encode(['monitors.svg']),
+                "images" => ['monitors.svg'],
                 "updated_by" => 1
             ],
             [
@@ -55,7 +55,7 @@ class CategoriesTableSeeder extends Seeder
                 "icon" => "cogs",  // Font Awesome icon for cogs
                 "status" => "Active",
                 "featured_image" => "accessories.svg",
-                "images" => json_encode(['accessories.svg']),
+                "images" => ['accessories.svg'],
                 "updated_by" => 1
             ],
         ];

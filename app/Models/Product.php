@@ -39,7 +39,7 @@ class Product extends Model
 
     protected $appends = [
         'featured_image_url',
-        'discount'
+        'discount','images_urls'
     ];
 
     // Relationship with Category
@@ -100,10 +100,7 @@ class Product extends Model
                 array_push($urls, '/uploads/images/' . $image);
             }
         } else {
-            // Ensure the category relationship is properly defined and loaded
-            if ($this->category && !empty($this->category->images_urls)) {
-                $urls = $this->category->images_urls;
-            }
+            $urls = $this->category->images_urls;
         }
 
         return $urls;

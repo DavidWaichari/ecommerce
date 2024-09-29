@@ -136,8 +136,8 @@
                                     <div class="form-group">
                                         <label for="featured_image">Featured Image</label>
                                         <input type="file" class="form-control-file" id="featured_image" name="featured_image" accept="image/*">
-                                        @if ($product->featured_image)
-                                            <img src="{{ asset('uploads/featured_images/' . $product->featured_image) }}" alt="Featured Image" class="img-thumbnail mt-2" style="max-width: 150px;">
+                                        @if ($product->featured_image_url)
+                                            <img src="{{$product->featured_image_url}}" alt="Featured Image" class="img-thumbnail mt-2" style="max-width: 150px;">
                                         @endif
                                     </div>
 
@@ -147,8 +147,8 @@
                                         <input type="file" class="form-control-file" id="images" name="images[]" accept="image/*" multiple>
                                         @if ($product->images)
                                             <div class="mt-2">
-                                                @foreach (json_decode($product->images) as $image)
-                                                    <img src="{{ asset('uploads/images/' . $image) }}" alt="Additional Image" class="img-thumbnail" style="max-width: 150px; margin-right: 5px;">
+                                                @foreach ($product->images_urls as $image)
+                                                    <img src="{{ $image }}" alt="Additional Image" class="img-thumbnail" style="max-width: 150px; margin-right: 5px;">
                                                 @endforeach
                                             </div>
                                         @endif

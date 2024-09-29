@@ -87,13 +87,9 @@ class Category extends Model
     public function getImagesUrlsAttribute()
     {
         $urls = [];
-
-        if (!empty($this->images)) { // Check if the images array is not empty
             foreach ($this->images as $image) {
                 array_push($urls, '/uploads/categories/images/'.$image);
             }
-        }
-
         return $urls;
     }
 
