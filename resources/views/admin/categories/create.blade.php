@@ -70,6 +70,17 @@
                                             <label class="form-check-label" for="has_processor">Has Processor</label>
                                         </div>
                                     </div>
+                                    <!-- Featured Image Input -->
+                                    <div class="form-group">
+                                        <label for="featured_image">Featured Image</label>
+                                        <input type="file" class="form-control-file" id="featured_image" name="featured_image" accept="image/*" >
+                                    </div>
+
+                                    <!-- Images Input -->
+                                    <div class="form-group">
+                                        <label for="images">Additional Images</label>
+                                        <input type="file" class="form-control-file" id="images" name="images[]" accept="image/*" multiple>
+                                    </div>
                                 </div>
                                 <!-- /.card-body -->
 

@@ -83,7 +83,10 @@ class Product extends Model
 
     public function getFeaturedImageUrlAttribute()
     {
-        return '/uploads/featured_images/'.$this->featured_image;
+        if(!empty($this->featured_image)){
+            return '/uploads/featured_images/'.$this->featured_image;
+        }
+        return $this->category->featured_image_url;
     }
 
     public function getDiscountAttribute()

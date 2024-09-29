@@ -18,6 +18,8 @@ class CategoriesTableSeeder extends Seeder
                 "description" => "Portable laptops designed for work and entertainment on the go.",
                 "icon" => "laptop",  // Font Awesome icon for laptop
                 "status" => "Active",
+                "featured_image" => "laptops.svg",
+                "images" => json_encode(['laptops.svg']),
                 "updated_by" => 1
             ],
             [
@@ -25,6 +27,8 @@ class CategoriesTableSeeder extends Seeder
                 "description" => "Powerful desktop computers and their accessories for all your computing needs.",
                 "icon" => "desktop",  // Font Awesome icon for desktop
                 "status" => "Active",
+                "featured_image" => "desktops.svg",
+                "images" => json_encode(['desktops.svg']),
                 "updated_by" => 1
             ],
             [
@@ -32,6 +36,8 @@ class CategoriesTableSeeder extends Seeder
                 "description" => "High-quality printers for all your printing needs, including inkjet and laser options.",
                 "icon" => "print",  // Font Awesome icon for print
                 "status" => "Active",
+                "featured_image" => "printers.svg",
+                "images" => json_encode(['printers.svg']),
                 "updated_by" => 1
             ],
             [
@@ -39,6 +45,8 @@ class CategoriesTableSeeder extends Seeder
                 "description" => "High-definition projectors and monitors for an immersive viewing experience.",
                 "icon" => "video",  // Font Awesome icon for video
                 "status" => "Active",
+                "featured_image" => "monitors.svg",
+                "images" => json_encode(['monitors.svg']),
                 "updated_by" => 1
             ],
             [
@@ -46,6 +54,8 @@ class CategoriesTableSeeder extends Seeder
                 "description" => "Essential accessories for your devices, including chargers, cases, and peripherals.",
                 "icon" => "cogs",  // Font Awesome icon for cogs
                 "status" => "Active",
+                "featured_image" => "accessories.svg",
+                "images" => json_encode(['accessories.svg']),
                 "updated_by" => 1
             ],
         ];

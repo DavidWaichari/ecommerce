@@ -73,6 +73,28 @@
                                         </div>
                                     </div>
 
+                                    <!-- Featured Image Input -->
+                                    <div class="form-group">
+                                        <label for="featured_image">Featured Image</label>
+                                        <input type="file" class="form-control-file" id="featured_image" name="featured_image" accept="image/*">
+                                        @if ($category->featured_image)
+                                            <img src="{{ asset('uploads/featured_images/' . $category->featured_image) }}" alt="Featured Image" class="img-thumbnail mt-2" style="max-width: 150px;">
+                                        @endif
+                                    </div>
+
+                                    <!-- Additional Images Input -->
+                                    <div class="form-group">
+                                        <label for="images">Additional Images</label>
+                                        <input type="file" class="form-control-file" id="images" name="images[]" accept="image/*" multiple>
+                                        @if ($category->images)
+                                            <div class="mt-2">
+                                                @foreach (json_decode($category->images) as $image)
+                                                    <img src="{{ asset('uploads/images/' . $image) }}" alt="Additional Image" class="img-thumbnail" style="max-width: 150px; margin-right: 5px;">
+                                                @endforeach
+                                            </div>
+                                        @endif
+                                    </div>
+
                                 </div>
                                 <!-- /.card-body -->
 

@@ -15,6 +15,8 @@ class Category extends Model
     protected $fillable = [
         'name',
         'slug',
+        'featured_image',
+        'images',
         'description',
         'icon',
         'status', // Added status attribute
@@ -23,6 +25,10 @@ class Category extends Model
         'updated_by'
     ];
 
+    protected $appends = [
+        'featured_image_url', 'discount'
+    ];
+    
     // Status scope to filter categories by status
     public function scopeActive($query)
     {
@@ -68,5 +74,10 @@ class Category extends Model
     public function getRouteKeyName()
     {
         return 'slug';
+    }
+
+    public function getFeaturedImageUrlAttribute()
+    {
+        return '/uploads/categories/featured_images/'.$this->featured_image;
     }
 }
