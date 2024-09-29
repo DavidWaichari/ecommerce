@@ -29,10 +29,11 @@ class GuestController extends Controller
         $featured_products = Product::where('is_featured', true)->get();
 
         // Placeholder logic for best sellers and popular products
-        $best_sellers = Product::all();
-        $popular_products = Product::all();
+        $best_sellers = Product::where('status', 'Active')->get();
+        $popular_products = Product::where('status', 'Active')->get();
+        $products = Product::where('status', 'Active')->get();
 
-        return view('client/welcome', compact('categories', 'featured_products', 'best_sellers', 'brands', 'popular_products'));
+        return view('client/welcome', compact('categories', 'featured_products', 'best_sellers', 'brands', 'popular_products', 'products'));
     }
 
 

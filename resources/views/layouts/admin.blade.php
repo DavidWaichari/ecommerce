@@ -130,6 +130,12 @@
               <p>Suppliers</p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="/admin/users" class="nav-link {{ Request::is('admin/users*') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-users"></i>
+              <p>Users</p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

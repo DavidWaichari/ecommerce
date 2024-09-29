@@ -159,8 +159,9 @@
                             <!-- action btn -->
                             <!-- action btn -->
                             <div class="card-product-action">
-                                <a href="#!" class="btn-action" data-bs-toggle="modal"
-                                    data-bs-target="#quickViewModal">
+                                {{-- <a href="#!" class="btn-action" data-bs-toggle="modal"
+                                    data-bs-target="#quickViewModal"> --}}
+                                <a href="{{route('product.details', $product->slug)}}" class="btn-action" >
                                     <i class="bi bi-eye" data-bs-toggle="tooltip" data-bs-html="true"
                                         title="Quick View"></i>
                                 </a>
@@ -274,10 +275,13 @@
                          <!-- action btn -->
                          <!-- action btn -->
                          <div class="card-product-action">
-                             <a href="#!" class="btn-action" data-bs-toggle="modal"
-                                 data-bs-target="#quickViewModal">
-                                 <i class="bi bi-eye" data-bs-toggle="tooltip" data-bs-html="true"
-                                     title="Quick View"></i>
+                             {{-- <a href="#!" class="btn-action" data-bs-toggle="modal"
+                                 data-bs-target="#quickViewModal"> --}}
+                                 <a href="{{route('product.details', $product->slug)}}" class="btn-action" >
+                                    <i class="bi bi-eye" data-bs-toggle="tooltip" data-bs-html="true"
+                                        title="Quick View"></i>
+                                 {{-- <i class="bi bi-eye" data-bs-toggle="tooltip" data-bs-html="true"
+                                     title="Quick View"></i> --}}
                              </a>
                              {{-- <a href="../pages/shop-wishlist.html" class="btn-action"
                                  data-bs-toggle="tooltip" data-bs-html="true" title="Wishlist"><i
@@ -391,10 +395,13 @@
                                             alt="Product Image" class="mb-3 img-fluid"></a>
                                     <!-- action btn -->
                                     <div class="card-product-action">
-                                        <a href="#!" class="btn-action" data-bs-toggle="modal"
-                                            data-bs-target="#quickViewModal">
-                                            <i class="bi bi-eye" data-bs-toggle="tooltip" data-bs-html="true"
-                                                title="Quick View"></i>
+                                        {{-- <a href="#!" class="btn-action" data-bs-toggle="modal"
+                                            data-bs-target="#quickViewModal"> --}}
+                                            <a href="{{route('product.details', $product->slug)}}" class="btn-action" >
+                                                <i class="bi bi-eye" data-bs-toggle="tooltip" data-bs-html="true"
+                                                    title="Quick View"></i>
+                                            {{-- <i class="bi bi-eye" data-bs-toggle="tooltip" data-bs-html="true"
+                                                title="Quick View"></i> --}}
                                         </a>
                                     </div>
                                 </div>

@@ -33,9 +33,9 @@
                 <h1 class="mb-1">{{$product->name}}</h1>
                 <div class="fs-4">
                    <!-- price -->
-                   <span class="fw-bold text-dark">KES {{$product->discount_price}}</span>
+                   <span class="fw-bold text-dark">KES {{number_format($product->discount_price)}}</span>
                    @if ($product->discount > 0)
-                   <span class="text-decoration-line-through text-muted">KES {{$product->selling_price}}</span>
+                   <span class="text-decoration-line-through text-muted">KES {{number_format($product->selling_price)}}</span>
                    <span><small class="fs-6 ms-2 text-danger">{{$product->discount}}% Off</small></span>
                    @endif
                 </div>
