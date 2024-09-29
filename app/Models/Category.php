@@ -26,9 +26,14 @@ class Category extends Model
     ];
 
     protected $appends = [
-        'featured_image_url', 'discount'
+        'featured_image_url', 'discount','images_urls'
     ];
-    
+
+    // Cast 'images' attribute to array
+    protected $casts = [
+        'images' => 'array',
+    ];
+
     // Status scope to filter categories by status
     public function scopeActive($query)
     {
@@ -39,7 +44,6 @@ class Category extends Model
     {
         return $query->where('status', 'inactive');
     }
-
 
     // Relationship with Product
     public function products()
@@ -58,7 +62,7 @@ class Category extends Model
         return  $this->belongsTo(User::class, 'updated_by');
     }
 
-      /**
+    /**
      * Get the options for generating the slug.
      */
     public function getSlugOptions(): SlugOptions
@@ -79,5 +83,16 @@ class Category extends Model
     public function getFeaturedImageUrlAttribute()
     {
         return '/uploads/categories/featured_images/'.$this->featured_image;
+    }
+    public function getImagesUrlsAttribute()
+    {
+        $urls = [];
+        if (!emptyArray($this->images)) {
+
+            foreach ($this->images as $image) {
+                array_push($urls, '/uploads/categories/images/'.$image);
+            }
+        }
+        return $urls;
     }
 }

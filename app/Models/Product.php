@@ -89,6 +89,20 @@ class Product extends Model
         return $this->category->featured_image_url;
     }
 
+    public function getImagesUrlsAttribute()
+    {
+        $urls = [];
+        if (!emptyArray($this->images)) {
+
+            foreach ($this->images as $image) {
+                array_push($urls, '/uploads/images/'.$image);
+            }
+        }else{
+            $urls = $this->category->images_urls;
+        }
+        return $urls;
+    }
+
     public function getDiscountAttribute()
     {
         $discount = $this->selling_price - $this->discount_price ;
