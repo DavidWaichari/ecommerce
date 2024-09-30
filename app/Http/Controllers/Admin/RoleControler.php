@@ -9,14 +9,10 @@ use Spatie\Permission\Models\Role as ModelsRole;
 
 class RoleControler extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        // Fetch roles ordered by 'created_at' in descending order
         $roles = ModelsRole::orderBy('updated_at', 'desc')->get();
-        return view('admin/roles/index', compact('roles'));
+        return view('admin.roles.index', compact('roles'));
     }
 
     /**
@@ -25,7 +21,7 @@ class RoleControler extends Controller
     public function create()
     {
         $permissions = Permission::all();
-        return view('admin/roles/create', compact('permissions'));
+        return view('admin.roles.create', compact('permissions'));
     }
 
     /**
@@ -33,21 +29,19 @@ class RoleControler extends Controller
      */
     public function store(Request $request)
     {
-        // Validate the request data
         $request->validate([
             'name' => 'required|string|max:255',
         ]);
-        $permissions = collect();
 
+        $permissions = collect();
         foreach ($request->permissions as $permission) {
-           $permissions->push(Permission::find($permission));
+            $permissions->push(Permission::find($permission));
         }
 
-        //create the role
         $role = ModelsRole::create(['name' => $request->name]);
         $role->syncPermissions($permissions);
-      
-        return redirect()->route('admin.roles.index')->with('success', 'role created successfully.');
+
+        return redirect()->route('admin.roles.index')->with('success', 'Role created successfully.');
     }
 
     /**
@@ -55,7 +49,8 @@ class RoleControler extends Controller
      */
     public function show(ModelsRole $role)
     {
-        return view('admin/roles/show', compact('role'));
+        $permissions = Permission::all();
+        return view('admin.roles.show', compact('role','permissions'));
     }
 
     /**
@@ -63,7 +58,8 @@ class RoleControler extends Controller
      */
     public function edit(ModelsRole $role)
     {
-        return view('admin/roles/edit', compact('role'));
+        $permissions = Permission::all();
+        return view('admin.roles.edit', compact('role', 'permissions'));
     }
 
     /**
@@ -71,14 +67,18 @@ class RoleControler extends Controller
      */
     public function update(Request $request, ModelsRole $role)
     {
-        // Validate the request data
         $request->validate([
             'name' => 'required|string|max:255',
         ]);
 
-        $role->update($request->all());
+        $role->update($request->only('name')); // Use only name
+        $permissions = collect();
+        foreach ($request->permissions as $permission) {
+            $permissions->push(Permission::find($permission));
+        }
+        $role->syncPermissions($permissions);
 
-        return redirect()->route('admin.roles.index')->with('success', 'role updated successfully.');
+        return redirect()->route('admin.roles.index')->with('success', 'Role updated successfully.');
     }
 
     /**
@@ -86,8 +86,7 @@ class RoleControler extends Controller
      */
     public function destroy(ModelsRole $role)
     {
-
         $role->delete();
-        return redirect()->route('admin.roles.index')->with('success', 'role deleted successfully.');
+        return redirect()->route('admin.roles.index')->with('success', 'Role deleted successfully.');
     }
 }
