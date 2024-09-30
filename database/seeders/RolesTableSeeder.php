@@ -24,7 +24,7 @@ class RolesTableSeeder extends Seeder
             $role->syncPermissions($permissions);
     
             //fetch the first User
-            $user = User::first();
+            $user = User::where('is_admin', true)->first();
     
             //assign role
             $user->assignRole($role);

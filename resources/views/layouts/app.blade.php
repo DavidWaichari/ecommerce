@@ -294,6 +294,9 @@
                                                 class="d-none">
                                                 @csrf
                                             </form>
+                                            @if (Auth::user()->is_admin)
+                                            <a href="/admin/dashboard" type="button" class="dropdown-item">Go to Admin</a>
+                                            @endif
                                             <a href="/client/account/settings" class="dropdown-item">Account</a>
                                         </div>
                                     </li>
