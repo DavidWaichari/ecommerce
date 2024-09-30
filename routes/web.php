@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\ProcessorControler;
 use App\Http\Controllers\Admin\RoleControler;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SubCategoryController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\GuestController;
@@ -64,4 +65,5 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth', 'admin'])->group(fu
     Route::resource('/brands', BrandControler::class);
     Route::resource('/processors', ProcessorControler::class);
     Route::resource('/roles', RoleControler::class);
+    Route::resource('/users', UserController::class);
 });
