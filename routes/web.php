@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\BrandControler;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProcessorControler;
+use App\Http\Controllers\Admin\RoleControler;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\CartController;
@@ -62,4 +63,5 @@ Route::prefix('/admin')->name('admin.')->middleware('auth')->group(function () {
     Route::resource('/suppliers', SupplierController::class);
     Route::resource('/brands', BrandControler::class);
     Route::resource('/processors', ProcessorControler::class);
+    Route::resource('/roles', RoleControler::class);
 });

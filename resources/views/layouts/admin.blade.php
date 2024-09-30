@@ -136,6 +136,12 @@
               <p>Users</p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="/admin/roles" class="nav-link {{ Request::is('admin/roles*') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-key"></i>
+              <p>Roles</p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

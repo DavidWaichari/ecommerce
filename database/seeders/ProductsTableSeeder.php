@@ -858,7 +858,10 @@ class ProductsTableSeeder extends Seeder
 
 
         foreach ($products as $productData) {
-            Product::create($productData);
+            $product = Product::where('name', $productData['name'])->first();
+            if (!$product) {
+                Product::create($productData);
+            }
         }
     }
 }
