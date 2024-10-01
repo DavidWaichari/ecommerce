@@ -50,10 +50,16 @@
             <i class="fas fa-envelope mr-2"></i> Profile
           </a>
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
+          <a href="#" class="dropdown-item" href="{{ route('logout') }}"
+          onclick="event.preventDefault();
+                       document.getElementById('logout-form').submit();">
             <i class="fas fa-users mr-2"></i> Logout
           </a>
-        </div>
+          <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                class="d-none">
+                                                @csrf
+                                            </form>
+        </div>                   
       </li>
     </ul>
   </nav>
@@ -81,69 +87,97 @@
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Dashboard -->
-          <li class="nav-item">
-            <a href="/admin/dashboard" class="nav-link {{ Request::is('admin/dashboard*') ? 'active' : '' }}">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>Dashboard</p>
-            </a>
-          </li>
-            <!-- Orders -->
+            
+            <!-- Dashboard -->
+            <li class="nav-item">
+                <a href="/admin/dashboard" class="nav-link {{ Request::is('admin/dashboard*') ? 'active' : '' }}">
+                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <p>Dashboard</p>
+                </a>
+            </li>
+    
+            <!-- Orders (check if user can read orders) -->
+            @can('read-order')
             <li class="nav-item">
                 <a href="/admin/orders" class="nav-link {{ Request::is('admin/orders*') ? 'active' : '' }}">
-                    <i class="nav-icon fas fa-shopping-cart"></i> <!-- Updated Icon -->
+                    <i class="nav-icon fas fa-shopping-cart"></i>
                     <p>Orders</p>
                 </a>
             </li>
-
-          <!-- Products -->
-          <li class="nav-item">
-            <a href="/admin/products" class="nav-link {{ Request::is('admin/products*') ? 'active' : '' }}">
-              <i class="nav-icon fas fa-cube"></i>
-              <p>Products</p>
-            </a>
-          </li>
-          <!-- Processors -->
-          <li class="nav-item">
-            <a href="/admin/processors" class="nav-link {{ Request::is('admin/processors*') ? 'active' : '' }}">
-              <i class="nav-icon fas fa-microchip"></i>
-              <p>Processors</p>
-            </a>
-          </li>
-          <!-- Brands -->
-          <li class="nav-item">
-            <a href="/admin/brands" class="nav-link {{ Request::is('admin/brands*') ? 'active' : '' }}">
-              <i class="nav-icon fas fa-tags"></i>
-              <p>Brands</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="/admin/categories" class="nav-link {{ Request::is('admin/categories*') ? 'active' : '' }}">
-              <i class="nav-icon fas fa-th-list"></i>
-              <p>Categories</p>
-            </a>
-          </li>
-          <!-- Suppliers -->
-          <li class="nav-item">
-            <a href="/admin/suppliers" class="nav-link {{ Request::is('admin/suppliers*') ? 'active' : '' }}">
-              <i class="nav-icon fas fa-truck-loading"></i>
-              <p>Suppliers</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="/admin/users" class="nav-link {{ Request::is('admin/users*') ? 'active' : '' }}">
-              <i class="nav-icon fas fa-users"></i>
-              <p>Users</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="/admin/roles" class="nav-link {{ Request::is('admin/roles*') ? 'active' : '' }}">
-              <i class="nav-icon fas fa-key"></i>
-              <p>Roles</p>
-            </a>
-          </li>
+            @endcan
+    
+            <!-- Products (check if user can read products) -->
+            @can('read-product')
+            <li class="nav-item">
+                <a href="/admin/products" class="nav-link {{ Request::is('admin/products*') ? 'active' : '' }}">
+                    <i class="nav-icon fas fa-cube"></i>
+                    <p>Products</p>
+                </a>
+            </li>
+            @endcan
+    
+            <!-- Processors (check if user can read processors) -->
+            @can('read-processor')
+            <li class="nav-item">
+                <a href="/admin/processors" class="nav-link {{ Request::is('admin/processors*') ? 'active' : '' }}">
+                    <i class="nav-icon fas fa-microchip"></i>
+                    <p>Processors</p>
+                </a>
+            </li>
+            @endcan
+    
+            <!-- Brands (check if user can read brands) -->
+            @can('read-brand')
+            <li class="nav-item">
+                <a href="/admin/brands" class="nav-link {{ Request::is('admin/brands*') ? 'active' : '' }}">
+                    <i class="nav-icon fas fa-tags"></i>
+                    <p>Brands</p>
+                </a>
+            </li>
+            @endcan
+    
+            <!-- Categories (check if user can read categories) -->
+            @can('read-category')
+            <li class="nav-item">
+                <a href="/admin/categories" class="nav-link {{ Request::is('admin/categories*') ? 'active' : '' }}">
+                    <i class="nav-icon fas fa-th-list"></i>
+                    <p>Categories</p>
+                </a>
+            </li>
+            @endcan
+    
+            <!-- Suppliers (check if user can read suppliers) -->
+            @can('read-supplier')
+            <li class="nav-item">
+                <a href="/admin/suppliers" class="nav-link {{ Request::is('admin/suppliers*') ? 'active' : '' }}">
+                    <i class="nav-icon fas fa-truck-loading"></i>
+                    <p>Suppliers</p>
+                </a>
+            </li>
+            @endcan
+    
+            <!-- Users (check if user can read users) -->
+            @can('read-user')
+            <li class="nav-item">
+                <a href="/admin/users" class="nav-link {{ Request::is('admin/users*') ? 'active' : '' }}">
+                    <i class="nav-icon fas fa-users"></i>
+                    <p>Users</p>
+                </a>
+            </li>
+            @endcan
+    
+            <!-- Roles (check if user can read roles) -->
+            @can('read-role')
+            <li class="nav-item">
+                <a href="/admin/roles" class="nav-link {{ Request::is('admin/roles*') ? 'active' : '' }}">
+                    <i class="nav-icon fas fa-key"></i>
+                    <p>Roles</p>
+                </a>
+            </li>
+            @endcan
         </ul>
-      </nav>
+    </nav>
+    
       <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
