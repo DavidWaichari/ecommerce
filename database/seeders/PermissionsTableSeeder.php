@@ -31,6 +31,8 @@ class PermissionsTableSeeder extends Seeder
             'read-order',
             'update-order',
             'delete-order',
+            'approve-order',
+            'reject-order',
 
             // Processor Permissions
             'create-processor',

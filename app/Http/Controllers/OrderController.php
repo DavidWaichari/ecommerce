@@ -16,7 +16,32 @@ class OrderController extends Controller
     public function details($id)
     {
         $order = Order::findOrFail($id);
-
         return view('admin/orders/show', compact('order'));
+    }
+
+    public function approve($id)
+    {
+        $order = Order::findOrFail($id);
+        $order->status = 'Approved'; // Assuming you have a 'status' field
+        $order->save();
+
+        return redirect()->route('admin.orders.index')->with('success', 'Order approved successfully.');
+    }
+
+    public function reject($id)
+    {
+        $order = Order::findOrFail($id);
+        $order->status = 'Rejected'; // Assuming you have a 'status' field
+        $order->save();
+
+        return redirect()->route('admin.orders.index')->with('error', 'Order rejected successfully.');
+    }
+
+    public function destroy($id)
+    {
+        $order = Order::findOrFail($id);
+        $order->delete();
+
+        return redirect()->route('admin.orders.index')->with('success', 'Order deleted successfully.');
     }
 }

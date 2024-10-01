@@ -34,196 +34,122 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <!-- row -->
-
-                    <!-- row -->
+                    <!-- Order Details -->
                     <div class="row">
                         <div class="col-xl-12 col-12 mb-5">
-                            <!-- card -->
                             <div class="card h-100 card-lg">
                                 <div class="card-body p-6">
+                                    <!-- Order Header -->
                                     <div class="d-md-flex justify-content-between">
                                         <div class="d-flex align-items-center mb-2 mb-md-0">
                                             <h2 class="mb-0">Order ID: #{{ $order->id }}</h2>
                                             <span
                                                 class="badge bg-light-warning text-dark-warning ms-2">{{ $order->status }}</span>
                                         </div>
-                                        <!-- select option -->
-                                        <div class="d-md-flex ">
-                                            {{-- <div class="mb-2 mb-md-0">
-                                  <select class="form-control">
-                                     <option selected>Status</option>
-                                     <option value="Success">Success</option>
-                                     <option value="Pending">Pending</option>
-                                     <option value="Cancel">Cancel</option>
-                                  </select>
-                               </div>
-                               <!-- button -->
-                               <div class="ms-md-3">
-                                  <a href="#" class="btn btn-primary">Save</a>
-                                  <a href="#" class="btn btn-secondary">Download Invoice</a>
-                               </div> --}}
-                                        </div>
                                     </div>
+                                    <!-- Order Details Section -->
                                     <div class="mt-8">
                                         <div class="row">
-                                            <!-- address -->
+                                            <!-- Customer Details -->
                                             <div class="col-lg-4 col-md-4 col-12">
                                                 <div class="mb-6">
                                                     <h6>Customer Details</h6>
                                                     <p class="mb-1 lh-lg">
-                                                        {{ $order->user->full_name }}
-                                                        <br />
-                                                        {{ $order->user->email }}
-                                                        <br />
+                                                        {{ $order->user->full_name }}<br>
+                                                        {{ $order->user->email }}<br>
                                                         {{ $order->user->phone_number }}
                                                     </p>
-                                                    {{-- <a href="#">View Profile</a> --}}
                                                 </div>
                                             </div>
-                                            <!-- address -->
+                                            <!-- Shipping Address -->
                                             <div class="col-lg-4 col-md-4 col-12">
                                                 <div class="mb-6">
                                                     <h6>Shipping Address</h6>
                                                     <p class="mb-1 lh-lg">
-                                                        {{ $order->user->county }} County
-                                                        <br />
-                                                        {{ $order->user->city }}, Suite Ave.
-                                                        <br />
-                                                        Customer No. {{ $order->user->phone_number }}
-                                                        <br />
+                                                        {{ $order->user->county }} County<br>
+                                                        {{ $order->user->city }}, Suite Ave.<br>
+                                                        Customer No. {{ $order->user->phone_number }}<br>
                                                         Shipping Contact No. {{ $order->contact_number }}
                                                     </p>
                                                 </div>
                                             </div>
-                                            <!-- address -->
+                                            <!-- Order Summary -->
                                             <div class="col-lg-4 col-md-4 col-12">
                                                 <div class="mb-6">
                                                     <h6>Order Details</h6>
                                                     <p class="mb-1 lh-lg">
-                                                        Order ID:
-                                                        <span class="text-dark">{{ $order->id }}</span>
-                                                        <br />
-                                                        Order Date:
-                                                        <span class="text-dark">
-                                                            {{ $order->created_at->format('M d, Y h:i A') }}</span>
-                                                        <br />
-                                                        Order Total:
-                                                        <span class="text-dark">{{ $order->total_amount }}</span>
+                                                        Order Date: <span class="text-dark">{{ $order->created_at->format('M d, Y h:i A') }}</span><br>
+                                                        Order Total: <span class="text-dark">{{ $order->total_amount }}</span>
                                                     </p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="table-responsive">
-                                            <!-- Table -->
-                                            <table class="table mb-0 text-nowrap table-centered">
-                                                <!-- Table Head -->
-                                                <thead class="bg-light">
-                                                    <tr>
-                                                        <th>Products</th>
-                                                        <th>Price</th>
-                                                        <th>Quantity</th>
-                                                        <th>Total</th>
-                                                    </tr>
-                                                </thead>
-                                                <!-- tbody -->
-                                                <tbody>
-                                                    @foreach ($order->items as $item)
+                                    <!-- Order Items Table -->
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="table-responsive">
+                                                <table class="table mb-0 text-nowrap table-centered">
+                                                    <thead class="bg-light">
                                                         <tr>
-                                                            <td>
-                                                                <a href="#" class="text-inherit">
-                                                                    <div class="d-flex align-items-center">
-                                                                        <div>
-                                                                            <img src="../assets/images/products/product-img-1.jpg"
-                                                                                alt="" class="icon-shape icon-lg" />
-                                                                        </div>
-                                                                        <div class="ms-lg-4 mt-2 mt-lg-0">
-                                                                            <h5 class="mb-0 h6">{{ $item->product->name }}
-                                                                            </h5>
-                                                                        </div>
-                                                                    </div>
-                                                                </a>
-                                                            </td>
-                                                            <td><span class="text-body">KES {{ $item->unit_price }}</span>
-                                                            </td>
-                                                            <td>{{ $item->quantity }}</td>
-                                                            <td>KES {{ $item->total_amount }}</td>
+                                                            <th>Products</th>
+                                                            <th>Price</th>
+                                                            <th>Quantity</th>
+                                                            <th>Total</th>
                                                         </tr>
-                                                    @endforeach
-                                                    <tr>
-                                                        <td class="border-bottom-0 pb-0"></td>
-                                                        <td class="border-bottom-0 pb-0"></td>
-                                                        <td colspan="1" class="fw-medium text-dark">
-                                                            <!-- text -->
-                                                            Sub Total :
-                                                        </td>
-                                                        <td class="fw-medium text-dark">
-                                                            <!-- text -->
-                                                            KES {{$order->items->sum('total_amount')}}
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="border-bottom-0 pb-0"></td>
-                                                        <td class="border-bottom-0 pb-0"></td>
-                                                        <td colspan="1" class="fw-medium text-dark">
-                                                            <!-- text -->
-                                                            Shipping Cost
-                                                        </td>
-                                                        <td class="fw-medium text-dark">
-                                                            <!-- text -->
-                                                            KES {{$order->shipping_cost}}
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="border-bottom-0 pb-0"></td>
-                                                        <td class="border-bottom-0 pb-0"></td>
-                                                        <td colspan="1" class="fw-medium text-dark">
-                                                            <!-- text -->
-                                                            Tax VAT(16%)
-                                                        </td>
-                                                        <td class="fw-medium text-dark">
-                                                            <!-- text -->
-                                                            KES {{$order->tax_amount}}
-                                                        </td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td colspan="1" class="fw-semibold text-dark">
-                                                            <!-- text -->
-                                                            Grand Total
-                                                        </td>
-                                                        <td class="fw-semibold text-dark">
-                                                            <!-- text -->
-                                                            KES {{$order->total_amount}}
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach ($order->items as $item)
+                                                            <tr>
+                                                                <td>{{ $item->product->name }}</td>
+                                                                <td>KES {{ $item->unit_price }}</td>
+                                                                <td>{{ $item->quantity }}</td>
+                                                                <td>KES {{ $item->total_amount }}</td>
+                                                            </tr>
+                                                        @endforeach
+                                                        <tr>
+                                                            <td colspan="3" class="fw-medium text-dark">Sub Total:</td>
+                                                            <td class="fw-medium text-dark">KES {{ $order->items->sum('total_amount') }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="3" class="fw-medium text-dark">Shipping Cost:</td>
+                                                            <td class="fw-medium text-dark">KES {{ $order->shipping_cost }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="3" class="fw-medium text-dark">Tax VAT(16%):</td>
+                                                            <td class="fw-medium text-dark">KES {{ $order->tax_amount }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="3" class="fw-semibold text-dark">Grand Total:</td>
+                                                            <td class="fw-semibold text-dark">KES {{ $order->total_amount }}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="card-body p-6">
+                                    <!-- Payment Method and Delivery Instructions -->
                                     <div class="row">
-                                        <div class="col-md-6 mb-4 mb-lg-0">
+                                        <div class="col-md-6">
                                             <h6>Payment Method</h6>
                                             <span>{{ $order->payment_method }}</span>
                                         </div>
                                         <div class="col-md-6">
                                             <h5>Delivery Instructions</h5>
                                             <textarea class="form-control mb-3" rows="3" disabled>{{ $order->delivery_instructions }}</textarea>
-                                            <!-- Push the button to the right using flexbox -->
-                                            <div class="d-flex justify-content-between">
-                                                <a href="#" class="btn btn-danger">Reject order</a>
-                                                <a href="#" class="btn btn-warning">Approve order</a>
-                                            </div>
                                         </div>
-
+                                    </div>
+                                    <!-- Approve, Reject, Delete Buttons with Modals -->
+                                    <div class="row">
+                                        <div class="col-md-4 text-center">
+                                            <a href="#" class="btn btn-info" data-toggle="modal" data-target="#approveOrderModal">Approve Order</a>
+                                        </div>
+                                        <div class="col-md-4 text-center">
+                                            <a href="#" class="btn btn-warning" data-toggle="modal" data-target="#rejectOrderModal">Reject Order</a>
+                                        </div>
+                                        <div class="col-md-4 text-center">
+                                            <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#deleteOrderModal">Delete Order</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -233,5 +159,72 @@
             </div><!-- /.container-fluid -->
         </div>
     </section>
-    <!-- /.content -->
+
+    <!-- Approve Order Modal -->
+    <div class="modal fade" id="approveOrderModal" tabindex="-1" aria-labelledby="approveOrderModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="approveOrderModalLabel">Approve Order</h5>
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to approve this order?
+                </div>
+                <div class="modal-footer">
+                    <form action="/admin/orders/{{$order->id}}/approve" method="POST">
+                        @csrf
+                        <button type="submit" class="btn btn-info">Yes, Approve</button>
+                    </form>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reject Order Modal -->
+    <div class="modal fade" id="rejectOrderModal" tabindex="-1" aria-labelledby="rejectOrderModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="rejectOrderModalLabel">Reject Order</h5>
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to reject this order?
+                </div>
+                <div class="modal-footer">
+                    <form action="/admin/orders/{{$order->id}}/reject" method="POST">
+                        @csrf
+                        <button type="submit" class="btn btn-warning">Yes, Reject</button>
+                    </form>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Order Modal -->
+    <div class="modal fade" id="deleteOrderModal" tabindex="-1" aria-labelledby="deleteOrderModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteOrderModalLabel">Delete Order</h5>
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete this order? This action cannot be undone.
+                </div>
+                <div class="modal-footer">
+                    <form action="/admin/orders/{{$order->id}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Yes, Delete</button>
+                    </form>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 @endsection

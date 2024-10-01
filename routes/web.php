@@ -58,8 +58,11 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth', 'admin'])->group(fu
     // Dashboard route
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('/categories', CategoryController::class);
-    Route::get('/orders', [OrderController::class, 'index']);
     Route::get('/orders/{id}/details', [OrderController::class, 'details']);
+    Route::post('/orders/{id}/approve', [OrderController::class, 'approve']);
+    Route::post('/orders/{id}/reject', [OrderController::class, 'reject']);
+
+    Route::get('/orders', [OrderController::class, 'index']);
     Route::resource('/products', ProductController::class);
     Route::resource('/suppliers', SupplierController::class);
     Route::resource('/brands', BrandControler::class);

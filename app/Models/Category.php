@@ -26,7 +26,7 @@ class Category extends Model
     ];
 
     protected $appends = [
-        'featured_image_url', 'discount','images_urls'
+        'featured_image_url', 'images_urls'
     ];
 
     // Cast 'images' attribute to array
