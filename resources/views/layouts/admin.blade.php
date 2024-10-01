@@ -49,6 +49,9 @@
           <a href="#" class="dropdown-item">
             <i class="fas fa-envelope mr-2"></i> Profile
           </a>
+          <a href="/" class="dropdown-item">
+            <i class="fas fa-pen mr-2"></i> Client Area
+          </a>
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item" href="{{ route('logout') }}"
           onclick="event.preventDefault();
