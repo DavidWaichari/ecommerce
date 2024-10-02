@@ -34,10 +34,10 @@ class StockController extends Controller
     // Show the specified resource.
     public function show(Stock $stock)
     {
-        $categories = Category::all();
-        $brands = Brand::all();
-        $processors = Processor::all();
-        return view('admin/stocks/show', compact('stock', 'categories', 'brands', 'processors'));
+        $suppliers = Supplier::all();
+        $products = Product::all();
+        $stockItems  = $stock->items;
+        return view('admin/stocks/show', compact('stock', 'products', 'suppliers','stockItems'));
     }
 
     public function store(Request $request)
@@ -110,9 +110,36 @@ class StockController extends Controller
         $product->save();
 
         // Redirect with success message
-        return redirect()->route('admin.stocks.index')->with('success', 'Stock and StockItem created successfully.');
+        return redirect()->back()->with('success', 'Stock and StockItem created successfully.');
     }
 
+    public function update(Request $request, $id)
+    {
+        $stock = Stock::findOrFail($id);
+        if ($stock) {
+            $stock->update($request->all());
+
+              // Handle receipt file upload if present
+              if ($request->hasFile('receipt')) {
+                $receiptPath = public_path('uploads/receipts/' . $stock->receipt);
+                if (file_exists($receiptPath)) {
+                    unlink($receiptPath);
+                }
+
+                $receipt = $request->file('receipt');
+
+                // Fetch product name from the product model
+                $stockName = 'Stockname';
+
+                $receiptName = $this->generateFileName($stockName, $receipt->getClientOriginalExtension(), 'receipt');
+                $receipt->move(public_path('uploads/receipts'), $receiptName);
+                $stock->receipt = $receiptName;
+                $stock->save();
+            }
+
+        } 
+        return redirect()->route('admin.stocks.index')->with('success', 'Stock Updated Successfully');  
+    }
 
     // Remove the specified resource from storage.
     public function destroy(Stock $stock)
@@ -124,7 +151,12 @@ class StockController extends Controller
                 unlink($receiptPath);
             }
         }
-
+          // Update the no of items for the product
+          foreach ($stock->items as $item) {
+            $product = $item->product;
+            $product->in_stock -= $item->no_of_items;
+            $product->save(); 
+          }
         // Delete the stock record
         $stock->delete();
 
@@ -150,5 +182,20 @@ class StockController extends Controller
 
         return redirect()->back()->with('error', 'Receipt not found.');
     }
+
+    public function deleteStockItem($id)
+    {
+        $stock = Stock::findOrFail($id);
+
+        //Update the product
+        $product = $stock->product;
+        $product->in_stock -= $stock->no_of_items;
+        $product->save(); 
+
+        $stock->delete();
+
+        return redirect()->back()->with('success', 'Stock item deleted successfully.');
+    }
+
 
 }

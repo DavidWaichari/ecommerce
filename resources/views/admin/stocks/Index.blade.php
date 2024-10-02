@@ -66,8 +66,7 @@
                                         <td>{{ $stock->updatedBy ? $stock->updatedBy->full_name : 'N/A' }}</td>
                                         <td>{{ $stock->updated_at }}</td>
                                         <td>
-                                            <a href="/admin/stocks/{{ $stock->id }}/edit" class="btn btn-sm btn-primary">Edit</a>
-                                            <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal-default-{{ $stock->id }}">Delete</button>
+                                            <a href="/admin/stocks/{{ $stock->id }}" class="btn btn-sm btn-primary">Manage</a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -87,33 +86,6 @@
                             </tfoot>
                         </table>
                     </div>
-
-                    @foreach ($stocks as $stock)
-                        <div class="modal fade" id="modal-default-{{ $stock->id }}" tabindex="-1" role="dialog" aria-labelledby="modal-default-label-{{ $stock->id }}" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="modal-default-label-{{ $stock->id }}">Delete Stock</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p>Are you sure you want to delete this stock record? This action cannot be undone.</p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <form action="/admin/stocks/{{ $stock->id }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                            <button type="submit" class="btn btn-danger">Delete</button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                    <!-- /.card-body -->
                 </div>
             </div><!-- /.container-fluid -->
         </div>

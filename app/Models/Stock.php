@@ -24,6 +24,11 @@ class Stock extends Model
         return $this->belongsTo(User::class, 'updated_by');
     }
 
+    public function items()
+    {
+        return $this->hasMany(StockItem::class, 'stock_id');
+    }
+
     public function supplier()
     {
         return $this->belongsTo(User::class, 'supplier_id');

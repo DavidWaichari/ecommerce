@@ -66,6 +66,7 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth', 'admin'])->group(fu
 
     Route::get('/orders', [OrderController::class, 'index'])->name('orders.index'); // Add a name for orders index
     Route::get('/stocks/{id}/download-receipt', [StockController::class, 'downloadReceipt']);
+    Route::delete('/stocks/{id}/delete', [StockController::class, 'deleteStockItem']);
 
     Route::resource('/products', ProductController::class);
     Route::resource('/stocks', StockController::class);
