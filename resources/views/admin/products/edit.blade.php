@@ -131,6 +131,14 @@
                                             <option value="Inactive" {{ $product->status == 'Inactive' ? 'selected' : '' }}>Inactive</option>
                                         </select>
                                     </div>
+                                     <!-- Condition Select -->
+                                     <div class="form-group">
+                                        <label for="condition">Condition</label>
+                                        <select class="form-control" id="condition" name="condition">
+                                            <option value="New" {{ $product->condition == 'New' ? 'selected' : '' }}>New</option>
+                                            <option value="Used" {{ $product->condition == 'Used' ? 'selected' : '' }}>Used</option>
+                                        </select>
+                                    </div>
 
                                     <!-- Featured Image Input -->
                                     <div class="form-group">

@@ -107,8 +107,15 @@
                                         <div class="form-group">
                                             <label for="status">Status</label>
                                             <select class="form-control" id="status" name="status" disabled>
-                                                <option value="active" {{ $product->status == 'Active' ? 'selected' : '' }}>Active</option>
-                                                <option value="inactive" {{ $product->status == 'Inactive' ? 'selected' : '' }}>Inactive</option>
+                                                <option value="Active" {{ $product->status == 'Active' ? 'selected' : '' }}>Active</option>
+                                                <option value="Inactive" {{ $product->status == 'Inactive' ? 'selected' : '' }}>Inactive</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="condition">Condition</label>
+                                            <select class="form-control" id="condition" name="condition" disabled>
+                                                <option value="New" {{ $product->condition == 'New' ? 'selected' : '' }}>New</option>
+                                                <option value="Used" {{ $product->condition == 'Used' ? 'selected' : '' }}>Used</option>
                                             </select>
                                         </div>
                                     </div>

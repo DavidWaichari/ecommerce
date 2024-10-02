@@ -22,6 +22,7 @@ class CreateProductsTable extends Migration
             $table->boolean('is_featured')->default(false);
             $table->boolean('is_sold')->default(false);
             $table->text('link')->nullable();
+            $table->string('condition')->nullable();
             $table->string('status')->nullable();
             $table->text('extras')->nullable();
             $table->unsignedBigInteger('category_id')->nullable();

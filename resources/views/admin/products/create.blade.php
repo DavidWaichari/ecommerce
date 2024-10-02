@@ -124,6 +124,14 @@
                                             <option value="Inactive">Inactive</option>
                                         </select>
                                     </div>
+                                    <!-- Condition Select -->
+                                    <div class="form-group">
+                                        <label for="condition">Condition</label>
+                                        <select class="form-control" id="condition" name="condition">
+                                            <option value="New" selected>New</option>
+                                            <option value="Used">Used</option>
+                                        </select>
+                                    </div>
 
                                     <!-- Featured Image Input -->
                                     <div class="form-group">

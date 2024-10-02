@@ -50,6 +50,7 @@
                                     {{-- <th>Is Featured</th> --}}
                                     <th>Is Sold</th>
                                     <th>Status</th>
+                                    <th>Condition</th>
                                     <th>Updated By</th>
                                     <th>Updated At</th>
                                     <th>Link</th>
@@ -78,6 +79,7 @@
                                         {{-- <td>{{ $product->is_featured == true? "Yes": "No" }}</td> --}}
                                         <td>{{ $product->is_sold == true? "Yes": "No" }}</td>
                                         <td>{{ $product->status }}</td>
+                                        <td>{{ $product->condition }}</td>
                                         <td>{{ $product->updatedBy->full_name }}</td>
                                         <td>{{ $product->updated_at }}</td>
                                         <td>{{ $product->link }}</td>
@@ -103,6 +105,7 @@
                                     {{-- <th>Is Featured</th> --}}
                                     <th>Is Sold</th>
                                     <th>Status</th>
+                                    <th>Condition</th>
                                     <th>Updated By</th>
                                     <th>Updated At</th>
                                     <th>Link</th>
