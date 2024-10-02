@@ -46,6 +46,12 @@ class PermissionsTableSeeder extends Seeder
             'update-product',
             'delete-product',
 
+            // Stock Permissions
+            'create-stock',
+            'read-stock',
+            'update-stock',
+            'delete-stock',
+
             // Supplier Permissions
             'create-supplier',
             'read-supplier',

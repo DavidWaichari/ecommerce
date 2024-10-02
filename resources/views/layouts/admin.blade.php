@@ -119,6 +119,16 @@
             </li>
             @endcan
     
+            <!-- Stock (check if user can read stock) -->
+            @can('read-stock')
+            <li class="nav-item">
+                <a href="/admin/stocks" class="nav-link {{ Request::is('admin/stocks*') ? 'active' : '' }}">
+                    <i class="nav-icon fas fa-box"></i> <!-- Updated Icon -->
+                    <p>Stock</p>
+                </a>
+            </li>
+            @endcan
+
             <!-- Processors (check if user can read processors) -->
             @can('read-processor')
             <li class="nav-item">
