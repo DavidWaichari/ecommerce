@@ -27,7 +27,7 @@ return new class extends Migration
             // Foreign keys for users table
             $table->foreign('updated_by')->references('id')->on('users')->onDelete('set null');
             $table->foreign('product_id')->references('id')->on('products')->onDelete('set null');
-            $table->foreign('stock_id')->references('id')->on('stocks')->onDelete('set null');
+            $table->foreign('stock_id')->references('id')->on('stocks')->onDelete('CASCADE');
         });
     }
 

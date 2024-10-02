@@ -23,6 +23,7 @@ class Product extends Model
         'is_sold',
         'link',
         'condition',
+        'in_stock',
         'featured_image',
         'images',
         'extras',

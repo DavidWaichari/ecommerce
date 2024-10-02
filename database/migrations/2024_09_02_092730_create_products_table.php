@@ -18,6 +18,7 @@ class CreateProductsTable extends Migration
             $table->text('images')->nullable();
             $table->decimal('selling_price', 10, 2)->default(0);
             $table->decimal('discount_price', 10, 2)->default(0);
+            $table->decimal('in_stock', 10, 2)->default(0);
             $table->decimal('instock', 10, 2)->default(0);
             $table->boolean('is_featured')->default(false);
             $table->boolean('is_sold')->default(false);

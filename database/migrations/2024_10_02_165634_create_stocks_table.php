@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('stocks', function (Blueprint $table) {
             $table->id();
-            $table->timestamp('date');
+            $table->timestamp('stock_date')->nullable();
             $table->decimal('total_amount', 10, 2)->default(0);
             $table->string('status')->nullable();
+            $table->string('receipt')->nullable();
             $table->text('extras')->nullable();
             $table->unsignedBigInteger('supplier_id')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable(); // ID of the user who last updated the product

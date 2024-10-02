@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProcessorControler;
 use App\Http\Controllers\Admin\RoleControler;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\StockController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\CartController;
@@ -64,7 +65,10 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth', 'admin'])->group(fu
     Route::delete('/orders/{id}/destroy', [OrderController::class, 'reject'])->name('orders.destroy');
 
     Route::get('/orders', [OrderController::class, 'index'])->name('orders.index'); // Add a name for orders index
+    Route::get('/stocks/{id}/download-receipt', [StockController::class, 'downloadReceipt']);
+
     Route::resource('/products', ProductController::class);
+    Route::resource('/stocks', StockController::class);
     Route::resource('/suppliers', SupplierController::class);
     Route::resource('/brands', BrandControler::class);
     Route::resource('/processors', ProcessorControler::class);

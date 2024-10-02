@@ -10,9 +10,10 @@ class Stock extends Model
     use HasFactory;
 
     protected $fillable = [
-        'date',
+        'stock_date',
         'total_amount',
         'status',
+        'receipt',
         'extras',
         'supplier_id',
         'updated_by'
@@ -22,7 +23,7 @@ class Stock extends Model
     {
         return $this->belongsTo(User::class, 'updated_by');
     }
-    
+
     public function supplier()
     {
         return $this->belongsTo(User::class, 'supplier_id');
