@@ -7,15 +7,15 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1 class="m-0">Orders</h1>
-                </div><!-- /.col -->
+                </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
                         <li class="breadcrumb-item active">Orders</li>
                     </ol>
-                </div><!-- /.col -->
-            </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
+                </div>
+            </div>
+        </div>
     </div>
     <!-- /.content-header -->
 
@@ -27,30 +27,24 @@
                     <div class="d-flex justify-content-between align-items-center">
                         <h3 class="card-title">Order Details</h3>
                         <div class="col-md-1">
-                            <a href="{{ url('/admin/orders') }}" type="button"
-                                class="btn btn-block btn-info btn-md">Back</a>
+                            <a href="{{ url('/admin/orders') }}" class="btn btn-block btn-info btn-md">Back</a>
                         </div>
                     </div>
                 </div>
-                <!-- /.card-header -->
                 <div class="card-body">
                     <!-- Order Details -->
                     <div class="row">
                         <div class="col-xl-12 col-12 mb-5">
                             <div class="card h-100 card-lg">
                                 <div class="card-body p-6">
-                                    <!-- Order Header -->
                                     <div class="d-md-flex justify-content-between">
                                         <div class="d-flex align-items-center mb-2 mb-md-0">
                                             <h2 class="mb-0">Order ID: #{{ $order->id }}</h2>
-                                            <span
-                                                class="badge bg-light-warning text-dark-warning ms-2">{{ $order->status }}</span>
+                                            <span class="badge bg-light-warning text-dark-warning ms-2">{{ $order->status }}</span>
                                         </div>
                                     </div>
-                                    <!-- Order Details Section -->
                                     <div class="mt-8">
                                         <div class="row">
-                                            <!-- Customer Details -->
                                             <div class="col-lg-4 col-md-4 col-12">
                                                 <div class="mb-6">
                                                     <h6>Customer Details</h6>
@@ -61,7 +55,6 @@
                                                     </p>
                                                 </div>
                                             </div>
-                                            <!-- Shipping Address -->
                                             <div class="col-lg-4 col-md-4 col-12">
                                                 <div class="mb-6">
                                                     <h6>Shipping Address</h6>
@@ -73,7 +66,6 @@
                                                     </p>
                                                 </div>
                                             </div>
-                                            <!-- Order Summary -->
                                             <div class="col-lg-4 col-md-4 col-12">
                                                 <div class="mb-6">
                                                     <h6>Order Details</h6>
@@ -85,7 +77,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- Order Items Table -->
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="table-responsive">
@@ -128,7 +119,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- Payment Method and Delivery Instructions -->
                                     <div class="row">
                                         <div class="col-md-6">
                                             <h6>Payment Method</h6>
@@ -141,15 +131,21 @@
                                     </div>
                                     <!-- Approve, Reject, Delete Buttons with Modals -->
                                     <div class="row">
-                                        <div class="col-md-4 text-center">
-                                            <a href="#" class="btn btn-info" data-toggle="modal" data-target="#approveOrderModal">Approve Order</a>
-                                        </div>
-                                        <div class="col-md-4 text-center">
-                                            <a href="#" class="btn btn-warning" data-toggle="modal" data-target="#rejectOrderModal">Reject Order</a>
-                                        </div>
-                                        <div class="col-md-4 text-center">
-                                            <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#deleteOrderModal">Delete Order</a>
-                                        </div>
+                                        @can('approve-order')
+                                            <div class="col-md-4 text-center">
+                                                <a href="#" class="btn btn-info" data-toggle="modal" data-target="#approveOrderModal">Approve Order</a>
+                                            </div>
+                                        @endcan
+                                        @can('reject-order')
+                                            <div class="col-md-4 text-center">
+                                                <a href="#" class="btn btn-warning" data-toggle="modal" data-target="#rejectOrderModal">Reject Order</a>
+                                            </div>
+                                        @endcan
+                                        @can('delete-order')
+                                            <div class="col-md-4 text-center">
+                                                <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#deleteOrderModal">Delete Order</a>
+                                            </div>
+                                        @endcan
                                     </div>
                                 </div>
                             </div>
@@ -166,17 +162,17 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="approveOrderModalLabel">Approve Order</h5>
-                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     Are you sure you want to approve this order?
                 </div>
                 <div class="modal-footer">
-                    <form action="/admin/orders/{{$order->id}}/approve" method="POST">
+                    <form action="{{ route('admin.orders.approve', $order->id) }}" method="POST">
                         @csrf
-                        <button type="submit" class="btn btn-info">Yes, Approve</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Approve</button>
                     </form>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
@@ -188,17 +184,17 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="rejectOrderModalLabel">Reject Order</h5>
-                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     Are you sure you want to reject this order?
                 </div>
                 <div class="modal-footer">
-                    <form action="/admin/orders/{{$order->id}}/reject" method="POST">
+                    <form action="{{ route('admin.orders.reject', $order->id) }}" method="POST">
                         @csrf
-                        <button type="submit" class="btn btn-warning">Yes, Reject</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-danger">Reject</button>
                     </form>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
@@ -210,21 +206,20 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="deleteOrderModalLabel">Delete Order</h5>
-                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     Are you sure you want to delete this order? This action cannot be undone.
                 </div>
                 <div class="modal-footer">
-                    <form action="/admin/orders/{{$order->id}}" method="POST">
+                    <form action="{{ route('admin.orders.destroy', $order->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Yes, Delete</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
     </div>
-
 @endsection

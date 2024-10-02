@@ -143,6 +143,7 @@
      <div class="product-slider-second" id="slider-second">
          <!-- item -->
          @foreach ($popular_products as $product)
+         @if($product->status == "Active")
             <div class="item">
                 <!-- item -->
                 <div class="card card-product mb-lg-4">
@@ -208,6 +209,7 @@
                     </div>
                 </div>
             </div>
+            @endif
          @endforeach
      </div>
  </div>
@@ -259,6 +261,7 @@
              <div class="product-slider-second" id="slider-third">
                 <!-- item -->
          @foreach ($best_sellers as $product)
+         @if($product->status == "Active")
          <div class="item">
              <!-- item -->
              <div class="card card-product mb-lg-4">
@@ -326,6 +329,7 @@
                  </div>
              </div>
          </div>
+         @endif
       @endforeach
              </div>
          </div>
@@ -381,6 +385,7 @@
                 <div class="product-slider-second" id="slider-{{ $category->id }}">
                     <!-- Loop through products of the category -->
                     @foreach ($category->products as $product)
+                    @if($product->status == "Active")
                     <div class="item">
                         <!-- item -->
                         <div class="card card-product mb-lg-4">
@@ -429,6 +434,7 @@
                             </div>
                         </div>
                     </div>
+                    @endif
                     @endforeach
                 </div>
             </div>
