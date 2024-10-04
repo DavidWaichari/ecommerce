@@ -46,6 +46,7 @@ class GuestController extends Controller
         $selected_category = null;
         $selected_processors = collect();
         $selected_brands = collect();
+        $selected_conditions = collect();
 
         // Check if the 'category' query parameter is passed
         if ($request->category) {
@@ -107,9 +108,6 @@ class GuestController extends Controller
             $brandsInput = explode(',', $brandsInput);
         }
 
-        // Initialize an empty collection to hold selected brand objects
-        $selected_brands = collect();
-
         // Loop through the array of brand slugs and find corresponding brand models
         foreach ($brandsInput as $brand_slug) {
             $brand = Brand::where('slug', $brand_slug)->first();
@@ -132,9 +130,6 @@ class GuestController extends Controller
         if (is_string($conditionsInput)) {
             $conditionsInput = explode(',', $conditionsInput);
         }
-
-        // Initialize an empty collection to hold selected condition objects
-        $selected_conditions = collect();
 
         // Loop through the array of condition slugs and find corresponding condition models
         foreach ($conditionsInput as $condition) {

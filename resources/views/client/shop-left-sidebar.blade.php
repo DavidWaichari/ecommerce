@@ -37,9 +37,13 @@
                       <h5 class="mb-3">Categories</h5>
                       <ul class="nav nav-category" id="categoryCollapseMenu">
                         @foreach ($categories as $category)
+                        @if ($category->status == 'Active')
+                        @if($category->products->count() > 0)
                         <li class="nav-item border-bottom w-100">
                             <a href="/shop?category={{$category->slug}}" class="nav-link">{{ $category->name }}</a>
                         </li>
+                        @endif
+                        @endif
                         @endforeach
                       </ul>
                    </div>
