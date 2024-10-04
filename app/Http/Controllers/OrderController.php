@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\OrderItem;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -16,7 +18,8 @@ class OrderController extends Controller
     public function details($id)
     {
         $order = Order::findOrFail($id);
-        return view('admin/orders/show', compact('order'));
+        $products = Product::where('status', 'Active')->get();
+        return view('admin/orders/show', compact('order', 'products'));
     }
 
     public function approve($id)
@@ -65,5 +68,47 @@ class OrderController extends Controller
         $order->delete();
 
         return redirect()->route('admin.orders.index')->with('success', 'Order deleted successfully.');
+    }
+
+    public function addItemForm($orderId)
+    {
+        $order = Order::find($orderId);
+       
+        $products = Product::where('status', 'Active')->get();
+
+        return view('admin/orders/add_order_items', compact('order', 'products'));
+    }
+
+    public function addItem(Request $request)
+    {
+
+        $order = Order::find($request->order_id);
+        $product = Product::find($request->product_id);
+        //add item
+        $item = OrderItem::create([
+            'order_id' => $order->id,
+            'product_id'=> $product->id,
+            'quantity' => $request->quantity,
+            'unit_price'=> $product->discount_price,
+            'total_amount' => $request->quantity * $product->discount_price
+        ]);
+        // //update the order
+        $order->total_amount += $item->total_amount;
+        $order->save();
+        
+        return redirect(route('admin.orders.details', $order->id))->with('success', 'Order Item added successfully.');
+    }
+
+    public function removeItem($item_id)
+    {
+        $item = OrderItem::find($item_id);
+        //update the order
+        $order = $item->order;
+        $order->total_amount -= $item->total_amount;
+        $order->save();
+
+        $item->delete();
+
+        return redirect()->back()->with('success', 'Order Item deleted successfully.');
     }
 }

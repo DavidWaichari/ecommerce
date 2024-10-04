@@ -19,13 +19,12 @@ use Illuminate\Support\Facades\Route;
 
 /*
 |---------------------------------------------------------------------------
-| Web Routes
+// Web Routes
 |---------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
+// Here is where you can register web routes for your application. These
 | routes are loaded by the RouteServiceProvider and all of them will
 | be assigned to the "web" middleware group. Make something great!
-|
+| 
 */
 
 Route::get('/', [GuestController::class, 'welcome']);
@@ -60,10 +59,15 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth', 'admin'])->group(fu
     Route::resource('/categories', CategoryController::class);
     
     Route::get('/orders/{id}/details', [OrderController::class, 'details'])->name('orders.details');
+    Route::get('/orders/{id}/details/add_item', [OrderController::class, 'addItemForm'])->name('orders.add_item');
     Route::post('/orders/{id}/approve', [OrderController::class, 'approve'])->name('orders.approve');
     Route::post('/orders/{id}/reject', [OrderController::class, 'reject'])->name('orders.reject');
     Route::delete('/orders/{id}/destroy', [OrderController::class, 'reject'])->name('orders.destroy');
 
+    // Updated route to add a name for adding an item to an order
+    Route::post('/orders/add_item', [OrderController::class, 'addItem'])->name('orders.addItem');
+
+    Route::delete('/order_items/{itemId}', [OrderController::class, 'removeItem']);
     Route::get('/orders', [OrderController::class, 'index'])->name('orders.index'); // Add a name for orders index
     Route::get('/stocks/{id}/download-receipt', [StockController::class, 'downloadReceipt']);
     Route::delete('/stocks/{id}/delete', [StockController::class, 'deleteStockItem']);
