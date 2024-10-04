@@ -40,7 +40,7 @@ class CheckoutController extends Controller
         $order->payment_method = $request->payment_method;
         $order->delivery_instructions = $request->delivery_instructions;
         $order->sub_total = collect($cart)->sum('discount_price');
-        $order->tax_amount = collect($cart)->sum('discount_price') * 0.16;
+        $order->tax_amount = 0;
         $order->contact_number = $request->contact_number;
         $order->total_amount = $order->sub_total + $order->tax_amount;
         $order->shipping_cost = 0;

@@ -123,18 +123,19 @@
                          </li>
 
                          <!-- list group item -->
-                         <li class="list-group-item d-flex justify-content-between align-items-start">
+                         {{-- <li class="list-group-item d-flex justify-content-between align-items-start">
                             <div class="me-auto">
                                <div>Tax VAT(16%)</div>
                             </div>
                             <span>KES {{0.16 * $cart_items->sum('total')}}</span>
-                         </li>
+                         </li> --}}
                          <!-- list group item -->
                          <li class="list-group-item d-flex justify-content-between align-items-start">
                             <div class="me-auto">
                                <div class="fw-bold">Total</div>
                             </div>
-                            <span class="fw-bold">KES {{(0.16 * $cart_items->sum('total')) +  $cart_items->sum('total')}}</span>
+                            {{-- <span class="fw-bold">KES {{(0.16 * $cart_items->sum('total')) +  $cart_items->sum('total')}}</span> --}}
+                            <span class="fw-bold">KES {{$cart_items->sum('total')}}</span>
                          </li>
                       </ul>
                    </div>

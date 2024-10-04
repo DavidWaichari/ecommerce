@@ -206,18 +206,18 @@
                                             <div>Item Subtotal</div>
                                             <div class="fw-bold">KES {{$cart_items->sum('total')}}</div>
                                         </div>
-                                        <div class="d-flex align-items-center justify-content-between">
+                                        {{-- <div class="d-flex align-items-center justify-content-between">
                                             <div>Shipping Cost</div>
                                             <div class="fw-bold">KES {{ $shipping_cost }}</div>
-                                        </div>
-                                        <div class="d-flex align-items-center justify-content-between">
+                                        </div> --}}
+                                        {{-- <div class="d-flex align-items-center justify-content-between">
                                             <div>
                                                 Tax VAT(16%)
                                                 <i class="feather-icon icon-info text-muted" data-bs-toggle="tooltip"
                                                     title="Default tooltip"></i>
                                             </div>
                                             <div class="fw-bold">KES {{0.16 * $cart_items->sum('total')}}</div>
-                                        </div>
+                                        </div> --}}
                                     </li>
                                     <li class="list-group-item px-4 py-3">
                                         <div class="d-flex align-items-center justify-content-between mb-2">

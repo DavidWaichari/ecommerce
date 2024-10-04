@@ -40,7 +40,16 @@ class OrderController extends Controller
     public function destroy($id)
     {
         $order = Order::findOrFail($id);
+        //return the items instock for the products
+
+        foreach ($oder->items as $item) {
+            $product = $item->product;
+            $product->in_stock += $item->no_of_items;
+            $product->save();
+        }
         $order->delete();
+
+        for
 
         return redirect()->route('admin.orders.index')->with('success', 'Order deleted successfully.');
     }
