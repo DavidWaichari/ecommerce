@@ -48,22 +48,37 @@
                                             <div class="col-lg-4 col-md-4 col-12">
                                                 <div class="mb-6">
                                                     <h6>Customer Details</h6>
+                                                    @if ($order->user)
                                                     <p class="mb-1 lh-lg">
                                                         {{ $order->user->full_name }}<br>
                                                         {{ $order->user->email }}<br>
                                                         {{ $order->user->phone_number }}
                                                     </p>
+                                                    @else
+                                                    <p class="mb-1 lh-lg">
+                                                        No User Found
+                                                    </p>
+                                                    @endif
+                                                    
                                                 </div>
                                             </div>
                                             <div class="col-lg-4 col-md-4 col-12">
                                                 <div class="mb-6">
                                                     <h6>Shipping Address</h6>
+                                                    @if ($order->user)
+                                                        
                                                     <p class="mb-1 lh-lg">
                                                         {{ $order->user->county }} County<br>
                                                         {{ $order->user->city }}, Suite Ave.<br>
                                                         Customer No. {{ $order->user->phone_number }}<br>
                                                         Shipping Contact No. {{ $order->contact_number }}
                                                     </p>
+                                                    @else
+                                                    <p class="mb-1 lh-lg">
+                                                        No user found
+                                                    </p>
+                                                        
+                                                    @endif
                                                 </div>
                                             </div>
                                             <div class="col-lg-4 col-md-4 col-12">

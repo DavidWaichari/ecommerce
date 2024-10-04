@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -12,7 +13,14 @@ class OrderController extends Controller
     public function index()
     {
         $orders = Order::orderBy('created_at', 'DESC')->get();
+       
         return view('admin/orders/index', compact('orders'));
+    }
+
+    public function create()
+    {
+        $customers = User::where('is_admin', false)->get();
+        return view('admin/orders/create', compact('customers'));
     }
 
     public function details($id)
@@ -110,5 +118,12 @@ class OrderController extends Controller
         $item->delete();
 
         return redirect()->back()->with('success', 'Order Item deleted successfully.');
+    }
+
+    public function store(Request $request)
+    {
+        //if there is user
+        $order = Order::create($request->all());
+        return redirect(route('orders.details', $order->id))->with('success', 'Order started...');
     }
 }

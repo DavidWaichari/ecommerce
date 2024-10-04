@@ -126,7 +126,7 @@
                         <div class="col-12">
                             <div class="password-field position-relative">
                                 <label for="formSignupPassword" class="form-label visually-hidden">Password</label>
-                                <input type="password" class="form-control @error('password') is-invalid @enderror fakePassword" id="formSignupPassword" name="password" placeholder="*****" required>
+                                <input type="password" class="form-control @error('password') is-invalid @enderror fakePassword" id="formSignupPassword" name="password" placeholder="Enter password" required>
                                 @error('password')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror

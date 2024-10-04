@@ -13,19 +13,36 @@ class UsersTableSeeder extends Seeder
     public function run(): void
     {
         // Check if the user already exists by email
-        $user = User::where('email', 'dwaichari@gmail.com')->first();
+        $admin = User::where('email', 'admin@solocom.biz')->first();
 
         // If the user does not exist, create a new user
-        if (!$user) {
+        if (!$admin) {
             User::create([
-                'first_name' => 'David',               // Add first name
-                'last_name' => 'Waichari',              // Add last name
-                'email' => 'dwaichari@gmail.com',       // Email
-                'phone_number' => '0708473015',         // Add phone number
+                'first_name' => 'System',               // Add first name
+                'last_name' => 'Admin',              // Add last name
+                'email' => 'admin@solocom.biz',       // Email
+                'phone_number' => '0708473XXX',         // Add phone number
                 'county' => 'Bungoma',                  // Add county
                 'address' => '1145',                    // Add address
                 'city' => 'Nakuru',                     // Add city
                 'is_admin' => true,                     // Set is_admin to true
+                'password' => bcrypt('1234'),           // Add password and hash it
+            ]);
+        }
+        // Check if the user already exists by email
+        $user = User::where('email', 'user@solocom.biz')->first();
+
+        // If the user does not exist, create a new user
+        if (!$user) {
+            User::create([
+                'first_name' => 'System',               // Add first name
+                'last_name' => 'User',              // Add last name
+                'email' => 'user@solocom.biz',       // Email
+                'phone_number' => '0756473XXX',         // Add phone number
+                'county' => 'Bungoma',                  // Add county
+                'address' => '1145',                    // Add address
+                'city' => 'NAIROBI',                     // Add city
+                'is_admin' => false,                     // Set is_admin to true
                 'password' => bcrypt('1234'),           // Add password and hash it
             ]);
         }

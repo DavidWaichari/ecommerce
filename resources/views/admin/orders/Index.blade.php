@@ -26,9 +26,9 @@
                 <div class="card-header">
                     <div class="d-flex justify-content-between align-items-center">
                         <h3 class="card-title">Orders List</h3>
-                        {{-- <div class="col-md-2">
-                            <a href="/admin/brands/create" type="button" class="btn btn-block btn-info btn-md">Add Brand</a>
-                        </div> --}}
+                        <div class="col-md-2">
+                            <a href="{{route('admin.orders.create')}}" type="button" class="btn btn-sm btn-info">Add Order</a>
+                        </div>
                     </div>
                 </div>
                 <!-- /.card-header -->
@@ -71,12 +71,16 @@
                                         <span class="badge bg-warning">{{$order->status}}</span>
                                     </td>
                                     <td class="align-middle border-top-0">
+                                        @if ($order->user)
                                         <span">{{$order->user->full_name}}</span>
+                                        @else
+                                        <span">No user</span>
+                                        @endif
                                     </td>
                                     <td>
                                         {{-- <a href="/admin/orders/{{ $order->id }}/edit" class="btn btn-sm btn-primary">Edit</a> --}}
                                         <a href="/admin/orders/{{ $order->id }}/details" class="btn btn-sm btn-info">Details</a>
-                                        {{-- <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal-default-{{ $order->id }}">Delete</button> --}}
+                                        <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal-default-{{ $order->id }}">Delete</button>
                                     </td>
                                 </tr>
                              @endforeach
@@ -148,3 +152,4 @@
     });
 </script>
 @endsection
+
