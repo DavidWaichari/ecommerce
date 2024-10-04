@@ -69,7 +69,19 @@
                            @endforeach
                        </div>
                    @endif
-
+                   <div class="mb-8">
+                    <h5 class="mb-3">Condition</h5>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input condition_check_box" type="checkbox" value="New" id="condition-new"
+                            {{ $selected_conditions->contains('New') ? 'checked' : '' }}>
+                        <label class="form-check-label" for="condition-new">New</label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input condition_check_box" type="checkbox" value="Used" id="condition-used"
+                            {{ $selected_conditions->contains('Used')  ? 'checked' : '' }}>
+                        <label class="form-check-label" for="condition-used">Used</label>
+                    </div>
+                </div>    
                    {{-- <div class="mb-8">
                        <button id="filterBtn" class="btn btn-dark">
                            Filter
@@ -146,6 +158,7 @@
                 @endif
                 @endforeach
              </div>
+                     
              <div class="row mt-8">
                 <div class="col">
                     {{ $products->links('vendor.pagination.custom') }}
@@ -163,6 +176,7 @@ $(document).ready(function() {
         let url = new URL(window.location.href);
         let selectedBrands = [];
         let selectedProcessors = [];
+        let selectedConditions = [];
 
         $('.brand_check_box:checked').each(function() {
             selectedBrands.push($(this).val());
@@ -172,9 +186,14 @@ $(document).ready(function() {
             selectedProcessors.push($(this).val());
         });
 
-        // Clear existing brand, processor, and sort parameters
+        $('.condition_check_box:checked').each(function() {
+            selectedConditions.push($(this).val());
+        });
+
+        // Clear existing brand, processor, condition, and sort parameters
         url.searchParams.delete('brands');
         url.searchParams.delete('processors');
+        url.searchParams.delete('conditions');
         url.searchParams.delete('sort');
 
         // Append selected brands
@@ -187,6 +206,11 @@ $(document).ready(function() {
             url.searchParams.append('processors', selectedProcessors.join(','));
         }
 
+        // Append selected conditions
+        if (selectedConditions.length) {
+            url.searchParams.append('conditions', selectedConditions.join(','));
+        }
+
         // Append selected sort option
         let sortOption = $('#sortSelect').val();
         if (sortOption) {
@@ -194,11 +218,10 @@ $(document).ready(function() {
         }
 
         return url.toString(); // Return the updated URL
-        // window.location.href = url.toString();
     }
 
     // Attach event listener to checkboxes
-    $('.brand_check_box, .processor_check_box').change(function() {
+    $('.brand_check_box, .processor_check_box, .condition_check_box').change(function() {
         // Update URL in the address bar without refreshing
         window.history.replaceState({}, '', updateUrl());
 
@@ -213,12 +236,13 @@ $(document).ready(function() {
 
     // Sort products by price
     $('#sortSelect').on('change', function () {
-       refreshPage();
+        refreshPage();
     });
 
     function refreshPage(){
         window.location.href = updateUrl();
     }
 });
+
 </script>
 @endsection

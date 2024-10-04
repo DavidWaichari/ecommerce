@@ -99,7 +99,6 @@ class GuestController extends Controller
         }
 
         // Check if the 'brands' query parameter is passed
-        // Check if the 'brands' query parameter is passed
     if ($request->has('brands')) {
         $brandsInput = $request->brands;
 
@@ -125,6 +124,31 @@ class GuestController extends Controller
         }
     }
 
+        // Check if the condition query parameter is passed
+    if ($request->has('conditions')) {
+        $conditionsInput = $request->conditions;
+
+        // If the 'conditions' input is a string (e.g., "condition1,condition2"), split it by comma
+        if (is_string($conditionsInput)) {
+            $conditionsInput = explode(',', $conditionsInput);
+        }
+
+        // Initialize an empty collection to hold selected condition objects
+        $selected_conditions = collect();
+
+        // Loop through the array of condition slugs and find corresponding condition models
+        foreach ($conditionsInput as $condition) {
+            if ($condition) {
+                $selected_conditions->push($condition);
+            }
+        }
+
+        // If there are selected conditions, filter the products query by condition IDs
+        if ($selected_conditions->isNotEmpty()) {
+            $productsQuery->whereIn('condition', $selected_conditions);
+        }
+    }
+
 
         // Check for the 'sort' parameter to sort products by price
         if ($request->has('sort')) {
@@ -147,7 +171,8 @@ class GuestController extends Controller
             'brands',
             'selected_brands',
             'processors',
-            'selected_processors'
+            'selected_processors',
+            'selected_conditions'
         ));
     }
 
