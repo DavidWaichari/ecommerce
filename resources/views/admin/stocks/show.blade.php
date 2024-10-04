@@ -78,6 +78,14 @@
                                             <label for="total_amount">Total Amount</label>
                                             <input type="number" class="form-control" id="total_amount" value="{{ $stock->total_amount }}" placeholder="Enter total amount" step="0.01" required readonly>
                                         </div>
+                                        <!-- Status Select -->
+                                    <div class="form-group">
+                                        <label for="status">Status</label>
+                                        <select class="form-control" id="status" name="status">
+                                            <option value="Unconfirmed" {{ $stock->status == 'Unconfirmed' ? 'selected' : '' }}>Unconfirmed</option>
+                                            <option value="Confirmed" {{ $stock->status == 'Confirmed' ? 'selected' : '' }}>Confirmed</option>
+                                        </select>
+                                    </div>
                                         <!-- Receipt -->
                                         <div class="form-group">
                                             <label for="receipt">Receipt</label>
@@ -91,8 +99,11 @@
 
                                     <div class="card-footer">
                                         <div class="d-flex align-items-center justify-content-between">
+                                            @can('update-stock')
                                             <button type="submit" class="btn btn-info">Update</button>
+                                            @can('delete-stock')
                                             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-delete-{{ $stock->id }}">Delete</button>
+                                            @endcan
                                         </div>
                                     </div>
                                 </form>

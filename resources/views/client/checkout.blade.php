@@ -204,7 +204,7 @@
                                     <li class="list-group-item px-4 py-3">
                                         <div class="d-flex align-items-center justify-content-between mb-2">
                                             <div>Item Subtotal</div>
-                                            <div class="fw-bold">KES {{$cart_items->sum('total')}}</div>
+                                            <div class="fw-bold">KES {{number_format($cart_items->sum('total'), 0)}}</div>
                                         </div>
                                         {{-- <div class="d-flex align-items-center justify-content-between">
                                             <div>Shipping Cost</div>
@@ -222,7 +222,7 @@
                                     <li class="list-group-item px-4 py-3">
                                         <div class="d-flex align-items-center justify-content-between mb-2">
                                             <div class="fw-bold">Total Cost</div>
-                                            <div class="fw-bold">KES {{$cart_items->sum('total') + $shipping_cost}}</div>
+                                            <div class="fw-bold">KES {{number_format($cart_items->sum('total') + $shipping_cost, 0)}}</div>
                                         </div>
                                     </li>
                                 </ul>

@@ -56,10 +56,6 @@ class CheckoutController extends Controller
             $orderItem->unit_price = $item['discount_price'];
             $orderItem->total_amount = $orderItem->unit_price * $orderItem->quantity;
             $orderItem->save();
-            //reduce the number of items in stock for the product
-            $product = Product::find($orderItem->product_id);
-            $product->in_stock -=  $orderItem->quantity;
-            $product->save();
         }
 
         // Clear the cart after processing

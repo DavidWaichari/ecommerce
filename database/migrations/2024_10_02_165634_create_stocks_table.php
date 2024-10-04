@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->timestamp('stock_date')->nullable();
             $table->decimal('total_amount', 10, 2)->default(0);
-            $table->string('status')->nullable();
+            $table->string('status')->default('Unconfirmed');
             $table->string('receipt')->nullable();
             $table->text('extras')->nullable();
             $table->unsignedBigInteger('supplier_id')->nullable();

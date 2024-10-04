@@ -22,8 +22,23 @@ class OrderController extends Controller
     public function approve($id)
     {
         $order = Order::findOrFail($id);
+        
+        //check the number of items available for each product
+        foreach ($order->items as $item) {
+            if ($item->quantity > $item->product->in_stock) {
+               return redirect()->back()->with('error', 'The order of '.$item->product->name.' exceeds the items in stock. the itemsin stock is '.$item->product->in_stock );;
+            }
+        }
+        //reduce the number of items in the products
+        foreach ($order->items as $item) {
+            $product = $item->product;
+            $product->in_stock -= $item->no_of_items;
+            $product->save();
+        }
+
         $order->status = 'Approved'; // Assuming you have a 'status' field
         $order->save();
+
 
         return redirect()->route('admin.orders.index')->with('success', 'Order approved successfully.');
     }
@@ -42,14 +57,12 @@ class OrderController extends Controller
         $order = Order::findOrFail($id);
         //return the items instock for the products
 
-        foreach ($oder->items as $item) {
+        foreach ($order->items as $item) {
             $product = $item->product;
             $product->in_stock += $item->no_of_items;
             $product->save();
         }
         $order->delete();
-
-        for
 
         return redirect()->route('admin.orders.index')->with('success', 'Order deleted successfully.');
     }
