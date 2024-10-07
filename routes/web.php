@@ -72,7 +72,7 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth', 'admin'])->group(fu
     Route::post('/orders', [OrderController::class, 'store'])->name('orders.store'); 
     Route::get('/orders/create', [OrderController::class, 'create'])->name('orders.create'); 
     Route::get('/stocks/{id}/download-receipt', [StockController::class, 'downloadReceipt']);
-    Route::delete('/stocks/{id}/delete', [StockController::class, 'deleteStockItem']);
+    Route::delete('/stocks/{id}/delete', [StockController::class, 'deleteStockItem'])->name('stockItems.destroy');
 
     Route::resource('/products', ProductController::class);
     Route::resource('/stocks', StockController::class);

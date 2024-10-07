@@ -42,7 +42,7 @@
                             <!-- form start -->
                             <form action="{{ route('admin.stocks.store') }}" method="POST" autocomplete="off" enctype="multipart/form-data">
                                 @csrf
-
+                                <input type="hidden" name="stock_id" value="{{$stock_id}}">
                                 <!-- Validation Errors -->
                                 @if ($errors->any())
                                     <div class="alert alert-danger">

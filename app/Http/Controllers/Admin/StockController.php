@@ -23,11 +23,15 @@ class StockController extends Controller
     }
 
     // Show the form for creating a new stock item.
-    public function create()
+    public function create(Request $request)
     {
+        $stock_id = null;
+        if (isset($request->stock_id)) {
+            $stock_id = $request->stock_id;
+        }
         $products = Product::all(); // Retrieve all products
         $suppliers = Supplier::all(); // Retrieve all products
-        return view('admin.stocks.create', compact('products', 'suppliers'));
+        return view('admin.stocks.create', compact('products', 'suppliers','stock_id'));
     }
 
 
@@ -110,7 +114,7 @@ class StockController extends Controller
         $product->save();
 
         // Redirect with success message
-        return redirect()->back()->with('success', 'Stock and StockItem created successfully.');
+        return redirect(route('admin.stocks.show', $stock->id))->with('success', 'Stock and StockItem created successfully.');
     }
 
     public function update(Request $request, $id)
