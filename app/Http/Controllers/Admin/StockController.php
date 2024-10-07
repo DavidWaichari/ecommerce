@@ -189,14 +189,19 @@ class StockController extends Controller
 
     public function deleteStockItem($id)
     {
-        $stock = Stock::findOrFail($id);
+        $stockItem = StockItem::findOrFail($id);
 
         //Update the product
-        $product = $stock->product;
-        $product->in_stock -= $stock->no_of_items;
+        $product = $stockItem->product;
+        $product->in_stock -= $stockItem->no_of_items;
         $product->save(); 
-
-        $stock->delete();
+        //update the stock
+         // Update total amount in the stock
+         $stock = $stockItem->stock;
+         $stock->total_amount -= $stockItem->total_amount;
+         $stock->save();
+ 
+        $stockItem->delete();
 
         return redirect()->back()->with('success', 'Stock item deleted successfully.');
     }
