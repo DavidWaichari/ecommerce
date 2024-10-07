@@ -32,7 +32,7 @@
     <link rel="stylesheet" href="/admin-site/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
     <!-- Scripts -->
     {{-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
-    @vite(['resources/sass/app.scss'])
+    {{-- @vite(['resources/sass/app.scss']) --}}
 </head>
 
 <body>

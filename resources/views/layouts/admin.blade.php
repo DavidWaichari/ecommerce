@@ -19,7 +19,7 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="/admin-site/dist/css/adminlte.min.css">
   <!-- Scripts -->
-  @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+  {{-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
