@@ -124,6 +124,6 @@ class OrderController extends Controller
     {
         //if there is user
         $order = Order::create($request->all());
-        return redirect(route('orders.details', $order->id))->with('success', 'Order started...');
+        return redirect(route('admin.orders.details', $order->id))->with('success', 'Order started...');
     }
 }

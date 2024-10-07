@@ -46,5 +46,22 @@ class UsersTableSeeder extends Seeder
                 'password' => bcrypt('1234'),           // Add password and hash it
             ]);
         }
+        // Check if the user already exists by email
+        $solocom = User::where('email', 'suleiman@solocomglobal.com')->first();
+
+        // If the user does not exist, create a new user
+        if (!$solocom) {
+            User::create([
+                'first_name' => 'Suleiman',               // Add first name
+                'last_name' => 'Abdullahi',              // Add last name
+                'email' => 'suleiman@solocomglobal.com',       // Email
+                'phone_number' => '0722533339',         // Add phone number
+                'county' => 'Nairobi',                  // Add county
+                'address' => 'Nairobi',                    // Add address
+                'city' => 'NAIROBI',                     // Add city
+                'is_admin' => true,                     // Set is_admin to true
+                'password' => bcrypt('1234'),           // Add password and hash it
+            ]);
+        }
     }
 }

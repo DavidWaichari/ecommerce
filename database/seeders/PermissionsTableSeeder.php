@@ -69,6 +69,9 @@ class PermissionsTableSeeder extends Seeder
             'read-role',
             'update-role',
             'delete-role',
+
+            //dashboard
+            'read-dashboard'
         ];
 
         foreach ($permissions as $permission) {

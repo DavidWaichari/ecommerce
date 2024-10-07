@@ -90,7 +90,7 @@
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            
+          @can('read-dashboard')
             <!-- Dashboard -->
             <li class="nav-item">
                 <a href="/admin/dashboard" class="nav-link {{ Request::is('admin/dashboard*') ? 'active' : '' }}">
@@ -98,6 +98,7 @@
                     <p>Dashboard</p>
                 </a>
             </li>
+            @endcan
     
             <!-- Orders (check if user can read orders) -->
             @can('read-order')
