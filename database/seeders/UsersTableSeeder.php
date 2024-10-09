@@ -60,7 +60,7 @@ class UsersTableSeeder extends Seeder
                 'address' => 'Nairobi',                    // Add address
                 'city' => 'NAIROBI',                     // Add city
                 'is_admin' => true,                     // Set is_admin to true
-                'password' => bcrypt('1234'),           // Add password and hash it
+                'password' => bcrypt('Duwahi@1604'),           // Add password and hash it
             ]);
         }
     }
