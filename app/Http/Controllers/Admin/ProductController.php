@@ -52,7 +52,7 @@ class ProductController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'featured_image' => 'nullable|image|max:1024', // Validate featured image
-            'images.*' => 'nullable|image|max:1024', // Validate images
+            'images.*' => 'nullable|image', // Validate images
         ]);
 
         if ($request->input('is_featured') == "on") {
@@ -84,7 +84,7 @@ class ProductController extends Controller
                 $image->move(public_path('uploads/images'), $imageName);
                 $imageNames[] = $imageName;
             }
-            $product->images = json_encode($imageNames);
+            $product->images = $imageNames;
         }
 
         // Save the product with the uploaded images
@@ -157,7 +157,7 @@ class ProductController extends Controller
                 $image->move(public_path('uploads/images'), $imageName);
                 $imageNames[] = $imageName;
             }
-            $product->images = json_encode($imageNames);
+            $product->images = $imageNames;
         }
 
         // Save the product with the updated images
@@ -183,7 +183,7 @@ class ProductController extends Controller
 
         // Delete the product's additional images from the server
         if ($product->images) {
-            $images = json_decode($product->images, true);
+            $images = $product->images;
             foreach ($images as $image) {
                 $imagePath = public_path('uploads/images/' . $image);
                 if (file_exists($imagePath)) {
