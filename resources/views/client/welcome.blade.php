@@ -124,17 +124,18 @@
                </div>
          </div>
          <div class="col-lg-2 col-2">
-            <div class="d-flex align-items-center justify-content-between">
-                <div class="slider-arrow" id="slider-second-arrows"></div>
-                <a href="/shop">
+            <div class="d-flex align-items-center justify-content-end gap-2">
+                <a href="/shop" class="text-decoration-none text-dark">
                     View all
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
-                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round"
-                        class="feather feather-chevron-right">
-                        <polyline points="9 18 15 12 9 6"></polyline>
-                    </svg>
                 </a>
+                <div class="slider-navigation d-flex gap-2">
+                    <button class="prev-arrow">
+                        <i class="bi bi-chevron-left"></i>
+                    </button>
+                    <button class="next-arrow">
+                        <i class="bi bi-chevron-right"></i>
+                    </button>
+                </div>
             </div>
         </div>
 
@@ -232,17 +233,18 @@
              </div>
          </div>
          <div class="col-lg-2 col-3">
-            <div class="d-flex align-items-center justify-content-between">
-             <div class="slider-arrow" id="slider-third-arrows"></div>
-             <a href="/shop">
-                View all
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
-                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round"
-                    class="feather feather-chevron-right">
-                    <polyline points="9 18 15 12 9 6"></polyline>
-                </svg>
-            </a>
+            <div class="d-flex align-items-center justify-content-end gap-2">
+                <a href="/shop" class="text-decoration-none text-dark">
+                    View all
+                </a>
+                <div class="slider-navigation d-flex gap-2">
+                    <button class="prev-arrow">
+                        <i class="bi bi-chevron-left"></i>
+                    </button>
+                    <button class="next-arrow">
+                        <i class="bi bi-chevron-right"></i>
+                    </button>
+                </div>
             </div>
          </div>
      </div>
@@ -346,17 +348,18 @@
                 </div>
             </div>
             <div class="col-lg-2 col-3">
-                <div class="d-flex align-items-center justify-content-between">
-                    <div class="slider-arrow" id="slider-{{ $category->id }}-arrows"></div>
-                    <a href="/shop?category={{$category->slug}}">
+                <div class="d-flex align-items-center justify-content-end gap-2">
+                    <a href="/shop?category={{$category->slug}}" class="text-decoration-none text-dark">
                         View all
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
-                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round"
-                            class="feather feather-chevron-right">
-                            <polyline points="9 18 15 12 9 6"></polyline>
-                        </svg>
                     </a>
+                    <div class="slider-navigation d-flex gap-2">
+                        <button class="prev-arrow">
+                            <i class="bi bi-chevron-left"></i>
+                        </button>
+                        <button class="next-arrow">
+                            <i class="bi bi-chevron-right"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
