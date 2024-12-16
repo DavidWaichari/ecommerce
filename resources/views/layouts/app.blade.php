@@ -206,25 +206,26 @@
         .next-arrow {
             width: 30px;
             height: 30px;
-            border: none;
-            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid #FFA500;
+            background: transparent;
             border-radius: 50%;
-            color: white;
+            color: #FFA500;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: background 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .prev-arrow:hover,
         .next-arrow:hover {
-            background: rgba(0, 0, 0, 0.8);
+            background: #FFA500;
+            color: white;
         }
 
         .prev-arrow i,
         .next-arrow i {
-            font-size: 18px;
+            font-size: 16px;
         }
 
         /* Hide default slick arrows */
@@ -241,11 +242,18 @@
         /* View all link styling */
         .col-lg-2.col-2 a {
             font-weight: 500;
+            color: #FFA500;
+            text-decoration: none;
             transition: color 0.3s ease;
         }
 
         .col-lg-2.col-2 a:hover {
-            color: #FFA500;
+            color: #FF8C00; /* Darker orange on hover */
+        }
+
+        /* Navigation container */
+        .d-flex.align-items-center.justify-content-end.gap-2 {
+            margin-right: 10px;
         }
     </style>
 
