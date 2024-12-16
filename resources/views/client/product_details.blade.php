@@ -23,7 +23,29 @@
     <div class="container">
        <div class="row">
           <div class="col-md-5 col-xl-6">
-            <img src="{{$product->featured_image_url}}" alt="Product Image" class="mb-3 img-fluid">
+            <!-- <img src="{{$product->featured_image_url}}" alt="Product Image" class="mb-3 img-fluid"> -->
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+              <ol class="carousel-indicators">
+                @foreach($product->images as $index => $image)
+                    <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $index }}" class="{{ $index == 0 ? 'active' : '' }}"></li>
+                @endforeach
+              </ol>
+              <div class="carousel-inner">
+                @foreach($product->images as $index => $image)
+                    <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
+                        <img class="d-block w-100" src="{{ asset('uploads/images/' . $image) }}" alt="Product image {{ $index + 1 }}">
+                    </div>
+                @endforeach
+              </div>
+              <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
           </div>
           <div class="col-md-7 col-xl-6">
              <div class="ps-lg-10 mt-6 mt-md-0">
@@ -659,4 +681,3 @@
 @endsection
 
 @section('scripts')
-
