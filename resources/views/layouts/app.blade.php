@@ -20,6 +20,41 @@
 
     <!-- Theme CSS -->
     <link rel="stylesheet" href="/theme/css/theme.min.css">
+    
+    <!-- Custom CSS -->
+    <style>
+        .card-product {
+            height: 100%;
+        }
+        .card-product .card-body {
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+        }
+        .card-product .text-center {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+        .card-product .mb-3.img-fluid {
+            max-height: 180px;
+            width: auto;
+            object-fit: contain;
+        }
+        .card-product h2.fs-6 {
+            height: 40px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            margin-bottom: 0.5rem;
+        }
+        .card-product .d-grid {
+            margin-top: auto;
+        }
+    </style>
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="/theme/plugins/fontawesome-free/css/all.min.css">
@@ -176,7 +211,7 @@
                                     fill="currentColor" class="bi bi-text-indent-left text-primary"
                                     viewBox="0 0 16 16">
                                     <path
-                                        d="M2 3.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm.646 2.146a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1 0 .708l-2 2a.5.5 0 0 1-.708-.708L4.293 8 2.646 6.354a.5.5 0 0 1 0-.708zM7 6.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm-5 3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z">
+                                        d="M2 3.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z">
                                     </path>
                                 </svg>
                             </button>
