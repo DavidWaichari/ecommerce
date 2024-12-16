@@ -154,32 +154,24 @@
                                 <span class="badge bg-danger">Sale</span>
                             </div>
                             <!-- img -->
-                            <!-- img -->
-                            <a href="#!"><img src="{{$product->featured_image_url}}"
-                                    alt="Product Image" class="mb-3 img-fluid"></a>
-                            <!-- action btn -->
+                            <a href="{{route('product.details', ['slug' => $product->slug])}}"><img src="{{$product->featured_image_url}}"
+                                    alt="{{$product->name}}" class="mb-3 img-fluid"></a>
                             <!-- action btn -->
                             <div class="card-product-action">
-                                {{-- <a href="#!" class="btn-action" data-bs-toggle="modal"
-                                    data-bs-target="#quickViewModal"> --}}
-                                <a href="{{route('product.details', $product->slug)}}" class="btn-action" >
+                                <a href="{{route('product.details', ['slug' => $product->slug])}}" class="btn-action">
                                     <i class="bi bi-eye" data-bs-toggle="tooltip" data-bs-html="true"
                                         title="Quick View"></i>
                                 </a>
-                                {{-- <a href="../pages/shop-wishlist.html" class="btn-action"
-                                    data-bs-toggle="tooltip" data-bs-html="true" title="Wishlist"><i
-                                        class="bi bi-heart"></i></a>
-                                <a href="#!" class="btn-action" data-bs-toggle="tooltip"
-                                    data-bs-html="true" title="Compare"><i
-                                        class="bi bi-arrow-left-right"></i></a> --}}
                             </div>
                         </div>
                         <!-- title -->
                         <div class="text-small mb-1">
                             <a href="#!" class="text-decoration-none text-muted"><small>{{$product->category->name}}</small></a>
                         </div>
-                        <h2 class="fs-6"><a href="#!"
-                                class="text-inherit text-decoration-none">{{$product->name}}</a></h2>
+                        <h2 class="fs-6">
+                            <a href="{{route('product.details', ['slug' => $product->slug])}}"
+                                class="text-inherit text-decoration-none">{{$product->name}}</a>
+                        </h2>
                         {{-- <div>
                             <!-- rating -->
                             <small class="text-warning">
@@ -204,7 +196,7 @@
                             </div>
                         </div>
                         <div class="d-grid mt-4">
-                            <a href="{{route('product.details', $product->slug)}}" class="btn btn-primary rounded-pill">Add to Cart</a>
+                            <a href="{{route('product.details', ['slug' => $product->slug])}}" class="btn btn-primary rounded-pill">Add to Cart</a>
                         </div>
                     </div>
                 </div>
@@ -228,8 +220,7 @@
                              stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                              class="feather feather-shopping-bag text-primary">
                              <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
-                             <line x1="3" y1="6" x2="21" y2="6">
-                             </line>
+                             <line x1="3" y1="6" x2="21" y2="6"></line>
                              <path d="M16 10a4 4 0 0 1-8 0"></path>
                          </svg>
                      </div>
@@ -272,34 +263,24 @@
                              <span class="badge bg-danger">Sale</span>
                          </div>
                          <!-- img -->
-                         <!-- img -->
-                         <a href="#!"><img src="{{$product->featured_image_url}}"
-                                 alt="Product Image" class="mb-3 img-fluid"></a>
-                         <!-- action btn -->
+                         <a href="{{route('product.details', ['slug' => $product->slug])}}"><img src="{{$product->featured_image_url}}"
+                                 alt="{{$product->name}}" class="mb-3 img-fluid"></a>
                          <!-- action btn -->
                          <div class="card-product-action">
-                             {{-- <a href="#!" class="btn-action" data-bs-toggle="modal"
-                                 data-bs-target="#quickViewModal"> --}}
-                                 <a href="{{route('product.details', $product->slug)}}" class="btn-action" >
-                                    <i class="bi bi-eye" data-bs-toggle="tooltip" data-bs-html="true"
-                                        title="Quick View"></i>
-                                 {{-- <i class="bi bi-eye" data-bs-toggle="tooltip" data-bs-html="true"
-                                     title="Quick View"></i> --}}
+                             <a href="{{route('product.details', ['slug' => $product->slug])}}" class="btn-action">
+                                 <i class="bi bi-eye" data-bs-toggle="tooltip" data-bs-html="true"
+                                     title="Quick View"></i>
                              </a>
-                             {{-- <a href="../pages/shop-wishlist.html" class="btn-action"
-                                 data-bs-toggle="tooltip" data-bs-html="true" title="Wishlist"><i
-                                     class="bi bi-heart"></i></a>
-                             <a href="#!" class="btn-action" data-bs-toggle="tooltip"
-                                 data-bs-html="true" title="Compare"><i
-                                     class="bi bi-arrow-left-right"></i></a> --}}
                          </div>
                      </div>
                      <!-- title -->
                      <div class="text-small mb-1">
                          <a href="#!" class="text-decoration-none text-muted"><small>{{$product->category->name}}</small></a>
                      </div>
-                     <h2 class="fs-6"><a href="#!"
-                             class="text-inherit text-decoration-none">{{$product->name}}</a></h2>
+                     <h2 class="fs-6">
+                         <a href="{{route('product.details', ['slug' => $product->slug])}}"
+                             class="text-inherit text-decoration-none">{{$product->name}}</a>
+                     </h2>
                      {{-- <div>
                          <!-- rating -->
                          <small class="text-warning">
@@ -324,7 +305,7 @@
                          </div>
                      </div>
                      <div class="d-grid mt-4">
-                        <a href="{{route('product.details', $product->slug)}}" class="btn btn-primary rounded-pill">Add to Cart</a>
+                        <a href="{{route('product.details', ['slug' => $product->slug])}}" class="btn btn-primary rounded-pill">Add to Cart</a>
                      </div>
                  </div>
              </div>
@@ -396,17 +377,13 @@
                                         <span class="badge bg-danger">Sale</span>
                                     </div>
                                     <!-- img -->
-                                    <a href="#!"><img src="{{$product->featured_image_url}}"
-                                            alt="Product Image" class="mb-3 img-fluid"></a>
+                                    <a href="{{route('product.details', ['slug' => $product->slug])}}"><img src="{{$product->featured_image_url}}"
+                                            alt="{{$product->name}}" class="mb-3 img-fluid"></a>
                                     <!-- action btn -->
                                     <div class="card-product-action">
-                                        {{-- <a href="#!" class="btn-action" data-bs-toggle="modal"
-                                            data-bs-target="#quickViewModal"> --}}
-                                            <a href="{{route('product.details', $product->slug)}}" class="btn-action" >
-                                                <i class="bi bi-eye" data-bs-toggle="tooltip" data-bs-html="true"
-                                                    title="Quick View"></i>
-                                            {{-- <i class="bi bi-eye" data-bs-toggle="tooltip" data-bs-html="true"
-                                                title="Quick View"></i> --}}
+                                        <a href="{{route('product.details', ['slug' => $product->slug])}}" class="btn-action">
+                                            <i class="bi bi-eye" data-bs-toggle="tooltip" data-bs-html="true"
+                                                title="Quick View"></i>
                                         </a>
                                     </div>
                                 </div>
@@ -414,8 +391,10 @@
                                 <div class="text-small mb-1">
                                     <a href="#!" class="text-decoration-none text-muted"><small>{{$product->category->name}}</small></a>
                                 </div>
-                                <h2 class="fs-6"><a href="#!"
-                                        class="text-inherit text-decoration-none">{{$product->name}}</a></h2>
+                                <h2 class="fs-6">
+                                    <a href="{{route('product.details', ['slug' => $product->slug])}}"
+                                        class="text-inherit text-decoration-none">{{$product->name}}</a>
+                                </h2>
                                 <!-- price -->
                                 <div class="d-flex justify-content-between align-items-center mt-3">
                                     <div>
@@ -429,7 +408,7 @@
                                     </div>
                                 </div>
                                 <div class="d-grid mt-4">
-                                    <a href="{{route('product.details', $product->slug)}}" class="btn btn-primary rounded-pill">Add to Cart</a>
+                                    <a href="{{route('product.details', ['slug' => $product->slug])}}" class="btn btn-primary rounded-pill">Add to Cart</a>
                                 </div>
                             </div>
                         </div>

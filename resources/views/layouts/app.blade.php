@@ -25,34 +25,76 @@
     <style>
         .card-product {
             height: 100%;
+            margin-bottom: 1rem;
+            position: relative;
         }
         .card-product .card-body {
-            height: 400px;
+            height: 100%;
             display: flex;
             flex-direction: column;
+            padding: 1rem;
         }
         .card-product .text-center {
-            height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            position: relative;
+            padding-top: 100%;
             margin-bottom: 1rem;
+            overflow: hidden;
+            margin-top: 1.5rem;  
         }
-        .card-product .mb-3.img-fluid {
-            max-height: 180px;
-            width: auto;
+        .card-product .text-center img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             object-fit: contain;
+            padding: 0.5rem;
+        }
+        .card-product .position-absolute {
+            z-index: 10;
+        }
+        .badge.bg-danger {
+            position: absolute;
+            top: 0;
+            left: 1rem;
+            z-index: 20;
+            padding: 0.4rem 0.75rem;
+            font-size: 0.75rem;
+            border-radius: 0 0 4px 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         .card-product h2.fs-6 {
-            height: 40px;
+            min-height: 2.5em;
+            margin-bottom: 0.5rem;
             overflow: hidden;
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
-            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            line-height: 1.25;
         }
-        .card-product .d-grid {
-            margin-top: auto;
+        .card-product .text-small {
+            font-size: 0.8rem;
+            margin-bottom: 0.25rem;
+        }
+        .card-product .card-product-action {
+            position: absolute;
+            right: 0.5rem;
+            top: 2rem;  
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 15;
+        }
+        .card-product:hover .card-product-action {
+            opacity: 1;
+        }
+        .product-slider-second .slick-track {
+            display: flex;
+            gap: 1rem;
+        }
+        .product-slider-second .slick-slide {
+            height: auto;
+            margin: 0 0.5rem;
         }
     </style>
 
