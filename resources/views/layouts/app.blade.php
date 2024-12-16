@@ -96,6 +96,51 @@
             height: auto;
             margin: 0 0.5rem;
         }
+
+        /* Carousel Navigation Arrows */
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 50%;
+            background-size: 24px;
+            width: 45px;
+            height: 45px;
+        }
+
+        .carousel-control-prev,
+        .carousel-control-next {
+            width: 5%;
+            opacity: 1;
+        }
+
+        .carousel-control-prev:hover,
+        .carousel-control-next:hover {
+            opacity: 0.8;
+        }
+
+        /* Carousel Indicators */
+        .carousel-indicators {
+            margin-bottom: 1rem;
+            gap: 8px;
+        }
+
+        .carousel-indicators [data-bs-target] {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #dee2e6;
+            border: 0;
+            margin: 0;
+            opacity: 0.5;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-indicators .active {
+            background-color: #FFA500;
+            opacity: 1;
+            transform: scale(1.2);
+        }
     </style>
 
     <!-- Font Awesome -->

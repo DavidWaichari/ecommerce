@@ -25,11 +25,14 @@
           <div class="col-md-5 col-xl-6">
             <!-- <img src="{{$product->featured_image_url}}" alt="Product Image" class="mb-3 img-fluid"> -->
             <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-              <ol class="carousel-indicators">
+              <div class="carousel-indicators">
                 @foreach($product->images as $index => $image)
-                    <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $index }}" class="{{ $index == 0 ? 'active' : '' }}"></li>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $index }}" 
+                        class="{{ $index == 0 ? 'active' : '' }}" aria-current="{{ $index == 0 ? 'true' : 'false' }}"
+                        aria-label="Slide {{ $index + 1 }}">
+                    </button>
                 @endforeach
-              </ol>
+              </div>
               <div class="carousel-inner">
                 @foreach($product->images as $index => $image)
                     <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
